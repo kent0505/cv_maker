@@ -10,11 +10,11 @@ import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
 import 'src/core/config/my_colors.dart';
-import 'src/features/onboard/data/onboard_repository.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
 import 'src/features/settings/bloc/settings_bloc.dart';
 import 'src/features/settings/data/settings_repository.dart';
+import 'src/features/onboard/data/onboard_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,19 +35,14 @@ void main() async {
 
   // SQFLITE
   final dbPath = await getDatabasesPath();
-  final path = join(dbPath, Tables.dbName);
+  final path = join(dbPath, 'data.db');
   // await deleteDatabase(path);
   final db = await openDatabase(
     path,
     version: 1,
     onCreate: (Database db, int version) async {
       logger('ON CREATE');
-      await db.execute('''
-        CREATE TABLE IF NOT EXISTS ${Tables.resumes} (
-          id INTEGER NOT NULL,
-          title TEXT NOT NULL
-        )
-        ''');
+      await db.execute(SQL.resumes);
     },
   );
 
@@ -66,11 +61,15 @@ void main() async {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => ResumeBloc()),
           BlocProvider(
             create: (context) => SettingsBloc(
               repository: context.read<SettingsRepository>(),
-            ),
+            )..add(GetLanguage()),
+          ),
+          BlocProvider(
+            create: (context) => ResumeBloc(
+              repository: context.read<ResumeRepository>(),
+            )..add(GetResumes()),
           ),
         ],
         child: MyApp(),

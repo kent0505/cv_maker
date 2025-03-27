@@ -64,9 +64,9 @@ abstract final class Keys {
   static const locale = 'locale';
 }
 
-abstract final class Tables {
-  static const dbName = 'data.db';
-  static const resumes = 'resumes';
+abstract final class Locales {
+  static const en = 'en';
+  static const ru = 'ru';
 }
 
 abstract final class Identifiers {
@@ -76,4 +76,17 @@ abstract final class Identifiers {
 
 abstract final class ApiKeys {
   static const revenueCatApiKey = '';
+}
+
+abstract final class Tables {
+  static const resumes = 'resumes';
+}
+
+abstract final class SQL {
+  static const resumes = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.resumes} (
+      id INTEGER NOT NULL,
+      title TEXT NOT NULL
+    )
+    ''';
 }

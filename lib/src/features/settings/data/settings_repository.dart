@@ -19,9 +19,12 @@ final class SettingsRepositoryImpl implements SettingsRepository {
   @override
   String getLocale() {
     final code = PlatformDispatcher.instance.locale.languageCode;
-    List<String> codes = ['en', 'ru'];
+    List<String> codes = [
+      Locales.en,
+      Locales.ru,
+    ];
     return _prefs.getString(Keys.locale) ??
-        (codes.contains(code) ? code : 'en');
+        (codes.contains(code) ? code : Locales.en);
   }
 
   @override

@@ -4,3 +4,9 @@ part of 'resume_bloc.dart';
 sealed class ResumeState {}
 
 final class ResumeInitial extends ResumeState {}
+
+final class ResumesLoaded extends ResumeState {
+  ResumesLoaded({required this.resumes});
+
+  final List<Resume> resumes;
+}
