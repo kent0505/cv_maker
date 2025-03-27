@@ -8,6 +8,7 @@ abstract final class AppFonts {
   static const funnel500 = 'funnel500';
   static const funnel600 = 'funnel600';
   static const funnel700 = 'funnel700';
+  static const funnel800 = 'funnel900';
 
   static const gotham400 = 'gotham400';
   static const gotham500 = 'gotham500';
@@ -60,11 +61,12 @@ abstract final class Assets {
 
 abstract final class Keys {
   static const onboard = 'onboard';
+  static const locale = 'locale';
 }
 
 abstract final class Tables {
-  static const db = 'data.db';
-  static const categories = 'categories';
+  static const dbName = 'data.db';
+  static const resumes = 'resumes';
 }
 
 abstract final class Identifiers {
