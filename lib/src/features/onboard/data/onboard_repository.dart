@@ -16,7 +16,7 @@ final class OnboardRepositoryImpl implements OnboardRepository {
 
   @override
   bool isOnBoard() {
-    return _prefs.getBool(Keys.onboard) ?? true;
+    return _prefs.getBool(Keys.onboard) ?? false;
   }
 
   @override

@@ -8,7 +8,7 @@ abstract final class AppFonts {
   static const funnel500 = 'funnel500';
   static const funnel600 = 'funnel600';
   static const funnel700 = 'funnel700';
-  static const funnel800 = 'funnel900';
+  static const funnel800 = 'funnel800';
 
   static const gotham400 = 'gotham400';
   static const gotham500 = 'gotham500';

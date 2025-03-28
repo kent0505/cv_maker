@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/home_bloc.dart';
+import '../widgets/nav_bar.dart';
+import 'resume_screen.dart';
+import 'templates_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,10 +14,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Text('HOME'),
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              return state is HomeTemplates
+                  ? TemplatesScreen()
+                  : ResumeScreen();
+            },
+          ),
+          const NavBar(),
         ],
       ),
     );

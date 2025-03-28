@@ -35,19 +35,33 @@ flutter:
     - assets/fonts/
     - assets/images/
     - assets/templates/
-  # fonts:
-  #   - family: medium
-  #     fonts:
-  #       - asset: assets/fonts/Inter-Medium.ttf
-  #   - family: bold
-  #     fonts:
-  #       - asset: assets/fonts/Inter-Bold.ttf
-  #   - family: black
-  #     fonts:
-  #       - asset: assets/fonts/Inter-Black.ttf
-  #   - family: dosis
-  #     fonts:
-  #       - asset: assets/fonts/Dosis-Bold.ttf
-  #   - family: sf
-  #     fonts:
-  #       - asset: assets/fonts/SFProText-Regular.ttf
+  fonts:
+    # Inter
+    - family: inter400
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+    - family: inter500
+      fonts:
+        - asset: assets/fonts/Inter-Medium.ttf
+    - family: inter700
+      fonts:
+        - asset: assets/fonts/Inter-Bold.ttf
+    - family: inter900
+      fonts:
+        - asset: assets/fonts/Inter-Black.ttf
+    # Funnel
+    - family: funnel400
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-Regular.ttf
+    - family: funnel500
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-Medium.ttf
+    - family: funnel600
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-SemiBold.ttf
+    - family: funnel700
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-Bold.ttf
+    - family: funnel800
+      fonts:
+        - asset: assets/fonts/FunnelDisplay-ExtraBold.ttf

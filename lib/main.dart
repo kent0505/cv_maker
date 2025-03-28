@@ -10,6 +10,7 @@ import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
 import 'src/core/config/my_colors.dart';
+import 'src/features/home/bloc/home_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
 import 'src/features/settings/bloc/settings_bloc.dart';
@@ -61,6 +62,7 @@ void main() async {
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(
             create: (context) => SettingsBloc(
               repository: context.read<SettingsRepository>(),
