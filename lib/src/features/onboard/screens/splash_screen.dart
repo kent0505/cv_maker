@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/widgets/loading_widget.dart';
 import '../../home/screens/home_screen.dart';
 import '../data/onboard_repository.dart';
 import 'onboard_screen.dart';
@@ -32,9 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('LOADING'),
-      ),
+      body: LoadingWidget(),
     );
   }
 }

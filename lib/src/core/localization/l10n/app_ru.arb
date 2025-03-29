@@ -38,5 +38,18 @@
     "export": "Экспорт",
     "@export": {},
     "upgradePro": "Улучшить Pro",
-    "@upgradePro": {}
+    "@upgradePro": {},
+
+    "onboardTitle1": "Добро пожаловать в приложение",
+    "@onboardTitle1": {},
+    "onboardTitle2": "Выделите самое важное",
+    "@onboardTitle2": {},
+    "onboardTitle3": "Создайте свое непревзойденное резюме",
+    "@onboardTitle3": {},
+    "onboardDescription1": "Большой раздел резюме, который поможет вам найти работу мечты",
+    "@onboardDescription1": {},
+    "onboardDescription2": "Создайте легко читаемое резюме, выделите самое важное для работодателя",
+    "@onboardDescription2": {},
+    "onboardDescription3": "Воспользуйтесь 3-дневной бесплатной пробной версией Resume Builder: приложение-шаблон вакансий без ограничений за $6,99 в неделю",
+    "@onboardDescription3": {}
 }

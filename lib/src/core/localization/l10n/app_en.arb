@@ -38,5 +38,18 @@
     "export": "Export",
     "@export": {},
     "upgradePro": "Upgrade Pro",
-    "@upgradePro": {}
+    "@upgradePro": {},
+
+    "onboardTitle1": "Welcome\nto the App",
+    "@onboardTitle1": {},
+    "onboardTitle2": "Highlight the most important",
+    "@onboardTitle2": {},
+    "onboardTitle3": "Create your unrivaled resume",
+    "@onboardTitle3": {},
+    "onboardDescription1": "A large section of resume to help you find your dreeam job",
+    "@onboardDescription1": {},
+    "onboardDescription2": "Create resume easy to read, highlight the most important for the employer",
+    "@onboardDescription2": {},
+    "onboardDescription3": "Star a 3-day free trial of Resume Builder: Job template app with no limits for $6.99/week",
+    "@onboardDescription3": {}
 }
