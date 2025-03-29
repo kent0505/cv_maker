@@ -17,34 +17,36 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: const Appbar(title: 'Settings'),
+      appBar: Appbar(title: l.settings),
       body: Bg(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
             _Tile(
-              title: 'Share',
+              title: l.share,
               onPressed: () {},
             ),
             _Tile(
-              title: 'Contact Us',
+              title: l.contactUs,
               onPressed: () {},
             ),
             _Tile(
-              title: 'Terms of Use',
+              title: l.termsOfUse,
               onPressed: () {
                 context.push(TermsScreen.routePath);
               },
             ),
             _Tile(
-              title: 'Privacy Policy',
+              title: l.privacyPolicy,
               onPressed: () {
                 context.push(PrivacyScreen.routePath);
               },
             ),
             _Tile(
-              title: 'Languages',
+              title: l.languages,
               onPressed: () {
                 context.push(LanguagesScreen.routePath);
               },

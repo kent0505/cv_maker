@@ -13,9 +13,11 @@ class ResumeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: Appbar(
-        title: 'My Resume',
+        title: l.myResume,
         left: const SizedBox(width: 30),
         right: Button(
           onPressed: () {

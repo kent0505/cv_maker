@@ -1,32 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
+import '../../../core/widgets/main_button.dart';
 import '../bloc/settings_bloc.dart';
 
-class LanguagesScreen extends StatelessWidget {
+class LanguagesScreen extends StatefulWidget {
   const LanguagesScreen({super.key});
 
   static const routePath = '/LanguagesScreen';
 
   @override
+  State<LanguagesScreen> createState() => _LanguagesScreenState();
+}
+
+class _LanguagesScreenState extends State<LanguagesScreen> {
+  late String locale;
+
+  void onLocale(String value) {
+    setState(() {
+      locale = value;
+    });
+  }
+
+  void onSave() {
+    context.read<SettingsBloc>().add(SetLanguage(locale: locale));
+    context.pop();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    locale = context.read<SettingsBloc>().state.languageCode;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: const Appbar(title: 'Languages'),
+      appBar: Appbar(title: l.languages),
       body: Bg(
+        topWidgets: [
+          Column(
+            children: [
+              const Spacer(),
+              MainButton(
+                title: l.save,
+                onPressed: onSave,
+              ),
+              const SizedBox(height: 30),
+            ],
+          ),
+        ],
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            const _Tile(
+            _Tile(
               title: '🇺🇸 English',
               locale: Locales.en,
+              current: locale,
+              onPressed: onLocale,
             ),
-            const _Tile(
+            _Tile(
               title: '🇷🇺 Russian',
               locale: Locales.ru,
+              current: locale,
+              onPressed: onLocale,
             ),
           ],
         ),
@@ -39,21 +83,24 @@ class _Tile extends StatelessWidget {
   const _Tile({
     required this.title,
     required this.locale,
+    required this.current,
+    required this.onPressed,
   });
 
   final String title;
   final String locale;
+  final String current;
+  final void Function(String) onPressed;
 
   @override
   Widget build(BuildContext context) {
-    final current = context.watch<SettingsBloc>().state.languageCode;
     final active = current == locale;
 
     return Button(
       onPressed: active
           ? null
           : () {
-              context.read<SettingsBloc>().add(SetLanguage(locale: locale));
+              onPressed(locale);
             },
       child: Container(
         height: 48,

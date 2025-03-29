@@ -11,6 +11,8 @@ class TemplatesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Stack(
       children: [
         Container(
@@ -25,7 +27,7 @@ class TemplatesScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Choose\na template',
+                      l.chooseTemplate,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 35,

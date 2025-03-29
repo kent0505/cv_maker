@@ -1,3 +1,42 @@
 {
-    "home": "Home"
+    "@@locale": "en",
+
+    "chooseTemplate": "Choose\na template",
+    "@chooseTemplate": {},
+    "templates": "Templates",
+    "@templates": {},
+    "resume": "Resume",
+    "@resume": {},
+    "myResume": "My Resume",
+    "@myResume": {},
+
+    "settings": "Settings",
+    "@settings": {},
+    "share": "Share",
+    "@share": {},
+    "contactUs": "Contact Us",
+    "@contactUs": {},
+    "termsOfUse": "Terms of Use",
+    "@termsOfUse": {},
+    "privacyPolicy": "Privacy Policy",
+    "@privacyPolicy": {},
+    "languages": "Languages",
+    "@languages": {},
+
+    "save": "Save",
+    "@save": {},
+    "continuee": "Continue",
+    "@continuee": {},
+    "skip": "Skip",
+    "@skip": {},
+    "addOneMore": "Add one more",
+    "@addOneMore": {},
+    "add": "Add",
+    "@add": {},
+    "saveResume": "Save Resume",
+    "@saveResume": {},
+    "export": "Export",
+    "@export": {},
+    "upgradePro": "Upgrade Pro",
+    "@upgradePro": {}
 }

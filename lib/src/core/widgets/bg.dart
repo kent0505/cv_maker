@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Bg extends StatelessWidget {
-  const Bg({super.key, required this.child});
+  const Bg({
+    super.key,
+    required this.child,
+    this.topWidgets = const [],
+  });
 
   final Widget child;
+  final List<Widget> topWidgets;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,11 @@ class Bg extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: child,
+      child: topWidgets.isEmpty
+          ? child
+          : Stack(
+              children: topWidgets..insert(0, child),
+            ),
     );
   }
 }

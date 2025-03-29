@@ -11,8 +11,10 @@ class TermsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: const Appbar(title: 'Terms of Use'),
+      appBar: Appbar(title: l.termsOfUse),
       body: Bg(
         child: ListView(
           padding: const EdgeInsets.all(16),

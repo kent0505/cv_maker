@@ -11,13 +11,15 @@ class PrivacyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: const Appbar(title: 'Privacy Policy'),
+      appBar: Appbar(title: l.privacyPolicy),
       body: Bg(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            const Text(
+            Text(
               'Privacy Policy',
               style: TextStyle(
                 color: Colors.black,

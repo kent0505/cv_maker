@@ -11,6 +11,8 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -32,13 +34,13 @@ class NavBar extends StatelessWidget {
               children: [
                 _NavBarButton(
                   id: 1,
-                  title: 'Templates',
+                  title: l.templates,
                   asset: Assets.templates,
                   active: state is HomeTemplates,
                 ),
                 _NavBarButton(
                   id: 2,
-                  title: 'Resume',
+                  title: l.resume,
                   asset: Assets.resume,
                   active: state is HomeResume,
                 ),

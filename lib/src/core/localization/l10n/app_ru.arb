@@ -1,3 +1,42 @@
 {
-    "home": "Дом"
+    "@@locale": "ru",
+    
+    "chooseTemplate": "Выберите\nшаблон",
+    "@chooseTemplate": {},
+    "templates": "Шаблоны",
+    "@templates": {},
+    "resume": "Резюме",
+    "@resume": {},
+    "myResume": "Мои резюме",
+    "@myResume": {},
+
+    "settings": "Настройки",
+    "@settings": {},
+    "share": "Поделиться",
+    "@share": {},
+    "contactUs": "Связаться с нами",
+    "@contactUs": {},
+    "termsOfUse": "Условия использования",
+    "@termsOfUse": {},
+    "privacyPolicy": "Политика конфиденциальности",
+    "@privacyPolicy": {},
+    "languages": "Языки",
+    "@languages": {},
+
+    "save": "Сохранить",
+    "@save": {},
+    "continuee": "Продолжить",
+    "@continuee": {},
+    "skip": "Пропустить",
+    "@skip": {},
+    "addOneMore": "Добавить еще",
+    "@addOneMore": {},
+    "add": "Добавить",
+    "@add": {},
+    "saveResume": "Сохранить Резюме",
+    "@saveResume": {},
+    "export": "Экспорт",
+    "@export": {},
+    "upgradePro": "Улучшить Pro",
+    "@upgradePro": {}
 }
