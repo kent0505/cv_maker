@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/appbar.dart';
@@ -21,15 +20,20 @@ class LanguagesScreen extends StatefulWidget {
 class _LanguagesScreenState extends State<LanguagesScreen> {
   late String locale;
 
+  bool active = false;
+
   void onLocale(String value) {
     setState(() {
+      active = true;
       locale = value;
     });
   }
 
   void onSave() {
     context.read<SettingsBloc>().add(SetLanguage(locale: locale));
-    context.pop();
+    setState(() {
+      active = false;
+    });
   }
 
   @override
@@ -51,6 +55,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
               const Spacer(),
               MainButton(
                 title: l.save,
+                active: active,
                 onPressed: onSave,
               ),
               const SizedBox(height: 30),

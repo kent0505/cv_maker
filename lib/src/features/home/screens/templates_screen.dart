@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/template.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../settings/screens/settings_screen.dart';
+import '../widgets/template_card.dart';
 
 class TemplatesScreen extends StatelessWidget {
   const TemplatesScreen({super.key});
@@ -60,8 +62,21 @@ class TemplatesScreen extends StatelessWidget {
               top: Radius.circular(20),
             ),
             child: ListView(
-              padding: EdgeInsets.all(16),
-              children: [],
+              padding: EdgeInsets.all(16).copyWith(bottom: 120),
+              children: [
+                Wrap(
+                  spacing: 30,
+                  runSpacing: 10,
+                  children: List.generate(
+                    templates.length,
+                    (index) {
+                      return TemplateCard(
+                        template: templates[index],
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ),
