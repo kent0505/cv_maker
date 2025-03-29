@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
+import '../../../core/widgets/image_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../home/screens/home_screen.dart';
 import '../data/onboard_repository.dart';
@@ -23,11 +24,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
   void onContinue() {
     if (index == 3) {
-      // context.read<OnboardRepository>().removeOnboard();
-      // context.go(HomeScreen.routePath);
-      setState(() {
-        index = 1;
-      });
+      context.read<OnboardRepository>().removeOnboard();
+      context.go(HomeScreen.routePath);
+      // setState(() {
+      //   index = 1;
+      // });
     } else {
       setState(() {
         index++;
@@ -50,38 +51,72 @@ class _OnboardScreenState extends State<OnboardScreen> {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            _Template(
-              asset: Assets.template1,
-              top: -70,
-              right: 240,
-            ),
-            _Template(
-              asset: Assets.template2,
-              top: 290,
-              right: 176,
-            ),
-            _Template(
-              asset: Assets.template17,
-              top: -70,
-              right: -30,
-            ),
-            _Template(
-              asset: Assets.template7,
-              top: 290,
-              right: -88,
-            ),
-            _Template(
-              asset: Assets.template20,
-              top: 650,
-              right: 114,
-            ),
-            _Template(
-              asset: Assets.template11,
-              top: 642,
-              right: -155,
-            ),
+            if (index == 1) ...[
+              const _Template(
+                asset: Assets.template1,
+                top: -70,
+                right: 240,
+              ),
+              const _Template(
+                asset: Assets.template2,
+                top: 290,
+                right: 176,
+              ),
+              const _Template(
+                asset: Assets.template17,
+                top: -70,
+                right: -30,
+              ),
+              const _Template(
+                asset: Assets.template7,
+                top: 290,
+                right: -94,
+              ),
+              const _Template(
+                asset: Assets.template20,
+                top: 650,
+                right: 114,
+              ),
+              const _Template(
+                asset: Assets.template11,
+                top: 642,
+                right: -155,
+              ),
+            ] else if (index == 2) ...[
+              const _Template2(
+                asset: Assets.template8,
+                top: -50,
+                right: -50,
+              ),
+              const _Template2(
+                asset: Assets.template3,
+                top: -100,
+                right: 218,
+              ),
+              const _Template2(
+                asset: Assets.template19,
+                top: 270,
+                right: 218,
+              ),
+              const _Template2(
+                asset: Assets.template10,
+                top: 316,
+                right: -50,
+              ),
+            ] else if (index == 3) ...[
+              Positioned(
+                top: 60,
+                right: 108,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(28),
+                  child: const ImageWidget(
+                    Assets.onb4,
+                    width: 244,
+                  ),
+                ),
+              ),
+            ],
             Container(
-              height: MediaQuery.sizeOf(context).height / 2,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -93,6 +128,63 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ),
               ),
             ),
+            if (index == 2) ...[
+              const Positioned(
+                top: 62,
+                right: 80,
+                child: ImageWidget(
+                  Assets.onb1,
+                  height: 230,
+                ),
+              ),
+              const Positioned(
+                top: 370,
+                right: 118,
+                child: ImageWidget(
+                  Assets.onb3,
+                  height: 230,
+                ),
+              ),
+              Positioned(
+                top: 226,
+                right: 18,
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 1),
+                  height: 230,
+                  width: 232,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.25),
+                        blurRadius: 50,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const Positioned(
+                top: 226,
+                right: 18,
+                child: ImageWidget(
+                  Assets.onb2,
+                  height: 230,
+                  width: 232,
+                ),
+              ),
+            ] else if (index == 3) ...[
+              Positioned(
+                top: 120,
+                right: 20,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(28),
+                  child: const ImageWidget(
+                    Assets.onb5,
+                    width: 176,
+                  ),
+                ),
+              ),
+            ],
             Container(
               height: 276,
               width: double.infinity,
@@ -236,10 +328,41 @@ class _Template extends StatelessWidget {
         turns: AlwaysStoppedAnimation(-10 / 360),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(14),
-          child: Image.asset(
+          child: ImageWidget(
             asset,
             height: 352,
+            width: 250,
+            fit: BoxFit.cover,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Template2 extends StatelessWidget {
+  const _Template2({
+    required this.asset,
+    required this.top,
+    required this.right,
+  });
+
+  final String asset;
+  final double top;
+  final double right;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: top,
+      right: right,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(14),
+        child: ImageWidget(
+          asset,
+          height: 352,
+          width: 250,
+          fit: BoxFit.cover,
         ),
       ),
     );
