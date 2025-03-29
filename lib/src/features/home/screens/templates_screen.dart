@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
-import '../../../core/config/my_colors.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../settings/screens/settings_screen.dart';
@@ -12,12 +11,10 @@ class TemplatesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return Stack(
       children: [
         Container(
-          color: colors.blue1,
+          color: Color(0xff007AFF),
           height: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Column(
@@ -30,7 +27,7 @@ class TemplatesScreen extends StatelessWidget {
                     child: Text(
                       'Choose\na template',
                       style: TextStyle(
-                        color: colors.white,
+                        color: Colors.white,
                         fontSize: 35,
                         fontFamily: AppFonts.funnel800,
                         height: 1,
@@ -51,7 +48,7 @@ class TemplatesScreen extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: 160),
           decoration: BoxDecoration(
-            color: colors.white,
+            color: Colors.white,
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(20),
             ),

@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
-import 'my_colors.dart';
 
+// import 'my_colors.dart';
 // final l = AppLocalizations.of(context)!;
 // final colors = Theme.of(context).extension<MyColors>()!;
-
-final _ligthColors = MyColors.light();
+// final _ligthColors = MyColors.light();
 
 final lightTheme = ThemeData(
   useMaterial3: false,
   fontFamily: AppFonts.funnel400,
   brightness: Brightness.light,
-  scaffoldBackgroundColor: _ligthColors.white,
+  scaffoldBackgroundColor: Colors.white,
   colorScheme: ColorScheme.light(
-    surface: _ligthColors.white,
-    secondary: _ligthColors.bg, // overscroll indicator color
+    surface: Colors.white,
+    secondary: Color(0xffC7DDF4), // overscroll indicator color
   ),
   textSelectionTheme: TextSelectionThemeData(
-    cursorColor: _ligthColors.blue1,
-    selectionColor: _ligthColors.blue2,
-    selectionHandleColor: _ligthColors.blue2,
+    cursorColor: Color(0xff007AFF),
+    selectionColor: Color(0xffBBDCFF),
+    selectionHandleColor: Color(0xffBBDCFF),
   ),
   dialogTheme: const DialogTheme(
     insetPadding: EdgeInsets.zero,
@@ -31,7 +30,7 @@ final lightTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: _ligthColors.white,
+    fillColor: Colors.white,
     contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(16),
@@ -47,5 +46,5 @@ final lightTheme = ThemeData(
       fontFamily: AppFonts.funnel400,
     ),
   ),
-  extensions: [_ligthColors],
+  // extensions: [_ligthColors],
 );

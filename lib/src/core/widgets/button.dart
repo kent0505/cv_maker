@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../config/constants.dart';
-import '../config/my_colors.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -20,15 +19,13 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return CupertinoTheme(
       data: CupertinoThemeData(
         textTheme: CupertinoTextThemeData(
           textStyle: TextStyle(
             fontSize: 16,
             fontFamily: AppFonts.funnel700,
-            color: colors.black,
+            color: Colors.black,
           ),
         ),
       ),

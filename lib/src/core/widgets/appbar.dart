@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../config/constants.dart';
-import '../config/my_colors.dart';
 import 'button.dart';
 import 'svg_widget.dart';
 
@@ -23,20 +22,18 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return Container(
       height: 62 + MediaQuery.of(context).viewPadding.top,
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colors.white,
+        color: Colors.white,
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(30),
         ),
         boxShadow: [
           BoxShadow(
-            color: colors.black.withValues(alpha: 0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 10,
             offset: Offset(0, 4),
           ),
@@ -57,7 +54,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: colors.black,
+                color: Colors.black,
                 fontSize: 16,
                 fontFamily: AppFonts.funnel600,
               ),
@@ -83,8 +80,6 @@ class AppbarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return Button(
       onPressed: onPressed,
       minSize: 30,
@@ -92,7 +87,7 @@ class AppbarButton extends StatelessWidget {
         height: 30,
         width: 30,
         decoration: BoxDecoration(
-          color: colors.grey1,
+          color: Color(0xffE8E8F2),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Center(

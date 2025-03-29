@@ -17,7 +17,7 @@ abstract final class AppFonts {
 }
 
 abstract final class Assets {
-  static const add = 'assets/arrow.svg';
+  static const arrow = 'assets/arrow.svg';
   static const bottom = 'assets/bottom.svg';
   static const close = 'assets/close.svg';
   static const edit = 'assets/edit.svg';

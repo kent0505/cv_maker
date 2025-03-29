@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/config/my_colors.dart';
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../../core/widgets/button.dart';
@@ -12,8 +11,6 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -25,7 +22,7 @@ class NavBar extends StatelessWidget {
         ),
         padding: EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
-          color: colors.blue1,
+          color: Color(0xff007AFF),
           borderRadius: BorderRadius.circular(30),
         ),
         child: BlocBuilder<HomeBloc, HomeState>(
@@ -69,8 +66,6 @@ class _NavBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<MyColors>()!;
-
     return Button(
       onPressed: active
           ? null
@@ -81,7 +76,7 @@ class _NavBarButton extends StatelessWidget {
         height: 56,
         width: 154,
         decoration: BoxDecoration(
-          color: active ? colors.white : null,
+          color: active ? Colors.white : null,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Row(
@@ -91,7 +86,7 @@ class _NavBarButton extends StatelessWidget {
               width: 20,
               child: SvgWidget(
                 asset,
-                color: active ? colors.blue1 : colors.white,
+                color: active ? Color(0xff007AFF) : Colors.white,
               ),
             ),
             SizedBox(width: 5),
@@ -99,7 +94,7 @@ class _NavBarButton extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: active ? colors.blue1 : colors.white,
+                color: active ? Color(0xff007AFF) : Colors.white,
                 fontSize: 14,
                 fontFamily: AppFonts.funnel500,
               ),

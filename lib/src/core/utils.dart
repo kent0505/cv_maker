@@ -2,6 +2,7 @@ import 'dart:developer' as developer;
 import 'dart:io';
 
 import 'package:intl/intl.dart';
+export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 int getTimestamp() {
   return DateTime.now().millisecondsSinceEpoch;

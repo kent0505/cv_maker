@@ -9,7 +9,6 @@ import 'src/core/utils.dart';
 import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
-import 'src/core/config/my_colors.dart';
 import 'src/features/home/bloc/home_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
@@ -24,17 +23,10 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  // REVENUECAT
-  // await Purchases.configure(
-  //   PurchasesConfiguration(ApiKeys.revenueCatApiKey),
-  // );
-
-  // PREFS
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
   // await prefs.remove(Keys.onboard);
 
-  // SQFLITE
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'data.db');
   // await deleteDatabase(path);

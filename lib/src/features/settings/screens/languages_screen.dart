@@ -1,53 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
-import '../../../core/widgets/svg_widget.dart';
-import 'languages_screen.dart';
-import 'privacy_screen.dart';
-import 'terms_screen.dart';
+import '../bloc/settings_bloc.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class LanguagesScreen extends StatelessWidget {
+  const LanguagesScreen({super.key});
 
-  static const routePath = '/SettingsScreen';
+  static const routePath = '/LanguagesScreen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const Appbar(title: 'Settings'),
+      appBar: const Appbar(title: 'Languages'),
       body: Bg(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            _Tile(
-              title: 'Share',
-              onPressed: () {},
+            const _Tile(
+              title: '🇺🇸 English',
+              locale: Locales.en,
             ),
-            _Tile(
-              title: 'Contact Us',
-              onPressed: () {},
-            ),
-            _Tile(
-              title: 'Terms of Use',
-              onPressed: () {
-                context.push(TermsScreen.routePath);
-              },
-            ),
-            _Tile(
-              title: 'Privacy Policy',
-              onPressed: () {
-                context.push(PrivacyScreen.routePath);
-              },
-            ),
-            _Tile(
-              title: 'Languages',
-              onPressed: () {
-                context.push(LanguagesScreen.routePath);
-              },
+            const _Tile(
+              title: '🇷🇺 Russian',
+              locale: Locales.ru,
             ),
           ],
         ),
@@ -59,16 +38,23 @@ class SettingsScreen extends StatelessWidget {
 class _Tile extends StatelessWidget {
   const _Tile({
     required this.title,
-    required this.onPressed,
+    required this.locale,
   });
 
   final String title;
-  final VoidCallback onPressed;
+  final String locale;
 
   @override
   Widget build(BuildContext context) {
+    final current = context.watch<SettingsBloc>().state.languageCode;
+    final active = current == locale;
+
     return Button(
-      onPressed: onPressed,
+      onPressed: active
+          ? null
+          : () {
+              context.read<SettingsBloc>().add(SetLanguage(locale: locale));
+            },
       child: Container(
         height: 48,
         margin: const EdgeInsets.only(bottom: 16),
@@ -77,7 +63,7 @@ class _Tile extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           border: Border.all(
             width: 1,
-            color: Color(0xffDFDFDF),
+            color: const Color(0xffDFDFDF),
           ),
         ),
         child: Row(
@@ -92,11 +78,15 @@ class _Tile extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            const SvgWidget(
-              Assets.arrow,
+            Container(
+              height: 20,
               width: 20,
+              decoration: BoxDecoration(
+                color: active ? Color(0xffB5EF64) : Color(0xffE8E8F2),
+                borderRadius: BorderRadius.circular(5),
+              ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 22),
           ],
         ),
       ),
