@@ -41,14 +41,11 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: Row(
         children: [
-          left == null
-              ? AppbarButton(
-                  asset: Assets.left,
-                  onPressed: () {
-                    context.pop();
-                  },
-                )
-              : left!,
+          left ??
+              AppbarButton(
+                asset: Assets.left,
+                onPressed: () => context.pop(),
+              ),
           Expanded(
             child: Text(
               title,
@@ -60,8 +57,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ),
-          if (left == null && right == null) SizedBox(width: 30),
-          if (right != null) right!,
+          right ?? SizedBox(width: 30),
         ],
       ),
     );

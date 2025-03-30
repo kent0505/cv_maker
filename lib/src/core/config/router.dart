@@ -3,10 +3,12 @@ import 'package:go_router/go_router.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/onboard/screens/onboard_screen.dart';
 import '../../features/onboard/screens/splash_screen.dart';
+import '../../features/resume/screens/create_resume_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/settings/screens/privacy_screen.dart';
 import '../../features/settings/screens/terms_screen.dart';
 import '../../features/settings/screens/languages_screen.dart';
+import '../models/template.dart';
 
 final routerConfig = GoRouter(
   initialLocation: '/',
@@ -40,6 +42,14 @@ final routerConfig = GoRouter(
     GoRoute(
       path: PrivacyScreen.routePath,
       builder: (context, state) => const PrivacyScreen(),
+    ),
+
+    // RESUME
+    GoRoute(
+      path: CreateResumeScreen.routePath,
+      builder: (context, state) => CreateResumeScreen(
+        template: state.extra as Template,
+      ),
     ),
   ],
 );

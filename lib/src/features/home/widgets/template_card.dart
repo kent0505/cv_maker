@@ -1,9 +1,11 @@
-import 'package:cv_maker/src/core/widgets/image_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/button.dart';
+import '../../../core/widgets/image_widget.dart';
+import '../../resume/screens/create_resume_screen.dart';
 
 class TemplateCard extends StatelessWidget {
   const TemplateCard({super.key, required this.template});
@@ -18,7 +20,9 @@ class TemplateCard extends StatelessWidget {
     return SizedBox(
       width: width,
       child: Button(
-        onPressed: () {},
+        onPressed: () {
+          context.push(CreateResumeScreen.routePath, extra: template);
+        },
         child: Column(
           children: [
             ClipRRect(
