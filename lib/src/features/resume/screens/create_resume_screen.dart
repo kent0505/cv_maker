@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/template.dart';
@@ -7,6 +9,7 @@ import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/txt_field.dart';
+import '../bloc/resume_bloc.dart';
 import '../widgets/field_title.dart';
 import '../widgets/resume_indicator.dart';
 import '../widgets/user_image.dart';
@@ -31,19 +34,54 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
   final birthController = TextEditingController();
   final jobController = TextEditingController();
 
-  void onImage(String path) {
+  void onImage() async {
+    final file = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+
     setState(() {
-      imageController.text = path;
+      imageController.text = file?.path ?? '';
     });
   }
 
-  void onLeft() {
+  void onPop() {
     context.pop();
   }
 
-  void onRight() {}
+  void onLeft() {
+    context.read<ResumeBloc>().add(ChangeResumeStage(right: false));
+  }
+
+  void onRight() {
+    context.read<ResumeBloc>().add(ChangeResumeStage(right: true));
+  }
 
   void onContinue() {}
+
+  String getTitle(Stage stage) {
+    switch (stage) {
+      case Stage.language:
+        return 'Languages';
+      case Stage.education:
+        return 'Education';
+      case Stage.experience:
+        return 'Work Experience';
+      case Stage.projects:
+        return 'Projects';
+      case Stage.skills:
+        return 'Skills';
+      case Stage.software:
+        return 'Software';
+      case Stage.interests:
+        return 'Interests';
+      case Stage.honors:
+        return 'Honors';
+      case Stage.about:
+        return 'About you';
+      default:
+        return 'Information';
+    }
+  }
 
   @override
   void dispose() {
@@ -60,17 +98,18 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+    final stage = context.watch<ResumeBloc>().stage;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: Appbar(
-        title: 'Information',
+        title: getTitle(stage),
         left: AppbarButton(
-          asset: Assets.close,
-          onPressed: onLeft,
+          asset: stage == Stage.information ? Assets.close : Assets.left,
+          onPressed: stage == Stage.information ? onPop : onLeft,
         ),
         right: AppbarButton(
-          asset: Assets.right,
+          asset: stage == Stage.about ? Assets.close : Assets.right,
           onPressed: onRight,
         ),
       ),
@@ -78,8 +117,6 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
         topWidgets: [
           Column(
             children: [
-              const SizedBox(height: 20),
-              const ResumeIndicator(),
               const Spacer(),
               MainButton(
                 title: l.continuee,
@@ -92,7 +129,9 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
         child: ListView(
           padding: EdgeInsets.all(16).copyWith(bottom: 100),
           children: [
-            const SizedBox(height: 24),
+            const SizedBox(height: 4),
+            ResumeIndicator(stage: stage),
+            const SizedBox(height: 16),
             UserImage(
               controller: imageController,
               onPressed: onImage,

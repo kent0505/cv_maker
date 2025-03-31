@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/button.dart';
@@ -14,7 +13,7 @@ class UserImage extends StatelessWidget {
   });
 
   final TextEditingController controller;
-  final void Function(String) onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +34,7 @@ class UserImage extends StatelessWidget {
               right: 5,
               bottom: 0,
               child: Button(
-                onPressed: () async {
-                  XFile image = XFile('');
-                  final file = await ImagePicker().pickImage(
-                    source: ImageSource.gallery,
-                  );
-                  image = file ?? XFile('');
-                  onPressed(image.path);
-                },
+                onPressed: onPressed,
                 minSize: 35,
                 child: Container(
                   height: 35,

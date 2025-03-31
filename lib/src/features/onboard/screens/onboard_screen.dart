@@ -82,6 +82,21 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 top: 642,
                 right: -155,
               ),
+              const _Template(
+                asset: Assets.template4,
+                top: -70,
+                right: 510,
+              ),
+              const _Template(
+                asset: Assets.template5,
+                top: 290,
+                right: 446,
+              ),
+              const _Template(
+                asset: Assets.template6,
+                top: 650,
+                right: 384,
+              ),
             ] else if (index == 2) ...[
               const _Template2(
                 asset: Assets.template8,
@@ -103,16 +118,39 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 top: 316,
                 right: -50,
               ),
+              const _Template2(
+                asset: Assets.template11,
+                top: -140,
+                right: 486,
+              ),
+              const _Template2(
+                asset: Assets.template12,
+                top: 230,
+                right: 486,
+              ),
+              const _Template2(
+                asset: Assets.template13,
+                top: 600,
+                right: 486,
+              ),
+              const _Template2(
+                asset: Assets.template20,
+                top: 640,
+                right: 218,
+              ),
+              const _Template2(
+                asset: Assets.template7,
+                top: 684,
+                right: -50,
+              ),
             ] else if (index == 3) ...[
               Positioned(
                 top: 60,
                 right: 108,
-                child: ClipRRect(
+                child: ImageWidget(
+                  Assets.onb4,
+                  width: 244,
                   borderRadius: BorderRadius.circular(28),
-                  child: const ImageWidget(
-                    Assets.onb4,
-                    width: 244,
-                  ),
                 ),
               ),
             ],
@@ -176,12 +214,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
               Positioned(
                 top: 120,
                 right: 20,
-                child: ClipRRect(
+                child: ImageWidget(
+                  Assets.onb5,
+                  width: 176,
                   borderRadius: BorderRadius.circular(28),
-                  child: const ImageWidget(
-                    Assets.onb5,
-                    width: 176,
-                  ),
                 ),
               ),
             ],
@@ -326,14 +362,12 @@ class _Template extends StatelessWidget {
       right: right,
       child: RotationTransition(
         turns: AlwaysStoppedAnimation(-10 / 360),
-        child: ClipRRect(
+        child: ImageWidget(
+          asset,
+          height: 352,
+          width: 250,
+          fit: BoxFit.cover,
           borderRadius: BorderRadius.circular(14),
-          child: ImageWidget(
-            asset,
-            height: 352,
-            width: 250,
-            fit: BoxFit.cover,
-          ),
         ),
       ),
     );
@@ -356,14 +390,12 @@ class _Template2 extends StatelessWidget {
     return Positioned(
       top: top,
       right: right,
-      child: ClipRRect(
+      child: ImageWidget(
+        asset,
+        height: 352,
+        width: 250,
+        fit: BoxFit.cover,
         borderRadius: BorderRadius.circular(14),
-        child: ImageWidget(
-          asset,
-          height: 352,
-          width: 250,
-          fit: BoxFit.cover,
-        ),
       ),
     );
   }

@@ -14,8 +14,9 @@ class TemplateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = (MediaQuery.sizeOf(context).width / 2) - 31;
-    final height = 224.0;
+    final total = MediaQuery.sizeOf(context).width;
+    final width = (total / (total > 400 ? 3 : 2)) - 31;
+    final height = width * 1.4;
 
     return SizedBox(
       width: width,
@@ -25,15 +26,13 @@ class TemplateCard extends StatelessWidget {
         },
         child: Column(
           children: [
-            ClipRRect(
+            ImageWidget(
+              template.asset,
+              width: width,
+              height: height,
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
               borderRadius: BorderRadius.circular(20),
-              child: ImageWidget(
-                template.asset,
-                width: width,
-                height: height,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
-              ),
             ),
             SizedBox(
               height: 44,
