@@ -36,6 +36,14 @@ void main() async {
     onCreate: (Database db, int version) async {
       logger('ON CREATE');
       await db.execute(SQL.resumes);
+      await db.execute(SQL.languages);
+      await db.execute(SQL.educations);
+      await db.execute(SQL.experiences);
+      await db.execute(SQL.projects);
+      await db.execute(SQL.skills);
+      await db.execute(SQL.softwares);
+      await db.execute(SQL.interests);
+      await db.execute(SQL.honors);
     },
   );
 

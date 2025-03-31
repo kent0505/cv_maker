@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../resume/screens/resume_screen.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
 import 'templates_screen.dart';
+import 'resume_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

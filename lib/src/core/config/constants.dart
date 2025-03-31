@@ -82,13 +82,98 @@ abstract final class ApiKeys {
 
 abstract final class Tables {
   static const resumes = 'resumes';
+  static const languages = 'languages';
+  static const educations = 'educations';
+  static const experiences = 'experiences';
+  static const projects = 'projects';
+  static const skills = 'skills';
+  static const softwares = 'softwares';
+  static const interests = 'interests';
+  static const honors = 'honors';
 }
 
 abstract final class SQL {
   static const resumes = '''
     CREATE TABLE IF NOT EXISTS ${Tables.resumes} (
-      id INTEGER NOT NULL,
-      title TEXT NOT NULL
+      id INTEGER,
+      photo TEXT,
+      name TEXT,
+      phone TEXT,
+      email TEXT,
+      residence TEXT,
+      birth TEXT,
+      job TEXT,
+      languageID INTEGER,
+      educationID INTEGER,
+      experienceID INTEGER,
+      projectID INTEGER,
+      skillID INTEGER,
+      softwareID INTEGER,
+      interestID INTEGER,
+      honorID INTEGER,
+      about TEXT
+    )
+    ''';
+  static const languages = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.languages} (
+      id INTEGER,
+      language TEXT,
+      level TEXT
+    )
+    ''';
+  static const educations = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.educations} (
+      id INTEGER,
+      name TEXT,
+      faculty TEXT,
+      specialization TEXT,
+      startYear INTEGER,
+      endYear INTEGER
+    )
+    ''';
+  static const experiences = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.experiences} (
+      id INTEGER,
+      company TEXT,
+      location TEXT,
+      introduction TEXT,
+      details TEXT,
+      startYear TEXT,
+      endYear TEXT
+    )
+    ''';
+  static const projects = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.projects} (
+      id INTEGER,
+      name TEXT,
+      startYear TEXT,
+      endYear TEXT,
+      details TEXT
+    )
+    ''';
+  static const skills = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.skills} (
+      id INTEGER,
+      title TEXT
+    )
+    ''';
+  static const softwares = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.softwares} (
+      id INTEGER,
+      title TEXT,
+      level TEXT
+    )
+    ''';
+  static const interests = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.interests} (
+      id INTEGER,
+      title TEXT
+    )
+    ''';
+  static const honors = '''
+    CREATE TABLE IF NOT EXISTS ${Tables.honors} (
+      id INTEGER,
+      title TEXT
     )
     ''';
 }

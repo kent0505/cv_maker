@@ -17,40 +17,38 @@ class UserImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        height: 126,
-        width: 118,
-        child: Stack(
-          children: [
-            FileImageWidget(
-              controller.text,
-              height: 118,
-              width: 118,
-              fit: BoxFit.cover,
-              borderRadius: BorderRadius.circular(35),
-            ),
-            Positioned(
-              right: 5,
-              bottom: 0,
-              child: Button(
-                onPressed: onPressed,
-                minSize: 35,
-                child: Container(
-                  height: 35,
-                  width: 35,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(35),
-                  ),
-                  child: Center(
-                    child: SvgWidget(Assets.edit),
-                  ),
+    return SizedBox(
+      height: 126,
+      width: 118,
+      child: Stack(
+        children: [
+          FileImageWidget(
+            controller.text,
+            height: 118,
+            width: 118,
+            fit: BoxFit.cover,
+            borderRadius: BorderRadius.circular(35),
+          ),
+          Positioned(
+            right: 5,
+            bottom: 0,
+            child: Button(
+              onPressed: onPressed,
+              minSize: 35,
+              child: Container(
+                height: 35,
+                width: 35,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(35),
+                ),
+                child: Center(
+                  child: SvgWidget(Assets.edit),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -28,3 +28,5 @@ final class ChangeResumeStage extends ResumeEvent {
 
   final bool right;
 }
+
+final class ResetResumeStage extends ResumeEvent {}

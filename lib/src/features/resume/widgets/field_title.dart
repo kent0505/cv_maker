@@ -9,13 +9,18 @@ class FieldTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: Color(0xff3C3C43).withValues(alpha: 0.6),
-        fontSize: 14,
-        fontFamily: AppFonts.funnel400,
-      ),
+    return Row(
+      children: [
+        SizedBox(width: 16),
+        Text(
+          title,
+          style: TextStyle(
+            color: Color(0xff3C3C43).withValues(alpha: 0.6),
+            fontSize: 14,
+            fontFamily: AppFonts.funnel400,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -15,7 +15,7 @@ class TemplateCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final total = MediaQuery.sizeOf(context).width;
-    final width = (total / (total > 400 ? 3 : 2)) - 31;
+    final width = (total / (total > 450 ? 3 : 2)) - 31;
     final height = width * 1.4;
 
     return SizedBox(

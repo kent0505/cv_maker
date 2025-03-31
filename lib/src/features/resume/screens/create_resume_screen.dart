@@ -8,11 +8,9 @@ import '../../../core/models/template.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/main_button.dart';
-import '../../../core/widgets/txt_field.dart';
 import '../bloc/resume_bloc.dart';
-import '../widgets/field_title.dart';
 import '../widgets/resume_indicator.dart';
-import '../widgets/user_image.dart';
+import 'information_screen.dart';
 
 class CreateResumeScreen extends StatefulWidget {
   const CreateResumeScreen({super.key, required this.template});
@@ -44,7 +42,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
     });
   }
 
-  void onPop() {
+  void onClose() {
     context.pop();
   }
 
@@ -59,28 +57,22 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
   void onContinue() {}
 
   String getTitle(Stage stage) {
-    switch (stage) {
-      case Stage.language:
-        return 'Languages';
-      case Stage.education:
-        return 'Education';
-      case Stage.experience:
-        return 'Work Experience';
-      case Stage.projects:
-        return 'Projects';
-      case Stage.skills:
-        return 'Skills';
-      case Stage.software:
-        return 'Software';
-      case Stage.interests:
-        return 'Interests';
-      case Stage.honors:
-        return 'Honors';
-      case Stage.about:
-        return 'About you';
-      default:
-        return 'Information';
-    }
+    if (stage == Stage.language) return 'Languages';
+    if (stage == Stage.education) return 'Education';
+    if (stage == Stage.experience) return 'Work Experience';
+    if (stage == Stage.projects) return 'Projects';
+    if (stage == Stage.skills) return 'Skills';
+    if (stage == Stage.software) return 'Software';
+    if (stage == Stage.interests) return 'Interests';
+    if (stage == Stage.honors) return 'Honors';
+    if (stage == Stage.about) return 'About you';
+    return 'Information';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<ResumeBloc>().add(ResetResumeStage());
   }
 
   @override
@@ -99,18 +91,20 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final stage = context.watch<ResumeBloc>().stage;
+    final information = stage == Stage.information;
+    final about = stage == Stage.about;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: Appbar(
         title: getTitle(stage),
         left: AppbarButton(
-          asset: stage == Stage.information ? Assets.close : Assets.left,
-          onPressed: stage == Stage.information ? onPop : onLeft,
+          asset: information ? Assets.close : Assets.left,
+          onPressed: information ? onClose : onLeft,
         ),
         right: AppbarButton(
-          asset: stage == Stage.about ? Assets.close : Assets.right,
-          onPressed: onRight,
+          asset: about ? Assets.close : Assets.right,
+          onPressed: about ? onClose : onRight,
         ),
       ),
       body: Bg(
@@ -132,53 +126,17 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
             const SizedBox(height: 4),
             ResumeIndicator(stage: stage),
             const SizedBox(height: 16),
-            UserImage(
-              controller: imageController,
-              onPressed: onImage,
-            ),
-            const SizedBox(height: 8),
-            FieldTitle('Name'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: nameController,
-              hintText: 'Alex',
-            ),
-            const SizedBox(height: 16),
-            FieldTitle('Mobile phone'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: phoneController,
-              number: true,
-              hintText: '(239) 555 - 0108',
-            ),
-            const SizedBox(height: 16),
-            FieldTitle('Email'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: emailController,
-              hintText: 'yourmail@example.com',
-            ),
-            const SizedBox(height: 16),
-            FieldTitle('City of Residence'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: residenceController,
-              hintText: 'Pembroke Pines',
-            ),
-            const SizedBox(height: 16),
-            FieldTitle('Date of birth'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: birthController,
-              hintText: '3/16/25',
-            ),
-            const SizedBox(height: 16),
-            FieldTitle('Job Title'),
-            const SizedBox(height: 4),
-            TxtField(
-              controller: jobController,
-              hintText: 'Manager',
-            ),
+            if (information)
+              InformationScreen(
+                imageController: imageController,
+                nameController: nameController,
+                phoneController: phoneController,
+                emailController: emailController,
+                residenceController: residenceController,
+                birthController: birthController,
+                jobController: jobController,
+                onImage: onImage,
+              ),
           ],
         ),
       ),

@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'constants.dart';
 
-// import 'my_colors.dart';
-// final l = AppLocalizations.of(context)!;
-// final colors = Theme.of(context).extension<MyColors>()!;
-// final _ligthColors = MyColors.light();
-
 final lightTheme = ThemeData(
   useMaterial3: false,
   fontFamily: AppFonts.funnel400,
@@ -31,13 +26,16 @@ final lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
-    contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+    contentPadding: EdgeInsets.symmetric(
+      vertical: 10,
+      horizontal: 16,
+    ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(24),
       borderSide: BorderSide(color: Colors.transparent),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(24),
       borderSide: BorderSide(color: Colors.transparent),
     ),
     hintStyle: TextStyle(
@@ -46,5 +44,4 @@ final lightTheme = ThemeData(
       fontFamily: AppFonts.funnel400,
     ),
   ),
-  // extensions: [_ligthColors],
 );
