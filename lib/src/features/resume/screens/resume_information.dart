@@ -1,80 +1,70 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/config/constants.dart';
 import '../../../core/widgets/txt_field.dart';
 import '../widgets/field_title.dart';
 import '../widgets/user_image.dart';
 
-class InformationScreen extends StatelessWidget {
-  const InformationScreen({
+class ResumeInformation extends StatelessWidget {
+  const ResumeInformation({
     super.key,
-    required this.imageController,
-    required this.nameController,
-    required this.phoneController,
-    required this.emailController,
-    required this.residenceController,
-    required this.birthController,
-    required this.jobController,
+    required this.controllers,
     required this.onImage,
   });
 
-  final TextEditingController imageController;
-  final TextEditingController nameController;
-  final TextEditingController phoneController;
-  final TextEditingController emailController;
-  final TextEditingController residenceController;
-  final TextEditingController birthController;
-  final TextEditingController jobController;
+  final List<TextEditingController> controllers;
   final void Function() onImage;
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         UserImage(
-          controller: imageController,
+          controller: controllers[0],
           onPressed: onImage,
         ),
         const SizedBox(height: 8),
-        FieldTitle('Name'),
+        FieldTitle(l.name),
         const SizedBox(height: 4),
         TxtField(
-          controller: nameController,
+          controller: controllers[1],
           hintText: 'Alex',
         ),
         const SizedBox(height: 16),
-        FieldTitle('Mobile phone'),
+        FieldTitle(l.mobilePhone),
         const SizedBox(height: 4),
         TxtField(
-          controller: phoneController,
-          number: true,
+          controller: controllers[2],
           hintText: '(239) 555 - 0108',
         ),
         const SizedBox(height: 16),
-        FieldTitle('Email'),
+        const FieldTitle('Email'),
         const SizedBox(height: 4),
         TxtField(
-          controller: emailController,
+          controller: controllers[3],
           hintText: 'yourmail@example.com',
         ),
         const SizedBox(height: 16),
-        FieldTitle('City of Residence'),
+        FieldTitle(l.cityOfResidence),
         const SizedBox(height: 4),
         TxtField(
-          controller: residenceController,
+          controller: controllers[4],
           hintText: 'Pembroke Pines',
         ),
         const SizedBox(height: 16),
-        FieldTitle('Date of birth'),
+        FieldTitle(l.dateOfBirth),
         const SizedBox(height: 4),
         TxtField(
-          controller: birthController,
+          controller: controllers[5],
           hintText: '3/16/25',
         ),
         const SizedBox(height: 16),
-        FieldTitle('Job Title'),
+        FieldTitle(l.jobTitle),
         const SizedBox(height: 4),
         TxtField(
-          controller: jobController,
+          controller: controllers[6],
           hintText: 'Manager',
         ),
       ],

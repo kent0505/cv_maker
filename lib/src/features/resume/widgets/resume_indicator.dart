@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
 
-import '../bloc/resume_bloc.dart';
-
 class ResumeIndicator extends StatelessWidget {
-  const ResumeIndicator({super.key, required this.stage});
+  const ResumeIndicator({super.key, required this.index});
 
-  final Stage stage;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _Indicator(active: stage == Stage.information),
+        _Indicator(active: index == 1),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.language),
+        _Indicator(active: index == 2),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.education),
+        _Indicator(active: index == 3),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.experience),
+        _Indicator(active: index == 4),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.projects),
+        _Indicator(active: index == 5),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.skills),
+        _Indicator(active: index == 6),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.software),
+        _Indicator(active: index == 7),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.interests),
+        _Indicator(active: index == 8),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.honors),
+        _Indicator(active: index == 9),
         const SizedBox(width: 5),
-        _Indicator(active: stage == Stage.about),
+        _Indicator(active: index == 10),
       ],
     );
   }

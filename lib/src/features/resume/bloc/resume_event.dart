@@ -22,11 +22,3 @@ final class DeleteResume extends ResumeEvent {
 
   final Resume resume;
 }
-
-final class ChangeResumeStage extends ResumeEvent {
-  ChangeResumeStage({required this.right});
-
-  final bool right;
-}
-
-final class ResetResumeStage extends ResumeEvent {}
