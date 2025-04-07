@@ -8,17 +8,19 @@ import '../../../core/widgets/svg_widget.dart';
 import '../../../core/widgets/txt_field.dart';
 import '../provider/resume_provider.dart';
 import '../widgets/field_title.dart';
+import '../widgets/remove_button.dart';
 
 class ResumeLanguages extends StatelessWidget {
   const ResumeLanguages({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final provider = context.watch<ResumeProvider>();
 
     return Column(
       children: [
-        const FieldTitle('Enter language'),
+        FieldTitle(l.enterLanguage),
         const SizedBox(height: 4),
         TxtField(
           controller: provider.languageController,
@@ -52,113 +54,103 @@ class _LanguageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final provider = context.watch<ResumeProvider>();
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                if (withTitle) ...const [
-                  FieldTitle('Language'),
-                  SizedBox(height: 6),
-                ],
-                Container(
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 16),
-                      Text(
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        if (withTitle) ...[
+          Row(
+            children: [
+              Expanded(
+                child: FieldTitle(l.language),
+              ),
+              SizedBox(
+                width: 188,
+                child: FieldTitle(l.chooseLevel),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+        ],
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Container(
+                height: 48,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
                         language.language,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                           fontFamily: AppFonts.funnel400,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (withTitle) ...const [
-                FieldTitle('Choose level'),
-                SizedBox(height: 6),
-              ],
-              Container(
-                height: 48,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Button(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      // barrierColor: Colors.transparent,
-                      builder: (ctx) {
-                        return _LevelDialog(
-                          language: language,
-                          provider: provider,
-                        );
-                      },
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 16),
-                      Text(
-                        language.level,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: AppFonts.funnel400,
-                        ),
-                      ),
-                      const Spacer(),
-                      const SvgWidget(Assets.bottom),
-                      const SizedBox(width: 20),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 16),
+                  ],
                 ),
               ),
-            ],
-          ),
-          const SizedBox(width: 12),
-          Button(
-            onPressed: () {
-              provider.removeLanguage(language);
-            },
-            child: Container(
+            ),
+            const SizedBox(width: 8),
+            Container(
               height: 48,
-              width: 48,
+              width: 120,
               decoration: BoxDecoration(
-                color: Color(0xffFD9191),
-                borderRadius: BorderRadius.circular(6),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
               ),
-              child: const Center(
-                child: SvgWidget(
-                  Assets.close,
-                  height: 20,
+              child: Button(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return _LevelDialog(
+                        language: language,
+                        provider: provider,
+                      );
+                    },
+                  );
+                },
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16),
+                    Text(
+                      language.level,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: AppFonts.funnel400,
+                      ),
+                    ),
+                    const Spacer(),
+                    const SvgWidget(Assets.bottom),
+                    const SizedBox(width: 20),
+                  ],
                 ),
               ),
             ),
-          ),
-        ],
-      ),
+            const SizedBox(width: 12),
+            RemoveButton(
+              onPressed: () {
+                provider.removeLanguage(language);
+              },
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

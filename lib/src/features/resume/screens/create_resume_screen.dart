@@ -8,6 +8,7 @@ import '../../../core/widgets/bg.dart';
 import '../provider/resume_provider.dart';
 import '../widgets/resume_buttons.dart';
 import '../widgets/resume_indicator.dart';
+import 'resume_education.dart';
 import 'resume_information.dart';
 import 'resume_languages.dart';
 
@@ -60,6 +61,17 @@ class CreateResumeScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 if (provider.index == 1) ResumeInformation(),
                 if (provider.index == 2) ResumeLanguages(),
+                if (provider.index == 3)
+                  ...List.generate(
+                    provider.educationControllers.length,
+                    (index) {
+                      return ResumeEducation(
+                        controllers: provider.educationControllers[index],
+                        index: index,
+                        remove: index != 0,
+                      );
+                    },
+                  ),
               ],
             ),
           ),

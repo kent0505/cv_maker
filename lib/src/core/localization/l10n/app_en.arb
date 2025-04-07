@@ -81,5 +81,23 @@
     "dateOfBirth": "Date of birth",
     "@dateOfBirth": {},
     "jobTitle": "Job Title",
-    "@jobTitle": {}
+    "@jobTitle": {},
+
+    "enterLanguage": "Enter language",
+    "@enterLanguage": {},
+    "language": "Language",
+    "@language": {},
+    "chooseLevel": "Choose level",
+    "@chooseLevel": {},
+
+    "universityName": "Name of the University you studied at",
+    "@universityName": {},
+    "universityFaculty": "Name of faculty",
+    "@universityFaculty": {},
+    "universitySpecialization": "Specialization",
+    "@universitySpecialization": {},
+    "universityStartYear": "Year of start",
+    "@universityStartYear": {},
+    "universityEndYear": "Year of ending",
+    "@universityEndYear": {}
 }

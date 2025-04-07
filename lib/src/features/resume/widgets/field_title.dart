@@ -11,7 +11,7 @@ class FieldTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Text(
           title,
           style: TextStyle(

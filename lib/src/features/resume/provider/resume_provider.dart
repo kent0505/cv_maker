@@ -21,9 +21,26 @@ class ResumeProvider extends ChangeNotifier {
 
   final languageController = TextEditingController();
 
+  List<List<TextEditingController>> educationControllers = [
+    [
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController(),
+      TextEditingController()
+    ],
+  ];
+
   void checkActive() {
     if (index == 2) {
       active = languageController.text.isNotEmpty;
+    } else if (index == 3) {
+      active = educationControllers.every(
+            (element) => element.every(
+              (element) => element.text.isNotEmpty,
+            ),
+          ) &&
+          educationControllers.length != 3;
     }
     notifyListeners();
   }
@@ -65,8 +82,16 @@ class ResumeProvider extends ChangeNotifier {
       );
       languageController.clear();
     }
-    active = false;
-    notifyListeners();
+    if (index == 3) {
+      educationControllers.add([
+        TextEditingController(),
+        TextEditingController(),
+        TextEditingController(),
+        TextEditingController(),
+        TextEditingController()
+      ]);
+    }
+    checkActive();
   }
 
   void setLanguageLevel(Language language, String level) {
@@ -77,6 +102,11 @@ class ResumeProvider extends ChangeNotifier {
   void removeLanguage(Language language) {
     languages.remove(language);
     notifyListeners();
+  }
+
+  void removeEducation(int index) {
+    educationControllers.removeAt(index);
+    checkActive();
   }
 
   void onContinue() {
@@ -105,6 +135,11 @@ class ResumeProvider extends ChangeNotifier {
     birthController.dispose();
     jobController.dispose();
     languageController.dispose();
+    for (var controllers in educationControllers) {
+      for (var controller in controllers) {
+        controller.dispose();
+      }
+    }
     logger('DISPOSE');
     super.dispose();
   }
