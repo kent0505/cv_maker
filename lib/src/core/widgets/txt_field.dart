@@ -11,7 +11,7 @@ class TxtField extends StatelessWidget {
     this.number = false,
     this.multiline = false,
     this.readOnly = false,
-    this.maxLength = 50,
+    this.maxLength = 100,
     this.onChanged,
     this.onTap,
   });
@@ -31,7 +31,7 @@ class TxtField extends StatelessWidget {
       controller: controller,
       readOnly: readOnly,
       keyboardType: number ? TextInputType.number : null,
-      minLines: 1,
+      minLines: multiline ? 10 : 1,
       maxLines: multiline ? 10 : 1,
       inputFormatters: [
         LengthLimitingTextInputFormatter(

@@ -12,6 +12,7 @@ import 'resume_education.dart';
 import 'resume_experience.dart';
 import 'resume_information.dart';
 import 'resume_languages.dart';
+import 'resume_projects.dart';
 
 class CreateResumeScreen extends StatelessWidget {
   const CreateResumeScreen({super.key, required this.template});
@@ -79,6 +80,17 @@ class CreateResumeScreen extends StatelessWidget {
                     (index) {
                       return ResumeExperience(
                         controllers: provider.experienceControllers[index],
+                        index: index,
+                        remove: index != 0,
+                      );
+                    },
+                  ),
+                if (provider.index == 5)
+                  ...List.generate(
+                    provider.projectControllers.length,
+                    (index) {
+                      return ResumeProjects(
+                        controllers: provider.projectControllers[index],
                         index: index,
                         remove: index != 0,
                       );

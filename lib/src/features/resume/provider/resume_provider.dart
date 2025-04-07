@@ -30,6 +30,11 @@ class ResumeProvider extends ChangeNotifier {
       return TextEditingController();
     }),
   ];
+  List<List<TextEditingController>> projectControllers = [
+    List.generate(4, (_) {
+      return TextEditingController();
+    }),
+  ];
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
   void checkActive() {
@@ -49,6 +54,13 @@ class ResumeProvider extends ChangeNotifier {
             ),
           ) &&
           experienceControllers.length != 5;
+    } else if (index == 5) {
+      active = projectControllers.every(
+            (element) => element.every(
+              (element) => element.text.isNotEmpty,
+            ),
+          ) &&
+          projectControllers.length != 5;
     }
     notifyListeners();
   }
@@ -107,6 +119,12 @@ class ResumeProvider extends ChangeNotifier {
           return TextEditingController();
         }),
       );
+    } else if (index == 5) {
+      projectControllers.add(
+        List.generate(4, (_) {
+          return TextEditingController();
+        }),
+      );
     }
     checkActive();
   }
@@ -123,15 +141,19 @@ class ResumeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // УБРАТЬ ПОЛЯ ОБРАЗОВАНИЯ
+  // УБРАТЬ ПОЛЯ
   void removeEducation(int index) {
     educationControllers.removeAt(index);
     checkActive();
   }
 
-  // УБРАТЬ ПОЛЯ ОПЫТА РАБОТЫ
   void removeExperience(int index) {
     experienceControllers.removeAt(index);
+    checkActive();
+  }
+
+  void removeProject(int index) {
+    projectControllers.removeAt(index);
     checkActive();
   }
 
@@ -160,6 +182,16 @@ class ResumeProvider extends ChangeNotifier {
     jobController.dispose();
     languageController.dispose();
     for (var controllers in educationControllers) {
+      for (var controller in controllers) {
+        controller.dispose();
+      }
+    }
+    for (var controllers in experienceControllers) {
+      for (var controller in controllers) {
+        controller.dispose();
+      }
+    }
+    for (var controllers in projectControllers) {
       for (var controller in controllers) {
         controller.dispose();
       }

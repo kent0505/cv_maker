@@ -105,12 +105,15 @@
     "@workCompanyName": {},
     "workCompanyLocation": "Company location",
     "@workCompanyLocation": {},
-    "workIntroduction": "Introduction",
-    "@workIntroduction": {},
-    "workDetails": "Details",
-    "@workDetails": {},
-    "workStartDate": "Start Date",
-    "@workStartDate": {},
-    "workEndDate": "End Date",
-    "@workEndDate": {}
+    "introduction": "Introduction",
+    "@introduction": {},
+    "details": "Details",
+    "@details": {},
+    "startDate": "Start Date",
+    "@startDate": {},
+    "endDate": "End Date",
+    "@endDate": {},
+
+    "projectName": "Name of the project",
+    "@projectName": {}
 }

@@ -8,8 +8,8 @@ import '../provider/resume_provider.dart';
 import '../widgets/field_title.dart';
 import '../widgets/remove_button.dart';
 
-class ResumeExperience extends StatelessWidget {
-  const ResumeExperience({
+class ResumeProjects extends StatelessWidget {
+  const ResumeProjects({
     super.key,
     required this.controllers,
     required this.index,
@@ -27,41 +27,11 @@ class ResumeExperience extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.workCompanyName),
+        FieldTitle(l.projectName),
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[0],
           hintText: 'Gilette',
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
-        const SizedBox(height: 16),
-        FieldTitle(l.workCompanyLocation),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: controllers[1],
-          hintText: 'London',
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
-        const SizedBox(height: 16),
-        FieldTitle(l.introduction),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: controllers[2],
-          hintText: 'Head of Marketing',
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
-        const SizedBox(height: 16),
-        FieldTitle(l.details),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: controllers[3],
-          hintText: 'Marketing',
           onChanged: (_) {
             provider.checkActive();
           },
@@ -75,15 +45,15 @@ class ResumeExperience extends StatelessWidget {
                   FieldTitle(l.startDate),
                   const SizedBox(height: 4),
                   TxtField(
-                    controller: controllers[4],
+                    controller: controllers[1],
                     hintText: '12/09/2020',
                     readOnly: true,
                     onTap: () {
                       Picker.show(
                         context,
-                        stringToDate(controllers[4].text),
+                        stringToDate(controllers[1].text),
                         (value) {
-                          provider.setDate(controllers[4], value);
+                          provider.setDate(controllers[1], value);
                         },
                       );
                     },
@@ -98,15 +68,15 @@ class ResumeExperience extends StatelessWidget {
                   FieldTitle(l.endDate),
                   const SizedBox(height: 4),
                   TxtField(
-                    controller: controllers[5],
+                    controller: controllers[2],
                     hintText: '12/09/2020',
                     readOnly: true,
                     onTap: () {
                       Picker.show(
                         context,
-                        stringToDate(controllers[5].text),
+                        stringToDate(controllers[2].text),
                         (value) {
-                          provider.setDate(controllers[5], value);
+                          provider.setDate(controllers[2], value);
                         },
                       );
                     },
@@ -117,10 +87,21 @@ class ResumeExperience extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
+        FieldTitle(l.details),
+        const SizedBox(height: 4),
+        TxtField(
+          controller: controllers[3],
+          hintText: 'Head of Marketing',
+          multiline: true,
+          onChanged: (_) {
+            provider.checkActive();
+          },
+        ),
+        const SizedBox(height: 16),
         if (remove)
           RemoveButton(
             onPressed: () {
-              provider.removeExperience(index);
+              provider.removeProject(index);
             },
           ),
         const SizedBox(height: 32),

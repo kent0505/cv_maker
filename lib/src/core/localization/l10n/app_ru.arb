@@ -57,8 +57,10 @@
 
     "workCompanyName": "Название компании",
     "workCompanyLocation": "Местонахождение компании",
-    "workIntroduction": "Введение",
-    "workDetails": "Подробности",
-    "workStartDate": "Дата начала",
-    "workEndDate": "Дата окончания"
+    "introduction": "Введение",
+    "details": "Подробности",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+
+    "projectName": "Название проекта"
 }
