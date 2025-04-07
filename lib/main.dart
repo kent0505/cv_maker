@@ -74,7 +74,7 @@ void main() async {
             )..add(GetResumes()),
           ),
         ],
-        child: MyApp(),
+        child: const MyApp(),
       ),
     ),
   );

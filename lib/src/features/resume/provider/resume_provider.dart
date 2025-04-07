@@ -12,25 +12,26 @@ class ResumeProvider extends ChangeNotifier {
   String imagePath = '';
   List<Language> languages = [];
 
+  // КОНТРОЛЛЕРЫ
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
   final cityController = TextEditingController();
   final birthController = TextEditingController();
   final jobController = TextEditingController();
-
   final languageController = TextEditingController();
-
   List<List<TextEditingController>> educationControllers = [
-    [
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController(),
-      TextEditingController()
-    ],
+    List.generate(5, (_) {
+      return TextEditingController();
+    }),
+  ];
+  List<List<TextEditingController>> experienceControllers = [
+    List.generate(6, (_) {
+      return TextEditingController();
+    }),
   ];
 
+  // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
   void checkActive() {
     if (index == 2) {
       active = languageController.text.isNotEmpty;
@@ -41,10 +42,18 @@ class ResumeProvider extends ChangeNotifier {
             ),
           ) &&
           educationControllers.length != 3;
+    } else if (index == 4) {
+      active = experienceControllers.every(
+            (element) => element.every(
+              (element) => element.text.isNotEmpty,
+            ),
+          ) &&
+          experienceControllers.length != 5;
     }
     notifyListeners();
   }
 
+  // ВЫБРАТЬ АВАТАРКУ
   void pickImage() async {
     final file = await ImagePicker().pickImage(
       source: ImageSource.gallery,
@@ -53,11 +62,13 @@ class ResumeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setBirth(DateTime date) {
-    birthController.text = dateToString(date);
-    notifyListeners();
+  // УСТАНОВКА ДАТЫ ЧЕРЕЗ DATE PICKER
+  void setDate(TextEditingController controller, DateTime date) {
+    controller.text = dateToString(date);
+    checkActive();
   }
 
+  // ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ
   void goLeft() {
     index--;
     checkActive();
@@ -69,8 +80,11 @@ class ResumeProvider extends ChangeNotifier {
     checkActive();
   }
 
-  void onSkip() {}
+  void onContinue() {
+    goRight();
+  }
 
+  // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ
   void onAdd() {
     if (index == 2) {
       languages.add(
@@ -81,38 +95,47 @@ class ResumeProvider extends ChangeNotifier {
         ),
       );
       languageController.clear();
-    }
-    if (index == 3) {
-      educationControllers.add([
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController()
-      ]);
+    } else if (index == 3) {
+      educationControllers.add(
+        List.generate(5, (_) {
+          return TextEditingController();
+        }),
+      );
+    } else if (index == 4) {
+      experienceControllers.add(
+        List.generate(6, (_) {
+          return TextEditingController();
+        }),
+      );
     }
     checkActive();
   }
 
+  // ВЫБОР УРОВНЯ ЯЗЫКА
   void setLanguageLevel(Language language, String level) {
     language.level = level;
     notifyListeners();
   }
 
+  // УБРАТЬ ЯЗЫК
   void removeLanguage(Language language) {
     languages.remove(language);
     notifyListeners();
   }
 
+  // УБРАТЬ ПОЛЯ ОБРАЗОВАНИЯ
   void removeEducation(int index) {
     educationControllers.removeAt(index);
     checkActive();
   }
 
-  void onContinue() {
-    goRight();
+  // УБРАТЬ ПОЛЯ ОПЫТА РАБОТЫ
+  void removeExperience(int index) {
+    experienceControllers.removeAt(index);
+    checkActive();
   }
 
+  // ПОЛУЧИТЬ ЛОКАЛИЗОВННЫЙ ТЕКСТ АППБАРА
   String getTitle(AppLocalizations l) {
     if (index == 2) return l.languages;
     if (index == 3) return l.education;
@@ -126,6 +149,7 @@ class ResumeProvider extends ChangeNotifier {
     return l.information;
   }
 
+  // УНИЧТОЖИТЬ КОНТРОЛЛЕРЫ
   @override
   void dispose() {
     nameController.dispose();

@@ -24,7 +24,7 @@ class ResumeScreen extends StatelessWidget {
             context.push(SettingsScreen.routePath);
           },
           minSize: 30,
-          child: SvgWidget(
+          child: const SvgWidget(
             Assets.settings,
             color: Colors.black,
           ),

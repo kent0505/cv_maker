@@ -59,7 +59,7 @@ class ResumeInformation extends StatelessWidget {
               context,
               stringToDate(provider.birthController.text),
               (value) {
-                provider.setBirth(value);
+                provider.setDate(provider.birthController, value);
               },
               birthDay: true,
             );

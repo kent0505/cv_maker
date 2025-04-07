@@ -99,5 +99,18 @@
     "universityStartYear": "Year of start",
     "@universityStartYear": {},
     "universityEndYear": "Year of ending",
-    "@universityEndYear": {}
+    "@universityEndYear": {},
+
+    "workCompanyName": "Name of the company",
+    "@workCompanyName": {},
+    "workCompanyLocation": "Company location",
+    "@workCompanyLocation": {},
+    "workIntroduction": "Introduction",
+    "@workIntroduction": {},
+    "workDetails": "Details",
+    "@workDetails": {},
+    "workStartDate": "Start Date",
+    "@workStartDate": {},
+    "workEndDate": "End Date",
+    "@workEndDate": {}
 }

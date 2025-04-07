@@ -53,5 +53,12 @@
     "universityFaculty": "Название факультета",
     "universitySpecialization": "Специализация",
     "universityStartYear": "Год начала",
-    "universityEndYear": "Год окончания"
+    "universityEndYear": "Год окончания",
+
+    "workCompanyName": "Название компании",
+    "workCompanyLocation": "Местонахождение компании",
+    "workIntroduction": "Введение",
+    "workDetails": "Подробности",
+    "workStartDate": "Дата начала",
+    "workEndDate": "Дата окончания"
 }
