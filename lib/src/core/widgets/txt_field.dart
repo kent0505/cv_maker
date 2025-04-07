@@ -6,7 +6,7 @@ import '../config/constants.dart';
 class TxtField extends StatelessWidget {
   const TxtField({
     super.key,
-    required this.initialValue,
+    this.controller,
     required this.hintText,
     this.number = false,
     this.multiline = false,
@@ -16,7 +16,7 @@ class TxtField extends StatelessWidget {
     this.onTap,
   });
 
-  final String initialValue;
+  final TextEditingController? controller;
   final String hintText;
   final bool number;
   final bool multiline;
@@ -27,8 +27,8 @@ class TxtField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      initialValue: initialValue,
+    return TextField(
+      controller: controller,
       readOnly: readOnly,
       keyboardType: number ? TextInputType.number : null,
       minLines: 1,

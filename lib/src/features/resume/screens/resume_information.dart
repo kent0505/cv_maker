@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/utils.dart';
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/ios_date_picker.dart';
 import '../../../core/widgets/txt_field.dart';
@@ -17,60 +18,58 @@ class ResumeInformation extends StatelessWidget {
 
     return Column(
       children: [
-        UserImage(),
+        const UserImage(),
         const SizedBox(height: 8),
         FieldTitle(l.name),
         const SizedBox(height: 4),
         TxtField(
-          initialValue: provider.name,
+          controller: provider.nameController,
           hintText: 'Alex',
         ),
         const SizedBox(height: 16),
         FieldTitle(l.mobilePhone),
         const SizedBox(height: 4),
         TxtField(
-          initialValue: provider.phone,
+          controller: provider.phoneController,
           hintText: '(239) 555 - 0108',
         ),
         const SizedBox(height: 16),
         const FieldTitle('Email'),
         const SizedBox(height: 4),
         TxtField(
-          initialValue: provider.email,
+          controller: provider.emailController,
           hintText: 'yourmail@example.com',
         ),
         const SizedBox(height: 16),
         FieldTitle(l.cityOfResidence),
         const SizedBox(height: 4),
         TxtField(
-          initialValue: provider.city,
+          controller: provider.cityController,
           hintText: 'Pembroke Pines',
         ),
         const SizedBox(height: 16),
         FieldTitle(l.dateOfBirth),
         const SizedBox(height: 4),
-        Consumer<ResumeProvider>(builder: (context, provider, child) {
-          return TxtField(
-            initialValue: provider.birth,
-            hintText: '16/03/25',
-            readOnly: true,
-            onTap: () {
-              Picker.show(
-                context,
-                DateTime.now(),
-                (value) {
-                  provider.setBirth(value);
-                },
-                birthDay: true,
-              );
-            },
-          );
-        }),
+        TxtField(
+          controller: provider.birthController,
+          hintText: '16/03/25',
+          readOnly: true,
+          onTap: () {
+            Picker.show(
+              context,
+              stringToDate(provider.birthController.text),
+              (value) {
+                provider.setBirth(value);
+              },
+              birthDay: true,
+            );
+          },
+        ),
         const SizedBox(height: 16),
         FieldTitle(l.jobTitle),
         const SizedBox(height: 4),
         TxtField(
-          initialValue: provider.job,
+          controller: provider.jobController,
           hintText: 'Manager',
         ),
       ],

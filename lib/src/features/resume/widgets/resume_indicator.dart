@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ResumeIndicator extends StatelessWidget {
-  const ResumeIndicator({super.key, required this.index});
+import '../provider/resume_provider.dart';
 
-  final int index;
+class ResumeIndicator extends StatelessWidget {
+  const ResumeIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ResumeProvider>();
+    final index = provider.index;
+
     return Row(
       children: [
         _Indicator(active: index == 1),

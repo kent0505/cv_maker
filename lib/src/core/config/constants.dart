@@ -71,13 +71,13 @@ abstract final class Locales {
   static const ru = 'ru';
 }
 
-abstract final class Identifiers {
-  static const monthly = 'Monthly';
-  static const yearly = 'Yearly';
-}
-
-abstract final class ApiKeys {
-  static const revenueCatApiKey = '';
+abstract final class Levels {
+  static const a1 = 'A1';
+  static const a2 = 'A2';
+  static const b1 = 'B1';
+  static const b2 = 'B2';
+  static const c1 = 'C1';
+  static const c2 = 'C2';
 }
 
 abstract final class Tables {

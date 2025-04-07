@@ -1,20 +1,32 @@
-import 'package:cv_maker/src/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+export 'package:provider/provider.dart';
 
 import '../../../core/config/constants.dart';
-
-export 'package:provider/provider.dart';
+import '../../../core/models/language.dart';
+import '../../../core/utils.dart';
 
 class ResumeProvider extends ChangeNotifier {
   int index = 1;
+  bool active = false;
   String imagePath = '';
-  String name = '';
-  String phone = '';
-  String email = '';
-  String city = '';
-  String birth = '';
-  String job = '';
+  List<Language> languages = [];
+
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final cityController = TextEditingController();
+  final birthController = TextEditingController();
+  final jobController = TextEditingController();
+
+  final languageController = TextEditingController();
+
+  void checkActive() {
+    if (index == 2) {
+      active = languageController.text.isNotEmpty;
+    }
+    notifyListeners();
+  }
 
   void pickImage() async {
     final file = await ImagePicker().pickImage(
@@ -25,26 +37,51 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   void setBirth(DateTime date) {
-    birth = dateToString(date);
-    notifyListeners();
-  }
-
-  void onClose() {
-    index = 1;
+    birthController.text = dateToString(date);
     notifyListeners();
   }
 
   void goLeft() {
     index--;
-    notifyListeners();
+    checkActive();
   }
 
   void goRight() {
     index++;
+    active = false;
+    checkActive();
+  }
+
+  void onSkip() {}
+
+  void onAdd() {
+    if (index == 2) {
+      languages.add(
+        Language(
+          id: getTimestamp(),
+          language: languageController.text,
+          level: Levels.a1,
+        ),
+      );
+      languageController.clear();
+    }
+    active = false;
     notifyListeners();
   }
 
-  void onContinue() {}
+  void setLanguageLevel(Language language, String level) {
+    language.level = level;
+    notifyListeners();
+  }
+
+  void removeLanguage(Language language) {
+    languages.remove(language);
+    notifyListeners();
+  }
+
+  void onContinue() {
+    goRight();
+  }
 
   String getTitle(AppLocalizations l) {
     if (index == 2) return l.languages;
@@ -57,5 +94,18 @@ class ResumeProvider extends ChangeNotifier {
     if (index == 9) return l.honors;
     if (index == 10) return l.aboutYou;
     return l.information;
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    cityController.dispose();
+    birthController.dispose();
+    jobController.dispose();
+    languageController.dispose();
+    logger('DISPOSE');
+    super.dispose();
   }
 }

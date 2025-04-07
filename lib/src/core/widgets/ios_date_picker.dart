@@ -59,6 +59,12 @@ class _IosDatePickerState extends State<IosDatePicker> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    date = widget.initialDateTime;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final width = 344.0;
