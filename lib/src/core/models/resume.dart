@@ -5,7 +5,7 @@ class Resume {
     required this.name,
     required this.phone,
     required this.email,
-    required this.residence,
+    required this.city,
     required this.birth,
     required this.job,
     required this.languageID,
@@ -24,7 +24,7 @@ class Resume {
   String name;
   String phone;
   String email;
-  String residence;
+  String city;
   String birth;
   String job;
   int languageID;
@@ -44,7 +44,7 @@ class Resume {
       'name': name,
       'phone': phone,
       'email': email,
-      'residence': residence,
+      'city': city,
       'birth': birth,
       'job': job,
       'languageID': languageID,
@@ -66,7 +66,7 @@ class Resume {
       name: map['name'],
       phone: map['phone'],
       email: map['email'],
-      residence: map['residence'],
+      city: map['city'],
       birth: map['birth'],
       job: map['job'],
       languageID: map['languageID'],

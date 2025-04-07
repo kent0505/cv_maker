@@ -6,37 +6,36 @@ import '../config/constants.dart';
 class TxtField extends StatelessWidget {
   const TxtField({
     super.key,
-    required this.controller,
+    required this.initialValue,
     required this.hintText,
     this.number = false,
     this.multiline = false,
+    this.readOnly = false,
     this.maxLength = 50,
     this.onChanged,
     this.onTap,
   });
 
-  final TextEditingController controller;
+  final String initialValue;
   final String hintText;
   final bool number;
   final bool multiline;
+  final bool readOnly;
   final int maxLength;
   final void Function(String)? onChanged;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
+    return TextFormField(
+      initialValue: initialValue,
+      readOnly: readOnly,
       keyboardType: number ? TextInputType.number : null,
       minLines: 1,
       maxLines: multiline ? 10 : 1,
       inputFormatters: [
         LengthLimitingTextInputFormatter(
-          multiline
-              ? maxLength
-              : number
-                  ? 10
-                  : 25,
+          multiline ? maxLength : 25,
         ),
         if (number) FilteringTextInputFormatter.digitsOnly,
       ],

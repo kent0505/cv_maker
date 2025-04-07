@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -12,6 +13,7 @@ import 'src/core/config/constants.dart';
 import 'src/features/home/bloc/home_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
+import 'src/features/resume/provider/resume_provider.dart';
 import 'src/features/settings/bloc/settings_bloc.dart';
 import 'src/features/settings/data/settings_repository.dart';
 import 'src/features/onboard/data/onboard_repository.dart';
@@ -72,6 +74,9 @@ void main() async {
             create: (context) => ResumeBloc(
               repository: context.read<ResumeRepository>(),
             )..add(GetResumes()),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => ResumeProvider(),
           ),
         ],
         child: MyApp(),

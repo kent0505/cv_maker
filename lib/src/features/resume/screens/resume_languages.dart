@@ -15,7 +15,7 @@ class ResumeLanguages extends StatelessWidget {
         FieldTitle('Enter language'),
         const SizedBox(height: 4),
         TxtField(
-          controller: languageController,
+          initialValue: '',
           hintText: 'English',
         ),
       ],

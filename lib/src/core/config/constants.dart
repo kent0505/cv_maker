@@ -100,7 +100,7 @@ abstract final class SQL {
       name TEXT,
       phone TEXT,
       email TEXT,
-      residence TEXT,
+      city TEXT,
       birth TEXT,
       job TEXT,
       languageID INTEGER,

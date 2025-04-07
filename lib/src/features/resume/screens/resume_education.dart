@@ -4,12 +4,7 @@ import '../../../core/widgets/txt_field.dart';
 import '../widgets/field_title.dart';
 
 class ResumeEducation extends StatelessWidget {
-  const ResumeEducation({
-    super.key,
-    required this.controllers,
-  });
-
-  final List<TextEditingController> controllers;
+  const ResumeEducation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,35 +13,35 @@ class ResumeEducation extends StatelessWidget {
         FieldTitle('Name of the University you studied at'),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[0],
+          initialValue: '',
           hintText: 'The University of Manchester',
         ),
         const SizedBox(height: 16),
         FieldTitle('Name of faculty'),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[1],
+          initialValue: '',
           hintText: 'Marketing and management',
         ),
         const SizedBox(height: 16),
         FieldTitle('Specialization'),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[2],
+          initialValue: '',
           hintText: 'Marketing',
         ),
         const SizedBox(height: 16),
         FieldTitle('Year of start'),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[3],
+          initialValue: '',
           hintText: '2025',
         ),
         const SizedBox(height: 16),
         FieldTitle('Year of ending'),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[4],
+          initialValue: '',
           hintText: '2025',
         ),
         const SizedBox(height: 16),

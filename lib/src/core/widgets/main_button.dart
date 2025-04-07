@@ -24,7 +24,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
+      duration: Duration(milliseconds: transparent ? 0 : 500),
       height: 54,
       margin: EdgeInsets.symmetric(horizontal: horizontal),
       decoration: BoxDecoration(

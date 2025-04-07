@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
 import '../../../core/widgets/svg_widget.dart';
+import '../provider/resume_provider.dart';
 
 class UserImage extends StatelessWidget {
-  const UserImage({
-    super.key,
-    required this.controller,
-    required this.onPressed,
-  });
-
-  final TextEditingController controller;
-  final void Function() onPressed;
+  const UserImage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ResumeProvider>(context);
+
     return SizedBox(
       height: 126,
       width: 118,
       child: Stack(
         children: [
           FileImageWidget(
-            controller.text,
+            provider.imagePath,
             height: 118,
             width: 118,
             fit: BoxFit.cover,
@@ -33,7 +30,7 @@ class UserImage extends StatelessWidget {
             right: 5,
             bottom: 0,
             child: Button(
-              onPressed: onPressed,
+              onPressed: provider.pickImage,
               minSize: 35,
               child: Container(
                 height: 35,
