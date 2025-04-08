@@ -87,7 +87,6 @@ abstract final class Tables {
   static const experiences = 'experiences';
   static const projects = 'projects';
   static const skills = 'skills';
-  static const softwares = 'softwares';
   static const interests = 'interests';
   static const honors = 'honors';
 }
@@ -108,7 +107,6 @@ abstract final class SQL {
       experienceID INTEGER,
       projectID INTEGER,
       skillID INTEGER,
-      softwareID INTEGER,
       interestID INTEGER,
       honorID INTEGER,
       about TEXT
@@ -155,13 +153,6 @@ abstract final class SQL {
     CREATE TABLE IF NOT EXISTS ${Tables.skills} (
       id INTEGER,
       title TEXT
-    )
-    ''';
-  static const softwares = '''
-    CREATE TABLE IF NOT EXISTS ${Tables.softwares} (
-      id INTEGER,
-      title TEXT,
-      level TEXT
     )
     ''';
   static const interests = '''

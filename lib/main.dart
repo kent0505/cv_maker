@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-import 'src/core/utils.dart';
 import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
@@ -33,15 +32,13 @@ void main() async {
   final db = await openDatabase(
     path,
     version: 1,
-    onCreate: (Database db, int version) async {
-      logger('ON CREATE');
+    onCreate: (db, version) async {
       await db.execute(SQL.resumes);
       await db.execute(SQL.languages);
       await db.execute(SQL.educations);
       await db.execute(SQL.experiences);
       await db.execute(SQL.projects);
       await db.execute(SQL.skills);
-      await db.execute(SQL.softwares);
       await db.execute(SQL.interests);
       await db.execute(SQL.honors);
     },

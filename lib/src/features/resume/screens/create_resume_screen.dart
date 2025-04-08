@@ -8,11 +8,12 @@ import '../../../core/widgets/bg.dart';
 import '../provider/resume_provider.dart';
 import '../widgets/resume_buttons.dart';
 import '../widgets/resume_indicator.dart';
-import 'resume_education.dart';
-import 'resume_experience.dart';
 import 'resume_information.dart';
 import 'resume_languages.dart';
+import 'resume_education.dart';
+import 'resume_experience.dart';
 import 'resume_projects.dart';
+import 'resume_skills.dart';
 
 class CreateResumeScreen extends StatelessWidget {
   const CreateResumeScreen({super.key, required this.template});
@@ -43,8 +44,8 @@ class CreateResumeScreen extends StatelessWidget {
                   : provider.goLeft,
             ),
             right: AppbarButton(
-              asset: provider.index == 10 ? Assets.close : Assets.right,
-              onPressed: provider.index == 10
+              asset: provider.index == 9 ? Assets.close : Assets.right,
+              onPressed: provider.index == 9
                   ? () {
                       context.pop();
                     }
@@ -96,6 +97,7 @@ class CreateResumeScreen extends StatelessWidget {
                       );
                     },
                   ),
+                if (provider.index == 6) ResumeSkills(),
               ],
             ),
           ),

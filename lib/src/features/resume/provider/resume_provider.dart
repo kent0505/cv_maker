@@ -4,6 +4,7 @@ export 'package:provider/provider.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/language.dart';
+import '../../../core/models/skill.dart';
 import '../../../core/utils.dart';
 
 class ResumeProvider extends ChangeNotifier {
@@ -11,6 +12,7 @@ class ResumeProvider extends ChangeNotifier {
   bool active = false;
   String imagePath = '';
   List<Language> languages = [];
+  List<Skill> skills = [];
 
   // КОНТРОЛЛЕРЫ
   final nameController = TextEditingController();
@@ -20,20 +22,15 @@ class ResumeProvider extends ChangeNotifier {
   final birthController = TextEditingController();
   final jobController = TextEditingController();
   final languageController = TextEditingController();
+  final skillController = TextEditingController();
   List<List<TextEditingController>> educationControllers = [
-    List.generate(5, (_) {
-      return TextEditingController();
-    }),
+    List.generate(5, (_) => TextEditingController()),
   ];
   List<List<TextEditingController>> experienceControllers = [
-    List.generate(6, (_) {
-      return TextEditingController();
-    }),
+    List.generate(6, (_) => TextEditingController()),
   ];
   List<List<TextEditingController>> projectControllers = [
-    List.generate(4, (_) {
-      return TextEditingController();
-    }),
+    List.generate(4, (_) => TextEditingController()),
   ];
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
@@ -61,6 +58,8 @@ class ResumeProvider extends ChangeNotifier {
             ),
           ) &&
           projectControllers.length != 5;
+    } else if (index == 6) {
+      active = skillController.text.isNotEmpty;
     }
     notifyListeners();
   }
@@ -109,22 +108,24 @@ class ResumeProvider extends ChangeNotifier {
       languageController.clear();
     } else if (index == 3) {
       educationControllers.add(
-        List.generate(5, (_) {
-          return TextEditingController();
-        }),
+        List.generate(5, (_) => TextEditingController()),
       );
     } else if (index == 4) {
       experienceControllers.add(
-        List.generate(6, (_) {
-          return TextEditingController();
-        }),
+        List.generate(6, (_) => TextEditingController()),
       );
     } else if (index == 5) {
       projectControllers.add(
-        List.generate(4, (_) {
-          return TextEditingController();
-        }),
+        List.generate(4, (_) => TextEditingController()),
       );
+    } else if (index == 6) {
+      skills.add(
+        Skill(
+          id: getTimestamp(),
+          title: skillController.text,
+        ),
+      );
+      skillController.clear();
     }
     checkActive();
   }
@@ -138,6 +139,12 @@ class ResumeProvider extends ChangeNotifier {
   // УБРАТЬ ЯЗЫК
   void removeLanguage(Language language) {
     languages.remove(language);
+    notifyListeners();
+  }
+
+  // УБРАТЬ НАВЫК
+  void removeSkill(Skill skill) {
+    skills.remove(skill);
     notifyListeners();
   }
 
@@ -164,10 +171,9 @@ class ResumeProvider extends ChangeNotifier {
     if (index == 4) return l.workExperience;
     if (index == 5) return l.projects;
     if (index == 6) return l.skills;
-    if (index == 7) return l.software;
-    if (index == 8) return l.interests;
-    if (index == 9) return l.honors;
-    if (index == 10) return l.aboutYou;
+    if (index == 7) return l.interests;
+    if (index == 8) return l.honors;
+    if (index == 9) return l.aboutYou;
     return l.information;
   }
 
@@ -181,6 +187,7 @@ class ResumeProvider extends ChangeNotifier {
     birthController.dispose();
     jobController.dispose();
     languageController.dispose();
+    skillController.dispose();
     for (var controllers in educationControllers) {
       for (var controller in controllers) {
         controller.dispose();

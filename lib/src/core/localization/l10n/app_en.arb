@@ -115,5 +115,10 @@
     "@endDate": {},
 
     "projectName": "Name of the project",
-    "@projectName": {}
+    "@projectName": {},
+
+    "enterSkill": "Enter skill",
+    "@enterSkill": {},
+    "only30Skill": "You can choose only 30 skils",
+    "@only30Skill": {}
 }
