@@ -24,7 +24,7 @@ class ResumeInformation extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: provider.nameController,
-          hintText: 'Alex',
+          hintText: l.alex,
         ),
         const SizedBox(height: 16),
         FieldTitle(l.mobilePhone),
@@ -70,7 +70,7 @@ class ResumeInformation extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: provider.jobController,
-          hintText: 'Manager',
+          hintText: l.manager,
         ),
       ],
     );

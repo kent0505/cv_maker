@@ -91,7 +91,7 @@ class ResumeProjects extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[3],
-          hintText: 'Head of Marketing',
+          hintText: l.headOfMarketing,
           multiline: true,
           onChanged: (_) {
             provider.checkActive();

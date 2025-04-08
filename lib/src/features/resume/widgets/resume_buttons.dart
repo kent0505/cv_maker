@@ -14,7 +14,7 @@ class ResumeButtons extends StatelessWidget {
     final i = provider.index;
     // final skip = i != 1;
     final addOneMore = i == 3 || i == 4 || i == 5;
-    final add = i == 2 || i == 6 || i == 7 || i == 8 || i == 9;
+    final add = i == 2 || i == 6 || i == 7 || i == 8;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -46,8 +46,9 @@ class ResumeButtons extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         MainButton(
-          title: i == 10 ? l.saveResume : l.continuee,
-          white: true,
+          title: i == 9 ? l.saveResume : l.continuee,
+          white: i == 9 ? false : true,
+          active: i == 9 ? provider.active : true,
           onPressed: provider.onContinue,
         ),
         const SizedBox(height: 30),

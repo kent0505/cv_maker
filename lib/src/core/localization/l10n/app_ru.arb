@@ -34,36 +34,50 @@
     "workExperience": "Опыт Работы",
     "projects": "Проекты",
     "skills": "Навыки",
-    "software": "Программы",
     "interests": "Интересы",
     "honors": "Награды",
     "aboutYou": "О себе",
+
+    "alex": "Алекс",
+    "manager": "Менеджер",
+    "english": "Английский",
+    "marketingAndManagement": "Маркетинг и Менеджмент",
+    "marketing": "Маркетинг",
+    "headOfMarketing": "Руководитель отдела маркетинга",
+    "patience": "Терпеливость",
+    "football": "Футболл",
+    "goldMedal": "Золотая медаль в школе",
 
     "name": "Имя",
     "mobilePhone": "Телефон",
     "cityOfResidence": "Город проживания",
     "dateOfBirth": "Дата рождения",
     "jobTitle": "Должность",
-
     "enterLanguage": "Введите язык",
     "language": "Язык",
     "chooseLevel": "Веберите уровень",
-
     "universityName": "Название университета",
     "universityFaculty": "Название факультета",
     "universitySpecialization": "Специализация",
     "universityStartYear": "Год начала",
     "universityEndYear": "Год окончания",
-
     "workCompanyName": "Название компании",
     "workCompanyLocation": "Местонахождение компании",
     "introduction": "Введение",
     "details": "Подробности",
     "startDate": "Дата начала",
     "endDate": "Дата окончания",
-
     "projectName": "Название проекта",
-
     "enterSkill": "Введите навык",
-    "only30Skill": "Вы можете выбрать только 30 навыков"
+    "only30Skill": "Вы можете выбрать только 30 навыков",
+    "enterInterest": "Введите ваши интересы",
+    "@enterInterest": {},
+    "only30Interest": "Вы можете выбрать только 30 интересов",
+    "@only30Interest": {},
+    "enterHonor": "Введите почести или награды",
+    "@enterHonor": {},
+    "only30Honor": "Вы можете выбрать только 30 наград и почестей.",
+    "@only30Honor": {},
+    "aboutTitle": "Напишите информацию о себе, это поможет работодателю узнать больше о ваших словах.",
+    "@aboutTitle": {}
 }

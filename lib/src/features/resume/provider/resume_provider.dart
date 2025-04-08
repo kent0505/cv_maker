@@ -3,6 +3,8 @@ import 'package:image_picker/image_picker.dart';
 export 'package:provider/provider.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/honor.dart';
+import '../../../core/models/interest.dart';
 import '../../../core/models/language.dart';
 import '../../../core/models/skill.dart';
 import '../../../core/utils.dart';
@@ -13,6 +15,8 @@ class ResumeProvider extends ChangeNotifier {
   String imagePath = '';
   List<Language> languages = [];
   List<Skill> skills = [];
+  List<Interest> interests = [];
+  List<Honor> honors = [];
 
   // КОНТРОЛЛЕРЫ
   final nameController = TextEditingController();
@@ -23,6 +27,9 @@ class ResumeProvider extends ChangeNotifier {
   final jobController = TextEditingController();
   final languageController = TextEditingController();
   final skillController = TextEditingController();
+  final interestController = TextEditingController();
+  final honorController = TextEditingController();
+  final aboutController = TextEditingController();
   List<List<TextEditingController>> educationControllers = [
     List.generate(5, (_) => TextEditingController()),
   ];
@@ -60,6 +67,12 @@ class ResumeProvider extends ChangeNotifier {
           projectControllers.length != 5;
     } else if (index == 6) {
       active = skillController.text.isNotEmpty;
+    } else if (index == 7) {
+      active = interestController.text.isNotEmpty;
+    } else if (index == 8) {
+      active = honorController.text.isNotEmpty;
+    } else if (index == 9) {
+      active = aboutController.text.isNotEmpty;
     }
     notifyListeners();
   }
@@ -97,14 +110,13 @@ class ResumeProvider extends ChangeNotifier {
 
   // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ
   void onAdd() {
+    final id = getTimestamp();
     if (index == 2) {
-      languages.add(
-        Language(
-          id: getTimestamp(),
-          language: languageController.text,
-          level: Levels.a1,
-        ),
-      );
+      languages.add(Language(
+        id: id,
+        language: languageController.text,
+        level: Levels.a1,
+      ));
       languageController.clear();
     } else if (index == 3) {
       educationControllers.add(
@@ -119,13 +131,23 @@ class ResumeProvider extends ChangeNotifier {
         List.generate(4, (_) => TextEditingController()),
       );
     } else if (index == 6) {
-      skills.add(
-        Skill(
-          id: getTimestamp(),
-          title: skillController.text,
-        ),
-      );
+      skills.add(Skill(
+        id: id,
+        title: skillController.text,
+      ));
       skillController.clear();
+    } else if (index == 7) {
+      interests.add(Interest(
+        id: id,
+        title: interestController.text,
+      ));
+      interestController.clear();
+    } else if (index == 8) {
+      honors.add(Honor(
+        id: id,
+        title: honorController.text,
+      ));
+      honorController.clear();
     }
     checkActive();
   }
@@ -136,15 +158,24 @@ class ResumeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // УБРАТЬ ЯЗЫК
+  // УБРАТЬ КАРТОЧКИ
   void removeLanguage(Language language) {
     languages.remove(language);
     notifyListeners();
   }
 
-  // УБРАТЬ НАВЫК
   void removeSkill(Skill skill) {
     skills.remove(skill);
+    notifyListeners();
+  }
+
+  void removeInterest(Interest interest) {
+    interests.remove(interest);
+    notifyListeners();
+  }
+
+  void removeHonor(Honor honor) {
+    honors.remove(honor);
     notifyListeners();
   }
 
@@ -188,6 +219,9 @@ class ResumeProvider extends ChangeNotifier {
     jobController.dispose();
     languageController.dispose();
     skillController.dispose();
+    interestController.dispose();
+    honorController.dispose();
+    aboutController.dispose();
     for (var controllers in educationControllers) {
       for (var controller in controllers) {
         controller.dispose();

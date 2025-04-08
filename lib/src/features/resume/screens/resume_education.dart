@@ -39,7 +39,7 @@ class ResumeEducation extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[1],
-          hintText: 'Marketing and management',
+          hintText: l.marketingAndManagement,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -49,7 +49,7 @@ class ResumeEducation extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[2],
-          hintText: 'Marketing',
+          hintText: l.marketing,
           onChanged: (_) {
             provider.checkActive();
           },

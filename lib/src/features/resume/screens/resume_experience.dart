@@ -51,7 +51,7 @@ class ResumeExperience extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[2],
-          hintText: 'Head of Marketing',
+          hintText: l.headOfMarketing,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -61,7 +61,7 @@ class ResumeExperience extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[3],
-          hintText: 'Marketing',
+          hintText: l.marketing,
           onChanged: (_) {
             provider.checkActive();
           },

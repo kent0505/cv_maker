@@ -24,7 +24,7 @@ class ResumeLanguages extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: provider.languageController,
-          hintText: 'English',
+          hintText: l.english,
           onChanged: (_) {
             provider.checkActive();
           },

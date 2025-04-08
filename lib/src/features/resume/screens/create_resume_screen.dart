@@ -14,6 +14,9 @@ import 'resume_education.dart';
 import 'resume_experience.dart';
 import 'resume_projects.dart';
 import 'resume_skills.dart';
+import 'resume_interests.dart';
+import 'resume_honors.dart';
+import 'resume_about.dart';
 
 class CreateResumeScreen extends StatelessWidget {
   const CreateResumeScreen({super.key, required this.template});
@@ -98,6 +101,9 @@ class CreateResumeScreen extends StatelessWidget {
                     },
                   ),
                 if (provider.index == 6) ResumeSkills(),
+                if (provider.index == 7) ResumeInterests(),
+                if (provider.index == 8) ResumeHonors(),
+                if (provider.index == 9) ResumeAbout(),
               ],
             ),
           ),
