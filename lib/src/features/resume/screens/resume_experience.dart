@@ -41,7 +41,7 @@ class ResumeExperience extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: controllers[1],
-          hintText: 'London',
+          hintText: l.city,
           onChanged: (_) {
             provider.checkActive();
           },

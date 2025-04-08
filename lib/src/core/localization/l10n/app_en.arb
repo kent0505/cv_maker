@@ -72,6 +72,8 @@
 
     "alex": "Alex",
     "@alex": {},
+    "city": "London",
+    "@city": {},
     "english": "English",
     "@english": {},
     "manager": "Manager",

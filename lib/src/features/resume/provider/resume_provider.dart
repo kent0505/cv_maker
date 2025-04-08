@@ -66,11 +66,11 @@ class ResumeProvider extends ChangeNotifier {
           ) &&
           projectControllers.length != 5;
     } else if (index == 6) {
-      active = skillController.text.isNotEmpty;
+      active = skillController.text.isNotEmpty && skills.length < 30;
     } else if (index == 7) {
-      active = interestController.text.isNotEmpty;
+      active = interestController.text.isNotEmpty && interests.length < 30;
     } else if (index == 8) {
-      active = honorController.text.isNotEmpty;
+      active = honorController.text.isNotEmpty && honors.length < 30;
     } else if (index == 9) {
       active = aboutController.text.isNotEmpty;
     }

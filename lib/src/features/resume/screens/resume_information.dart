@@ -45,7 +45,7 @@ class ResumeInformation extends StatelessWidget {
         const SizedBox(height: 4),
         TxtField(
           controller: provider.cityController,
-          hintText: 'Pembroke Pines',
+          hintText: l.city,
         ),
         const SizedBox(height: 16),
         FieldTitle(l.dateOfBirth),
