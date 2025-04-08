@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/constants.dart';
 import '../../../core/utils.dart';
+import '../../../core/config/constants.dart';
 import '../../../core/widgets/ios_date_picker.dart';
 import '../../../core/widgets/txt_field.dart';
 import '../provider/resume_provider.dart';

@@ -29,25 +29,17 @@ class ResumeInterests extends StatelessWidget {
           },
         ),
         const SizedBox(height: 14),
-        if (provider.interests.isEmpty)
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 100,
-              left: 32,
-              right: 32,
-            ),
-            child: Text(
-              l.only30Interest,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontFamily: AppFonts.funnel700,
-              ),
-            ),
-          )
-        else
-          _InterestCard(interest: provider.interests),
+        _InterestCard(interest: provider.interests),
+        const SizedBox(height: 100),
+        Text(
+          l.only30Interest,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+            fontFamily: AppFonts.funnel700,
+          ),
+        ),
       ],
     );
   }
@@ -60,22 +52,24 @@ class _InterestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        children: List.generate(
-          interest.length * 2 - 1,
-          (index) {
-            return index.isEven
-                ? _Interest(interest: interest[index ~/ 2])
-                : MyDivider();
-          },
-        ),
-      ),
-    );
+    return interest.isEmpty
+        ? const SizedBox()
+        : Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Column(
+              children: List.generate(
+                interest.length * 2 - 1,
+                (index) {
+                  return index.isEven
+                      ? _Interest(interest: interest[index ~/ 2])
+                      : const MyDivider();
+                },
+              ),
+            ),
+          );
   }
 }
 

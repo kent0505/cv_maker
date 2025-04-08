@@ -29,25 +29,17 @@ class ResumeHonors extends StatelessWidget {
           },
         ),
         const SizedBox(height: 14),
-        if (provider.honors.isEmpty)
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 100,
-              left: 32,
-              right: 32,
-            ),
-            child: Text(
-              l.only30Honor,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 12,
-                fontFamily: AppFonts.funnel700,
-              ),
-            ),
-          )
-        else
-          _HonorCard(honors: provider.honors),
+        _HonorCard(honors: provider.honors),
+        const SizedBox(height: 100),
+        Text(
+          l.only30Honor,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+            fontFamily: AppFonts.funnel700,
+          ),
+        ),
       ],
     );
   }
@@ -60,22 +52,24 @@ class _HonorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        children: List.generate(
-          honors.length * 2 - 1,
-          (index) {
-            return index.isEven
-                ? _Honor(honor: honors[index ~/ 2])
-                : MyDivider();
-          },
-        ),
-      ),
-    );
+    return honors.isEmpty
+        ? const SizedBox()
+        : Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Column(
+              children: List.generate(
+                honors.length * 2 - 1,
+                (index) {
+                  return index.isEven
+                      ? _Honor(honor: honors[index ~/ 2])
+                      : const MyDivider();
+                },
+              ),
+            ),
+          );
   }
 }
 

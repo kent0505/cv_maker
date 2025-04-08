@@ -22,7 +22,7 @@ class ResumeAbout extends StatelessWidget {
             fontFamily: AppFonts.funnel400,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         TxtField(
           controller: provider.aboutController,
           hintText: l.aboutYou,

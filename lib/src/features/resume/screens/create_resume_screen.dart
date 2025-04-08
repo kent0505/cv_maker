@@ -65,8 +65,8 @@ class CreateResumeScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 const ResumeIndicator(),
                 const SizedBox(height: 16),
-                if (provider.index == 1) ResumeInformation(),
-                if (provider.index == 2) ResumeLanguages(),
+                if (provider.index == 1) const ResumeInformation(),
+                if (provider.index == 2) const ResumeLanguages(),
                 if (provider.index == 3)
                   ...List.generate(
                     provider.educationControllers.length,
@@ -100,10 +100,10 @@ class CreateResumeScreen extends StatelessWidget {
                       );
                     },
                   ),
-                if (provider.index == 6) ResumeSkills(),
-                if (provider.index == 7) ResumeInterests(),
-                if (provider.index == 8) ResumeHonors(),
-                if (provider.index == 9) ResumeAbout(),
+                if (provider.index == 6) const ResumeSkills(),
+                if (provider.index == 7) const ResumeInterests(),
+                if (provider.index == 8) const ResumeHonors(),
+                if (provider.index == 9) const ResumeAbout(),
               ],
             ),
           ),
