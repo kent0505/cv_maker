@@ -126,6 +126,33 @@ class ResumeProvider extends ChangeNotifier {
     // }
   }
 
+  void onSkip() {
+    // if (index == 1) {
+    //   nameController.clear();
+    //   phoneController.clear();
+    //   emailController.clear();
+    //   cityController.clear();
+    //   birthController.clear();
+    //   jobController.clear();
+    // } else if (index == 2) {
+    //   languageController.clear();
+    //   languages.clear();
+    // } else if (index == 3) {
+    //   for (var controllers in educationControllers) {
+    //     for (var controller in controllers) {
+    //       controller.clear();
+    //     }
+    //   }
+
+    // } else if (index == 4) {
+    // } else if (index == 5) {
+    // } else if (index == 6) {
+    // } else if (index == 7) {
+    // } else if (index == 8) {
+    // } else if (index == 9) {}
+    goRight();
+  }
+
   // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ
   void onAdd() {
     final id = getTimestamp();

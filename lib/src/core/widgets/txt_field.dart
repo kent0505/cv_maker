@@ -11,6 +11,7 @@ class TxtField extends StatelessWidget {
     this.number = false,
     this.multiline = false,
     this.readOnly = false,
+    this.email = false,
     this.maxLength = 100,
     this.onChanged,
     this.onTap,
@@ -21,6 +22,7 @@ class TxtField extends StatelessWidget {
   final bool number;
   final bool multiline;
   final bool readOnly;
+  final bool email;
   final int maxLength;
   final void Function(String)? onChanged;
   final void Function()? onTap;
@@ -30,12 +32,16 @@ class TxtField extends StatelessWidget {
     return TextField(
       controller: controller,
       readOnly: readOnly,
-      keyboardType: number ? TextInputType.number : null,
+      keyboardType: number
+          ? TextInputType.number
+          : email
+              ? TextInputType.emailAddress
+              : null,
       minLines: multiline ? 10 : 1,
       maxLines: multiline ? 10 : 1,
       inputFormatters: [
         LengthLimitingTextInputFormatter(
-          multiline ? maxLength : 40,
+          multiline ? maxLength : 100,
         ),
         if (number) FilteringTextInputFormatter.digitsOnly,
       ],

@@ -52,7 +52,9 @@ class CreateResumeScreen extends StatelessWidget {
                   ? () {
                       context.pop();
                     }
-                  : provider.goRight,
+                  : provider.canContinue
+                      ? provider.goRight
+                      : () {},
             ),
           ),
           body: Bg(

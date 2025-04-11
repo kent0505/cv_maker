@@ -39,6 +39,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.emailController,
           hintText: 'yourmail@example.com',
+          email: true,
         ),
         const SizedBox(height: 16),
         FieldTitle(l.cityOfResidence),
