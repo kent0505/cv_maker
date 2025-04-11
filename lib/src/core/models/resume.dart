@@ -13,7 +13,6 @@ class Resume {
     required this.experienceID,
     required this.projectID,
     required this.skillID,
-    required this.softwareID,
     required this.interestID,
     required this.honorID,
     required this.about,
@@ -32,7 +31,6 @@ class Resume {
   int experienceID;
   int projectID;
   int skillID;
-  int softwareID;
   int interestID;
   int honorID;
   String about;
@@ -52,7 +50,6 @@ class Resume {
       'experienceID': experienceID,
       'projectID': projectID,
       'skillID': skillID,
-      'softwareID': softwareID,
       'interestID': interestID,
       'honorID': honorID,
       'about': about,
@@ -74,7 +71,6 @@ class Resume {
       experienceID: map['experienceID'],
       projectID: map['projectID'],
       skillID: map['skillID'],
-      softwareID: map['softwareID'],
       interestID: map['interestID'],
       honorID: map['honorID'],
       about: map['about'],

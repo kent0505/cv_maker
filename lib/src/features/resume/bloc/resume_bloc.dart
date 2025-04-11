@@ -1,7 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/models/education.dart';
+import '../../../core/models/experience.dart';
+import '../../../core/models/honor.dart';
+import '../../../core/models/interest.dart';
+import '../../../core/models/language.dart';
+import '../../../core/models/project.dart';
 import '../../../core/models/resume.dart';
+import '../../../core/models/skill.dart';
 import '../data/resume_repository.dart';
 
 part 'resume_event.dart';
@@ -35,7 +42,16 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     AddResume event,
     Emitter<ResumeState> emit,
   ) async {
-    await _repository.addResume(event.resume);
+    await _repository.addResume(
+      event.resume,
+      event.languages,
+      event.educations,
+      event.experiences,
+      event.projects,
+      event.skills,
+      event.interests,
+      event.honors,
+    );
     add(GetResumes());
   }
 

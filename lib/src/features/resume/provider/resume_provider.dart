@@ -11,7 +11,8 @@ import '../../../core/utils.dart';
 
 class ResumeProvider extends ChangeNotifier {
   int index = 1;
-  bool active = false;
+  bool canAdd = false;
+  bool canContinue = false;
   String imagePath = '';
   List<Language> languages = [];
   List<Skill> skills = [];
@@ -42,37 +43,57 @@ class ResumeProvider extends ChangeNotifier {
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
   void checkActive() {
-    if (index == 2) {
-      active = languageController.text.isNotEmpty;
+    if (index == 1) {
+      canContinue = <String>[
+        imagePath,
+        nameController.text,
+        phoneController.text,
+        emailController.text,
+        cityController.text,
+        birthController.text,
+        jobController.text,
+      ].every((element) => element.isNotEmpty);
+    } else if (index == 2) {
+      canAdd = languageController.text.isNotEmpty;
+      canContinue = languages.isNotEmpty;
     } else if (index == 3) {
-      active = educationControllers.every(
+      final active = educationControllers.every(
             (element) => element.every(
               (element) => element.text.isNotEmpty,
             ),
           ) &&
           educationControllers.length != 3;
+      canAdd = active;
+      canContinue = active;
     } else if (index == 4) {
-      active = experienceControllers.every(
+      final active = experienceControllers.every(
             (element) => element.every(
               (element) => element.text.isNotEmpty,
             ),
           ) &&
           experienceControllers.length != 5;
+      canAdd = active;
+      canContinue = active;
     } else if (index == 5) {
-      active = projectControllers.every(
+      final active = projectControllers.every(
             (element) => element.every(
               (element) => element.text.isNotEmpty,
             ),
           ) &&
           projectControllers.length != 5;
+      canAdd = active;
+      canContinue = active;
     } else if (index == 6) {
-      active = skillController.text.isNotEmpty && skills.length < 30;
+      canAdd = skillController.text.isNotEmpty && skills.length < 30;
+      canContinue = true;
     } else if (index == 7) {
-      active = interestController.text.isNotEmpty && interests.length < 30;
+      canAdd = interestController.text.isNotEmpty && interests.length < 30;
+      canContinue = true;
     } else if (index == 8) {
-      active = honorController.text.isNotEmpty && honors.length < 30;
+      canAdd = honorController.text.isNotEmpty && honors.length < 30;
+      canContinue = true;
     } else if (index == 9) {
-      active = aboutController.text.isNotEmpty;
+      canContinue = aboutController.text.isNotEmpty;
     }
     notifyListeners();
   }
@@ -83,7 +104,7 @@ class ResumeProvider extends ChangeNotifier {
       source: ImageSource.gallery,
     );
     imagePath = file?.path ?? '';
-    notifyListeners();
+    checkActive();
   }
 
   // УСТАНОВКА ДАТЫ ЧЕРЕЗ DATE PICKER
@@ -99,13 +120,10 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   void goRight() {
+    // if (canContinue) {
     index++;
-    active = false;
     checkActive();
-  }
-
-  void onContinue() {
-    goRight();
+    // }
   }
 
   // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ
@@ -161,7 +179,7 @@ class ResumeProvider extends ChangeNotifier {
   // УБРАТЬ КАРТОЧКИ
   void removeLanguage(Language language) {
     languages.remove(language);
-    notifyListeners();
+    checkActive();
   }
 
   void removeSkill(Skill skill) {
