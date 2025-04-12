@@ -25,6 +25,9 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.nameController,
           hintText: l.alex,
+          onChanged: (_) {
+            provider.checkActive();
+          },
         ),
         const SizedBox(height: 16),
         FieldTitle(l.mobilePhone),
@@ -32,6 +35,9 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.phoneController,
           hintText: '(239) 555 - 0108',
+          onChanged: (_) {
+            provider.checkActive();
+          },
         ),
         const SizedBox(height: 16),
         const FieldTitle('Email'),
@@ -40,6 +46,9 @@ class ResumeInformation extends StatelessWidget {
           controller: provider.emailController,
           hintText: 'yourmail@example.com',
           email: true,
+          onChanged: (_) {
+            provider.checkActive();
+          },
         ),
         const SizedBox(height: 16),
         FieldTitle(l.cityOfResidence),
@@ -47,6 +56,9 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.cityController,
           hintText: l.city,
+          onChanged: (_) {
+            provider.checkActive();
+          },
         ),
         const SizedBox(height: 16),
         FieldTitle(l.dateOfBirth),
@@ -72,6 +84,9 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.jobController,
           hintText: l.manager,
+          onChanged: (_) {
+            provider.checkActive();
+          },
         ),
       ],
     );

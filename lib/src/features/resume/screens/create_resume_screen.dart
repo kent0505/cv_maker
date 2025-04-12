@@ -27,12 +27,12 @@ class CreateResumeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-
     return ChangeNotifierProvider(
       create: (context) => ResumeProvider(),
       builder: (context, child) {
+        final l = AppLocalizations.of(context)!;
         final provider = context.watch<ResumeProvider>();
+        provider.setTemplate(template.id);
 
         return Scaffold(
           // resizeToAvoidBottomInset: false,
@@ -52,9 +52,7 @@ class CreateResumeScreen extends StatelessWidget {
                   ? () {
                       context.pop();
                     }
-                  : provider.canContinue
-                      ? provider.goRight
-                      : () {},
+                  : provider.goRight,
             ),
           ),
           body: Bg(

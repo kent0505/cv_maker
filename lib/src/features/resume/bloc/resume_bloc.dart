@@ -17,6 +17,15 @@ part 'resume_state.dart';
 class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
   final ResumeRepository _repository;
 
+  List<Resume> resumes = [];
+  List<Language> languages = [];
+  List<Education> educations = [];
+  List<Experience> experiences = [];
+  List<Project> projects = [];
+  List<Skill> skills = [];
+  List<Interest> interests = [];
+  List<Honor> honors = [];
+
   ResumeBloc({required ResumeRepository repository})
       : _repository = repository,
         super(ResumeInitial()) {
@@ -34,7 +43,14 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     GetResumes event,
     Emitter<ResumeState> emit,
   ) async {
-    List<Resume> resumes = await _repository.getResumes();
+    resumes = await _repository.getResumes();
+    languages = await _repository.getLanguages();
+    educations = await _repository.getEducations();
+    experiences = await _repository.getExperiences();
+    projects = await _repository.getProjects();
+    skills = await _repository.getSkills();
+    interests = await _repository.getInterests();
+    honors = await _repository.getHonors();
     emit(ResumesLoaded(resumes: resumes));
   }
 
@@ -59,7 +75,7 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     EditResume event,
     Emitter<ResumeState> emit,
   ) async {
-    await _repository.editResume(event.resume);
+    // await _repository.editResume(event.resume);
     add(GetResumes());
   }
 

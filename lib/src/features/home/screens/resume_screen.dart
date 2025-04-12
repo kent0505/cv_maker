@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
@@ -6,6 +7,7 @@ import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
+import '../../resume/bloc/resume_bloc.dart';
 import '../../settings/screens/settings_screen.dart';
 
 class ResumeScreen extends StatelessWidget {
@@ -31,9 +33,20 @@ class ResumeScreen extends StatelessWidget {
         ),
       ),
       body: Bg(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [],
+        child: BlocBuilder<ResumeBloc, ResumeState>(
+          builder: (context, state) {
+            if (state is ResumesLoaded) {
+              return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: state.resumes.length,
+                itemBuilder: (context, index) {
+                  return Text(state.resumes[index].name);
+                },
+              );
+            }
+
+            return const SizedBox();
+          },
         ),
       ),
     );

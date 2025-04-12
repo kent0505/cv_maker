@@ -3,14 +3,18 @@ import 'package:image_picker/image_picker.dart';
 export 'package:provider/provider.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/education.dart';
+import '../../../core/models/experience.dart';
 import '../../../core/models/honor.dart';
 import '../../../core/models/interest.dart';
 import '../../../core/models/language.dart';
+import '../../../core/models/project.dart';
 import '../../../core/models/skill.dart';
 import '../../../core/utils.dart';
 
 class ResumeProvider extends ChangeNotifier {
   int index = 1;
+  int template = 0;
   bool canAdd = false;
   bool canContinue = false;
   String imagePath = '';
@@ -20,12 +24,13 @@ class ResumeProvider extends ChangeNotifier {
   List<Honor> honors = [];
 
   // КОНТРОЛЛЕРЫ
-  final nameController = TextEditingController();
-  final phoneController = TextEditingController();
-  final emailController = TextEditingController();
-  final cityController = TextEditingController();
-  final birthController = TextEditingController();
-  final jobController = TextEditingController();
+  final nameController = TextEditingController(text: 'Otabek Yusupov');
+  final phoneController = TextEditingController(text: '+998 99 847 25 80');
+  final emailController =
+      TextEditingController(text: 'otabekyusupov0550@gmail.com');
+  final cityController = TextEditingController(text: 'Tashkent');
+  final birthController = TextEditingController(text: '22/06/2000');
+  final jobController = TextEditingController(text: 'Flutter developer');
   final languageController = TextEditingController();
   final skillController = TextEditingController();
   final interestController = TextEditingController();
@@ -41,8 +46,89 @@ class ResumeProvider extends ChangeNotifier {
     List.generate(4, (_) => TextEditingController()),
   ];
 
+  List<Education> getEducations(int id) {
+    return educationControllers.map((controllers) {
+      return Education(
+        id: id,
+        name: controllers[0].text,
+        faculty: controllers[1].text,
+        specialization: controllers[2].text,
+        startYear: int.tryParse(controllers[3].text) ?? 2025,
+        endYear: int.tryParse(controllers[4].text) ?? 2025,
+      );
+    }).toList();
+  }
+
+  List<Experience> getExperiences(int id) {
+    return experienceControllers.map((controllers) {
+      return Experience(
+        id: id,
+        company: controllers[0].text,
+        location: controllers[1].text,
+        introduction: controllers[2].text,
+        details: controllers[3].text,
+        startDate: controllers[4].text,
+        endDate: controllers[5].text,
+      );
+    }).toList();
+  }
+
+  List<Language> getLanguages(int id) {
+    return languages.map((language) {
+      return Language(
+        id: id,
+        language: language.language,
+        level: language.level,
+      );
+    }).toList();
+  }
+
+  List<Project> getProjects(int id) {
+    return projectControllers.map((controllers) {
+      return Project(
+        id: id,
+        name: controllers[0].text,
+        details: controllers[1].text,
+        startDate: controllers[2].text,
+        endDate: controllers[3].text,
+      );
+    }).toList();
+  }
+
+  List<Skill> getSkills(int id) {
+    return skills.map((skill) {
+      return Skill(
+        id: id,
+        title: skill.title,
+      );
+    }).toList();
+  }
+
+  List<Interest> getInterests(int id) {
+    return interests.map((interest) {
+      return Interest(
+        id: id,
+        title: interest.title,
+      );
+    }).toList();
+  }
+
+  List<Honor> getHonors(int id) {
+    return honors.map((honor) {
+      return Honor(
+        id: id,
+        title: honor.title,
+      );
+    }).toList();
+  }
+
+  void setTemplate(int id) {
+    if (template == 0) template = id;
+  }
+
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
   void checkActive() {
+    logger(index);
     if (index == 1) {
       canContinue = <String>[
         imagePath,
@@ -100,9 +186,7 @@ class ResumeProvider extends ChangeNotifier {
 
   // ВЫБРАТЬ АВАТАРКУ
   void pickImage() async {
-    final file = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-    );
+    final file = await ImagePicker().pickImage(source: ImageSource.gallery);
     imagePath = file?.path ?? '';
     checkActive();
   }
@@ -120,37 +204,15 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   void goRight() {
-    // if (canContinue) {
-    index++;
-    checkActive();
-    // }
+    if (canContinue) {
+      index++;
+      checkActive();
+    }
   }
 
   void onSkip() {
-    // if (index == 1) {
-    //   nameController.clear();
-    //   phoneController.clear();
-    //   emailController.clear();
-    //   cityController.clear();
-    //   birthController.clear();
-    //   jobController.clear();
-    // } else if (index == 2) {
-    //   languageController.clear();
-    //   languages.clear();
-    // } else if (index == 3) {
-    //   for (var controllers in educationControllers) {
-    //     for (var controller in controllers) {
-    //       controller.clear();
-    //     }
-    //   }
-
-    // } else if (index == 4) {
-    // } else if (index == 5) {
-    // } else if (index == 6) {
-    // } else if (index == 7) {
-    // } else if (index == 8) {
-    // } else if (index == 9) {}
-    goRight();
+    index++;
+    checkActive();
   }
 
   // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ

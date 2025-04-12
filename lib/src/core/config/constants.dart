@@ -95,6 +95,7 @@ abstract final class SQL {
   static const resumes = '''
     CREATE TABLE IF NOT EXISTS ${Tables.resumes} (
       id INTEGER,
+      template INTEGER,
       photo TEXT,
       name TEXT,
       phone TEXT,
@@ -102,13 +103,6 @@ abstract final class SQL {
       city TEXT,
       birth TEXT,
       job TEXT,
-      languageID INTEGER,
-      educationID INTEGER,
-      experienceID INTEGER,
-      projectID INTEGER,
-      skillID INTEGER,
-      interestID INTEGER,
-      honorID INTEGER,
       about TEXT
     )
     ''';
@@ -136,16 +130,16 @@ abstract final class SQL {
       location TEXT,
       introduction TEXT,
       details TEXT,
-      startYear TEXT,
-      endYear TEXT
+      startDate TEXT,
+      endDate TEXT
     )
     ''';
   static const projects = '''
     CREATE TABLE IF NOT EXISTS ${Tables.projects} (
       id INTEGER,
       name TEXT,
-      startYear TEXT,
-      endYear TEXT,
+      startDate TEXT,
+      endDate TEXT,
       details TEXT
     )
     ''';
