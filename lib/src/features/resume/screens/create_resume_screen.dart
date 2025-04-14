@@ -5,6 +5,7 @@ import '../../../core/config/constants.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
+import '../../../core/widgets/dialog_widget.dart';
 import '../provider/resume_provider.dart';
 import '../widgets/resume_buttons.dart';
 import '../widgets/resume_indicator.dart';
@@ -42,25 +43,41 @@ class CreateResumeScreen extends StatelessWidget {
               asset: provider.index == 1 ? Assets.close : Assets.left,
               onPressed: provider.index == 1
                   ? () {
-                      context.pop();
+                      DialogWidget.show(
+                        context,
+                        title: l.exit,
+                        description: l.exitDescription,
+                        onYes: () {
+                          context.pop();
+                        },
+                      );
                     }
                   : provider.goLeft,
             ),
-            right: AppbarButton(
-              asset: provider.index == 9 ? Assets.close : Assets.right,
-              onPressed: provider.index == 9
-                  ? () {
-                      context.pop();
-                    }
-                  : provider.goRight,
-            ),
+            right: provider.canContinue
+                ? AppbarButton(
+                    asset: provider.index == 9 ? Assets.close : Assets.right,
+                    onPressed: provider.index == 9
+                        ? () {
+                            DialogWidget.show(
+                              context,
+                              title: l.exit,
+                              description: l.exitDescription,
+                              onYes: () {
+                                context.pop();
+                              },
+                            );
+                          }
+                        : provider.goRight,
+                  )
+                : null,
           ),
           body: Bg(
             topWidgets: [
               const ResumeButtons(),
             ],
             child: ListView(
-              padding: EdgeInsets.all(16).copyWith(bottom: 200),
+              padding: const EdgeInsets.all(16).copyWith(bottom: 200),
               children: [
                 const SizedBox(height: 4),
                 const ResumeIndicator(),

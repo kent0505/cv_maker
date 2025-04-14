@@ -18,19 +18,19 @@ class TemplatesScreen extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: Color(0xff007AFF),
+          color: const Color(0xff007AFF),
           height: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              SizedBox(height: 64),
+              const SizedBox(height: 64),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Text(
                       l.chooseTemplate,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 35,
                         fontFamily: AppFonts.funnel800,
@@ -42,7 +42,7 @@ class TemplatesScreen extends StatelessWidget {
                     onPressed: () {
                       context.push(SettingsScreen.routePath);
                     },
-                    child: SvgWidget(Assets.settings),
+                    child: const SvgWidget(Assets.settings),
                   ),
                 ],
               ),
@@ -53,16 +53,16 @@ class TemplatesScreen extends StatelessWidget {
           margin: EdgeInsets.only(top: 160),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.vertical(
+            borderRadius: const BorderRadius.vertical(
               top: Radius.circular(20),
             ),
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.vertical(
+            borderRadius: const BorderRadius.vertical(
               top: Radius.circular(20),
             ),
             child: ListView(
-              padding: EdgeInsets.all(16).copyWith(bottom: 120),
+              padding: const EdgeInsets.all(16).copyWith(bottom: 120),
               children: [
                 Wrap(
                   spacing: 30,

@@ -6,7 +6,7 @@ sealed class ResumeState {}
 final class ResumeInitial extends ResumeState {}
 
 final class ResumesLoaded extends ResumeState {
-  ResumesLoaded({required this.resumes});
+  ResumesLoaded({required this.data});
 
-  final List<Resume> resumes;
+  final Data data;
 }

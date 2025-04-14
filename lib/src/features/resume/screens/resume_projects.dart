@@ -49,7 +49,7 @@ class ResumeProjects extends StatelessWidget {
                     hintText: '12/09/2020',
                     readOnly: true,
                     onTap: () {
-                      Picker.show(
+                      IosDatePicker.show(
                         context,
                         stringToDate(controllers[1].text),
                         (value) {
@@ -72,7 +72,7 @@ class ResumeProjects extends StatelessWidget {
                     hintText: '12/09/2020',
                     readOnly: true,
                     onTap: () {
-                      Picker.show(
+                      IosDatePicker.show(
                         context,
                         stringToDate(controllers[2].text),
                         (value) {

@@ -6,7 +6,7 @@ import '../config/constants.dart';
 class TxtField extends StatelessWidget {
   const TxtField({
     super.key,
-    this.controller,
+    required this.controller,
     required this.hintText,
     this.number = false,
     this.multiline = false,
@@ -17,7 +17,7 @@ class TxtField extends StatelessWidget {
     this.onTap,
   });
 
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final String hintText;
   final bool number;
   final bool multiline;

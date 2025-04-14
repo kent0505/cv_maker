@@ -68,7 +68,7 @@ class ResumeInformation extends StatelessWidget {
           hintText: '16/03/25',
           readOnly: true,
           onTap: () {
-            Picker.show(
+            IosDatePicker.show(
               context,
               stringToDate(provider.birthController.text),
               (value) {

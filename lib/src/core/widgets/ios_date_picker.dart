@@ -9,7 +9,18 @@ import 'button.dart';
 import 'main_button.dart';
 import 'svg_widget.dart';
 
-class Picker {
+class IosDatePicker extends StatefulWidget {
+  const IosDatePicker({
+    super.key,
+    this.birthDay = false,
+    required this.initialDateTime,
+    required this.onDone,
+  });
+
+  final bool birthDay;
+  final DateTime initialDateTime;
+  final void Function(DateTime) onDone;
+
   static void show(
     BuildContext context,
     DateTime initialDateTime,
@@ -28,19 +39,6 @@ class Picker {
       },
     );
   }
-}
-
-class IosDatePicker extends StatefulWidget {
-  const IosDatePicker({
-    super.key,
-    this.birthDay = false,
-    required this.initialDateTime,
-    required this.onDone,
-  });
-
-  final bool birthDay;
-  final DateTime initialDateTime;
-  final void Function(DateTime) onDone;
 
   @override
   State<IosDatePicker> createState() => _IosDatePickerState();

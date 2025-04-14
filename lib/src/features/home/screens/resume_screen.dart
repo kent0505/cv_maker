@@ -9,6 +9,7 @@ import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../resume/bloc/resume_bloc.dart';
 import '../../settings/screens/settings_screen.dart';
+import '../widgets/resume_card.dart';
 
 class ResumeScreen extends StatelessWidget {
   const ResumeScreen({super.key});
@@ -37,10 +38,12 @@ class ResumeScreen extends StatelessWidget {
           builder: (context, state) {
             if (state is ResumesLoaded) {
               return ListView.builder(
-                padding: const EdgeInsets.all(16),
-                itemCount: state.resumes.length,
+                padding: const EdgeInsets.all(16).copyWith(bottom: 100),
+                itemCount: state.data.resumes.length,
                 itemBuilder: (context, index) {
-                  return Text(state.resumes[index].name);
+                  return ResumeCard(
+                    resume: state.data.resumes.reversed.toList()[index],
+                  );
                 },
               );
             }

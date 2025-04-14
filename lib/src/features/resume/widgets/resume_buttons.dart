@@ -1,3 +1,5 @@
+import 'package:cv_maker/src/core/models/data.dart';
+import 'package:cv_maker/src/features/home/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,8 +55,6 @@ class ResumeButtons extends StatelessWidget {
         ],
         MainButton(
           title: i == 9 ? l.saveResume : l.continuee,
-          // white: i == 9 ? false : true,
-          // active: i == 9 ? provider.active : true,
           active: provider.canContinue,
           onPressed: () {
             i == 9 ? onSave(context, provider) : provider.goRight();
@@ -73,26 +73,29 @@ void onSave(
   final id = getTimestamp();
   context.read<ResumeBloc>().add(
         AddResume(
-          resume: Resume(
-            id: id,
-            template: provider.template,
-            photo: provider.imagePath,
-            name: provider.nameController.text,
-            phone: provider.phoneController.text,
-            email: provider.emailController.text,
-            city: provider.cityController.text,
-            birth: provider.birthController.text,
-            job: provider.jobController.text,
-            about: provider.aboutController.text,
+          data: Data(
+            resume: Resume(
+              id: id,
+              template: provider.template,
+              photo: provider.imagePath,
+              name: provider.nameController.text,
+              phone: provider.phoneController.text,
+              email: provider.emailController.text,
+              city: provider.cityController.text,
+              birth: provider.birthController.text,
+              job: provider.jobController.text,
+              about: provider.aboutController.text,
+            ),
+            languages: provider.getLanguages(id),
+            educations: provider.getEducations(id),
+            experiences: provider.getExperiences(id),
+            projects: provider.getProjects(id),
+            skills: provider.getSkills(id),
+            interests: provider.getInterests(id),
+            honors: provider.getHonors(id),
           ),
-          languages: provider.getLanguages(id),
-          educations: provider.getEducations(id),
-          experiences: provider.getExperiences(id),
-          projects: provider.getProjects(id),
-          skills: provider.getSkills(id),
-          interests: provider.getInterests(id),
-          honors: provider.getHonors(id),
         ),
       );
   context.pop();
+  context.read<HomeBloc>().add(ChangeHome(id: 2));
 }
