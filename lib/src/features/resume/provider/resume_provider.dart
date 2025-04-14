@@ -14,7 +14,6 @@ import '../../../core/utils.dart';
 
 class ResumeProvider extends ChangeNotifier {
   int index = 1;
-  int template = 0;
   bool canAdd = false;
   bool canContinue = false;
   String imagePath = '';
@@ -120,10 +119,6 @@ class ResumeProvider extends ChangeNotifier {
         title: honor.title,
       );
     }).toList();
-  }
-
-  void setTemplate(int id) {
-    if (template == 0) template = id;
   }
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ

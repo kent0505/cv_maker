@@ -91,6 +91,8 @@
     "goldMedal": "Gold medal at school",
     "@goldMedal": {},
     
+    "next": "Next",
+    "@next": {},
     "cancel": "Cancel",
     "@cancel": {},
     "yes": "Yes",

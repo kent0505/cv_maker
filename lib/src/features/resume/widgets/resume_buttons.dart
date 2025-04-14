@@ -1,17 +1,19 @@
-import 'package:cv_maker/src/core/models/data.dart';
-import 'package:cv_maker/src/features/home/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/data.dart';
 import '../../../core/models/resume.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/main_button.dart';
+import '../../home/bloc/home_bloc.dart';
 import '../provider/resume_provider.dart';
 import '../bloc/resume_bloc.dart';
 
 class ResumeButtons extends StatelessWidget {
-  const ResumeButtons({super.key});
+  const ResumeButtons({super.key, required this.id});
+
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,11 @@ class ResumeButtons extends StatelessWidget {
             transparent: true,
             onPressed: () {
               provider.index == 9
-                  ? onSave(context, provider)
+                  ? onSave(
+                      context,
+                      provider,
+                      id,
+                    )
                   : provider.onSkip();
             },
           ),
@@ -57,7 +63,13 @@ class ResumeButtons extends StatelessWidget {
           title: i == 9 ? l.saveResume : l.continuee,
           active: provider.canContinue,
           onPressed: () {
-            i == 9 ? onSave(context, provider) : provider.goRight();
+            i == 9
+                ? onSave(
+                    context,
+                    provider,
+                    id,
+                  )
+                : provider.goRight();
           },
         ),
         const SizedBox(height: 30),
@@ -69,6 +81,7 @@ class ResumeButtons extends StatelessWidget {
 void onSave(
   BuildContext context,
   ResumeProvider provider,
+  int template,
 ) {
   final id = getTimestamp();
   context.read<ResumeBloc>().add(
@@ -76,7 +89,7 @@ void onSave(
           data: Data(
             resume: Resume(
               id: id,
-              template: provider.template,
+              template: template,
               photo: provider.imagePath,
               name: provider.nameController.text,
               phone: provider.phoneController.text,

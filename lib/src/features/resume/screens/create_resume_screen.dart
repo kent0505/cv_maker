@@ -33,7 +33,6 @@ class CreateResumeScreen extends StatelessWidget {
       builder: (context, child) {
         final l = AppLocalizations.of(context)!;
         final provider = context.watch<ResumeProvider>();
-        provider.setTemplate(template.id);
 
         return Scaffold(
           // resizeToAvoidBottomInset: false,
@@ -74,7 +73,7 @@ class CreateResumeScreen extends StatelessWidget {
           ),
           body: Bg(
             topWidgets: [
-              const ResumeButtons(),
+              ResumeButtons(id: template.id),
             ],
             child: ListView(
               padding: const EdgeInsets.all(16).copyWith(bottom: 200),

@@ -83,7 +83,7 @@ class _IosDatePickerState extends State<IosDatePicker> {
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
-                      color: Color(0xff808080).withValues(alpha: 0.55),
+                      color: const Color(0xff808080).withValues(alpha: 0.55),
                     ),
                   ),
                 ),
@@ -120,9 +120,13 @@ class _IosDatePickerState extends State<IosDatePicker> {
           ),
           const SizedBox(height: 10),
           widget.birthDay
-              ? MainButton(
-                  title: l.continuee,
-                  onPressed: onDone,
+              ? SizedBox(
+                  width: width,
+                  child: MainButton(
+                    title: l.continuee,
+                    horizontal: 0,
+                    onPressed: onDone,
+                  ),
                 )
               : SizedBox(
                   width: width,
@@ -142,15 +146,15 @@ class _IosDatePickerState extends State<IosDatePicker> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Next',
-                                style: TextStyle(
+                                l.next,
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontFamily: AppFonts.funnel700,
                                 ),
                               ),
-                              SizedBox(width: 12),
-                              SvgWidget(Assets.arrow),
+                              const SizedBox(width: 12),
+                              const SvgWidget(Assets.arrow),
                             ],
                           ),
                         ),

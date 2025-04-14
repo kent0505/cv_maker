@@ -27,6 +27,7 @@ class DialogWidget extends StatelessWidget {
     showDialog(
       context: context,
       barrierColor: Colors.transparent,
+      useSafeArea: false,
       builder: (context) {
         return DialogWidget(
           title: title,
@@ -49,13 +50,13 @@ class DialogWidget extends StatelessWidget {
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
             child: Container(
-              color: Color(0xff808080).withValues(alpha: 0.55),
+              color: const Color(0xff808080).withValues(alpha: 0.55),
             ),
           ),
           Container(
             width: 270,
             decoration: BoxDecoration(
-              color: Color(0xffe7e7e7),
+              color: const Color(0xffe7e7e7),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(
@@ -64,7 +65,7 @@ class DialogWidget extends StatelessWidget {
                 const SizedBox(height: 20),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontFamily: AppFonts.funnel600,
