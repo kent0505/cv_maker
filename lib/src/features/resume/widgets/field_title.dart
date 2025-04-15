@@ -15,7 +15,7 @@ class FieldTitle extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-            color: Color(0xff3C3C43).withValues(alpha: 0.6),
+            color: const Color(0xff3C3C43).withValues(alpha: 0.6),
             fontSize: 14,
             fontFamily: AppFonts.funnel400,
           ),

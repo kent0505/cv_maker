@@ -17,7 +17,7 @@ class RemoveButton extends StatelessWidget {
         height: 48,
         width: 48,
         decoration: BoxDecoration(
-          color: Color(0xffFD9191),
+          color: const Color(0xffFD9191),
           borderRadius: BorderRadius.circular(6),
         ),
         child: const Center(

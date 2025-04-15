@@ -30,3 +30,13 @@ class Data {
   final List<Interest> interests;
   final List<Honor> honors;
 }
+
+final emptyData = Data(
+  languages: [],
+  educations: [],
+  experiences: [],
+  projects: [],
+  skills: [],
+  interests: [],
+  honors: [],
+);

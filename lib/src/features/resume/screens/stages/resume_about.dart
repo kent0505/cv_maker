@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/constants.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
 
 class ResumeAbout extends StatelessWidget {
   const ResumeAbout({super.key});

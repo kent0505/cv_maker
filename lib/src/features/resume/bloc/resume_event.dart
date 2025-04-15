@@ -6,32 +6,15 @@ sealed class ResumeEvent {}
 final class GetResumes extends ResumeEvent {}
 
 final class AddResume extends ResumeEvent {
-  AddResume({
-    required this.data,
-    // required this.languages,
-    // required this.educations,
-    // required this.experiences,
-    // required this.projects,
-    // required this.skills,
-    // required this.interests,
-    // required this.honors,
-  });
+  AddResume({required this.data});
 
   final Data data;
-  // final Resume resume;
-  // final List<Language> languages;
-  // final List<Education> educations;
-  // final List<Experience> experiences;
-  // final List<Project> projects;
-  // final List<Skill> skills;
-  // final List<Interest> interests;
-  // final List<Honor> honors;
 }
 
 final class EditResume extends ResumeEvent {
-  EditResume({required this.resume});
+  EditResume({required this.data});
 
-  final Resume resume;
+  final Data data;
 }
 
 final class DeleteResume extends ResumeEvent {

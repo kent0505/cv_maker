@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils.dart';
-import '../../../core/config/constants.dart';
-import '../../../core/widgets/ios_date_picker.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
-import '../widgets/field_title.dart';
-import '../widgets/user_image.dart';
+import '../../../../core/utils.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/widgets/ios_date_picker.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
+import '../../widgets/field_title.dart';
+import '../../widgets/user_image.dart';
 
 class ResumeInformation extends StatelessWidget {
   const ResumeInformation({super.key});

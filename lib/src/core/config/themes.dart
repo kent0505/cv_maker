@@ -19,9 +19,9 @@ final lightTheme = ThemeData(
   dialogTheme: const DialogTheme(
     insetPadding: EdgeInsets.zero,
     backgroundColor: Color(0xffe7e7e7),
-    // shape: RoundedRectangleBorder(
-    //   borderRadius: BorderRadius.all(Radius.circular(16)),
-    // ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+    ),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

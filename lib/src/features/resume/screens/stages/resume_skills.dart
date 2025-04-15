@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/constants.dart';
-import '../../../core/models/interest.dart';
-import '../../../core/widgets/button.dart';
-import '../../../core/widgets/my_divider.dart';
-import '../../../core/widgets/svg_widget.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
-import '../widgets/field_title.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/models/skill.dart';
+import '../../../../core/widgets/button.dart';
+import '../../../../core/widgets/my_divider.dart';
+import '../../../../core/widgets/svg_widget.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
+import '../../widgets/field_title.dart';
 
-class ResumeInterests extends StatelessWidget {
-  const ResumeInterests({super.key});
+class ResumeSkills extends StatelessWidget {
+  const ResumeSkills({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +19,20 @@ class ResumeInterests extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.enterInterest),
+        FieldTitle(l.enterSkill),
         const SizedBox(height: 4),
         TxtField(
-          controller: provider.interestController,
-          hintText: l.football,
+          controller: provider.skillController,
+          hintText: l.patience,
           onChanged: (_) {
             provider.checkActive();
           },
         ),
         const SizedBox(height: 14),
-        _InterestCard(interest: provider.interests),
+        _SkillCard(skills: provider.skills),
         const SizedBox(height: 100),
         Text(
-          l.only30Interest,
+          l.only30Skill,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
@@ -45,14 +45,14 @@ class ResumeInterests extends StatelessWidget {
   }
 }
 
-class _InterestCard extends StatelessWidget {
-  const _InterestCard({required this.interest});
+class _SkillCard extends StatelessWidget {
+  const _SkillCard({required this.skills});
 
-  final List<Interest> interest;
+  final List<Skill> skills;
 
   @override
   Widget build(BuildContext context) {
-    return interest.isEmpty
+    return skills.isEmpty
         ? const SizedBox()
         : Container(
             decoration: BoxDecoration(
@@ -61,10 +61,10 @@ class _InterestCard extends StatelessWidget {
             ),
             child: Column(
               children: List.generate(
-                interest.length * 2 - 1,
+                skills.length * 2 - 1,
                 (index) {
                   return index.isEven
-                      ? _Interest(interest: interest[index ~/ 2])
+                      ? _Skill(skill: skills[index ~/ 2])
                       : const MyDivider();
                 },
               ),
@@ -73,10 +73,10 @@ class _InterestCard extends StatelessWidget {
   }
 }
 
-class _Interest extends StatelessWidget {
-  const _Interest({required this.interest});
+class _Skill extends StatelessWidget {
+  const _Skill({required this.skill});
 
-  final Interest interest;
+  final Skill skill;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _Interest extends StatelessWidget {
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              interest.title,
+              skill.title,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -97,7 +97,7 @@ class _Interest extends StatelessWidget {
           ),
           Button(
             onPressed: () {
-              context.read<ResumeProvider>().removeInterest(interest);
+              context.read<ResumeProvider>().removeSkill(skill);
             },
             minSize: 20,
             child: Container(

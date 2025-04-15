@@ -4,10 +4,12 @@ import '../../features/home/screens/home_screen.dart';
 import '../../features/onboard/screens/onboard_screen.dart';
 import '../../features/onboard/screens/splash_screen.dart';
 import '../../features/resume/screens/create_resume_screen.dart';
+import '../../features/resume/screens/edit_resume_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/settings/screens/privacy_screen.dart';
 import '../../features/settings/screens/terms_screen.dart';
 import '../../features/settings/screens/languages_screen.dart';
+import '../models/resume.dart';
 import '../models/template.dart';
 
 final routerConfig = GoRouter(
@@ -49,6 +51,12 @@ final routerConfig = GoRouter(
       path: CreateResumeScreen.routePath,
       builder: (context, state) => CreateResumeScreen(
         template: state.extra as Template,
+      ),
+    ),
+    GoRoute(
+      path: EditResumeScreen.routePath,
+      builder: (context, state) => EditResumeScreen(
+        resume: state.extra as Resume,
       ),
     ),
   ],

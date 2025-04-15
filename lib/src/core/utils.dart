@@ -7,12 +7,12 @@ int getTimestamp() {
 }
 
 String dateToString(DateTime date) {
-  return DateFormat('dd.MM.yyyy').format(date);
+  return DateFormat('dd/MM/yyyy').format(date);
 }
 
 DateTime stringToDate(String date) {
   try {
-    return DateFormat('dd.MM.yyyy').parse(date);
+    return DateFormat('dd/MM/yyyy').parse(date);
   } catch (e) {
     logger(e);
     return DateTime.now();

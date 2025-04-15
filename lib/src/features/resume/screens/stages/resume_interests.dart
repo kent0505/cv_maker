@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/constants.dart';
-import '../../../core/models/honor.dart';
-import '../../../core/widgets/button.dart';
-import '../../../core/widgets/my_divider.dart';
-import '../../../core/widgets/svg_widget.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
-import '../widgets/field_title.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/models/interest.dart';
+import '../../../../core/widgets/button.dart';
+import '../../../../core/widgets/my_divider.dart';
+import '../../../../core/widgets/svg_widget.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
+import '../../widgets/field_title.dart';
 
-class ResumeHonors extends StatelessWidget {
-  const ResumeHonors({super.key});
+class ResumeInterests extends StatelessWidget {
+  const ResumeInterests({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +19,20 @@ class ResumeHonors extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.enterHonor),
+        FieldTitle(l.enterInterest),
         const SizedBox(height: 4),
         TxtField(
-          controller: provider.honorController,
-          hintText: l.goldMedal,
+          controller: provider.interestController,
+          hintText: l.football,
           onChanged: (_) {
             provider.checkActive();
           },
         ),
         const SizedBox(height: 14),
-        _HonorCard(honors: provider.honors),
+        _InterestCard(interest: provider.interests),
         const SizedBox(height: 100),
         Text(
-          l.only30Honor,
+          l.only30Interest,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.black,
@@ -45,14 +45,14 @@ class ResumeHonors extends StatelessWidget {
   }
 }
 
-class _HonorCard extends StatelessWidget {
-  const _HonorCard({required this.honors});
+class _InterestCard extends StatelessWidget {
+  const _InterestCard({required this.interest});
 
-  final List<Honor> honors;
+  final List<Interest> interest;
 
   @override
   Widget build(BuildContext context) {
-    return honors.isEmpty
+    return interest.isEmpty
         ? const SizedBox()
         : Container(
             decoration: BoxDecoration(
@@ -61,10 +61,10 @@ class _HonorCard extends StatelessWidget {
             ),
             child: Column(
               children: List.generate(
-                honors.length * 2 - 1,
+                interest.length * 2 - 1,
                 (index) {
                   return index.isEven
-                      ? _Honor(honor: honors[index ~/ 2])
+                      ? _Interest(interest: interest[index ~/ 2])
                       : const MyDivider();
                 },
               ),
@@ -73,10 +73,10 @@ class _HonorCard extends StatelessWidget {
   }
 }
 
-class _Honor extends StatelessWidget {
-  const _Honor({required this.honor});
+class _Interest extends StatelessWidget {
+  const _Interest({required this.interest});
 
-  final Honor honor;
+  final Interest interest;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _Honor extends StatelessWidget {
           const SizedBox(width: 14),
           Expanded(
             child: Text(
-              honor.title,
+              interest.title,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -97,7 +97,7 @@ class _Honor extends StatelessWidget {
           ),
           Button(
             onPressed: () {
-              context.read<ResumeProvider>().removeHonor(honor);
+              context.read<ResumeProvider>().removeInterest(interest);
             },
             minSize: 20,
             child: Container(

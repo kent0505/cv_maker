@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/constants.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
-import '../widgets/field_title.dart';
-import '../widgets/remove_button.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
+import '../../widgets/field_title.dart';
+import '../../widgets/remove_button.dart';
 
 class ResumeEducation extends StatelessWidget {
   const ResumeEducation({

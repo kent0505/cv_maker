@@ -4,16 +4,22 @@ import 'package:go_router/go_router.dart';
 import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
 import '../../../core/models/resume.dart';
-import '../../../core/utils.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../home/bloc/home_bloc.dart';
 import '../provider/resume_provider.dart';
 import '../bloc/resume_bloc.dart';
 
 class ResumeButtons extends StatelessWidget {
-  const ResumeButtons({super.key, required this.id});
+  const ResumeButtons({
+    super.key,
+    required this.id,
+    required this.template,
+    this.edit = false,
+  });
 
   final int id;
+  final int template;
+  final bool edit;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +43,8 @@ class ResumeButtons extends StatelessWidget {
                       context,
                       provider,
                       id,
+                      template,
+                      edit,
                     )
                   : provider.onSkip();
             },
@@ -68,6 +76,8 @@ class ResumeButtons extends StatelessWidget {
                     context,
                     provider,
                     id,
+                    template,
+                    edit,
                   )
                 : provider.goRight();
           },
@@ -81,33 +91,33 @@ class ResumeButtons extends StatelessWidget {
 void onSave(
   BuildContext context,
   ResumeProvider provider,
+  int id,
   int template,
+  bool edit,
 ) {
-  final id = getTimestamp();
+  final data = Data(
+    resume: Resume(
+      id: id,
+      template: template,
+      photo: provider.imagePath,
+      name: provider.nameController.text,
+      phone: provider.phoneController.text,
+      email: provider.emailController.text,
+      city: provider.cityController.text,
+      birth: provider.birthController.text,
+      job: provider.jobController.text,
+      about: provider.aboutController.text,
+    ),
+    languages: provider.languages,
+    educations: provider.getEducations(),
+    experiences: provider.getExperiences(),
+    projects: provider.getProjects(),
+    skills: provider.skills,
+    interests: provider.interests,
+    honors: provider.honors,
+  );
   context.read<ResumeBloc>().add(
-        AddResume(
-          data: Data(
-            resume: Resume(
-              id: id,
-              template: template,
-              photo: provider.imagePath,
-              name: provider.nameController.text,
-              phone: provider.phoneController.text,
-              email: provider.emailController.text,
-              city: provider.cityController.text,
-              birth: provider.birthController.text,
-              job: provider.jobController.text,
-              about: provider.aboutController.text,
-            ),
-            languages: provider.getLanguages(id),
-            educations: provider.getEducations(id),
-            experiences: provider.getExperiences(id),
-            projects: provider.getProjects(id),
-            skills: provider.getSkills(id),
-            interests: provider.getInterests(id),
-            honors: provider.getHonors(id),
-          ),
-        ),
+        edit ? EditResume(data: data) : AddResume(data: data),
       );
   context.pop();
   context.read<HomeBloc>().add(ChangeHome(id: 2));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/resume.dart';
@@ -8,6 +8,8 @@ import '../../../core/widgets/dialog_widget.dart';
 import '../../../core/widgets/image_widget.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../resume/bloc/resume_bloc.dart';
+import '../../resume/provider/resume_provider.dart';
+import '../../resume/screens/edit_resume_screen.dart';
 
 class ResumeCard extends StatefulWidget {
   const ResumeCard({super.key, required this.resume});
@@ -39,7 +41,12 @@ class _ResumeCardState extends State<ResumeCard> {
     );
   }
 
-  void onEdit() {}
+  void onEdit() {
+    context.push(
+      EditResumeScreen.routePath,
+      extra: widget.resume,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

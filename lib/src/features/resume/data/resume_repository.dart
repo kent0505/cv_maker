@@ -17,7 +17,7 @@ abstract interface class ResumeRepository {
 
   Future<Data> getData();
   Future<void> addResume(Data data);
-  Future<void> editResume(Resume resume);
+  Future<void> editResume(Data data);
   Future<void> deleteResume(Resume resume);
 }
 
@@ -79,13 +79,75 @@ final class ResumeRepositoryImpl implements ResumeRepository {
   }
 
   @override
-  Future<void> editResume(Resume resume) async {
-    await _db.update(
-      Tables.resumes,
-      resume.toMap(),
-      where: 'id = ?',
-      whereArgs: [resume.id],
-    );
+  Future<void> editResume(Data data) async {
+    try {
+      final resume = data.resume!;
+      logger(resume.id);
+      await _db.update(
+        Tables.resumes,
+        resume.toMap(),
+        where: 'id = ?',
+        whereArgs: [resume.id],
+      );
+      for (var language in data.languages) {
+        await _db.update(
+          Tables.languages,
+          language.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var education in data.educations) {
+        await _db.update(
+          Tables.educations,
+          education.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var experience in data.experiences) {
+        await _db.update(
+          Tables.experiences,
+          experience.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var project in data.projects) {
+        await _db.update(
+          Tables.projects,
+          project.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var skill in data.skills) {
+        await _db.update(
+          Tables.skills,
+          skill.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var interest in data.interests) {
+        await _db.update(
+          Tables.interests,
+          interest.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+      for (var honor in data.honors) {
+        await _db.update(
+          Tables.honors,
+          honor.toMap(),
+          where: 'id = ?',
+          whereArgs: [resume.id],
+        );
+      }
+    } catch (e) {
+      logger(e);
+    }
   }
 
   @override

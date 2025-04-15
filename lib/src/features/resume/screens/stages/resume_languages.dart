@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/config/constants.dart';
-import '../../../core/models/language.dart';
-import '../../../core/widgets/button.dart';
-import '../../../core/widgets/svg_widget.dart';
-import '../../../core/widgets/txt_field.dart';
-import '../provider/resume_provider.dart';
-import '../widgets/field_title.dart';
-import '../widgets/remove_button.dart';
+import '../../../../core/config/constants.dart';
+import '../../../../core/models/language.dart';
+import '../../../../core/widgets/button.dart';
+import '../../../../core/widgets/svg_widget.dart';
+import '../../../../core/widgets/txt_field.dart';
+import '../../provider/resume_provider.dart';
+import '../../widgets/field_title.dart';
+import '../../widgets/remove_button.dart';
 
 class ResumeLanguages extends StatelessWidget {
   const ResumeLanguages({super.key});

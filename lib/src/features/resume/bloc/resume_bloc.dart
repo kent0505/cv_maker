@@ -11,6 +11,8 @@ part 'resume_state.dart';
 class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
   final ResumeRepository _repository;
 
+  Data data = emptyData;
+
   ResumeBloc({required ResumeRepository repository})
       : _repository = repository,
         super(ResumeInitial()) {
@@ -28,7 +30,7 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     GetResumes event,
     Emitter<ResumeState> emit,
   ) async {
-    Data data = await _repository.getData();
+    data = await _repository.getData();
     emit(ResumesLoaded(data: data));
   }
 
@@ -44,6 +46,7 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     EditResume event,
     Emitter<ResumeState> emit,
   ) async {
+    await _repository.editResume(event.data);
     add(GetResumes());
   }
 

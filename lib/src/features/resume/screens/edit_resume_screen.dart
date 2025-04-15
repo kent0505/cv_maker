@@ -3,10 +3,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
-import '../../../core/models/template.dart';
+import '../../../core/models/resume.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/dialog_widget.dart';
+import '../bloc/resume_bloc.dart';
 import '../provider/resume_provider.dart';
 import '../widgets/resume_buttons.dart';
 import '../widgets/resume_indicator.dart';
@@ -20,17 +21,29 @@ import 'stages/resume_interests.dart';
 import 'stages/resume_honors.dart';
 import 'stages/resume_about.dart';
 
-class CreateResumeScreen extends StatelessWidget {
-  const CreateResumeScreen({super.key, required this.template});
+class EditResumeScreen extends StatelessWidget {
+  const EditResumeScreen({super.key, required this.resume});
 
-  final Template template;
+  final Resume resume;
 
-  static const routePath = '/CreateResumeScreen';
+  static const routePath = '/EditResumeScreen';
 
   @override
   Widget build(BuildContext context) {
+    final data2 = context.read<ResumeBloc>().data;
+    final data = Data(
+      resume: resume,
+      languages: data2.languages.where((x) => x.id == resume.id).toList(),
+      educations: data2.educations.where((x) => x.id == resume.id).toList(),
+      experiences: data2.experiences.where((x) => x.id == resume.id).toList(),
+      projects: data2.projects.where((x) => x.id == resume.id).toList(),
+      skills: data2.skills.where((x) => x.id == resume.id).toList(),
+      interests: data2.interests.where((x) => x.id == resume.id).toList(),
+      honors: data2.honors.where((x) => x.id == resume.id).toList(),
+    );
+
     return ChangeNotifierProvider(
-      create: (context) => ResumeProvider(emptyData),
+      create: (context) => ResumeProvider(data),
       builder: (context, child) {
         final l = AppLocalizations.of(context)!;
         final provider = context.watch<ResumeProvider>();
@@ -73,7 +86,8 @@ class CreateResumeScreen extends StatelessWidget {
             topWidgets: [
               ResumeButtons(
                 id: provider.id,
-                template: template.id,
+                template: resume.template,
+                edit: true,
               ),
             ],
             child: ListView(

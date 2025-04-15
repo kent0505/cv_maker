@@ -46,7 +46,7 @@ class _Indicator extends StatelessWidget {
       child: Container(
         height: 4,
         decoration: BoxDecoration(
-          color: active ? Color(0xff007AFF) : Color(0xffBBDCFF),
+          color: active ? const Color(0xff007AFF) : const Color(0xffBBDCFF),
           borderRadius: BorderRadius.circular(2),
         ),
       ),
