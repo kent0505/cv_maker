@@ -12,8 +12,8 @@ class Education {
   String name;
   String faculty;
   String specialization;
-  int startYear;
-  int endYear;
+  String startYear;
+  String endYear;
 
   Map<String, dynamic> toMap() {
     return {

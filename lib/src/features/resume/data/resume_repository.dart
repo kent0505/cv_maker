@@ -36,6 +36,16 @@ final class ResumeRepositoryImpl implements ResumeRepository {
     final skills = await _db.query(Tables.skills);
     final interests = await _db.query(Tables.interests);
     final honors = await _db.query(Tables.honors);
+
+    logger('RESUMES ${resumes.length}');
+    logger('LANGUAGES ${languages.length}');
+    logger('EDUCATIONS ${educations.length}');
+    logger('EXPERIENCES ${experiences.length}');
+    logger('PROJECTS ${projects.length}');
+    logger('SKILLS ${skills.length}');
+    logger('INTERESTS ${interests.length}');
+    logger('HONORS ${honors.length}');
+
     return Data(
       resumes: resumes.map((map) => Resume.fromMap(map)).toList(),
       languages: languages.map((map) => Language.fromMap(map)).toList(),
@@ -82,7 +92,16 @@ final class ResumeRepositoryImpl implements ResumeRepository {
   Future<void> editResume(Data data) async {
     try {
       final resume = data.resume!;
-      logger(resume.id);
+      final id = resume.id;
+
+      await _db.delete(Tables.languages, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.educations, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.experiences, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.projects, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.skills, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.interests, where: 'id = ?', whereArgs: [id]);
+      await _db.delete(Tables.honors, where: 'id = ?', whereArgs: [id]);
+
       await _db.update(
         Tables.resumes,
         resume.toMap(),
@@ -90,60 +109,25 @@ final class ResumeRepositoryImpl implements ResumeRepository {
         whereArgs: [resume.id],
       );
       for (var language in data.languages) {
-        await _db.update(
-          Tables.languages,
-          language.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.languages, language.toMap());
       }
       for (var education in data.educations) {
-        await _db.update(
-          Tables.educations,
-          education.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.educations, education.toMap());
       }
       for (var experience in data.experiences) {
-        await _db.update(
-          Tables.experiences,
-          experience.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.experiences, experience.toMap());
       }
       for (var project in data.projects) {
-        await _db.update(
-          Tables.projects,
-          project.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.projects, project.toMap());
       }
       for (var skill in data.skills) {
-        await _db.update(
-          Tables.skills,
-          skill.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.skills, skill.toMap());
       }
       for (var interest in data.interests) {
-        await _db.update(
-          Tables.interests,
-          interest.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.interests, interest.toMap());
       }
       for (var honor in data.honors) {
-        await _db.update(
-          Tables.honors,
-          honor.toMap(),
-          where: 'id = ?',
-          whereArgs: [resume.id],
-        );
+        await _db.insert(Tables.honors, honor.toMap());
       }
     } catch (e) {
       logger(e);

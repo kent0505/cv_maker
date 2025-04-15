@@ -78,52 +78,65 @@ class ResumeProvider extends ChangeNotifier {
       _skills = data.skills;
       _interests = data.interests;
       _honors = data.honors;
-      educationControllers = data.educations.map((edu) {
-        return [
-          TextEditingController(text: edu.name),
-          TextEditingController(text: edu.faculty),
-          TextEditingController(text: edu.specialization),
-          TextEditingController(text: edu.startYear.toString()),
-          TextEditingController(text: edu.endYear.toString()),
-        ];
-      }).toList();
-      experienceControllers = data.experiences.map((work) {
-        return [
-          TextEditingController(text: work.company),
-          TextEditingController(text: work.location),
-          TextEditingController(text: work.introduction),
-          TextEditingController(text: work.details),
-          TextEditingController(text: work.startDate),
-          TextEditingController(text: work.endDate),
-        ];
-      }).toList();
-      projectControllers = data.projects.map((project) {
-        return [
-          TextEditingController(text: project.name),
-          TextEditingController(text: project.startDate),
-          TextEditingController(text: project.endDate),
-          TextEditingController(text: project.details),
-        ];
-      }).toList();
+      if (data.educations.isNotEmpty) {
+        educationControllers = data.educations.map((edu) {
+          return [
+            TextEditingController(text: edu.name),
+            TextEditingController(text: edu.faculty),
+            TextEditingController(text: edu.specialization),
+            TextEditingController(text: edu.startYear),
+            TextEditingController(text: edu.endYear),
+          ];
+        }).toList();
+      }
+      if (data.experiences.isNotEmpty) {
+        experienceControllers = data.experiences.map((work) {
+          return [
+            TextEditingController(text: work.company),
+            TextEditingController(text: work.location),
+            TextEditingController(text: work.introduction),
+            TextEditingController(text: work.details),
+            TextEditingController(text: work.startDate),
+            TextEditingController(text: work.endDate),
+          ];
+        }).toList();
+      }
+      if (data.projects.isNotEmpty) {
+        projectControllers = data.projects.map((project) {
+          return [
+            TextEditingController(text: project.name),
+            TextEditingController(text: project.startDate),
+            TextEditingController(text: project.endDate),
+            TextEditingController(text: project.details),
+          ];
+        }).toList();
+      }
+
       checkActive();
     }
   }
 
   List<Education> getEducations() {
-    return educationControllers.map((controllers) {
+    return educationControllers
+        .where(
+            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
+        .map((controllers) {
       return Education(
         id: _id,
         name: controllers[0].text,
         faculty: controllers[1].text,
         specialization: controllers[2].text,
-        startYear: int.tryParse(controllers[3].text) ?? 2025,
-        endYear: int.tryParse(controllers[4].text) ?? 2025,
+        startYear: controllers[3].text,
+        endYear: controllers[4].text,
       );
     }).toList();
   }
 
   List<Experience> getExperiences() {
-    return experienceControllers.map((controllers) {
+    return experienceControllers
+        .where(
+            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
+        .map((controllers) {
       return Experience(
         id: _id,
         company: controllers[0].text,
@@ -137,7 +150,10 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   List<Project> getProjects() {
-    return projectControllers.map((controllers) {
+    return projectControllers
+        .where(
+            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
+        .map((controllers) {
       return Project(
         id: _id,
         name: controllers[0].text,
@@ -249,6 +265,7 @@ class ResumeProvider extends ChangeNotifier {
           ),
         );
         languageController.clear();
+        logger('LANGUAGES ${_languages.length}');
         break;
       case 3:
         educationControllers.add(
@@ -305,22 +322,22 @@ class ResumeProvider extends ChangeNotifier {
 
   // УБРАТЬ КАРТОЧКИ
   void removeLanguage(Language language) {
-    languages.remove(language);
+    _languages.remove(language);
     checkActive();
   }
 
   void removeSkill(Skill skill) {
-    skills.remove(skill);
+    _skills.remove(skill);
     notifyListeners();
   }
 
   void removeInterest(Interest interest) {
-    interests.remove(interest);
+    _interests.remove(interest);
     notifyListeners();
   }
 
   void removeHonor(Honor honor) {
-    honors.remove(honor);
+    _honors.remove(honor);
     notifyListeners();
   }
 
@@ -342,14 +359,14 @@ class ResumeProvider extends ChangeNotifier {
 
   // ПОЛУЧИТЬ ЛОКАЛИЗОВННЫЙ ТЕКСТ АППБАРА
   String getTitle(AppLocalizations l) {
-    if (index == 2) return l.languages;
-    if (index == 3) return l.education;
-    if (index == 4) return l.workExperience;
-    if (index == 5) return l.projects;
-    if (index == 6) return l.skills;
-    if (index == 7) return l.interests;
-    if (index == 8) return l.honors;
-    if (index == 9) return l.aboutYou;
+    if (_index == 2) return l.languages;
+    if (_index == 3) return l.education;
+    if (_index == 4) return l.workExperience;
+    if (_index == 5) return l.projects;
+    if (_index == 6) return l.skills;
+    if (_index == 7) return l.interests;
+    if (_index == 8) return l.honors;
+    if (_index == 9) return l.aboutYou;
     return l.information;
   }
 

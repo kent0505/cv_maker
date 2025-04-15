@@ -119,8 +119,8 @@ abstract final class SQL {
       name TEXT,
       faculty TEXT,
       specialization TEXT,
-      startYear INTEGER,
-      endYear INTEGER
+      startYear TEXT,
+      endYear TEXT
     )
     ''';
   static const experiences = '''
