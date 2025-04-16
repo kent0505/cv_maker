@@ -10,6 +10,7 @@ import '../../../core/widgets/svg_widget.dart';
 import '../../resume/bloc/resume_bloc.dart';
 import '../../resume/provider/resume_provider.dart';
 import '../../resume/screens/edit_resume_screen.dart';
+import '../../resume/screens/resume_apply_screen.dart';
 import '../../resume/screens/resume_preview_screen.dart';
 
 class ResumeCard extends StatefulWidget {
@@ -27,6 +28,13 @@ class _ResumeCardState extends State<ResumeCard> {
   void onImage() {
     context.push(
       ResumePreviewScreen.routePath,
+      extra: widget.resume,
+    );
+  }
+
+  void onApply() {
+    context.push(
+      ResumeApplyScreen.routePath,
       extra: widget.resume,
     );
   }
@@ -61,134 +69,186 @@ class _ResumeCardState extends State<ResumeCard> {
     final l = AppLocalizations.of(context)!;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          const SizedBox(height: 16),
-          Button(
-            onPressed: onImage,
-            child: ImageWidget(
-              Assets.getTemplate(widget.resume.template),
-              height: 140,
-              width: 180,
-              fit: BoxFit.cover,
-              borderRadius: BorderRadius.circular(10),
+          Positioned.fill(
+            right: 134,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
             ),
           ),
-          const SizedBox(height: 14),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.resume.name,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontFamily: AppFonts.funnel700,
-                      ),
-                    ),
-                    Text(
-                      widget.resume.job,
-                      style: const TextStyle(
-                        color: Color(0xffD9D9D9),
-                        fontSize: 12,
-                        fontFamily: AppFonts.funnel700,
-                      ),
-                    ),
-                  ],
-                ),
+          Positioned.fill(
+            top: 76,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
               ),
-              Button(
-                onPressed: onMenu,
-                child: const SvgWidget(Assets.menu),
-              ),
-            ],
+            ),
           ),
-          const SizedBox(height: 8),
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Container(
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(4),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Button(
+                      padding: EdgeInsets.only(top: 16),
+                      onPressed: onImage,
+                      child: ImageWidget(
+                        Assets.getTemplate(widget.resume.template),
+                        height: 140,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                '100% ${l.filled}',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontFamily: AppFonts.funnel700,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          if (menuOpened) ...[
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
+                  const SizedBox(width: 20),
+                  Container(
                     height: 54,
+                    width: 128,
+                    margin: const EdgeInsets.only(top: 8),
                     decoration: BoxDecoration(
-                      color: const Color(0xffFD9191),
-                      borderRadius: BorderRadius.circular(54),
+                      color: const Color(0xff007AFF),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     child: Button(
-                      onPressed: onDelete,
-                      child: Center(
-                        child: Text(
-                          l.delete,
+                      onPressed: onApply,
+                      child: Text(
+                        l.applyTemplates,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontFamily: AppFonts.funnel700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.resume.name,
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 12,
                             fontFamily: AppFonts.funnel700,
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Container(
-                    height: 54,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(54),
-                    ),
-                    child: Button(
-                      onPressed: onEdit,
-                      child: Center(
-                        child: Text(
-                          l.edit,
+                        Text(
+                          widget.resume.job,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: Color(0xffD9D9D9),
                             fontSize: 12,
                             fontFamily: AppFonts.funnel700,
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Button(
+                    onPressed: onMenu,
+                    child: const SvgWidget(Assets.menu),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Container(
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(4),
                       ),
                     ),
                   ),
+                  const SizedBox(width: 6),
+                  Text(
+                    '100% ${l.filled}',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: AppFonts.funnel700,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                ],
+              ),
+              const SizedBox(height: 16),
+              if (menuOpened) ...[
+                Row(
+                  spacing: 8,
+                  children: [
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Container(
+                        height: 54,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffFD9191),
+                          borderRadius: BorderRadius.circular(54),
+                        ),
+                        child: Button(
+                          onPressed: onDelete,
+                          child: Center(
+                            child: Text(
+                              l.delete,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontFamily: AppFonts.funnel700,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 54,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(54),
+                        ),
+                        child: Button(
+                          onPressed: onEdit,
+                          child: Center(
+                            child: Text(
+                              l.edit,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: AppFonts.funnel700,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                  ],
                 ),
+                const SizedBox(height: 22),
               ],
-            ),
-            const SizedBox(height: 22),
-          ],
+            ],
+          ),
         ],
       ),
     );

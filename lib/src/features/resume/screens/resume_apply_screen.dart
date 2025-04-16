@@ -1,16 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/resume.dart';
 import '../../../core/models/template.dart';
+import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
-import '../../resume/screens/create_resume_screen.dart';
+import '../bloc/resume_bloc.dart';
 
-class TemplateCard extends StatelessWidget {
-  const TemplateCard({super.key, required this.template});
+class ResumeApplyScreen extends StatelessWidget {
+  const ResumeApplyScreen({super.key, required this.resume});
+
+  final Resume resume;
+
+  static const routePath = '/ResumeApplyScreen';
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
+    return Scaffold(
+      appBar: Appbar(title: l.applyTemplates),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Wrap(
+            spacing: 30,
+            runSpacing: 10,
+            children: List.generate(
+              templates.length,
+              (index) {
+                return _TemplateCard(
+                  template: templates[index],
+                  resume: resume,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TemplateCard extends StatelessWidget {
+  const _TemplateCard({
+    required this.template,
+    required this.resume,
+  });
 
   final Template template;
+  final Resume resume;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +64,11 @@ class TemplateCard extends StatelessWidget {
       width: width,
       child: Button(
         onPressed: () {
-          context.push(CreateResumeScreen.routePath, extra: template);
+          context.read<ResumeBloc>().add(ApplyResumeTemplate(
+                template: template,
+                resume: resume,
+              ));
+          context.pop();
         },
         child: Column(
           children: [

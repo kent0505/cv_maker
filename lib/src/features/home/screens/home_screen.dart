@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               return state is HomeTemplates
-                  ? TemplatesScreen()
-                  : ResumeScreen();
+                  ? const TemplatesScreen()
+                  : const ResumeScreen();
             },
           ),
           const NavBar(),

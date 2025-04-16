@@ -1,11 +1,3 @@
-// import 'education.dart';
-// import 'experience.dart';
-// import 'honor.dart';
-// import 'interest.dart';
-// import 'language.dart';
-// import 'project.dart';
-// import 'skill.dart';
-
 class Resume {
   Resume({
     required this.id,
@@ -18,17 +10,10 @@ class Resume {
     required this.birth,
     required this.job,
     required this.about,
-    // this.languages = const [],
-    // this.educations = const [],
-    // this.experience = const [],
-    // this.projects = const [],
-    // this.skills = const [],
-    // this.interests = const [],
-    // this.honors = const [],
   });
 
   final int id;
-  final int template;
+  int template;
   String photo;
   String name;
   String phone;
@@ -37,13 +22,6 @@ class Resume {
   String birth;
   String job;
   String about;
-  // final List<Language> languages;
-  // final List<Education> educations;
-  // final List<Experience> experience;
-  // final List<Project> projects;
-  // final List<Skill> skills;
-  // final List<Interest> interests;
-  // final List<Honor> honors;
 
   Map<String, dynamic> toMap() {
     return {

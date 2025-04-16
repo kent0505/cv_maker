@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/models/data.dart';
 import '../../../core/models/resume.dart';
+import '../../../core/models/template.dart';
 import '../data/resume_repository.dart';
 
 part 'resume_event.dart';
@@ -22,6 +23,7 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
         AddResume() => _addResume(event, emit),
         EditResume() => _editResume(event, emit),
         DeleteResume() => _deleteResume(event, emit),
+        ApplyResumeTemplate() => _applyResumeTemplate(event, emit),
       },
     );
   }
@@ -55,6 +57,15 @@ class ResumeBloc extends Bloc<ResumeEvent, ResumeState> {
     Emitter<ResumeState> emit,
   ) async {
     await _repository.deleteResume(event.resume);
+    add(GetResumes());
+  }
+
+  void _applyResumeTemplate(
+    ApplyResumeTemplate event,
+    Emitter<ResumeState> emit,
+  ) async {
+    event.resume.template = event.template.id;
+    await _repository.applyResumeTemplate(event.resume);
     add(GetResumes());
   }
 }

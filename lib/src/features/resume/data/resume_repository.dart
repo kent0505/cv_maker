@@ -1,4 +1,3 @@
-import 'package:cv_maker/src/core/utils.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../../core/config/constants.dart';
@@ -11,6 +10,7 @@ import '../../../core/models/language.dart';
 import '../../../core/models/project.dart';
 import '../../../core/models/resume.dart';
 import '../../../core/models/skill.dart';
+import '../../../core/utils.dart';
 
 abstract interface class ResumeRepository {
   const ResumeRepository();
@@ -19,6 +19,7 @@ abstract interface class ResumeRepository {
   Future<void> addResume(Data data);
   Future<void> editResume(Data data);
   Future<void> deleteResume(Resume resume);
+  Future<void> applyResumeTemplate(Resume resume);
 }
 
 final class ResumeRepositoryImpl implements ResumeRepository {
@@ -145,5 +146,15 @@ final class ResumeRepositoryImpl implements ResumeRepository {
     await _db.delete(Tables.skills, where: 'id = ?', whereArgs: [id]);
     await _db.delete(Tables.interests, where: 'id = ?', whereArgs: [id]);
     await _db.delete(Tables.honors, where: 'id = ?', whereArgs: [id]);
+  }
+
+  @override
+  Future<void> applyResumeTemplate(Resume resume) async {
+    await _db.update(
+      Tables.resumes,
+      resume.toMap(),
+      where: 'id = ?',
+      whereArgs: [resume.id],
+    );
   }
 }

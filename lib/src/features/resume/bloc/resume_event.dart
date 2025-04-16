@@ -22,3 +22,13 @@ final class DeleteResume extends ResumeEvent {
 
   final Resume resume;
 }
+
+final class ApplyResumeTemplate extends ResumeEvent {
+  ApplyResumeTemplate({
+    required this.template,
+    required this.resume,
+  });
+
+  final Template template;
+  final Resume resume;
+}
