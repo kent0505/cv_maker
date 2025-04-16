@@ -42,10 +42,22 @@ class EditResumeScreen extends StatelessWidget {
       honors: data2.honors.where((x) => x.id == resume.id).toList(),
     );
 
+    final l = AppLocalizations.of(context)!;
+
+    void showdialog() {
+      DialogWidget.show(
+        context,
+        title: l.exit,
+        description: l.exitDescription,
+        onYes: () {
+          context.pop();
+        },
+      );
+    }
+
     return ChangeNotifierProvider(
       create: (context) => ResumeProvider(data),
       builder: (context, child) {
-        final l = AppLocalizations.of(context)!;
         final provider = context.watch<ResumeProvider>();
 
         return Scaffold(
@@ -53,33 +65,11 @@ class EditResumeScreen extends StatelessWidget {
             title: provider.getTitle(l),
             left: AppbarButton(
               asset: provider.index == 1 ? Assets.close : Assets.left,
-              onPressed: provider.index == 1
-                  ? () {
-                      DialogWidget.show(
-                        context,
-                        title: l.exit,
-                        description: l.exitDescription,
-                        onYes: () {
-                          context.pop();
-                        },
-                      );
-                    }
-                  : provider.goLeft,
+              onPressed: provider.index == 1 ? showdialog : provider.goLeft,
             ),
             right: AppbarButton(
               asset: provider.index == 9 ? Assets.close : Assets.right,
-              onPressed: provider.index == 9
-                  ? () {
-                      DialogWidget.show(
-                        context,
-                        title: l.exit,
-                        description: l.exitDescription,
-                        onYes: () {
-                          context.pop();
-                        },
-                      );
-                    }
-                  : provider.goRight,
+              onPressed: provider.index == 9 ? showdialog : provider.goRight,
             ),
           ),
           body: Bg(

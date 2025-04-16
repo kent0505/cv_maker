@@ -16,7 +16,7 @@ class ResumeAbout extends StatelessWidget {
       children: [
         Text(
           l.aboutTitle,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 12,
             fontFamily: AppFonts.funnel400,

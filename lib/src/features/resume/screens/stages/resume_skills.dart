@@ -34,7 +34,7 @@ class ResumeSkills extends StatelessWidget {
         Text(
           l.only30Skill,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 12,
             fontFamily: AppFonts.funnel700,
@@ -88,7 +88,7 @@ class _Skill extends StatelessWidget {
           Expanded(
             child: Text(
               skill.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16,
                 fontFamily: AppFonts.funnel600,
@@ -104,7 +104,7 @@ class _Skill extends StatelessWidget {
               height: 20,
               width: 20,
               decoration: BoxDecoration(
-                color: Color(0xffFD9191),
+                color: const Color(0xffFD9191),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: const Center(

@@ -10,6 +10,7 @@ import '../../../core/widgets/svg_widget.dart';
 import '../../resume/bloc/resume_bloc.dart';
 import '../../resume/provider/resume_provider.dart';
 import '../../resume/screens/edit_resume_screen.dart';
+import '../../resume/screens/resume_preview_screen.dart';
 
 class ResumeCard extends StatefulWidget {
   const ResumeCard({super.key, required this.resume});
@@ -22,6 +23,13 @@ class ResumeCard extends StatefulWidget {
 
 class _ResumeCardState extends State<ResumeCard> {
   bool menuOpened = false;
+
+  void onImage() {
+    context.push(
+      ResumePreviewScreen.routePath,
+      extra: widget.resume,
+    );
+  }
 
   void onMenu() {
     setState(() {
@@ -63,12 +71,15 @@ class _ResumeCardState extends State<ResumeCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 16),
-          ImageWidget(
-            'assets/templates/${widget.resume.template}.png',
-            height: 140,
-            width: 180,
-            fit: BoxFit.cover,
-            borderRadius: BorderRadius.circular(10),
+          Button(
+            onPressed: onImage,
+            child: ImageWidget(
+              Assets.getTemplate(widget.resume.template),
+              height: 140,
+              width: 180,
+              fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
           const SizedBox(height: 14),
           Row(

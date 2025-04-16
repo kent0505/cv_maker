@@ -5,6 +5,7 @@ import '../../features/onboard/screens/onboard_screen.dart';
 import '../../features/onboard/screens/splash_screen.dart';
 import '../../features/resume/screens/create_resume_screen.dart';
 import '../../features/resume/screens/edit_resume_screen.dart';
+import '../../features/resume/screens/resume_preview_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/settings/screens/privacy_screen.dart';
 import '../../features/settings/screens/terms_screen.dart';
@@ -56,6 +57,12 @@ final routerConfig = GoRouter(
     GoRoute(
       path: EditResumeScreen.routePath,
       builder: (context, state) => EditResumeScreen(
+        resume: state.extra as Resume,
+      ),
+    ),
+    GoRoute(
+      path: ResumePreviewScreen.routePath,
+      builder: (context, state) => ResumePreviewScreen(
         resume: state.extra as Resume,
       ),
     ),

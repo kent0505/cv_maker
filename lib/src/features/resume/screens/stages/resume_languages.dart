@@ -129,7 +129,7 @@ class _LanguageCard extends StatelessWidget {
                     const SizedBox(width: 16),
                     Text(
                       language.level,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontFamily: AppFonts.funnel400,

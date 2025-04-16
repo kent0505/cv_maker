@@ -59,6 +59,8 @@ abstract final class Assets {
   static const template18 = 'assets/templates/18.png';
   static const template19 = 'assets/templates/19.png';
   static const template20 = 'assets/templates/20.png';
+
+  static String getTemplate(int id) => 'assets/templates/$id.png';
 }
 
 abstract final class Keys {
