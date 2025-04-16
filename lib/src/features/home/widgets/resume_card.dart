@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/data.dart';
 import '../../../core/models/resume.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/dialog_widget.dart';
@@ -24,6 +25,8 @@ class ResumeCard extends StatefulWidget {
 
 class _ResumeCardState extends State<ResumeCard> {
   bool menuOpened = false;
+
+  double filled = 0;
 
   void onImage() {
     context.push(
@@ -67,6 +70,30 @@ class _ResumeCardState extends State<ResumeCard> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+
+    // СЧИТАЕТ ПРОЦЕНТ ЗАПОЛНЕННОСТИ
+    int filledSteps = 1;
+    final data2 = context.read<ResumeBloc>().data;
+    final resume = widget.resume;
+    final data = Data(
+      resume: resume,
+      languages: data2.languages.where((x) => x.id == resume.id).toList(),
+      educations: data2.educations.where((x) => x.id == resume.id).toList(),
+      experiences: data2.experiences.where((x) => x.id == resume.id).toList(),
+      projects: data2.projects.where((x) => x.id == resume.id).toList(),
+      skills: data2.skills.where((x) => x.id == resume.id).toList(),
+      interests: data2.interests.where((x) => x.id == resume.id).toList(),
+      honors: data2.honors.where((x) => x.id == resume.id).toList(),
+    );
+    if (data.languages.isNotEmpty) filledSteps++;
+    if (data.educations.isNotEmpty) filledSteps++;
+    if (data.experiences.isNotEmpty) filledSteps++;
+    if (data.projects.isNotEmpty) filledSteps++;
+    if (data.skills.isNotEmpty) filledSteps++;
+    if (data.interests.isNotEmpty) filledSteps++;
+    if (data.honors.isNotEmpty) filledSteps++;
+    if (resume.about.trim().isNotEmpty) filledSteps++;
+    filled = (filledSteps / 9 * 100);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -172,17 +199,32 @@ class _ResumeCardState extends State<ResumeCard> {
                 children: [
                   const SizedBox(width: 16),
                   Expanded(
-                    child: Container(
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 8,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffD9D9D9),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        ),
+                        FractionallySizedBox(
+                          alignment: Alignment.centerLeft,
+                          widthFactor: filled / 100,
+                          child: Container(
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    '100% ${l.filled}',
+                    '${filled.toStringAsFixed(2)}% ${l.filled}',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 12,

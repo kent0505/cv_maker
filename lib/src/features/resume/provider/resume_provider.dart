@@ -328,17 +328,17 @@ class ResumeProvider extends ChangeNotifier {
 
   void removeSkill(Skill skill) {
     _skills.remove(skill);
-    notifyListeners();
+    checkActive();
   }
 
   void removeInterest(Interest interest) {
     _interests.remove(interest);
-    notifyListeners();
+    checkActive();
   }
 
   void removeHonor(Honor honor) {
     _honors.remove(honor);
-    notifyListeners();
+    checkActive();
   }
 
   // УБРАТЬ ПОЛЯ
