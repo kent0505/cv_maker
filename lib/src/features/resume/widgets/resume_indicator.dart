@@ -25,10 +25,6 @@ class ResumeIndicator extends StatelessWidget {
         _Indicator(active: index == 6),
         const SizedBox(width: 5),
         _Indicator(active: index == 7),
-        const SizedBox(width: 5),
-        _Indicator(active: index == 8),
-        const SizedBox(width: 5),
-        _Indicator(active: index == 9),
       ],
     );
   }

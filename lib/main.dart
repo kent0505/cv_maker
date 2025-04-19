@@ -37,10 +37,8 @@ void main() async {
       await db.execute(SQL.languages);
       await db.execute(SQL.educations);
       await db.execute(SQL.experiences);
-      await db.execute(SQL.projects);
       await db.execute(SQL.skills);
       await db.execute(SQL.interests);
-      await db.execute(SQL.honors);
     },
   );
 

@@ -26,9 +26,9 @@ class ResumeButtons extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     final provider = context.watch<ResumeProvider>();
     final i = provider.index;
-    final skip = i != 1;
-    final addOneMore = i == 3 || i == 4 || i == 5;
-    final add = i == 2 || i == 6 || i == 7 || i == 8;
+    final skip = i != 1 && i != 7;
+    final addOneMore = i == 3 || i == 4;
+    final add = i == 2 || i == 5 || i == 6;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -38,7 +38,7 @@ class ResumeButtons extends StatelessWidget {
             title: l.skip,
             transparent: true,
             onPressed: () {
-              provider.index == 9
+              provider.index == 7
                   ? onSave(
                       context,
                       provider,
@@ -68,10 +68,10 @@ class ResumeButtons extends StatelessWidget {
           const SizedBox(height: 8),
         ],
         MainButton(
-          title: i == 9 ? l.saveResume : l.continuee,
+          title: i == 7 ? l.saveResume : l.continuee,
           active: provider.canContinue,
           onPressed: () {
-            i == 9
+            i == 7
                 ? onSave(
                     context,
                     provider,
@@ -111,10 +111,8 @@ void onSave(
     languages: provider.languages,
     educations: provider.getEducations(),
     experiences: provider.getExperiences(),
-    projects: provider.getProjects(),
     skills: provider.skills,
     interests: provider.interests,
-    honors: provider.honors,
   );
   context.read<ResumeBloc>().add(
         edit ? EditResume(data: data) : AddResume(data: data),

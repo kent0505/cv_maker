@@ -6,10 +6,8 @@ import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
 import '../../../core/models/education.dart';
 import '../../../core/models/experience.dart';
-import '../../../core/models/honor.dart';
 import '../../../core/models/interest.dart';
 import '../../../core/models/language.dart';
-import '../../../core/models/project.dart';
 import '../../../core/models/skill.dart';
 import '../../../core/utils.dart';
 
@@ -23,7 +21,6 @@ class ResumeProvider extends ChangeNotifier {
   List<Language> _languages = [];
   List<Skill> _skills = [];
   List<Interest> _interests = [];
-  List<Honor> _honors = [];
 
   // GETTERS
   int get id => _id;
@@ -35,7 +32,6 @@ class ResumeProvider extends ChangeNotifier {
   List<Language> get languages => _languages;
   List<Skill> get skills => _skills;
   List<Interest> get interests => _interests;
-  List<Honor> get honors => _honors;
 
   // КОНТРОЛЛЕРЫ
   final nameController = TextEditingController(text: 'Otabek Yusupov');
@@ -48,7 +44,6 @@ class ResumeProvider extends ChangeNotifier {
   final languageController = TextEditingController();
   final skillController = TextEditingController();
   final interestController = TextEditingController();
-  final honorController = TextEditingController();
   final aboutController = TextEditingController();
 
   List<List<TextEditingController>> educationControllers = [
@@ -56,9 +51,6 @@ class ResumeProvider extends ChangeNotifier {
   ];
   List<List<TextEditingController>> experienceControllers = [
     List.generate(6, (_) => TextEditingController()),
-  ];
-  List<List<TextEditingController>> projectControllers = [
-    List.generate(4, (_) => TextEditingController()),
   ];
 
   ResumeProvider(Data data) {
@@ -77,7 +69,6 @@ class ResumeProvider extends ChangeNotifier {
       _languages = data.languages;
       _skills = data.skills;
       _interests = data.interests;
-      _honors = data.honors;
       if (data.educations.isNotEmpty) {
         educationControllers = data.educations.map((edu) {
           return [
@@ -101,16 +92,6 @@ class ResumeProvider extends ChangeNotifier {
           ];
         }).toList();
       }
-      if (data.projects.isNotEmpty) {
-        projectControllers = data.projects.map((project) {
-          return [
-            TextEditingController(text: project.name),
-            TextEditingController(text: project.startDate),
-            TextEditingController(text: project.endDate),
-            TextEditingController(text: project.details),
-          ];
-        }).toList();
-      }
 
       checkActive();
     }
@@ -119,7 +100,7 @@ class ResumeProvider extends ChangeNotifier {
   List<Education> getEducations() {
     return educationControllers
         .where(
-            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
+            (controllers) => controllers.every((c) => c.text.trim().isNotEmpty))
         .map((controllers) {
       return Education(
         id: _id,
@@ -135,7 +116,7 @@ class ResumeProvider extends ChangeNotifier {
   List<Experience> getExperiences() {
     return experienceControllers
         .where(
-            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
+            (controllers) => controllers.every((c) => c.text.trim().isNotEmpty))
         .map((controllers) {
       return Experience(
         id: _id,
@@ -145,21 +126,6 @@ class ResumeProvider extends ChangeNotifier {
         details: controllers[3].text,
         startDate: controllers[4].text,
         endDate: controllers[5].text,
-      );
-    }).toList();
-  }
-
-  List<Project> getProjects() {
-    return projectControllers
-        .where(
-            (controllers) => controllers.any((c) => c.text.trim().isNotEmpty))
-        .map((controllers) {
-      return Project(
-        id: _id,
-        name: controllers[0].text,
-        details: controllers[1].text,
-        startDate: controllers[2].text,
-        endDate: controllers[3].text,
       );
     }).toList();
   }
@@ -197,25 +163,12 @@ class ResumeProvider extends ChangeNotifier {
         _canAdd = _canContinue = active;
         break;
       case 5:
-        final active = projectControllers
-                .every((e) => e.every((t) => t.text.isNotEmpty)) &&
-            projectControllers.length != 5;
-        _canAdd = _canContinue = active;
-        break;
-      case 6:
         _canAdd = skillController.text.isNotEmpty && _skills.length < 30;
         _canContinue = true;
         break;
-      case 7:
+      case 6:
         _canAdd = interestController.text.isNotEmpty && _interests.length < 30;
         _canContinue = true;
-        break;
-      case 8:
-        _canAdd = honorController.text.isNotEmpty && _honors.length < 30;
-        _canContinue = true;
-        break;
-      case 9:
-        _canContinue = aboutController.text.isNotEmpty;
         break;
     }
 
@@ -278,11 +231,6 @@ class ResumeProvider extends ChangeNotifier {
         );
         break;
       case 5:
-        projectControllers.add(
-          List.generate(4, (_) => TextEditingController()),
-        );
-        break;
-      case 6:
         _skills.add(
           Skill(
             id: _id,
@@ -291,7 +239,7 @@ class ResumeProvider extends ChangeNotifier {
         );
         skillController.clear();
         break;
-      case 7:
+      case 6:
         _interests.add(
           Interest(
             id: _id,
@@ -299,15 +247,6 @@ class ResumeProvider extends ChangeNotifier {
           ),
         );
         interestController.clear();
-        break;
-      case 8:
-        _honors.add(
-          Honor(
-            id: _id,
-            title: honorController.text,
-          ),
-        );
-        honorController.clear();
         break;
     }
 
@@ -336,11 +275,6 @@ class ResumeProvider extends ChangeNotifier {
     checkActive();
   }
 
-  void removeHonor(Honor honor) {
-    _honors.remove(honor);
-    checkActive();
-  }
-
   // УБРАТЬ ПОЛЯ
   void removeEducation(int i) {
     educationControllers.removeAt(i);
@@ -352,21 +286,14 @@ class ResumeProvider extends ChangeNotifier {
     checkActive();
   }
 
-  void removeProject(int i) {
-    projectControllers.removeAt(i);
-    checkActive();
-  }
-
   // ПОЛУЧИТЬ ЛОКАЛИЗОВННЫЙ ТЕКСТ АППБАРА
   String getTitle(AppLocalizations l) {
     if (_index == 2) return l.languages;
     if (_index == 3) return l.education;
     if (_index == 4) return l.workExperience;
-    if (_index == 5) return l.projects;
-    if (_index == 6) return l.skills;
-    if (_index == 7) return l.interests;
-    if (_index == 8) return l.honors;
-    if (_index == 9) return l.aboutYou;
+    if (_index == 5) return l.skills;
+    if (_index == 6) return l.interests;
+    if (_index == 7) return l.aboutYou;
     return l.information;
   }
 
@@ -382,13 +309,11 @@ class ResumeProvider extends ChangeNotifier {
     languageController.dispose();
     skillController.dispose();
     interestController.dispose();
-    honorController.dispose();
     aboutController.dispose();
 
     for (final list in [
       educationControllers,
       experienceControllers,
-      projectControllers,
     ]) {
       for (var controllers in list) {
         for (var controller in controllers) {

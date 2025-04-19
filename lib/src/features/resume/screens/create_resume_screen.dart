@@ -14,10 +14,8 @@ import 'stages/resume_information.dart';
 import 'stages/resume_languages.dart';
 import 'stages/resume_education.dart';
 import 'stages/resume_experience.dart';
-import 'stages/resume_projects.dart';
 import 'stages/resume_skills.dart';
 import 'stages/resume_interests.dart';
-import 'stages/resume_honors.dart';
 import 'stages/resume_about.dart';
 
 class CreateResumeScreen extends StatelessWidget {
@@ -48,6 +46,7 @@ class CreateResumeScreen extends StatelessWidget {
         final provider = context.watch<ResumeProvider>();
 
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: Appbar(
             title: provider.getTitle(l),
             left: AppbarButton(
@@ -96,21 +95,9 @@ class CreateResumeScreen extends StatelessWidget {
                       );
                     },
                   ),
-                if (provider.index == 5)
-                  ...List.generate(
-                    provider.projectControllers.length,
-                    (index) {
-                      return ResumeProjects(
-                        controllers: provider.projectControllers[index],
-                        index: index,
-                        remove: index != 0,
-                      );
-                    },
-                  ),
-                if (provider.index == 6) const ResumeSkills(),
-                if (provider.index == 7) const ResumeInterests(),
-                if (provider.index == 8) const ResumeHonors(),
-                if (provider.index == 9) const ResumeAbout(),
+                if (provider.index == 5) const ResumeSkills(),
+                if (provider.index == 6) const ResumeInterests(),
+                if (provider.index == 7) const ResumeAbout(),
               ],
             ),
           ),

@@ -80,20 +80,16 @@ class _ResumeCardState extends State<ResumeCard> {
       languages: data2.languages.where((x) => x.id == resume.id).toList(),
       educations: data2.educations.where((x) => x.id == resume.id).toList(),
       experiences: data2.experiences.where((x) => x.id == resume.id).toList(),
-      projects: data2.projects.where((x) => x.id == resume.id).toList(),
       skills: data2.skills.where((x) => x.id == resume.id).toList(),
       interests: data2.interests.where((x) => x.id == resume.id).toList(),
-      honors: data2.honors.where((x) => x.id == resume.id).toList(),
     );
     if (data.languages.isNotEmpty) filledSteps++;
     if (data.educations.isNotEmpty) filledSteps++;
     if (data.experiences.isNotEmpty) filledSteps++;
-    if (data.projects.isNotEmpty) filledSteps++;
     if (data.skills.isNotEmpty) filledSteps++;
     if (data.interests.isNotEmpty) filledSteps++;
-    if (data.honors.isNotEmpty) filledSteps++;
     if (resume.about.trim().isNotEmpty) filledSteps++;
-    filled = (filledSteps / 9 * 100);
+    filled = (filledSteps / 7 * 100);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),

@@ -1,16 +1,17 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/data.dart';
 import '../../../core/models/resume.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/appbar.dart';
@@ -34,22 +35,44 @@ class ResumePreviewScreen extends StatefulWidget {
 class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
   Key pdfViewKey = UniqueKey();
   Uint8List? pdfData;
+  Data data = emptyData;
+
+  // Future<Uint8List?> captureWidgetAsPng(GlobalKey key) async {
+  //   try {
+  //     RenderRepaintBoundary boundary =
+  //         key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+
+  //     ui.Image image = await boundary.toImage(pixelRatio: 5);
+  //     ByteData? byteData =
+  //         await image.toByteData(format: ui.ImageByteFormat.png);
+  //     return byteData?.buffer.asUint8List();
+  //   } catch (e) {
+  //     logger(e);
+  //     return null;
+  //   }
+  // }
 
   void createPdf() async {
+    logger('CREATE PDF');
     try {
       final pdf = pw.Document();
+
+      // final imageFile = File(data.resume!.photo);
+      // final imageBytes = await imageFile.readAsBytes();
+      // final photoImage = pw.MemoryImage(imageBytes);
+
       pdf.addPage(
-        pw.Page(
+        pw.MultiPage(
+          margin: pw.EdgeInsets.zero,
           pageFormat: PdfPageFormat.a4,
-          build: (pw.Context context) => pw.Center(
-            child: pw.Text(
-              widget.resume.name,
-              style: pw.TextStyle(
-                color: PdfColors.redAccent,
-                fontSize: 20,
-              ),
-            ),
-          ),
+          build: (pw.Context context) => [
+            ...List.generate(
+              100,
+              (index) {
+                return pw.Text('Index $index');
+              },
+            )
+          ],
         ),
       );
 
@@ -80,6 +103,16 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
   @override
   void initState() {
     super.initState();
+    final data2 = context.read<ResumeBloc>().data;
+    final resume = widget.resume;
+    data = Data(
+      resume: resume,
+      languages: data2.languages.where((x) => x.id == resume.id).toList(),
+      educations: data2.educations.where((x) => x.id == resume.id).toList(),
+      experiences: data2.experiences.where((x) => x.id == resume.id).toList(),
+      skills: data2.skills.where((x) => x.id == resume.id).toList(),
+      interests: data2.interests.where((x) => x.id == resume.id).toList(),
+    );
     createPdf();
   }
 
@@ -120,15 +153,25 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
             ],
           ),
         ],
-        child: pdfData == null
-            ? const LoadingWidget()
-            : Padding(
-                padding: const EdgeInsets.all(16),
-                child: PDFView(
-                  key: pdfViewKey,
-                  pdfData: pdfData,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: pdfData == null
+              ? LoadingWidget()
+              : AspectRatio(
+                  aspectRatio: 1 / 1.42,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: PDFView(
+                      key: pdfViewKey,
+                      pdfData: pdfData,
+                    ),
+                    // child: RepaintBoundary(
+                    //   key: previewContainer,
+                    //   child: Template1(data: data),
+                    // ),
+                  ),
                 ),
-              ),
+        ),
       ),
     );
   }

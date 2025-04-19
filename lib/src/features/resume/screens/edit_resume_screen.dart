@@ -15,10 +15,8 @@ import 'stages/resume_information.dart';
 import 'stages/resume_languages.dart';
 import 'stages/resume_education.dart';
 import 'stages/resume_experience.dart';
-import 'stages/resume_projects.dart';
 import 'stages/resume_skills.dart';
 import 'stages/resume_interests.dart';
-import 'stages/resume_honors.dart';
 import 'stages/resume_about.dart';
 
 class EditResumeScreen extends StatelessWidget {
@@ -36,10 +34,8 @@ class EditResumeScreen extends StatelessWidget {
       languages: data2.languages.where((x) => x.id == resume.id).toList(),
       educations: data2.educations.where((x) => x.id == resume.id).toList(),
       experiences: data2.experiences.where((x) => x.id == resume.id).toList(),
-      projects: data2.projects.where((x) => x.id == resume.id).toList(),
       skills: data2.skills.where((x) => x.id == resume.id).toList(),
       interests: data2.interests.where((x) => x.id == resume.id).toList(),
-      honors: data2.honors.where((x) => x.id == resume.id).toList(),
     );
 
     final l = AppLocalizations.of(context)!;
@@ -61,6 +57,7 @@ class EditResumeScreen extends StatelessWidget {
         final provider = context.watch<ResumeProvider>();
 
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: Appbar(
             title: provider.getTitle(l),
             left: AppbarButton(
@@ -110,21 +107,9 @@ class EditResumeScreen extends StatelessWidget {
                       );
                     },
                   ),
-                if (provider.index == 5)
-                  ...List.generate(
-                    provider.projectControllers.length,
-                    (index) {
-                      return ResumeProjects(
-                        controllers: provider.projectControllers[index],
-                        index: index,
-                        remove: index != 0,
-                      );
-                    },
-                  ),
-                if (provider.index == 6) const ResumeSkills(),
-                if (provider.index == 7) const ResumeInterests(),
-                if (provider.index == 8) const ResumeHonors(),
-                if (provider.index == 9) const ResumeAbout(),
+                if (provider.index == 5) const ResumeSkills(),
+                if (provider.index == 6) const ResumeInterests(),
+                if (provider.index == 7) const ResumeAbout(),
               ],
             ),
           ),
