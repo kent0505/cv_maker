@@ -25,6 +25,7 @@ class ResumeLanguages extends StatelessWidget {
         TxtField(
           controller: provider.languageController,
           hintText: l.english,
+          maxLength: 20,
           onChanged: (_) {
             provider.checkActive();
           },

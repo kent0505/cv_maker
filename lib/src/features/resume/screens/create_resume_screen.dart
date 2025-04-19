@@ -29,14 +29,16 @@ class CreateResumeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
 
+    void goBack() {
+      context.pop();
+    }
+
     void showdialog() {
       DialogWidget.show(
         context,
         title: l.exit,
         description: l.exitDescription,
-        onYes: () {
-          context.pop();
-        },
+        onYes: goBack,
       );
     }
 
@@ -51,11 +53,19 @@ class CreateResumeScreen extends StatelessWidget {
             title: provider.getTitle(l),
             left: AppbarButton(
               asset: provider.index == 1 ? Assets.close : Assets.left,
-              onPressed: provider.index == 1 ? showdialog : provider.goLeft,
+              onPressed: provider.index == 1
+                  ? provider.canPop
+                      ? goBack
+                      : showdialog
+                  : provider.goLeft,
             ),
             right: AppbarButton(
-              asset: provider.index == 9 ? Assets.close : Assets.right,
-              onPressed: provider.index == 9 ? showdialog : provider.goRight,
+              asset: provider.index == 7 ? Assets.close : Assets.right,
+              onPressed: provider.index == 7
+                  ? provider.canPop
+                      ? goBack
+                      : showdialog
+                  : provider.goRight,
             ),
           ),
           body: Bg(

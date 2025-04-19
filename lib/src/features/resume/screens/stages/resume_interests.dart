@@ -24,6 +24,7 @@ class ResumeInterests extends StatelessWidget {
         TxtField(
           controller: provider.interestController,
           hintText: l.football,
+          maxLength: 20,
           onChanged: (_) {
             provider.checkActive();
           },

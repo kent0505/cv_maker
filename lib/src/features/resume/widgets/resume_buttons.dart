@@ -26,9 +26,15 @@ class ResumeButtons extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     final provider = context.watch<ResumeProvider>();
     final i = provider.index;
-    final skip = i != 1 && i != 7;
+    final skip = i == 2 && provider.languages.isEmpty ||
+        i == 3 && !provider.canContinue ||
+        i == 4 && !provider.canContinue ||
+        i == 5 && provider.skills.isEmpty ||
+        i == 6 && provider.interests.isEmpty;
     final addOneMore = i == 3 || i == 4;
-    final add = i == 2 || i == 5 || i == 6;
+    final add = i == 2 && provider.languages.length != 3 ||
+        i == 5 && provider.canAdd ||
+        i == 6 && provider.canAdd;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

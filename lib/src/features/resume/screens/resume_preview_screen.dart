@@ -1,9 +1,10 @@
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -20,6 +21,7 @@ import '../../../core/widgets/dialog_widget.dart';
 import '../../../core/widgets/loading_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
+import '../widgets/templates/template1.dart';
 
 class ResumePreviewScreen extends StatefulWidget {
   const ResumePreviewScreen({super.key, required this.resume});
@@ -34,23 +36,24 @@ class ResumePreviewScreen extends StatefulWidget {
 
 class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
   Key pdfViewKey = UniqueKey();
+  final previewContainer = GlobalKey();
   Uint8List? pdfData;
   Data data = emptyData;
 
-  // Future<Uint8List?> captureWidgetAsPng(GlobalKey key) async {
-  //   try {
-  //     RenderRepaintBoundary boundary =
-  //         key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+  Future<Uint8List?> captureWidgetAsPng(GlobalKey key) async {
+    try {
+      RenderRepaintBoundary boundary =
+          key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
-  //     ui.Image image = await boundary.toImage(pixelRatio: 5);
-  //     ByteData? byteData =
-  //         await image.toByteData(format: ui.ImageByteFormat.png);
-  //     return byteData?.buffer.asUint8List();
-  //   } catch (e) {
-  //     logger(e);
-  //     return null;
-  //   }
-  // }
+      ui.Image image = await boundary.toImage(pixelRatio: 5);
+      ByteData? byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      return byteData?.buffer.asUint8List();
+    } catch (e) {
+      logger(e);
+      return null;
+    }
+  }
 
   void createPdf() async {
     logger('CREATE PDF');
@@ -161,14 +164,14 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
                   aspectRatio: 1 / 1.42,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: PDFView(
-                      key: pdfViewKey,
-                      pdfData: pdfData,
-                    ),
-                    // child: RepaintBoundary(
-                    //   key: previewContainer,
-                    //   child: Template1(data: data),
+                    // child: PDFView(
+                    //   key: pdfViewKey,
+                    //   pdfData: pdfData,
                     // ),
+                    child: RepaintBoundary(
+                      key: previewContainer,
+                      child: Template1(data: data),
+                    ),
                   ),
                 ),
         ),

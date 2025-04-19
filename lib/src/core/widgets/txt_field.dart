@@ -12,7 +12,7 @@ class TxtField extends StatelessWidget {
     this.multiline = false,
     this.readOnly = false,
     this.email = false,
-    this.maxLength = 100,
+    required this.maxLength,
     this.onChanged,
     this.onTap,
   });

@@ -16,6 +16,7 @@ class ResumeProvider extends ChangeNotifier {
   int _index = 1;
   bool _canAdd = false;
   bool _canContinue = false;
+  bool _canPop = true;
   String _imagePath = '';
 
   List<Language> _languages = [];
@@ -27,6 +28,7 @@ class ResumeProvider extends ChangeNotifier {
   int get index => _index;
   bool get canAdd => _canAdd;
   bool get canContinue => _canContinue;
+  bool get canPop => _canPop;
   String get imagePath => _imagePath;
 
   List<Language> get languages => _languages;
@@ -93,7 +95,7 @@ class ResumeProvider extends ChangeNotifier {
         }).toList();
       }
 
-      checkActive();
+      checkActive(init: true);
     }
   }
 
@@ -131,9 +133,9 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
-  void checkActive() {
+  void checkActive({bool init = false}) {
     logger(_index);
-
+    if (!init) _canPop = false;
     switch (_index) {
       case 1:
         _canContinue = [
@@ -151,23 +153,23 @@ class ResumeProvider extends ChangeNotifier {
         _canContinue = _languages.isNotEmpty;
         break;
       case 3:
-        final active = educationControllers
-                .every((e) => e.every((t) => t.text.isNotEmpty)) &&
-            educationControllers.length != 3;
-        _canAdd = _canContinue = active;
+        final allFilled = educationControllers
+            .every((e) => e.every((t) => t.text.isNotEmpty));
+        _canAdd = educationControllers.length < 2 && allFilled;
+        _canContinue = allFilled;
         break;
       case 4:
-        final active = experienceControllers
-                .every((e) => e.every((t) => t.text.isNotEmpty)) &&
-            experienceControllers.length != 5;
-        _canAdd = _canContinue = active;
+        final allFilled = experienceControllers
+            .every((e) => e.every((t) => t.text.isNotEmpty));
+        _canAdd = experienceControllers.length < 5 && allFilled;
+        _canContinue = allFilled;
         break;
       case 5:
-        _canAdd = skillController.text.isNotEmpty && _skills.length < 30;
+        _canAdd = skillController.text.isNotEmpty && _skills.length < 10;
         _canContinue = true;
         break;
       case 6:
-        _canAdd = interestController.text.isNotEmpty && _interests.length < 30;
+        _canAdd = interestController.text.isNotEmpty && _interests.length < 10;
         _canContinue = true;
         break;
     }

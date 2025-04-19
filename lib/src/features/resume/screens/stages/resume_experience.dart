@@ -32,6 +32,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[0],
           hintText: 'Gilette',
+          maxLength: 20,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -42,6 +43,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[1],
           hintText: l.city,
+          maxLength: 20,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -52,6 +54,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[2],
           hintText: l.headOfMarketing,
+          maxLength: 50,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -62,6 +65,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[3],
           hintText: l.marketing,
+          maxLength: 50,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -78,6 +82,7 @@ class ResumeExperience extends StatelessWidget {
                     controller: controllers[4],
                     hintText: '12/09/2020',
                     readOnly: true,
+                    maxLength: 10,
                     onTap: () {
                       IosDatePicker.show(
                         context,
@@ -101,6 +106,7 @@ class ResumeExperience extends StatelessWidget {
                     controller: controllers[5],
                     hintText: '12/09/2020',
                     readOnly: true,
+                    maxLength: 10,
                     onTap: () {
                       IosDatePicker.show(
                         context,

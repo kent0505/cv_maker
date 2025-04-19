@@ -79,7 +79,7 @@ abstract final class Levels {
   static const b1 = 'B1';
   static const b2 = 'B2';
   static const c1 = 'C1';
-  static const c2 = 'C2';
+  static const c2 = 'Native';
 }
 
 abstract final class Tables {
