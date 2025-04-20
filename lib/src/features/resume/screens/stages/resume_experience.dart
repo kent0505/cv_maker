@@ -32,7 +32,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[0],
           hintText: 'Gilette',
-          maxLength: 20,
+          maxLength: 30,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -43,7 +43,7 @@ class ResumeExperience extends StatelessWidget {
         TxtField(
           controller: controllers[1],
           hintText: l.city,
-          maxLength: 20,
+          maxLength: 30,
           onChanged: (_) {
             provider.checkActive();
           },

@@ -19,16 +19,18 @@ class ResumeInterests extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.enterInterest),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: provider.interestController,
-          hintText: l.football,
-          maxLength: 20,
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
+        if (provider.interests.length != 8) ...[
+          FieldTitle(l.enterInterest),
+          const SizedBox(height: 4),
+          TxtField(
+            controller: provider.interestController,
+            hintText: l.football,
+            maxLength: 20,
+            onChanged: (_) {
+              provider.checkActive();
+            },
+          ),
+        ],
         const SizedBox(height: 14),
         _InterestCard(interest: provider.interests),
         const SizedBox(height: 100),

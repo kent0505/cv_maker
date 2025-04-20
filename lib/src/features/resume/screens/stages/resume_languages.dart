@@ -20,16 +20,18 @@ class ResumeLanguages extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.enterLanguage),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: provider.languageController,
-          hintText: l.english,
-          maxLength: 20,
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
+        if (provider.languages.length < 5) ...[
+          FieldTitle(l.enterLanguage),
+          const SizedBox(height: 4),
+          TxtField(
+            controller: provider.languageController,
+            hintText: l.english,
+            maxLength: 20,
+            onChanged: (_) {
+              provider.checkActive();
+            },
+          ),
+        ],
         ...List.generate(
           provider.languages.length,
           (index) {

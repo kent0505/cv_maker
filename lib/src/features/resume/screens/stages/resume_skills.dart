@@ -19,16 +19,18 @@ class ResumeSkills extends StatelessWidget {
 
     return Column(
       children: [
-        FieldTitle(l.enterSkill),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: provider.skillController,
-          hintText: l.patience,
-          maxLength: 20,
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
+        if (provider.skills.length != 8) ...[
+          FieldTitle(l.enterSkill),
+          const SizedBox(height: 4),
+          TxtField(
+            controller: provider.skillController,
+            hintText: l.patience,
+            maxLength: 20,
+            onChanged: (_) {
+              provider.checkActive();
+            },
+          ),
+        ],
         const SizedBox(height: 14),
         _SkillCard(skills: provider.skills),
         const SizedBox(height: 100),

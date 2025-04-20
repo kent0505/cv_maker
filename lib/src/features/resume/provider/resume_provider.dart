@@ -155,21 +155,21 @@ class ResumeProvider extends ChangeNotifier {
       case 3:
         final allFilled = educationControllers
             .every((e) => e.every((t) => t.text.isNotEmpty));
-        _canAdd = educationControllers.length < 2 && allFilled;
+        _canAdd = allFilled;
         _canContinue = allFilled;
         break;
       case 4:
         final allFilled = experienceControllers
             .every((e) => e.every((t) => t.text.isNotEmpty));
-        _canAdd = experienceControllers.length < 5 && allFilled;
+        _canAdd = allFilled;
         _canContinue = allFilled;
         break;
       case 5:
-        _canAdd = skillController.text.isNotEmpty && _skills.length < 10;
+        _canAdd = skillController.text.isNotEmpty;
         _canContinue = true;
         break;
       case 6:
-        _canAdd = interestController.text.isNotEmpty && _interests.length < 10;
+        _canAdd = interestController.text.isNotEmpty;
         _canContinue = true;
         break;
     }

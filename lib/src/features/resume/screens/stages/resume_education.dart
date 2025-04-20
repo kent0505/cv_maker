@@ -30,7 +30,7 @@ class ResumeEducation extends StatelessWidget {
         TxtField(
           controller: controllers[0],
           hintText: 'The University of Manchester',
-          maxLength: 50,
+          maxLength: 80,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -41,7 +41,7 @@ class ResumeEducation extends StatelessWidget {
         TxtField(
           controller: controllers[1],
           hintText: l.marketingAndManagement,
-          maxLength: 50,
+          maxLength: 60,
           onChanged: (_) {
             provider.checkActive();
           },

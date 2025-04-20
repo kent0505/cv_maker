@@ -18,7 +18,6 @@ import '../../../core/utils.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/dialog_widget.dart';
-import '../../../core/widgets/loading_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
 import '../widgets/templates/template1.dart';
@@ -35,54 +34,99 @@ class ResumePreviewScreen extends StatefulWidget {
 }
 
 class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
-  Key pdfViewKey = UniqueKey();
   final previewContainer = GlobalKey();
   Uint8List? pdfData;
   Data data = emptyData;
 
   Future<Uint8List?> captureWidgetAsPng(GlobalKey key) async {
     try {
-      RenderRepaintBoundary boundary =
-          key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+      final context = key.currentContext;
+      if (context == null) {
+        logger('captureWidgetAsPng: context is null');
+        return null;
+      }
 
-      ui.Image image = await boundary.toImage(pixelRatio: 5);
-      ByteData? byteData =
-          await image.toByteData(format: ui.ImageByteFormat.png);
+      final boundary = context.findRenderObject() as RenderRepaintBoundary?;
+      if (boundary == null) {
+        logger('captureWidgetAsPng: boundary is null');
+        return null;
+      }
+
+      while (boundary.debugNeedsPaint) {
+        await Future.delayed(Duration(milliseconds: 10));
+      }
+
+      final image = await boundary.toImage(pixelRatio: 3);
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       return byteData?.buffer.asUint8List();
     } catch (e) {
-      logger(e);
+      logger('Error capturing widget: $e');
       return null;
     }
   }
 
-  void createPdf() async {
+  // void createPdf() async {
+  //   logger('CREATE PDF');
+  //   try {
+  //     final pdf = pw.Document();
+
+  //     // final imageFile = File(data.resume!.photo);
+  //     // final imageBytes = await imageFile.readAsBytes();
+  //     // final photoImage = pw.MemoryImage(imageBytes);
+
+  //     pdf.addPage(
+  //       pw.MultiPage(
+  //         margin: pw.EdgeInsets.zero,
+  //         pageFormat: PdfPageFormat.a4,
+  //         build: (pw.Context context) => [
+  //           ...List.generate(
+  //             100,
+  //             (index) {
+  //               return pw.Text('Index $index');
+  //             },
+  //           ),
+  //         ],
+  //       ),
+  //     );
+
+  //     final bytes = await pdf.save();
+  //     setState(() {
+  //       pdfData = bytes;
+  //     });
+  //   } catch (e) {
+  //     logger(e);
+  //   }
+  // }
+
+  Future<void> createPdf() async {
     logger('CREATE PDF');
     try {
+      final imageBytes = await captureWidgetAsPng(previewContainer);
+
+      if (imageBytes == null) return;
+
       final pdf = pw.Document();
 
-      // final imageFile = File(data.resume!.photo);
-      // final imageBytes = await imageFile.readAsBytes();
-      // final photoImage = pw.MemoryImage(imageBytes);
+      final image = pw.MemoryImage(imageBytes);
 
       pdf.addPage(
-        pw.MultiPage(
+        pw.Page(
           margin: pw.EdgeInsets.zero,
           pageFormat: PdfPageFormat.a4,
-          build: (pw.Context context) => [
-            ...List.generate(
-              100,
-              (index) {
-                return pw.Text('Index $index');
-              },
-            )
-          ],
+          build: (context) {
+            return pw.Center(
+              child: pw.Image(
+                image,
+                fit: pw.BoxFit.contain,
+              ),
+            );
+          },
         ),
       );
 
       final bytes = await pdf.save();
       setState(() {
         pdfData = bytes;
-        pdfViewKey = UniqueKey();
       });
     } catch (e) {
       logger(e);
@@ -90,7 +134,10 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
   }
 
   void onExport() async {
-    if (pdfData == null) return;
+    if (pdfData == null) {
+      logger('NULL');
+      return;
+    }
 
     try {
       final dir = await getTemporaryDirectory();
@@ -116,7 +163,9 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       skills: data2.skills.where((x) => x.id == resume.id).toList(),
       interests: data2.interests.where((x) => x.id == resume.id).toList(),
     );
-    createPdf();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await createPdf();
+    });
   }
 
   @override
@@ -158,22 +207,19 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
         ],
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: pdfData == null
-              ? LoadingWidget()
-              : AspectRatio(
-                  aspectRatio: 1 / 1.42,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    // child: PDFView(
-                    //   key: pdfViewKey,
-                    //   pdfData: pdfData,
-                    // ),
-                    child: RepaintBoundary(
-                      key: previewContainer,
-                      child: Template1(data: data),
-                    ),
-                  ),
+          child: FittedBox(
+            child: SizedBox(
+              width: 500,
+              height: 500 * 1.41,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: RepaintBoundary(
+                  key: previewContainer,
+                  child: Template1(data: data),
                 ),
+              ),
+            ),
+          ),
         ),
       ),
     );

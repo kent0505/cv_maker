@@ -25,7 +25,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.nameController,
           hintText: l.alex,
-          maxLength: 30,
+          maxLength: 50,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -47,7 +47,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.emailController,
           hintText: 'yourmail@example.com',
-          maxLength: 30,
+          maxLength: 50,
           email: true,
           onChanged: (_) {
             provider.checkActive();
@@ -59,7 +59,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.cityController,
           hintText: l.city,
-          maxLength: 20,
+          maxLength: 30,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -71,7 +71,7 @@ class ResumeInformation extends StatelessWidget {
           controller: provider.birthController,
           hintText: '16/03/25',
           readOnly: true,
-          maxLength: 8,
+          maxLength: 10,
           onTap: () {
             IosDatePicker.show(
               context,

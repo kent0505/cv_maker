@@ -40,9 +40,7 @@ class TxtField extends StatelessWidget {
       minLines: multiline ? 10 : 1,
       maxLines: multiline ? 10 : 1,
       inputFormatters: [
-        LengthLimitingTextInputFormatter(
-          multiline ? maxLength : 100,
-        ),
+        LengthLimitingTextInputFormatter(maxLength),
         if (number) FilteringTextInputFormatter.digitsOnly,
       ],
       textCapitalization: TextCapitalization.sentences,
