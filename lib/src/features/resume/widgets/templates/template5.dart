@@ -5,8 +5,8 @@ import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
 import 'widgets/template_skills.dart';
 
-class Template2 extends StatelessWidget {
-  const Template2({super.key, required this.data});
+class Template5 extends StatelessWidget {
+  const Template5({super.key, required this.data});
 
   final Data data;
 
@@ -16,13 +16,17 @@ class Template2 extends StatelessWidget {
       children: [
         Container(
           width: 220,
-          color: const Color(0xffF3AA03),
+          color: Colors.white,
           child: Stack(
             children: [
               Container(
-                width: 1,
-                margin: const EdgeInsets.only(left: 27),
-                color: Colors.white,
+                margin: EdgeInsets.only(top: 100),
+                decoration: BoxDecoration(
+                  color: const Color(0xffF2F2F2),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                  ),
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,21 +42,12 @@ class Template2 extends StatelessWidget {
         Container(
           width: 330,
           color: Colors.white,
-          child: Stack(
+          child: Column(
             children: [
-              Container(
-                width: 1,
-                margin: const EdgeInsets.only(left: 27),
-                color: const Color(0xff333333),
-              ),
-              Column(
-                children: [
-                  // data
-                  const Spacer(),
-                  TemplateSkills(data: data),
-                  TemplateInterests(data: data),
-                ],
-              ),
+              // data
+              const Spacer(),
+              TemplateSkills(data: data),
+              TemplateInterests(data: data),
             ],
           ),
         ),

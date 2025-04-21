@@ -29,6 +29,11 @@ abstract final class Assets {
   static const settings = 'assets/settings.svg';
   static const templates = 'assets/templates.svg';
   static const tip = 'assets/tip.svg';
+  static const email = 'assets/email.svg';
+  static const location = 'assets/location.svg';
+  static const phone = 'assets/phone.svg';
+  static const figure1 = 'assets/figure1.svg';
+  static const figure2 = 'assets/figure2.svg';
 
   static const onb1 = 'assets/images/onb1.png';
   static const onb2 = 'assets/images/onb2.png';

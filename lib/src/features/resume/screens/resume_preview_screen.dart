@@ -21,8 +21,15 @@ import '../../../core/widgets/dialog_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
 import '../widgets/templates/template1.dart';
+import '../widgets/templates/template10.dart';
 import '../widgets/templates/template2.dart';
 import '../widgets/templates/template3.dart';
+import '../widgets/templates/template4.dart';
+import '../widgets/templates/template5.dart';
+import '../widgets/templates/template6.dart';
+import '../widgets/templates/template7.dart';
+import '../widgets/templates/template8.dart';
+import '../widgets/templates/template9.dart';
 
 class ResumePreviewScreen extends StatefulWidget {
   const ResumePreviewScreen({super.key, required this.resume});
@@ -43,16 +50,10 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
   Future<Uint8List?> captureWidgetAsPng(GlobalKey key) async {
     try {
       final context = key.currentContext;
-      if (context == null) {
-        logger('captureWidgetAsPng: context is null');
-        return null;
-      }
+      if (context == null) return null;
 
       final boundary = context.findRenderObject() as RenderRepaintBoundary?;
-      if (boundary == null) {
-        logger('captureWidgetAsPng: boundary is null');
-        return null;
-      }
+      if (boundary == null) return null;
 
       while (boundary.debugNeedsPaint) {
         await Future.delayed(Duration(milliseconds: 10));
@@ -62,7 +63,7 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
       return byteData?.buffer.asUint8List();
     } catch (e) {
-      logger('Error capturing widget: $e');
+      logger(e);
       return null;
     }
   }
@@ -94,9 +95,12 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       );
 
       final bytes = await pdf.save();
-      setState(() {
-        pdfData = bytes;
-      });
+
+      if (mounted) {
+        setState(() {
+          pdfData = bytes;
+        });
+      }
     } catch (e) {
       logger(e);
     }
@@ -189,23 +193,23 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
                     1 => Template1(data: data),
                     2 => Template2(data: data),
                     3 => Template3(data: data),
-                    4 => Template2(data: data),
-                    5 => Template2(data: data),
-                    6 => Template2(data: data),
-                    7 => Template2(data: data),
-                    8 => Template2(data: data),
-                    9 => Template2(data: data),
-                    10 => Template2(data: data),
-                    11 => Template2(data: data),
-                    12 => Template2(data: data),
-                    13 => Template2(data: data),
-                    14 => Template2(data: data),
-                    15 => Template2(data: data),
-                    16 => Template2(data: data),
-                    17 => Template2(data: data),
-                    18 => Template2(data: data),
-                    19 => Template2(data: data),
-                    20 => Template2(data: data),
+                    4 => Template4(data: data),
+                    5 => Template5(data: data),
+                    6 => Template6(data: data),
+                    7 => Template7(data: data),
+                    8 => Template8(data: data),
+                    9 => Template9(data: data),
+                    10 => Template10(data: data),
+                    // 11 => Template2(data: data),
+                    // 12 => Template2(data: data),
+                    // 13 => Template2(data: data),
+                    // 14 => Template2(data: data),
+                    // 15 => Template2(data: data),
+                    // 16 => Template2(data: data),
+                    // 17 => Template2(data: data),
+                    // 18 => Template2(data: data),
+                    // 19 => Template2(data: data),
+                    // 20 => Template2(data: data),
                     _ => const SizedBox(),
                   },
                 ),
