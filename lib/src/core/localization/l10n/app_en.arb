@@ -84,8 +84,6 @@
     "@patience": {},
     "football": "Football",
     "@football": {},
-    "goldMedal": "Gold medal at school",
-    "@goldMedal": {},
     
     "next": "Next",
     "@next": {},
@@ -156,5 +154,14 @@
     "only30Interest": "You can choose only 10 interests",
     "@only30Interest": {},
     "aboutTitle": "Write information about yourself, it will help the employer to know more about your words",
-    "@aboutTitle": {}
+    "@aboutTitle": {},
+
+    "contactMe": "Contact me",
+    "@contactMe": {},
+    "aboutMe": "About me",
+    "@aboutMe": {},
+    "jobExperience": "Job Experience",
+    "@jobExperience": {},
+    "present": "Present",
+    "@present": {}
 }

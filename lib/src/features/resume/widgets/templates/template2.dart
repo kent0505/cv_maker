@@ -8,8 +8,8 @@ import '../../../../core/models/language.dart';
 import '../../../../core/utils.dart';
 import '../../../../core/widgets/image_widget.dart';
 
-class Template1 extends StatelessWidget {
-  const Template1({super.key, required this.data});
+class Template2 extends StatelessWidget {
+  const Template2({super.key, required this.data});
 
   final Data data;
 
@@ -22,7 +22,7 @@ class Template1 extends StatelessWidget {
       children: [
         Container(
           width: 220,
-          color: const Color(0xff333333),
+          color: const Color(0xffF3AA03),
           child: Stack(
             children: [
               Container(
@@ -59,7 +59,51 @@ class Template1 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const SizedBox(width: 15),
+                      Container(
+                        height: 40,
+                        width: 4,
+                        margin: const EdgeInsets.symmetric(horizontal: 3),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(1),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              data.resume!.name,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: AppFonts.gotham900,
+                                height: 1,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              data.resume!.job.toUpperCase(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: AppFonts.gotham400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
                   _Title(l.contactMe),
                   const SizedBox(height: 12),
                   _ContactMe(data.resume!.phone),
@@ -81,7 +125,6 @@ class Template1 extends StatelessWidget {
                     ),
                   ],
                   if (data.languages.isNotEmpty) ...[
-                    const SizedBox(height: 12),
                     _Title(l.languages),
                     const SizedBox(height: 6),
                     ...List.generate(
@@ -111,73 +154,11 @@ class Template1 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 16),
-                  Container(
-                    width: double.infinity,
-                    color: const Color(0xffF0F0F0),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 15),
-                        Column(
-                          children: [
-                            Container(
-                              height: 14,
-                              width: 1,
-                              color: const Color(0xff333333),
-                            ),
-                            Container(
-                              height: 40,
-                              width: 4,
-                              margin: const EdgeInsets.symmetric(horizontal: 3),
-                              decoration: BoxDecoration(
-                                color: const Color(0xffF3AA03),
-                                borderRadius: BorderRadius.circular(1),
-                              ),
-                            ),
-                            Container(
-                              height: 14,
-                              width: 1,
-                              color: const Color(0xff333333),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.resume!.name,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: AppFonts.gotham900,
-                                  height: 1,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                data.resume!.job.toUpperCase(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: AppFonts.gotham400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                      ],
-                    ),
-                  ),
+                  const SizedBox(height: 20),
                   if (data.resume!.about.isNotEmpty) ...[
-                    const SizedBox(height: 10),
                     _Title(
                       l.aboutMe,
-                      color: Colors.black,
+                      right: true,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -204,7 +185,7 @@ class Template1 extends StatelessWidget {
                     const SizedBox(height: 10),
                     _Title(
                       l.jobExperience,
-                      color: Colors.black,
+                      right: true,
                     ),
                     const SizedBox(height: 6),
                     ...List.generate(
@@ -219,7 +200,7 @@ class Template1 extends StatelessWidget {
                   if (data.skills.isNotEmpty) ...[
                     _Title(
                       l.skills,
-                      color: Colors.black,
+                      right: true,
                     ),
                     const SizedBox(height: 6),
                     Padding(
@@ -242,7 +223,7 @@ class Template1 extends StatelessWidget {
                     const SizedBox(height: 6),
                     _Title(
                       l.interests,
-                      color: Colors.black,
+                      right: true,
                     ),
                     const SizedBox(height: 6),
                     Padding(
@@ -277,11 +258,11 @@ class Template1 extends StatelessWidget {
 class _Title extends StatelessWidget {
   const _Title(
     this.title, {
-    this.color = Colors.white,
+    this.right = false,
   });
 
   final String title;
-  final Color color;
+  final bool right;
 
   @override
   Widget build(BuildContext context) {
@@ -293,7 +274,7 @@ class _Title extends StatelessWidget {
           width: 4,
           margin: const EdgeInsets.symmetric(horizontal: 3),
           decoration: BoxDecoration(
-            color: const Color(0xffF3AA03),
+            color: right ? Color(0xffF3AA03) : Colors.white,
             borderRadius: BorderRadius.circular(1),
           ),
         ),
@@ -302,8 +283,8 @@ class _Title extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              color: color,
-              fontSize: 16,
+              color: right ? Colors.black : Colors.white,
+              fontSize: right ? 24 : 16,
               fontFamily: AppFonts.gotham900,
             ),
           ),
@@ -315,16 +296,18 @@ class _Title extends StatelessWidget {
 }
 
 class _Circle extends StatelessWidget {
-  const _Circle();
+  const _Circle({this.right = false});
+
+  final bool right;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 8,
       width: 8,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Color(0xffF3AA03),
+        color: right ? Color(0xffF3AA03) : Colors.white,
       ),
     );
   }
@@ -466,7 +449,7 @@ class _ExperienceData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(width: 16),
-            const _Circle(),
+            const _Circle(right: true),
             const SizedBox(width: 5),
             Expanded(
               child: Text(

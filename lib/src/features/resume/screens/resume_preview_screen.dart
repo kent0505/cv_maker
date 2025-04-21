@@ -21,6 +21,8 @@ import '../../../core/widgets/dialog_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
 import '../widgets/templates/template1.dart';
+import '../widgets/templates/template2.dart';
+import '../widgets/templates/template3.dart';
 
 class ResumePreviewScreen extends StatefulWidget {
   const ResumePreviewScreen({super.key, required this.resume});
@@ -64,39 +66,6 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       return null;
     }
   }
-
-  // void createPdf() async {
-  //   logger('CREATE PDF');
-  //   try {
-  //     final pdf = pw.Document();
-
-  //     // final imageFile = File(data.resume!.photo);
-  //     // final imageBytes = await imageFile.readAsBytes();
-  //     // final photoImage = pw.MemoryImage(imageBytes);
-
-  //     pdf.addPage(
-  //       pw.MultiPage(
-  //         margin: pw.EdgeInsets.zero,
-  //         pageFormat: PdfPageFormat.a4,
-  //         build: (pw.Context context) => [
-  //           ...List.generate(
-  //             100,
-  //             (index) {
-  //               return pw.Text('Index $index');
-  //             },
-  //           ),
-  //         ],
-  //       ),
-  //     );
-
-  //     final bytes = await pdf.save();
-  //     setState(() {
-  //       pdfData = bytes;
-  //     });
-  //   } catch (e) {
-  //     logger(e);
-  //   }
-  // }
 
   Future<void> createPdf() async {
     logger('CREATE PDF');
@@ -197,10 +166,11 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              MainButton(
-                title: l.export,
-                onPressed: onExport,
-              ),
+              if (pdfData != null)
+                MainButton(
+                  title: l.export,
+                  onPressed: onExport,
+                ),
               const SizedBox(height: 30),
             ],
           ),
@@ -209,13 +179,35 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
           padding: const EdgeInsets.all(16),
           child: FittedBox(
             child: SizedBox(
-              width: 500,
-              height: 500 * 1.41,
+              width: 550,
+              height: 550 * 1.41,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: RepaintBoundary(
                   key: previewContainer,
-                  child: Template1(data: data),
+                  child: switch (data.resume!.template) {
+                    1 => Template1(data: data),
+                    2 => Template2(data: data),
+                    3 => Template3(data: data),
+                    4 => Template2(data: data),
+                    5 => Template2(data: data),
+                    6 => Template2(data: data),
+                    7 => Template2(data: data),
+                    8 => Template2(data: data),
+                    9 => Template2(data: data),
+                    10 => Template2(data: data),
+                    11 => Template2(data: data),
+                    12 => Template2(data: data),
+                    13 => Template2(data: data),
+                    14 => Template2(data: data),
+                    15 => Template2(data: data),
+                    16 => Template2(data: data),
+                    17 => Template2(data: data),
+                    18 => Template2(data: data),
+                    19 => Template2(data: data),
+                    20 => Template2(data: data),
+                    _ => const SizedBox(),
+                  },
                 ),
               ),
             ),

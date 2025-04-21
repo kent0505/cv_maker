@@ -5,11 +5,11 @@ import '../../../../core/models/data.dart';
 import '../../../../core/models/education.dart';
 import '../../../../core/models/experience.dart';
 import '../../../../core/models/language.dart';
-import '../../../../core/utils.dart';
 import '../../../../core/widgets/image_widget.dart';
+import '../../../../core/utils.dart';
 
-class Template1 extends StatelessWidget {
-  const Template1({super.key, required this.data});
+class Template3 extends StatelessWidget {
+  const Template3({super.key, required this.data});
 
   final Data data;
 
@@ -19,6 +19,7 @@ class Template1 extends StatelessWidget {
     final imageSize = 160.0;
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           width: 220,
@@ -26,40 +27,67 @@ class Template1 extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                width: 1,
-                margin: const EdgeInsets.only(left: 19.5),
-                color: Colors.white,
+                height: 160,
+                width: 220,
+                color: const Color(0xffD9D9D9),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(imageSize / 2),
-                        topRight: Radius.circular(imageSize / 2),
-                        bottomRight: Radius.circular(imageSize / 2),
-                      ),
-                      border: Border.all(
-                        width: 2,
-                        color: Colors.white,
-                      ),
-                    ),
-                    child: FileImageWidget(
-                      data.resume!.photo,
-                      height: imageSize,
+                  const SizedBox(height: 10),
+                  Center(
+                    child: SizedBox(
+                      height: 60,
                       width: imageSize,
-                      fit: BoxFit.cover,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(imageSize / 2),
-                        topRight: Radius.circular(imageSize / 2),
-                        bottomRight: Radius.circular(imageSize / 2),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            data.resume!.name,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: 16,
+                              fontFamily: AppFonts.gotham900,
+                              height: 1,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            data.resume!.job.toUpperCase(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: 12,
+                              fontFamily: AppFonts.gotham400,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 10),
+                  Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(imageSize / 2),
+                        border: Border.all(
+                          width: 2,
+                          color: Colors.white,
+                        ),
+                      ),
+                      child: FileImageWidget(
+                        data.resume!.photo,
+                        height: imageSize,
+                        width: imageSize,
+                        fit: BoxFit.cover,
+                        borderRadius: BorderRadius.circular(imageSize / 2),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 6),
                   _Title(l.contactMe),
                   const SizedBox(height: 12),
                   _ContactMe(data.resume!.phone),
@@ -81,7 +109,6 @@ class Template1 extends StatelessWidget {
                     ),
                   ],
                   if (data.languages.isNotEmpty) ...[
-                    const SizedBox(height: 12),
                     _Title(l.languages),
                     const SizedBox(height: 6),
                     ...List.generate(
@@ -101,171 +128,117 @@ class Template1 extends StatelessWidget {
         Container(
           width: 330,
           color: Colors.white,
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 1,
-                margin: const EdgeInsets.only(left: 19.5),
-                color: const Color(0xff333333),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 16),
-                  Container(
-                    width: double.infinity,
-                    color: const Color(0xffF0F0F0),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 15),
-                        Column(
-                          children: [
-                            Container(
-                              height: 14,
-                              width: 1,
-                              color: const Color(0xff333333),
-                            ),
-                            Container(
-                              height: 40,
-                              width: 4,
-                              margin: const EdgeInsets.symmetric(horizontal: 3),
-                              decoration: BoxDecoration(
-                                color: const Color(0xffF3AA03),
-                                borderRadius: BorderRadius.circular(1),
+                height: 160,
+                color: const Color(0xffD9D9D9),
+                child: Row(
+                  children: [
+                    const SizedBox(width: 30),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (data.resume!.about.isNotEmpty) ...[
+                            const SizedBox(height: 16),
+                            Text(
+                              l.aboutMe,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 24,
+                                fontFamily: AppFonts.gotham900,
                               ),
                             ),
-                            Container(
-                              height: 14,
-                              width: 1,
-                              color: const Color(0xff333333),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 5),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.resume!.name,
-                                maxLines: 2,
+                            const SizedBox(height: 6),
+                            SizedBox(
+                              height: 90,
+                              child: Text(
+                                data.resume!.about,
+                                maxLines: 9,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
                                   color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: AppFonts.gotham900,
-                                  height: 1,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                data.resume!.job.toUpperCase(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
+                                  fontSize: 10,
                                   fontFamily: AppFonts.gotham400,
+                                  height: 1.1,
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                      ],
-                    ),
-                  ),
-                  if (data.resume!.about.isNotEmpty) ...[
-                    const SizedBox(height: 10),
-                    _Title(
-                      l.aboutMe,
-                      color: Colors.black,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 5,
-                      ),
-                      child: SizedBox(
-                        height: 90,
-                        child: Text(
-                          data.resume!.about,
-                          maxLines: 8,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 10,
-                            fontFamily: AppFonts.gotham400,
-                            height: 1.1,
-                          ),
-                        ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
+                    const SizedBox(width: 20),
                   ],
-                  if (data.experiences.isNotEmpty) ...[
-                    const SizedBox(height: 10),
-                    _Title(
-                      l.jobExperience,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(height: 6),
-                    ...List.generate(
-                      data.experiences.length,
+                ),
+              ),
+              const SizedBox(height: 20),
+              if (data.experiences.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                _Title(
+                  l.jobExperience,
+                  right: true,
+                ),
+                const SizedBox(height: 10),
+                ...List.generate(
+                  data.experiences.length,
+                  (index) {
+                    return _ExperienceData(
+                      experience: data.experiences[index],
+                    );
+                  },
+                ),
+              ],
+              if (data.skills.isNotEmpty) ...[
+                _Title(
+                  l.skills,
+                  right: true,
+                ),
+                const SizedBox(height: 6),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Wrap(
+                    runSpacing: 6,
+                    spacing: 4,
+                    children: List.generate(
+                      data.skills.length,
                       (index) {
-                        return _ExperienceData(
-                          experience: data.experiences[index],
+                        return _SkillData(
+                          data.skills[index].title,
                         );
                       },
                     ),
-                  ],
-                  if (data.skills.isNotEmpty) ...[
-                    _Title(
-                      l.skills,
-                      color: Colors.black,
+                  ),
+                ),
+              ],
+              if (data.interests.isNotEmpty) ...[
+                const SizedBox(height: 6),
+                _Title(
+                  l.interests,
+                  right: true,
+                ),
+                const SizedBox(height: 6),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 30,
+                    right: 5,
+                  ),
+                  child: Wrap(
+                    runSpacing: 6,
+                    spacing: 4,
+                    children: List.generate(
+                      data.interests.length,
+                      (index) {
+                        return _SkillData(
+                          data.interests[index].title,
+                        );
+                      },
                     ),
-                    const SizedBox(height: 6),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: Wrap(
-                        runSpacing: 6,
-                        spacing: 4,
-                        children: List.generate(
-                          data.skills.length,
-                          (index) {
-                            return _SkillData(
-                              data.skills[index].title,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                  if (data.interests.isNotEmpty) ...[
-                    const SizedBox(height: 6),
-                    _Title(
-                      l.interests,
-                      color: Colors.black,
-                    ),
-                    const SizedBox(height: 6),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 30,
-                        right: 5,
-                      ),
-                      child: Wrap(
-                        runSpacing: 6,
-                        spacing: 4,
-                        children: List.generate(
-                          data.interests.length,
-                          (index) {
-                            return _SkillData(
-                              data.interests[index].title,
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
@@ -277,11 +250,11 @@ class Template1 extends StatelessWidget {
 class _Title extends StatelessWidget {
   const _Title(
     this.title, {
-    this.color = Colors.white,
+    this.right = false,
   });
 
   final String title;
-  final Color color;
+  final bool right;
 
   @override
   Widget build(BuildContext context) {
@@ -293,7 +266,7 @@ class _Title extends StatelessWidget {
           width: 4,
           margin: const EdgeInsets.symmetric(horizontal: 3),
           decoration: BoxDecoration(
-            color: const Color(0xffF3AA03),
+            color: right ? Color(0xffF3AA03) : Colors.white,
             borderRadius: BorderRadius.circular(1),
           ),
         ),
@@ -302,8 +275,8 @@ class _Title extends StatelessWidget {
           child: Text(
             title,
             style: TextStyle(
-              color: color,
-              fontSize: 16,
+              color: right ? Colors.black : Colors.white,
+              fontSize: right ? 24 : 16,
               fontFamily: AppFonts.gotham900,
             ),
           ),
@@ -315,16 +288,18 @@ class _Title extends StatelessWidget {
 }
 
 class _Circle extends StatelessWidget {
-  const _Circle();
+  const _Circle({this.right = false});
+
+  final bool right;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 8,
       width: 8,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Color(0xffF3AA03),
+        color: right ? Color(0xffF3AA03) : Colors.white,
       ),
     );
   }
@@ -341,7 +316,7 @@ class _ContactMe extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(width: 16),
-        _Circle(),
+        const _Circle(),
         const SizedBox(width: 5),
         Expanded(
           child: Text(
@@ -350,11 +325,10 @@ class _ContactMe extends StatelessWidget {
               color: Colors.white,
               fontSize: 10,
               fontFamily: AppFonts.gotham400,
-              height: 1.1,
             ),
           ),
         ),
-        const SizedBox(width: 5),
+        const SizedBox(width: 20),
       ],
     );
   }
@@ -379,6 +353,8 @@ class _EducationData extends StatelessWidget {
             children: [
               Text(
                 education.name.toUpperCase(),
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -388,6 +364,8 @@ class _EducationData extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 education.faculty.toUpperCase(),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 10,
@@ -407,7 +385,7 @@ class _EducationData extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(width: 5),
+        const SizedBox(width: 20),
       ],
     );
   }
@@ -439,7 +417,7 @@ class _LanguageData extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 5),
+          const SizedBox(width: 20),
         ],
       ),
     );
@@ -466,7 +444,7 @@ class _ExperienceData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(width: 16),
-            const _Circle(),
+            const _Circle(right: true),
             const SizedBox(width: 5),
             Expanded(
               child: Text(
@@ -486,10 +464,10 @@ class _ExperienceData extends StatelessWidget {
                 fontFamily: AppFonts.gotham400,
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 20),
           ],
         ),
-        const SizedBox(height: 2),
+        const SizedBox(height: 6),
         Row(
           children: [
             const SizedBox(width: 30),
@@ -504,10 +482,10 @@ class _ExperienceData extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 5),
+            const SizedBox(width: 20),
           ],
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         Row(
           children: [
             const SizedBox(width: 30),
@@ -521,10 +499,10 @@ class _ExperienceData extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 5),
+            const SizedBox(width: 20),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 16),
       ],
     );
   }

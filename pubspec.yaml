@@ -67,3 +67,13 @@ flutter:
     - family: funnel800
       fonts:
         - asset: assets/fonts/FunnelDisplay-ExtraBold.ttf
+    # Gotham
+    - family: gotham400
+      fonts:
+        - asset: assets/fonts/gotham-regular.ttf
+    - family: gotham700
+      fonts:
+        - asset: assets/fonts/gotham-Bold.ttf
+    - family: gotham900
+      fonts:
+        - asset: assets/fonts/gotham-Black.ttf
