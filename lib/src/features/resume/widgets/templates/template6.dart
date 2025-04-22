@@ -29,18 +29,22 @@ class Template6 extends StatelessWidget {
                 height: 60,
                 color: Color(0xff007AFF),
               ),
-              Spacer(),
+              // name
               Expanded(
                 flex: 4,
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Colors.black),
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.black,
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //
+                      // education
+                      // languages
                     ],
                   ),
                 ),
@@ -61,7 +65,15 @@ class Template6 extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  TemplateImage(data: data),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TemplateImage(data: data),
+                      const SizedBox(width: 20),
+                    ],
+                  ),
+                  // about
+                  // experience
                   const Spacer(),
                   TemplateSkills(data: data),
                   TemplateInterests(data: data),

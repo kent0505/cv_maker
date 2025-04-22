@@ -139,7 +139,6 @@ class ResumeProvider extends ChangeNotifier {
     switch (_index) {
       case 1:
         _canContinue = [
-          _imagePath,
           nameController.text,
           phoneController.text,
           emailController.text,

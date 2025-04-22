@@ -28,9 +28,11 @@ class Template10 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
-                  const Spacer(),
+                  // name
+                  // contacts
+                  // about
                   TemplateSkills(data: data),
+                  // educations
                 ],
               ),
             ],
@@ -41,7 +43,7 @@ class Template10 extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: [
-              Align(
+              const Align(
                 alignment: Alignment.bottomRight,
                 child: SvgWidget(
                   Assets.figure2,
@@ -59,7 +61,7 @@ class Template10 extends StatelessWidget {
                         child: Container(
                           height: 500,
                           width: 2,
-                          color: Color(0xffF9B134),
+                          color: const Color(0xffF9B134),
                         ),
                       ),
                       Container(
@@ -67,7 +69,7 @@ class Template10 extends StatelessWidget {
                         width: 12,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Color(0xffF9B134),
+                          color: const Color(0xffF9B134),
                         ),
                       ),
                       Align(
@@ -77,7 +79,7 @@ class Template10 extends StatelessWidget {
                           width: 12,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xffF9B134),
+                            color: const Color(0xffF9B134),
                           ),
                         ),
                       ),
@@ -88,7 +90,7 @@ class Template10 extends StatelessWidget {
                           width: 12,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xffF9B134),
+                            color: const Color(0xffF9B134),
                           ),
                         ),
                       ),
@@ -99,7 +101,7 @@ class Template10 extends StatelessWidget {
               Column(
                 children: [
                   TemplateImage(data: data),
-                  const Spacer(),
+                  // languages
                   TemplateInterests(data: data),
                 ],
               ),

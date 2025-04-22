@@ -21,7 +21,6 @@ import '../../../core/widgets/dialog_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
 import '../widgets/templates/template1.dart';
-import '../widgets/templates/template10.dart';
 import '../widgets/templates/template2.dart';
 import '../widgets/templates/template3.dart';
 import '../widgets/templates/template4.dart';
@@ -30,6 +29,17 @@ import '../widgets/templates/template6.dart';
 import '../widgets/templates/template7.dart';
 import '../widgets/templates/template8.dart';
 import '../widgets/templates/template9.dart';
+import '../widgets/templates/template10.dart';
+import '../widgets/templates/template11.dart';
+import '../widgets/templates/template12.dart';
+import '../widgets/templates/template13.dart';
+import '../widgets/templates/template14.dart';
+import '../widgets/templates/template15.dart';
+import '../widgets/templates/template16.dart';
+import '../widgets/templates/template17.dart';
+import '../widgets/templates/template18.dart';
+import '../widgets/templates/template19.dart';
+import '../widgets/templates/template20.dart';
 
 class ResumePreviewScreen extends StatefulWidget {
   const ResumePreviewScreen({super.key, required this.resume});
@@ -200,16 +210,16 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
                     8 => Template8(data: data),
                     9 => Template9(data: data),
                     10 => Template10(data: data),
-                    // 11 => Template2(data: data),
-                    // 12 => Template2(data: data),
-                    // 13 => Template2(data: data),
-                    // 14 => Template2(data: data),
-                    // 15 => Template2(data: data),
-                    // 16 => Template2(data: data),
-                    // 17 => Template2(data: data),
-                    // 18 => Template2(data: data),
-                    // 19 => Template2(data: data),
-                    // 20 => Template2(data: data),
+                    11 => Template11(data: data),
+                    12 => Template12(data: data),
+                    13 => Template13(data: data),
+                    14 => Template14(data: data),
+                    15 => Template15(data: data),
+                    16 => Template16(data: data),
+                    17 => Template17(data: data),
+                    18 => Template18(data: data),
+                    19 => Template19(data: data),
+                    20 => Template20(data: data),
                     _ => const SizedBox(),
                   },
                 ),

@@ -20,7 +20,7 @@ class Template7 extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
+              colors: const [
                 Color(0xff007AFF),
                 Color(0xff084476),
               ],
@@ -31,7 +31,9 @@ class Template7 extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               TemplateImage(data: data),
-              // data
+              // education
+              // languages
+              // contacts
             ],
           ),
         ),
@@ -40,8 +42,9 @@ class Template7 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              // data
-              const Spacer(),
+              // name
+              // about
+              // experience
               TemplateSkills(data: data),
               TemplateInterests(data: data),
             ],

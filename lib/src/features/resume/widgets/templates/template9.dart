@@ -20,19 +20,16 @@ class Template9 extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 100),
-                decoration: BoxDecoration(
-                  color: const Color(0xffF6F6F6),
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                  ),
-                ),
+                margin: const EdgeInsets.only(top: 100),
+                color: const Color(0xffF6F6F6),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TemplateImage(data: data),
-                  // data
+                  // education
+                  // languages
+                  // contacts
                 ],
               ),
             ],
@@ -43,8 +40,9 @@ class Template9 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              // data
-              const Spacer(),
+              // name
+              // about
+              // experience
               TemplateSkills(data: data),
               TemplateInterests(data: data),
             ],

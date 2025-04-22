@@ -29,9 +29,11 @@ class Template3 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 80),
+                  // name
                   TemplateImage(data: data),
-                  const SizedBox(height: 10),
-                  // data
+                  // contact me
+                  // educations
+                  // languages
                 ],
               ),
             ],
@@ -50,9 +52,9 @@ class Template3 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // data
                   const SizedBox(height: 80),
-                  const Spacer(),
+                  // about
+                  // experiences
                   TemplateSkills(data: data),
                   TemplateInterests(data: data),
                 ],

@@ -24,7 +24,7 @@ class Template5 extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xffF2F2F2),
                   borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
+                    topRight: const Radius.circular(20),
                   ),
                 ),
               ),
@@ -33,7 +33,9 @@ class Template5 extends StatelessWidget {
                 children: [
                   const SizedBox(height: 20),
                   TemplateImage(data: data),
-                  // data
+                  // contact me
+                  // education
+                  // language
                 ],
               ),
             ],
@@ -44,8 +46,9 @@ class Template5 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              // data
-              const Spacer(),
+              // name
+              // about
+              // experience
               TemplateSkills(data: data),
               TemplateInterests(data: data),
             ],

@@ -29,7 +29,9 @@ class Template2 extends StatelessWidget {
                 children: [
                   const SizedBox(height: 20),
                   TemplateImage(data: data),
-                  // data
+                  // contact me
+                  // educations
+                  // languages
                 ],
               ),
             ],
@@ -47,8 +49,9 @@ class Template2 extends StatelessWidget {
               ),
               Column(
                 children: [
-                  // data
-                  const Spacer(),
+                  // name
+                  // about
+                  // experiences
                   TemplateSkills(data: data),
                   TemplateInterests(data: data),
                 ],

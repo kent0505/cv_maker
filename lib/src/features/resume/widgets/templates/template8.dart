@@ -23,12 +23,12 @@ class Template8 extends StatelessWidget {
               Container(
                 height: 100,
                 width: 220,
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [
+                    colors: const [
                       Color(0xff007AFF),
                       Color(0xff084476),
                     ],
@@ -46,7 +46,9 @@ class Template8 extends StatelessWidget {
                   const SizedBox(height: 20),
                   TemplateImage(data: data),
                   const SizedBox(height: 10),
-                  // data
+                  // education
+                  // languages
+                  // contacts
                 ],
               ),
             ],
@@ -60,12 +62,12 @@ class Template8 extends StatelessWidget {
               Container(
                 height: 100,
                 width: 330,
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [
+                    colors: const [
                       Color(0xff007AFF),
                       Color(0xff084476),
                     ],
@@ -80,9 +82,9 @@ class Template8 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // data
-                  const SizedBox(height: 20),
-                  Spacer(),
+                  // name
+                  // about
+                  // experience
                   TemplateSkills(data: data),
                   TemplateInterests(data: data),
                 ],
