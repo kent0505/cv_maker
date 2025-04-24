@@ -76,8 +76,8 @@ double getWidth(int index) {
   if (index == 2) return 160;
   if (index == 3) return 160;
   if (index == 4) return 160;
-
   if (index == 5) return 160;
+
   if (index == 6) return 100;
   if (index == 7) return 120;
   if (index == 8) return 120;

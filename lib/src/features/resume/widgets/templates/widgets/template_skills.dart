@@ -2,83 +2,61 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/config/constants.dart';
 import '../../../../../core/models/data.dart';
-import '../../../../../core/utils.dart';
 
 class TemplateSkills extends StatelessWidget {
-  const TemplateSkills({super.key, required this.data});
+  const TemplateSkills({
+    super.key,
+    required this.data,
+    this.left = 0,
+  });
 
   final Data data;
+  final double left;
 
   @override
   Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
     final skills = data.skills;
+    final template = data.resume!.template;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (skills.isNotEmpty) ...[
-          Row(
-            children: [
-              const SizedBox(width: 22.5),
-              Container(
-                height: 22,
-                width: 4,
-                margin: const EdgeInsets.symmetric(horizontal: 3),
-                decoration: BoxDecoration(
-                  color: const Color(0xffF3AA03),
-                  borderRadius: BorderRadius.circular(1),
-                ),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                l.skills,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getTitleFontSize(data.resume!.template),
-                  fontFamily: AppFonts.gotham900,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 37.5,
-              right: 5,
-            ),
-            child: Wrap(
-              runSpacing: 6,
-              spacing: 4,
-              children: List.generate(
-                skills.length,
-                (index) {
-                  return _Card(skills[index].title);
-                },
-              ),
-            ),
-          ),
-          const SizedBox(height: 6),
-        ],
-      ],
+    return Padding(
+      padding: EdgeInsets.only(
+        left: left,
+      ),
+      child: Wrap(
+        runSpacing: 6,
+        spacing: 4,
+        children: List.generate(
+          skills.length,
+          (index) {
+            return _Card(
+              title: skills[index].title,
+              index: template,
+            );
+          },
+        ),
+      ),
     );
   }
 }
 
 class _Card extends StatelessWidget {
-  const _Card(this.title);
+  const _Card({
+    required this.title,
+    required this.index,
+  });
 
   final String title;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(_getBorderRadius(index)),
         border: Border.all(
           width: 0.5,
-          color: const Color(0xffF3AA03),
+          color: _getBorderColor(index),
         ),
       ),
       child: Row(
@@ -96,4 +74,35 @@ class _Card extends StatelessWidget {
       ),
     );
   }
+}
+
+Color _getBorderColor(int index) {
+  if (index == 1) return Color(0xffF3AA03);
+  if (index == 2) return Color(0xffF3AA03);
+  if (index == 3) return Color(0xffF3AA03);
+  if (index == 4) return Color(0xffF3AA03);
+  if (index == 5) return Color(0xffF3AA03);
+  if (index == 6) return Color(0xff007AFF);
+  if (index == 7) return Color(0xff007AFF);
+  if (index == 8) return Color(0xff007AFF);
+  if (index == 9) return Color(0xff007AFF);
+  if (index == 11) return Color(0xff007AFF);
+  if (index == 12) return Color(0xffEDC6B5);
+  if (index == 13) return Color(0xffEDC6B5);
+  if (index == 14) return Color(0xffF3AA03);
+  if (index == 15) return Color(0xffF3AA03);
+  return Colors.black;
+}
+
+double _getBorderRadius(int index) {
+  if (index == 1) return 30;
+  if (index == 2) return 30;
+  if (index == 3) return 30;
+  if (index == 4) return 30;
+  if (index == 5) return 30;
+  if (index == 12) return 30;
+  if (index == 13) return 30;
+  if (index == 14) return 30;
+  if (index == 15) return 30;
+  return 0;
 }

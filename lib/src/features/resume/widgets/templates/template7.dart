@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
+import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
+import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template7 extends StatelessWidget {
@@ -42,8 +44,9 @@ class Template7 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              // name
-              // about
+              const SizedBox(height: 40),
+              TemplateName(data: data),
+              TemplateAbout(data: data),
               // experience
               TemplateSkills(data: data),
               TemplateInterests(data: data),

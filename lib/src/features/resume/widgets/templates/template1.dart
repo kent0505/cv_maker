@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/config/constants.dart';
 import '../../../../core/models/data.dart';
+import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
+import 'widgets/template_job.dart';
+import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template1 extends StatelessWidget {
@@ -12,6 +16,8 @@ class Template1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     return Row(
       children: [
         Container(
@@ -29,8 +35,14 @@ class Template1 extends StatelessWidget {
                 children: [
                   const SizedBox(height: 20),
                   TemplateImage(data: data),
+                  const SizedBox(height: 10),
+                  _LeftTitle(l.contactMe),
                   // contact me
+                  const SizedBox(height: 10),
+                  _LeftTitle(l.education),
                   // educations
+                  const SizedBox(height: 10),
+                  _LeftTitle(l.languages),
                   // languages
                 ],
               ),
@@ -53,15 +65,130 @@ class Template1 extends StatelessWidget {
                 color: const Color(0xff333333),
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // name
-                  // about
+                  const SizedBox(height: 40),
+                  Row(
+                    children: [
+                      const SizedBox(width: 25.5),
+                      Container(
+                        height: 40,
+                        width: 4,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF3AA03),
+                          borderRadius: BorderRadius.circular(1),
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TemplateName(
+                              data: data,
+                              left: 8,
+                              right: 5,
+                            ),
+                            const SizedBox(height: 6),
+                            TemplateJob(
+                              data: data,
+                              left: 8,
+                              right: 5,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  _RightTitle(l.aboutMe),
+                  TemplateAbout(
+                    data: data,
+                    left: 37.5,
+                    right: 5,
+                  ),
+                  const SizedBox(height: 10),
+                  _RightTitle(l.jobExperience),
+                  const Spacer(),
                   // experiences
-                  TemplateSkills(data: data),
-                  TemplateInterests(data: data),
+                  _RightTitle(l.skills),
+                  TemplateSkills(
+                    data: data,
+                    left: 37.5,
+                  ),
+                  const SizedBox(height: 10),
+                  _RightTitle(l.interests),
+                  TemplateInterests(
+                    data: data,
+                    left: 37.5,
+                  ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _LeftTitle extends StatelessWidget {
+  const _LeftTitle(this.title);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 25.5),
+        Container(
+          height: 30,
+          width: 4,
+          decoration: BoxDecoration(
+            color: const Color(0xffF3AA03),
+            borderRadius: BorderRadius.circular(1),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: AppFonts.gotham900,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _RightTitle extends StatelessWidget {
+  const _RightTitle(this.title);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const SizedBox(width: 25.5),
+        Container(
+          height: 30,
+          width: 4,
+          decoration: BoxDecoration(
+            color: const Color(0xffF3AA03),
+            borderRadius: BorderRadius.circular(1),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontFamily: AppFonts.gotham900,
           ),
         ),
       ],

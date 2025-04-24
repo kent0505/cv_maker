@@ -25,7 +25,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.nameController,
           hintText: l.alex,
-          maxLength: 50,
+          maxLength: 30,
           onChanged: (_) {
             provider.checkActive();
           },
@@ -47,7 +47,7 @@ class ResumeInformation extends StatelessWidget {
         TxtField(
           controller: provider.emailController,
           hintText: 'yourmail@example.com',
-          maxLength: 50,
+          maxLength: 30,
           email: true,
           onChanged: (_) {
             provider.checkActive();

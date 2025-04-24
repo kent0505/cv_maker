@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
+import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
+import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template8 extends StatelessWidget {
@@ -24,11 +26,11 @@ class Template8 extends StatelessWidget {
                 height: 100,
                 width: 220,
                 margin: const EdgeInsets.only(top: 60),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: const [
+                    colors: [
                       Color(0xff007AFF),
                       Color(0xff084476),
                     ],
@@ -63,11 +65,11 @@ class Template8 extends StatelessWidget {
                 height: 100,
                 width: 330,
                 margin: const EdgeInsets.only(top: 60),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: const [
+                    colors: [
                       Color(0xff007AFF),
                       Color(0xff084476),
                     ],
@@ -82,8 +84,10 @@ class Template8 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // name
-                  // about
+                  const SizedBox(height: 80),
+                  TemplateName(data: data),
+                  TemplateAbout(data: data),
+                  Spacer(),
                   // experience
                   TemplateSkills(data: data),
                   TemplateInterests(data: data),

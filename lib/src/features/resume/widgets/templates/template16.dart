@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
+import 'widgets/template_about.dart';
 import 'widgets/template_interests.dart';
+import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template16 extends StatelessWidget {
@@ -19,7 +21,7 @@ class Template16 extends StatelessWidget {
           color: Colors.black,
           child: Column(
             children: [
-              // name
+              TemplateName(data: data),
             ],
           ),
         ),
@@ -29,7 +31,7 @@ class Template16 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              // about
+              TemplateAbout(data: data),
             ],
           ),
         ),
