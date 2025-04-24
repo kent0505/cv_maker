@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_job.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template13 extends StatelessWidget {
@@ -28,13 +25,13 @@ class Template13 extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: TemplateName(data: data),
-                      ),
+                      // Expanded(
+                      //   child: TemplateName(data: data),
+                      // ),
                       const SizedBox(width: 100),
-                      Expanded(
-                        child: TemplateJob(data: data),
-                      ),
+                      // Expanded(
+                      //   child: TemplateJob(data: data),
+                      // ),
                     ],
                   ),
                 ],
@@ -53,7 +50,7 @@ class Template13 extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TemplateAbout(data: data),
+                        // TemplateAbout(data: data),
                         // experience
                       ],
                     ),

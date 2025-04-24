@@ -47,21 +47,10 @@ class ResumeEducation extends StatelessWidget {
           },
         ),
         const SizedBox(height: 16),
-        FieldTitle(l.universitySpecialization),
-        const SizedBox(height: 4),
-        TxtField(
-          controller: controllers[2],
-          hintText: l.marketing,
-          maxLength: 50,
-          onChanged: (_) {
-            provider.checkActive();
-          },
-        ),
-        const SizedBox(height: 16),
         FieldTitle(l.universityStartYear),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[3],
+          controller: controllers[2],
           hintText: '2025',
           number: true,
           maxLength: 4,
@@ -73,7 +62,7 @@ class ResumeEducation extends StatelessWidget {
         FieldTitle(l.universityEndYear),
         const SizedBox(height: 4),
         TxtField(
-          controller: controllers[4],
+          controller: controllers[3],
           hintText: '2025',
           number: true,
           maxLength: 4,

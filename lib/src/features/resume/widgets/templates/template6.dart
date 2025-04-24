@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/config/constants.dart';
 import '../../../../core/models/data.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_job.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template6 extends StatelessWidget {
@@ -36,13 +33,13 @@ class Template6 extends StatelessWidget {
                 color: const Color(0xff007AFF),
               ),
               const SizedBox(height: 20),
-              TemplateName(data: data),
+              // TemplateName(data: data),
               const SizedBox(height: 6),
-              Container(
-                padding: const EdgeInsets.all(10),
-                color: const Color(0xffD9D9D9),
-                child: TemplateJob(data: data),
-              ),
+              // Container(
+              //   padding: const EdgeInsets.all(10),
+              //   color: const Color(0xffD9D9D9),
+              //   child: TemplateJob(data: data),
+              // ),
               const SizedBox(height: 20),
               Container(
                 width: double.infinity,
@@ -91,7 +88,7 @@ class Template6 extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   _RightTitle(l.aboutMe),
-                  TemplateAbout(data: data),
+                  // TemplateAbout(data: data),
                   const SizedBox(height: 20),
                   _RightTitle(l.jobExperience),
                   // experience

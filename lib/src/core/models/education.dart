@@ -3,7 +3,6 @@ class Education {
     required this.id,
     required this.name,
     required this.faculty,
-    required this.specialization,
     required this.startYear,
     required this.endYear,
   });
@@ -11,7 +10,6 @@ class Education {
   final int id;
   String name;
   String faculty;
-  String specialization;
   String startYear;
   String endYear;
 
@@ -20,7 +18,6 @@ class Education {
       'id': id,
       'name': name,
       'faculty': faculty,
-      'specialization': specialization,
       'startYear': startYear,
       'endYear': endYear,
     };
@@ -31,7 +28,6 @@ class Education {
       id: map['id'],
       name: map['name'],
       faculty: map['faculty'],
-      specialization: map['specialization'],
       startYear: map['startYear'],
       endYear: map['endYear'],
     );

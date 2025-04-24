@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template18 extends StatelessWidget {
@@ -25,8 +23,8 @@ class Template18 extends StatelessWidget {
                 width: 330,
                 child: Column(
                   children: [
-                    TemplateName(data: data),
-                    TemplateAbout(data: data),
+                    // TemplateName(data: data),
+                    // TemplateAbout(data: data),
                   ],
                 ),
               ),

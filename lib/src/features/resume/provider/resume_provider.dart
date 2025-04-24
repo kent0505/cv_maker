@@ -49,7 +49,7 @@ class ResumeProvider extends ChangeNotifier {
   final aboutController = TextEditingController();
 
   List<List<TextEditingController>> educationControllers = [
-    List.generate(5, (_) => TextEditingController()),
+    List.generate(4, (_) => TextEditingController()),
   ];
   List<List<TextEditingController>> experienceControllers = [
     List.generate(6, (_) => TextEditingController()),
@@ -76,7 +76,6 @@ class ResumeProvider extends ChangeNotifier {
           return [
             TextEditingController(text: edu.name),
             TextEditingController(text: edu.faculty),
-            TextEditingController(text: edu.specialization),
             TextEditingController(text: edu.startYear),
             TextEditingController(text: edu.endYear),
           ];
@@ -108,9 +107,8 @@ class ResumeProvider extends ChangeNotifier {
         id: _id,
         name: controllers[0].text,
         faculty: controllers[1].text,
-        specialization: controllers[2].text,
-        startYear: controllers[3].text,
-        endYear: controllers[4].text,
+        startYear: controllers[2].text,
+        endYear: controllers[3].text,
       );
     }).toList();
   }
@@ -223,7 +221,7 @@ class ResumeProvider extends ChangeNotifier {
         break;
       case 3:
         educationControllers.add(
-          List.generate(5, (_) => TextEditingController()),
+          List.generate(4, (_) => TextEditingController()),
         );
         break;
       case 4:

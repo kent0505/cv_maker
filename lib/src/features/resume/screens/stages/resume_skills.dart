@@ -25,7 +25,7 @@ class ResumeSkills extends StatelessWidget {
           TxtField(
             controller: provider.skillController,
             hintText: l.patience,
-            maxLength: 20,
+            maxLength: 14,
             onChanged: (_) {
               provider.checkActive();
             },

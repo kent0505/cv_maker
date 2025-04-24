@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template8 extends StatelessWidget {
@@ -85,8 +83,8 @@ class Template8 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 80),
-                  TemplateName(data: data),
-                  TemplateAbout(data: data),
+                  // TemplateName(data: data),
+                  // TemplateAbout(data: data),
                   Spacer(),
                   // experience
                   TemplateSkills(data: data),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/models/data.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template20 extends StatelessWidget {
@@ -23,7 +21,7 @@ class Template20 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 60),
-              TemplateName(data: data),
+              // TemplateName(data: data),
               const SizedBox(height: 40),
               TemplateImage(data: data),
               // contacts
@@ -36,7 +34,7 @@ class Template20 extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              TemplateAbout(data: data),
+              // TemplateAbout(data: data),
               // experiences
               const Spacer(),
               TemplateSkills(data: data),

@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/config/constants.dart';
 import '../../../../core/models/data.dart';
 import '../../../../core/widgets/svg_widget.dart';
-import 'widgets/template_about.dart';
 import 'widgets/template_image.dart';
 import 'widgets/template_interests.dart';
-import 'widgets/template_name.dart';
 import 'widgets/template_skills.dart';
 
 class Template10 extends StatelessWidget {
@@ -30,9 +28,9 @@ class Template10 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TemplateName(data: data),
+                  // TemplateName(data: data),
                   // contacts
-                  TemplateAbout(data: data),
+                  // TemplateAbout(data: data),
                   TemplateSkills(data: data),
                   // educations
                 ],

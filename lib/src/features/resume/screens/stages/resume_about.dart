@@ -27,7 +27,7 @@ class ResumeAbout extends StatelessWidget {
           controller: provider.aboutController,
           hintText: l.aboutYou,
           multiline: true,
-          maxLength: 400,
+          maxLength: 200,
           onChanged: (_) {
             provider.checkActive();
           },
