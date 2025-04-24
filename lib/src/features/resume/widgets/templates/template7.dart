@@ -41,8 +41,10 @@ class Template7 extends StatelessWidget {
         ),
         Container(
           width: 330,
+          padding: EdgeInsets.symmetric(horizontal: 20),
           color: Colors.white,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
               TemplateName(data: data),

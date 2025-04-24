@@ -31,6 +31,7 @@ class Template4 extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               TemplateImage(data: data),
+              const SizedBox(height: 20),
               TemplateName(
                 data: data,
                 left: 20,
@@ -65,32 +66,23 @@ class Template4 extends StatelessWidget {
         Container(
           width: 309,
           color: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
               _RightTitle(l.aboutMe),
-              TemplateAbout(
-                data: data,
-                left: 8,
-                right: 8,
-              ),
+              TemplateAbout(data: data),
               const _Divider(),
               _RightTitle(l.jobExperience),
               const Spacer(),
               // experiences
               const _Divider(),
               _RightTitle(l.skills),
-              TemplateSkills(
-                data: data,
-                left: 8,
-              ),
+              TemplateSkills(data: data),
               const _Divider(),
               _RightTitle(l.interests),
-              TemplateInterests(
-                data: data,
-                left: 8,
-              ),
+              TemplateInterests(data: data),
               const SizedBox(height: 20),
             ],
           ),
@@ -107,10 +99,7 @@ class _Divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      margin: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 8,
-      ),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       color: const Color(0xff333333),
     );
   }
@@ -125,10 +114,13 @@ class _LeftTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
+      textAlign: TextAlign.center,
       style: const TextStyle(
         color: Colors.black,
         fontSize: 20,
         fontFamily: AppFonts.gotham900,
+        fontWeight: FontWeight.w900,
+        height: 1,
       ),
     );
   }
@@ -143,18 +135,14 @@ class _RightTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
-      child: Row(
-        children: [
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontFamily: AppFonts.gotham900,
-            ),
-          ),
-        ],
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 24,
+          fontFamily: AppFonts.gotham900,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   }

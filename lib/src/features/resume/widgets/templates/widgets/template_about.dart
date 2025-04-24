@@ -7,7 +7,7 @@ class TemplateAbout extends StatelessWidget {
   const TemplateAbout({
     super.key,
     required this.data,
-    this.maxLines = 4,
+    this.maxLines = 5,
     this.left = 0,
     this.right = 0,
   });

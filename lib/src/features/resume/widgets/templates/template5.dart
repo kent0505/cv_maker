@@ -34,21 +34,24 @@ class Template5 extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  TemplateImage(data: data),
-                  const SizedBox(height: 20),
-                  _LeftTitle(l.contactMe),
-                  // contact me
-                  const SizedBox(height: 20),
-                  _LeftTitle(l.education),
-                  // education
-                  const SizedBox(height: 20),
-                  _LeftTitle(l.languages),
-                  // language
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    TemplateImage(data: data),
+                    const SizedBox(height: 20),
+                    _LeftTitle(l.contactMe),
+                    // contact me
+                    const SizedBox(height: 20),
+                    _LeftTitle(l.education),
+                    // education
+                    const SizedBox(height: 20),
+                    _LeftTitle(l.languages),
+                    // language
+                  ],
+                ),
               ),
             ],
           ),
@@ -56,49 +59,33 @@ class Template5 extends StatelessWidget {
         Container(
           width: 330,
           color: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TemplateName(
-                data: data,
-                left: 30,
-                right: 30,
-              ),
+              TemplateName(data: data),
               const SizedBox(height: 6),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 30),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: const Color(0xffF3AA03),
                   borderRadius: BorderRadius.circular(40),
                 ),
-                child: TemplateJob(
-                  data: data,
-                ),
+                child: TemplateJob(data: data),
               ),
               const SizedBox(height: 20),
               _RightTitle(l.aboutMe),
-              TemplateAbout(
-                data: data,
-                left: 30,
-                right: 30,
-              ),
+              TemplateAbout(data: data),
               const SizedBox(height: 20),
               _RightTitle(l.jobExperience),
               const Spacer(),
               // experience
               const SizedBox(height: 20),
               _RightTitle(l.skills),
-              TemplateSkills(
-                data: data,
-                left: 30,
-              ),
+              TemplateSkills(data: data),
               const SizedBox(height: 20),
               _RightTitle(l.interests),
-              TemplateInterests(
-                data: data,
-                left: 30,
-              ),
+              TemplateInterests(data: data),
               const SizedBox(height: 20),
             ],
           ),
@@ -116,7 +103,6 @@ class _LeftTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 30),
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 10,
@@ -145,10 +131,7 @@ class _RightTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        left: 30,
-        bottom: 6,
-      ),
+      margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 10,

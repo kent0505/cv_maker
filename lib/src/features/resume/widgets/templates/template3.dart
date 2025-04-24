@@ -35,17 +35,22 @@ class Template3 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  TemplateName(
-                    data: data,
-                    left: 20,
-                    right: 20,
+                  Column(
+                    children: [
+                      TemplateName(
+                        data: data,
+                        left: 20,
+                        right: 20,
+                      ),
+                      const SizedBox(height: 6),
+                      TemplateJob(
+                        data: data,
+                        left: 20,
+                        right: 20,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 6),
-                  TemplateJob(
-                    data: data,
-                    left: 20,
-                    right: 20,
-                  ),
+
                   const SizedBox(height: 20),
                   TemplateImage(data: data),
                   const SizedBox(height: 20),
@@ -72,45 +77,40 @@ class Template3 extends StatelessWidget {
                 width: 330,
                 color: const Color(0xffD9D9D9),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 160,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 20),
-                        _RightTitle(l.aboutMe),
-                        const SizedBox(height: 6),
-                        TemplateAbout(
-                          data: data,
-                          maxLines: 9,
-                          left: 37.5,
-                          right: 20,
-                        ),
-                      ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 160,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          _RightTitle(l.aboutMe),
+                          const SizedBox(height: 6),
+                          TemplateAbout(
+                            data: data,
+                            maxLines: 9,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.jobExperience),
-                  // experiences
-                  Spacer(),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.skills),
-                  const SizedBox(height: 6),
-                  TemplateSkills(
-                    data: data,
-                    left: 37.5,
-                  ),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.interests),
-                  const SizedBox(height: 6),
-                  TemplateInterests(
-                    data: data,
-                    left: 37.5,
-                  ),
-                  const SizedBox(height: 20),
-                ],
+                    const SizedBox(height: 20),
+                    _RightTitle(l.jobExperience),
+                    // experiences
+                    Spacer(),
+                    const SizedBox(height: 20),
+                    _RightTitle(l.skills),
+                    const SizedBox(height: 6),
+                    TemplateSkills(data: data),
+                    const SizedBox(height: 20),
+                    _RightTitle(l.interests),
+                    const SizedBox(height: 6),
+                    TemplateInterests(data: data),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ],
           ),
@@ -129,7 +129,6 @@ class _LeftTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 25.5),
         Container(
           height: 30,
           width: 4,
@@ -139,12 +138,16 @@ class _LeftTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontFamily: AppFonts.gotham900,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: AppFonts.gotham900,
+              fontWeight: FontWeight.w900,
+              height: 1,
+            ),
           ),
         ),
       ],
@@ -161,7 +164,6 @@ class _RightTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 25.5),
         Container(
           height: 30,
           width: 4,
@@ -177,6 +179,7 @@ class _RightTitle extends StatelessWidget {
             color: Colors.black,
             fontSize: 30,
             fontFamily: AppFonts.gotham900,
+            fontWeight: FontWeight.w900,
           ),
         ),
       ],

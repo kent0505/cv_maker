@@ -21,6 +21,7 @@ class TemplateInterests extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: left,
+        right: 10,
       ),
       child: Wrap(
         runSpacing: 6,

@@ -30,10 +30,8 @@ class ResumeButtons extends StatelessWidget {
         i == 3 && !provider.canContinue ||
         i == 4 && !provider.canContinue;
     final addOneMore = i == 3 && provider.educationControllers.length != 2 ||
-        i == 4 && provider.experienceControllers.length != 4;
-    final add = i == 2 && provider.languages.length != 5 ||
-        i == 5 && provider.canAdd ||
-        i == 6 && provider.canAdd;
+        i == 4 && provider.experienceControllers.length != 3;
+    final add = i == 2 && provider.languages.length != 5 || i == 5 || i == 6;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

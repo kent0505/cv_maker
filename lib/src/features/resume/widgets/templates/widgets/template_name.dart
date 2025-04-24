@@ -29,10 +29,13 @@ class TemplateName extends StatelessWidget {
         resume.name,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: _getNameColor(index),
           fontSize: _getNameSize(index),
           fontFamily: _getNameFamily(index),
+          fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

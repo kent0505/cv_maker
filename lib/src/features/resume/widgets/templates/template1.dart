@@ -99,14 +99,14 @@ class Template1 extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   _RightTitle(l.aboutMe),
                   TemplateAbout(
                     data: data,
                     left: 37.5,
                     right: 5,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   _RightTitle(l.jobExperience),
                   const Spacer(),
                   // experiences
@@ -115,13 +115,13 @@ class Template1 extends StatelessWidget {
                     data: data,
                     left: 37.5,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   _RightTitle(l.interests),
                   TemplateInterests(
                     data: data,
                     left: 37.5,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                 ],
               ),
             ],
@@ -151,12 +151,15 @@ class _LeftTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontFamily: AppFonts.gotham900,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: AppFonts.gotham900,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         ),
       ],
@@ -183,12 +186,15 @@ class _RightTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontFamily: AppFonts.gotham900,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontFamily: AppFonts.gotham900,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         ),
       ],

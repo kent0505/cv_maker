@@ -49,6 +49,7 @@ class Template2 extends StatelessWidget {
                       ),
                       Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TemplateName(
                               data: data,
@@ -156,6 +157,7 @@ class _LeftTitle extends StatelessWidget {
             color: Colors.white,
             fontSize: 20,
             fontFamily: AppFonts.gotham900,
+            fontWeight: FontWeight.w900,
           ),
         ),
       ],
@@ -188,6 +190,7 @@ class _RightTitle extends StatelessWidget {
             color: Colors.black,
             fontSize: 30,
             fontFamily: AppFonts.gotham900,
+            fontWeight: FontWeight.w900,
           ),
         ),
       ],
