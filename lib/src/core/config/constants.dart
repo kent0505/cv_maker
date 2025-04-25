@@ -86,14 +86,6 @@ abstract final class Levels {
   static const c2 = 'Native';
 }
 
-// abstract final class MaxLen {
-//   static const a1 = 'A1';
-//   static const a1 = 'A1';
-//   static const a1 = 'A1';
-//   static const a1 = 'A1';
-//   static const a1 = 'A1';
-// }
-
 abstract final class Tables {
   static const resumes = 'resumes';
   static const languages = 'languages';

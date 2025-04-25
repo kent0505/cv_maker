@@ -17,7 +17,17 @@ class TemplateImage extends StatelessWidget {
     final borderRadius = getBorderRadius(height, index);
 
     return resume.photo.isEmpty
-        ? SizedBox()
+        ? SizedBox(
+            height: index == 3
+                ? 60
+                : index == 5
+                    ? 80
+                    : index == 8
+                        ? 140
+                        : index == 9
+                            ? 100
+                            : 0,
+          )
         : Center(
             child: Container(
               decoration: BoxDecoration(
