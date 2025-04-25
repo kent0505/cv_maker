@@ -76,7 +76,7 @@ class Template8 extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 10),
-                    _LeftTitle(l.contactMe),
+                    _LeftTitle(l.contacts),
                     _Contact(
                       title: resume.phone,
                       asset: Assets.phone,

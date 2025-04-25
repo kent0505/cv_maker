@@ -59,7 +59,7 @@ class Template7 extends StatelessWidget {
                   );
                 },
               ),
-              _LeftTitle(l.contactMe),
+              _LeftTitle(l.contacts),
               _Contact(
                 title: resume.phone,
                 asset: Assets.phone,

@@ -158,6 +158,8 @@
 
     "contactMe": "Contact me",
     "@contactMe": {},
+    "contacts": "Contacts",
+    "@contacts": {},
     "aboutMe": "About me",
     "@aboutMe": {},
     "jobExperience": "Job Experience",

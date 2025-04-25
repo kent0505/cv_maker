@@ -21,6 +21,10 @@ class ResumeApplyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
 
+    // final t = templates.where((element) {
+    //   return element.id >= 11;
+    // }).toList(); // временно
+
     return Scaffold(
       appBar: Appbar(title: l.applyTemplates),
       body: ListView(

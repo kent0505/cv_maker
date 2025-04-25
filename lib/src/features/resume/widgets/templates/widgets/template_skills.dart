@@ -54,6 +54,7 @@ class _Card extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
+        color: _getColor(index),
         borderRadius: BorderRadius.circular(_getBorderRadius(index)),
         border: Border.all(
           width: 0.5,
@@ -75,6 +76,12 @@ class _Card extends StatelessWidget {
       ),
     );
   }
+}
+
+Color? _getColor(int index) {
+  if (index == 12) return Color(0xffEDC6B5);
+  if (index == 13) return Color(0xffEDC6B5);
+  return null;
 }
 
 Color _getBorderColor(int index) {

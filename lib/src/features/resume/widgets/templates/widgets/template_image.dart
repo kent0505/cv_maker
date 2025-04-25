@@ -69,7 +69,7 @@ double getHeight(int index) {
   if (index == 9) return 180;
   if (index == 10) return 140;
 
-  if (index == 11) return 200;
+  if (index == 11) return 220;
   if (index == 12) return 100;
   if (index == 13) return 160;
   if (index == 14) return 260;
@@ -94,7 +94,7 @@ double getWidth(int index) {
   if (index == 9) return 140;
   if (index == 10) return 140;
 
-  if (index == 11) return 180;
+  if (index == 11) return 200;
   if (index == 12) return 100;
   if (index == 13) return 160;
   if (index == 14) return 220;
@@ -109,6 +109,7 @@ double getWidth(int index) {
 
 BoxBorder? getBorder(int index) {
   if (index == 10 ||
+      index == 11 ||
       index == 12 ||
       index == 14 ||
       index == 15 ||
