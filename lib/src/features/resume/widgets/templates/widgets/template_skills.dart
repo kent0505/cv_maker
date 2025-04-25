@@ -61,18 +61,13 @@ class _Card extends StatelessWidget {
           color: _getBorderColor(index),
         ),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 6,
-              fontFamily: AppFonts.gotham400,
-            ),
-          ),
-        ],
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 6,
+          fontFamily: AppFonts.gotham400,
+        ),
       ),
     );
   }

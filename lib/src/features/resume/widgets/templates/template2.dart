@@ -42,7 +42,7 @@ class Template2 extends StatelessWidget {
                     name: resume.name,
                     job: resume.job,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   _LeftTitle(l.contactMe),
                   const SizedBox(height: 10),
                   _Contact(title: resume.phone),
@@ -50,7 +50,7 @@ class Template2 extends StatelessWidget {
                   _Contact(title: resume.email),
                   const SizedBox(height: 10),
                   _Contact(title: resume.city),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   if (data.educations.isNotEmpty) ...[
                     _LeftTitle(l.education),
                     ...List.generate(
@@ -61,7 +61,7 @@ class Template2 extends StatelessWidget {
                         );
                       },
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                   ],
                   if (data.languages.isNotEmpty) ...[
                     _LeftTitle(l.languages),
@@ -155,13 +155,16 @@ class _LeftTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontFamily: AppFonts.gotham900,
-            fontWeight: FontWeight.w900,
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: AppFonts.gotham900,
+              fontWeight: FontWeight.w900,
+              height: 1,
+            ),
           ),
         ),
       ],
@@ -452,6 +455,7 @@ class _Education extends StatelessWidget {
                     fontSize: 10,
                     fontFamily: AppFonts.gotham900,
                     fontWeight: FontWeight.w900,
+                    height: 1,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -506,6 +510,7 @@ class _Language extends StatelessWidget {
                 fontSize: 10,
                 fontFamily: AppFonts.gotham900,
                 fontWeight: FontWeight.w900,
+                height: 1,
               ),
             ),
           ),

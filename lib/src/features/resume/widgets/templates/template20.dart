@@ -8,7 +8,6 @@ import '../../../../core/models/language.dart';
 import '../../../../core/utils.dart';
 import '../../../../core/widgets/svg_widget.dart';
 import 'widgets/template_image.dart';
-import 'widgets/template_interests.dart';
 import 'widgets/template_skills.dart';
 
 class Template20 extends StatelessWidget {
@@ -87,14 +86,14 @@ class Template20 extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
               ],
-              if (data.interests.isNotEmpty) ...[
-                _RightTitle(l.interests),
-                TemplateInterests(
-                  data: data,
-                  left: 20,
-                ),
-                const SizedBox(height: 20),
-              ],
+              // if (data.interests.isNotEmpty) ...[
+              //   _RightTitle(l.interests),
+              //   TemplateInterests(
+              //     data: data,
+              //     left: 20,
+              //   ),
+              //   const SizedBox(height: 10),
+              // ],
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -201,7 +200,7 @@ class _RightTitle extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 20),
+          const SizedBox(width: 5),
         ],
       ),
     );

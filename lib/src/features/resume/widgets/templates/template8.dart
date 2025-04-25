@@ -56,7 +56,7 @@ class Template8 extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20),
                     TemplateImage(data: data),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 26),
                     if (data.educations.isNotEmpty) ...[
                       _LeftTitle(l.education),
                       ...List.generate(
@@ -137,11 +137,11 @@ class Template8 extends StatelessWidget {
                         job: resume.job,
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     if (resume.about.isNotEmpty) ...[
                       _RightTitle(l.aboutMe),
                       _About(title: resume.about),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                     ],
                     if (data.experiences.isNotEmpty) ...[
                       _RightTitle(l.jobExperience),
@@ -158,7 +158,7 @@ class Template8 extends StatelessWidget {
                     if (data.skills.isNotEmpty) ...[
                       _RightTitle(l.skills),
                       TemplateSkills(data: data),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                     ],
                     if (data.interests.isNotEmpty) ...[
                       _RightTitle(l.interests),
@@ -242,6 +242,7 @@ class _Name extends StatelessWidget {
             fontSize: 24,
             fontFamily: AppFonts.gotham900,
             fontWeight: FontWeight.w900,
+            height: 1,
           ),
         ),
         const SizedBox(height: 6),

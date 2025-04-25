@@ -169,6 +169,7 @@ class _LeftTitle extends StatelessWidget {
               fontSize: 20,
               fontFamily: AppFonts.gotham900,
               fontWeight: FontWeight.w900,
+              height: 1,
             ),
           ),
         ),

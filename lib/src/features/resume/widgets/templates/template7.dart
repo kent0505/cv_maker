@@ -350,6 +350,7 @@ class _Contact extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(width: 20),
         ],
       ),
     );
@@ -399,7 +400,7 @@ class _Education extends StatelessWidget {
               fontFamily: AppFonts.gotham400,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -417,6 +418,7 @@ class _Language extends StatelessWidget {
       padding: const EdgeInsets.only(
         bottom: 14,
         left: 20,
+        right: 20,
       ),
       child: Text(
         '${language.language} - ${language.level}',

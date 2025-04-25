@@ -29,24 +29,24 @@ class Template4 extends StatelessWidget {
         Container(
           width: 200,
           color: const Color(0xffD2E8E6),
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               TemplateImage(data: data),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               _Name(
                 name: resume.name,
                 job: resume.job,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               _LeftTitle(l.contactMe),
               _Contact(title: resume.phone),
               const SizedBox(height: 8),
               _Contact(title: resume.email),
               const SizedBox(height: 8),
               _Contact(title: resume.city),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               if (data.educations.isNotEmpty) ...[
                 _LeftTitle(l.education),
                 ...List.generate(
@@ -113,7 +113,6 @@ class Template4 extends StatelessWidget {
                 const _Divider(),
                 _RightTitle(l.interests),
                 TemplateInterests(data: data),
-                const SizedBox(height: 20),
               ],
             ],
           ),
@@ -328,6 +327,7 @@ class _Contact extends StatelessWidget {
       title,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
+      textAlign: TextAlign.center,
       style: const TextStyle(
         color: Colors.black,
         fontSize: 10,
@@ -348,7 +348,7 @@ class _Education extends StatelessWidget {
       children: [
         Text(
           education.name,
-          maxLines: 3,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           style: const TextStyle(
@@ -380,7 +380,7 @@ class _Education extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -394,16 +394,18 @@ class _Language extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         '${language.language} - ${language.level}',
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
+        textAlign: TextAlign.center,
         style: const TextStyle(
           color: Colors.black,
           fontSize: 10,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

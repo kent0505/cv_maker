@@ -104,7 +104,7 @@ class Template19 extends StatelessWidget {
                   data: data,
                   left: 20,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
               ],
               if (data.interests.isNotEmpty) ...[
                 _RightTitle(l.interests),
@@ -112,7 +112,7 @@ class Template19 extends StatelessWidget {
                   data: data,
                   left: 20,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
               ],
               if (data.languages.isNotEmpty) ...[
                 _RightTitle(l.languages),
@@ -254,6 +254,7 @@ class _Job extends StatelessWidget {
                 fontSize: 14,
                 fontFamily: AppFonts.gotham900,
                 fontWeight: FontWeight.w900,
+                height: 1,
               ),
             ),
           ),
@@ -313,6 +314,7 @@ class _Experience extends StatelessWidget {
                         fontSize: 10,
                         fontFamily: AppFonts.gotham900,
                         fontWeight: FontWeight.w900,
+                        height: 1,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -353,7 +355,7 @@ class _Experience extends StatelessWidget {
               fontFamily: AppFonts.gotham400,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 6),
         ],
       ),
     );
@@ -434,13 +436,14 @@ class _Education extends StatelessWidget {
         children: [
           Text(
             education.name,
-            maxLines: 3,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 10,
               fontFamily: AppFonts.gotham700,
               fontStyle: FontStyle.italic,
+              height: 1,
             ),
           ),
           const SizedBox(height: 6),
@@ -491,6 +494,7 @@ class _Language extends StatelessWidget {
           fontSize: 10,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

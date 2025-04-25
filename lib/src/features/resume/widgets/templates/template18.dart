@@ -47,7 +47,7 @@ class Template18 extends StatelessWidget {
                       ),
                       color: const Color(0xff007AFF),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     _About(title: resume.about),
                   ],
                 ),
@@ -91,7 +91,7 @@ class Template18 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TemplateImage(data: data),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                       if (data.educations.isNotEmpty) ...[
                         _Title(l.education),
                         const SizedBox(height: 6),
@@ -106,6 +106,18 @@ class Template18 extends StatelessWidget {
                           (index) {
                             return _Education(
                               education: data.educations[index],
+                            );
+                          },
+                        ),
+                      ],
+                      if (data.languages.isNotEmpty) ...[
+                        _Title(l.languages),
+                        const SizedBox(height: 10),
+                        ...List.generate(
+                          data.languages.length,
+                          (index) {
+                            return _Language(
+                              language: data.languages[index],
                             );
                           },
                         ),
@@ -158,19 +170,7 @@ class Template18 extends StatelessWidget {
                         _Title(l.interests),
                         const SizedBox(height: 10),
                         TemplateInterests(data: data),
-                        const SizedBox(height: 20),
-                      ],
-                      if (data.languages.isNotEmpty) ...[
-                        _Title(l.languages),
                         const SizedBox(height: 10),
-                        ...List.generate(
-                          data.languages.length,
-                          (index) {
-                            return _Language(
-                              language: data.languages[index],
-                            );
-                          },
-                        ),
                       ],
                     ],
                   ),
@@ -228,6 +228,7 @@ class _Name extends StatelessWidget {
               fontSize: 24,
               fontFamily: AppFonts.gotham900,
               fontWeight: FontWeight.w900,
+              height: 1,
             ),
           ),
           const SizedBox(height: 8),
@@ -412,7 +413,7 @@ class _Education extends StatelessWidget {
       children: [
         Text(
           education.name,
-          maxLines: 3,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             color: Colors.black,
@@ -441,7 +442,7 @@ class _Education extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -455,7 +456,7 @@ class _Language extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Text(
         '${language.language} - ${language.level}',
         maxLines: 2,
@@ -465,6 +466,7 @@ class _Language extends StatelessWidget {
           fontSize: 10,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

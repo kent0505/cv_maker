@@ -43,7 +43,7 @@ class Template3 extends StatelessWidget {
                       job: resume.job,
                     ),
                     TemplateImage(data: data),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     _LeftTitle(l.contactMe),
                     const SizedBox(height: 8),
                     _Contact(title: resume.phone),
@@ -51,7 +51,7 @@ class Template3 extends StatelessWidget {
                     _Contact(title: resume.email),
                     const SizedBox(height: 8),
                     _Contact(title: resume.city),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     if (data.educations.isNotEmpty) ...[
                       _LeftTitle(l.education),
                       ...List.generate(
@@ -62,7 +62,7 @@ class Template3 extends StatelessWidget {
                           );
                         },
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 10),
                     ],
                     if (data.languages.isNotEmpty) ...[
                       _LeftTitle(l.languages),
@@ -232,7 +232,7 @@ class _Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 18),
       child: Column(
         children: [
           Text(
@@ -449,6 +449,7 @@ class _Education extends StatelessWidget {
                     fontSize: 10,
                     fontFamily: AppFonts.gotham900,
                     fontWeight: FontWeight.w900,
+                    height: 1,
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -511,6 +512,7 @@ class _Language extends StatelessWidget {
                 fontSize: 10,
                 fontFamily: AppFonts.gotham900,
                 fontWeight: FontWeight.w900,
+                height: 1,
               ),
             ),
           ),

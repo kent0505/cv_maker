@@ -41,16 +41,16 @@ class Template5 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     TemplateImage(data: data),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     _LeftTitle(l.contactMe),
                     _Contact(title: resume.phone),
                     const SizedBox(height: 8),
                     _Contact(title: resume.email),
                     const SizedBox(height: 8),
                     _Contact(title: resume.city),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     if (data.educations.isNotEmpty) ...[
                       _LeftTitle(l.education),
                       ...List.generate(
@@ -86,17 +86,16 @@ class Template5 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               _Name(
                 name: resume.name,
                 job: resume.job,
               ),
-              const SizedBox(height: 6),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               if (resume.about.isNotEmpty) ...[
                 _RightTitle(l.aboutMe),
                 _About(title: resume.about),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
               ],
               if (data.experiences.isNotEmpty) ...[
                 _RightTitle(l.jobExperience),
@@ -113,7 +112,7 @@ class Template5 extends StatelessWidget {
               if (data.skills.isNotEmpty) ...[
                 _RightTitle(l.skills),
                 TemplateSkills(data: data),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
               ],
               if (data.interests.isNotEmpty) ...[
                 _RightTitle(l.interests),
@@ -388,7 +387,7 @@ class _Education extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -402,7 +401,7 @@ class _Language extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(bottom: 10),
       child: Text(
         '${language.language} - ${language.level}',
         maxLines: 2,
@@ -412,6 +411,7 @@ class _Language extends StatelessWidget {
           fontSize: 10,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

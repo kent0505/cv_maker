@@ -36,7 +36,10 @@ class Template11 extends StatelessWidget {
               if (data.educations.isNotEmpty)
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(20).copyWith(bottom: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ).copyWith(bottom: 10),
                   decoration: const BoxDecoration(
                     color: Color(0xffFBEEE1),
                     borderRadius: BorderRadius.only(
@@ -63,7 +66,10 @@ class Template11 extends StatelessWidget {
               if (data.languages.isNotEmpty)
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(20).copyWith(bottom: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ).copyWith(bottom: 10),
                   decoration: const BoxDecoration(
                     color: Color(0xffFCEBEB),
                     borderRadius: BorderRadius.only(
@@ -89,7 +95,10 @@ class Template11 extends StatelessWidget {
               const SizedBox(height: 10),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(20).copyWith(bottom: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ).copyWith(bottom: 10),
                 decoration: const BoxDecoration(
                   color: Color(0xffFBEEE1),
                   borderRadius: BorderRadius.only(
@@ -139,7 +148,10 @@ class Template11 extends StatelessWidget {
               const Spacer(),
               if (data.experiences.isNotEmpty)
                 Container(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ).copyWith(bottom: 0),
                   decoration: const BoxDecoration(
                     color: Color(0xffF8F3EF),
                     borderRadius: BorderRadius.only(
@@ -168,8 +180,11 @@ class Template11 extends StatelessWidget {
                   if (data.skills.isNotEmpty)
                     Expanded(
                       child: Container(
-                        height: 300,
-                        padding: const EdgeInsets.all(20),
+                        height: 290,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
                         decoration: const BoxDecoration(
                           color: Color(0xffF8F3EF),
                           borderRadius: BorderRadius.only(
@@ -191,8 +206,11 @@ class Template11 extends StatelessWidget {
                   if (data.interests.isNotEmpty)
                     Expanded(
                       child: Container(
-                        height: 300,
-                        padding: const EdgeInsets.all(20),
+                        height: 290,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
                         decoration: const BoxDecoration(
                           color: Color(0xffF8F3EF),
                           borderRadius: BorderRadius.only(
@@ -236,6 +254,7 @@ class _LeftTitle extends StatelessWidget {
           fontSize: 16,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );
@@ -250,7 +269,7 @@ class _RightTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Text(
         title,
         style: const TextStyle(
@@ -287,12 +306,13 @@ class _Name extends StatelessWidget {
             fontSize: 24,
             fontFamily: AppFonts.gotham900,
             fontWeight: FontWeight.w900,
+            height: 1,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         Text(
           job.toUpperCase(),
-          maxLines: 2,
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             color: Colors.black,
@@ -350,6 +370,7 @@ class _Experience extends StatelessWidget {
                       fontSize: 10,
                       fontFamily: AppFonts.gotham900,
                       fontWeight: FontWeight.w900,
+                      height: 1,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -428,6 +449,7 @@ class _Contact extends StatelessWidget {
                 color: Colors.black,
                 fontSize: 10,
                 fontFamily: AppFonts.gotham400,
+                height: 1,
               ),
             ),
           ),
@@ -456,6 +478,7 @@ class _Education extends StatelessWidget {
             fontSize: 10,
             fontFamily: AppFonts.gotham700,
             fontStyle: FontStyle.italic,
+            height: 1,
           ),
         ),
         const SizedBox(height: 6),
@@ -478,7 +501,7 @@ class _Education extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
       ],
     );
   }
@@ -492,7 +515,7 @@ class _Language extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Text(
         '${language.language} - ${language.level}',
         maxLines: 2,
@@ -502,6 +525,7 @@ class _Language extends StatelessWidget {
           fontSize: 10,
           fontFamily: AppFonts.gotham900,
           fontWeight: FontWeight.w900,
+          height: 1,
         ),
       ),
     );

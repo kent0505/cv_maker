@@ -34,7 +34,7 @@ class Template10 extends StatelessWidget {
                   children: [
                     const SizedBox(height: 130),
                     _Name(name: resume.name),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 20),
                     _Title(l.contactMe),
                     _Contact(
                       title: resume.phone,
@@ -48,11 +48,11 @@ class Template10 extends StatelessWidget {
                       title: resume.city,
                       asset: Assets.location,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     if (resume.about.isNotEmpty) ...[
                       _Title(l.aboutMe),
                       _About(title: resume.about),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                     ],
                     if (data.skills.isNotEmpty) ...[
                       _Title(l.skills),
@@ -151,7 +151,7 @@ class Template10 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TemplateImage(data: data),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 30),
                     if (data.languages.isNotEmpty) ...[
                       _Title(l.languages),
                       ...List.generate(
@@ -162,7 +162,6 @@ class Template10 extends StatelessWidget {
                           );
                         },
                       ),
-                      const SizedBox(height: 10),
                     ],
                     if (data.interests.isNotEmpty) ...[
                       _Title(l.interests),
@@ -369,6 +368,7 @@ class _Data extends StatelessWidget {
                 color: Colors.black,
                 fontSize: 10,
                 fontFamily: AppFonts.gotham700,
+                height: 1,
               ),
             ),
           ),
@@ -414,7 +414,7 @@ class _Language extends StatelessWidget {
               fontFamily: AppFonts.gotham400,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 4),
           Stack(
             children: [
               Container(
