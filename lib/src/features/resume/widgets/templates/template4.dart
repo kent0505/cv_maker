@@ -47,24 +47,28 @@ class Template4 extends StatelessWidget {
               const SizedBox(height: 8),
               _Contact(title: resume.city),
               const SizedBox(height: 20),
-              _LeftTitle(l.education),
-              ...List.generate(
-                data.educations.length,
-                (index) {
-                  return _Education(
-                    education: data.educations[index],
-                  );
-                },
-              ),
-              _LeftTitle(l.languages),
-              ...List.generate(
-                data.languages.length,
-                (index) {
-                  return _Language(
-                    language: data.languages[index],
-                  );
-                },
-              ),
+              if (data.educations.isNotEmpty) ...[
+                _LeftTitle(l.education),
+                ...List.generate(
+                  data.educations.length,
+                  (index) {
+                    return _Education(
+                      education: data.educations[index],
+                    );
+                  },
+                ),
+              ],
+              if (data.languages.isNotEmpty) ...[
+                _LeftTitle(l.languages),
+                ...List.generate(
+                  data.languages.length,
+                  (index) {
+                    return _Language(
+                      language: data.languages[index],
+                    );
+                  },
+                ),
+              ],
             ],
           ),
         ),
@@ -84,25 +88,33 @@ class Template4 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              _RightTitle(l.aboutMe),
-              _About(title: resume.about),
-              const _Divider(),
-              _RightTitle(l.jobExperience),
-              ...List.generate(
-                data.experiences.length,
-                (index) {
-                  return _Experience(
-                    experience: data.experiences[index],
-                  );
-                },
-              ),
-              const _Divider(),
-              _RightTitle(l.skills),
-              TemplateSkills(data: data),
-              const _Divider(),
-              _RightTitle(l.interests),
-              TemplateInterests(data: data),
-              const SizedBox(height: 20),
+              if (resume.about.isNotEmpty) ...[
+                _RightTitle(l.aboutMe),
+                _About(title: resume.about),
+              ],
+              if (data.experiences.isNotEmpty) ...[
+                const _Divider(),
+                _RightTitle(l.jobExperience),
+                ...List.generate(
+                  data.experiences.length,
+                  (index) {
+                    return _Experience(
+                      experience: data.experiences[index],
+                    );
+                  },
+                ),
+              ],
+              if (data.skills.isNotEmpty) ...[
+                const _Divider(),
+                _RightTitle(l.skills),
+                TemplateSkills(data: data),
+              ],
+              if (data.interests.isNotEmpty) ...[
+                const _Divider(),
+                _RightTitle(l.interests),
+                TemplateInterests(data: data),
+                const SizedBox(height: 20),
+              ],
             ],
           ),
         ),

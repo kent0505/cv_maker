@@ -41,15 +41,17 @@ class Template19 extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 20),
-                      _LeftTitle(l.education),
-                      ...List.generate(
-                        data.educations.length,
-                        (index) {
-                          return _Education(
-                            education: data.educations[index],
-                          );
-                        },
-                      ),
+                      if (data.educations.isNotEmpty) ...[
+                        _LeftTitle(l.education),
+                        ...List.generate(
+                          data.educations.length,
+                          (index) {
+                            return _Education(
+                              education: data.educations[index],
+                            );
+                          },
+                        ),
+                      ],
                       _LeftTitle(l.contacts),
                       _Contact(
                         title: 'Phone',
@@ -80,39 +82,49 @@ class Template19 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              _RightTitle(l.aboutMe),
-              _About(title: resume.about),
-              const SizedBox(height: 10),
-              _RightTitle(l.jobExperience),
-              ...List.generate(
-                data.experiences.length,
-                (index) {
-                  return _Experience(
-                    experience: data.experiences[index],
-                  );
-                },
-              ),
-              _RightTitle(l.skills),
-              TemplateSkills(
-                data: data,
-                left: 20,
-              ),
-              const SizedBox(height: 20),
-              _RightTitle(l.interests),
-              TemplateInterests(
-                data: data,
-                left: 20,
-              ),
-              const SizedBox(height: 20),
-              _RightTitle(l.languages),
-              ...List.generate(
-                data.languages.length,
-                (index) {
-                  return _Language(
-                    language: data.languages[index],
-                  );
-                },
-              ),
+              if (resume.about.isNotEmpty) ...[
+                _RightTitle(l.aboutMe),
+                _About(title: resume.about),
+                const SizedBox(height: 10),
+              ],
+              if (data.experiences.isNotEmpty) ...[
+                _RightTitle(l.jobExperience),
+                ...List.generate(
+                  data.experiences.length,
+                  (index) {
+                    return _Experience(
+                      experience: data.experiences[index],
+                    );
+                  },
+                ),
+              ],
+              if (data.skills.isNotEmpty) ...[
+                _RightTitle(l.skills),
+                TemplateSkills(
+                  data: data,
+                  left: 20,
+                ),
+                const SizedBox(height: 20),
+              ],
+              if (data.interests.isNotEmpty) ...[
+                _RightTitle(l.interests),
+                TemplateInterests(
+                  data: data,
+                  left: 20,
+                ),
+                const SizedBox(height: 20),
+              ],
+              if (data.languages.isNotEmpty) ...[
+                _RightTitle(l.languages),
+                ...List.generate(
+                  data.languages.length,
+                  (index) {
+                    return _Language(
+                      language: data.languages[index],
+                    );
+                  },
+                ),
+              ],
             ],
           ),
         ),

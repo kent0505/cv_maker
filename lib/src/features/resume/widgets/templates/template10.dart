@@ -49,30 +49,36 @@ class Template10 extends StatelessWidget {
                       asset: Assets.location,
                     ),
                     const SizedBox(height: 20),
-                    _Title(l.aboutMe),
-                    _About(title: resume.about),
-                    const SizedBox(height: 20),
-                    _Title(l.skills),
-                    ...List.generate(
-                      data.skills.length,
-                      (index) {
-                        return _Data(
-                          title: data.skills[index].title,
-                          index: index,
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    _Title(l.education),
-                    ...List.generate(
-                      data.educations.length,
-                      (index) {
-                        return _Data(
-                          title: data.educations[index].name,
-                          index: index,
-                        );
-                      },
-                    ),
+                    if (resume.about.isNotEmpty) ...[
+                      _Title(l.aboutMe),
+                      _About(title: resume.about),
+                      const SizedBox(height: 20),
+                    ],
+                    if (data.skills.isNotEmpty) ...[
+                      _Title(l.skills),
+                      ...List.generate(
+                        data.skills.length,
+                        (index) {
+                          return _Data(
+                            title: data.skills[index].title,
+                            index: index,
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                    if (data.educations.isNotEmpty) ...[
+                      _Title(l.education),
+                      ...List.generate(
+                        data.educations.length,
+                        (index) {
+                          return _Data(
+                            title: data.educations[index].name,
+                            index: index,
+                          );
+                        },
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -146,26 +152,30 @@ class Template10 extends StatelessWidget {
                   children: [
                     TemplateImage(data: data),
                     const SizedBox(height: 40),
-                    _Title(l.languages),
-                    ...List.generate(
-                      data.languages.length,
-                      (index) {
-                        return _Language(
-                          language: data.languages[index],
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 10),
-                    _Title(l.interests),
-                    ...List.generate(
-                      data.interests.length,
-                      (index) {
-                        return _Data(
-                          title: data.interests[index].title,
-                          index: index,
-                        );
-                      },
-                    ),
+                    if (data.languages.isNotEmpty) ...[
+                      _Title(l.languages),
+                      ...List.generate(
+                        data.languages.length,
+                        (index) {
+                          return _Language(
+                            language: data.languages[index],
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                    if (data.interests.isNotEmpty) ...[
+                      _Title(l.interests),
+                      ...List.generate(
+                        data.interests.length,
+                        (index) {
+                          return _Data(
+                            title: data.interests[index].title,
+                            index: index,
+                          );
+                        },
+                      ),
+                    ],
                   ],
                 ),
               ),

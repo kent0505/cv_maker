@@ -44,40 +44,45 @@ class Template6 extends StatelessWidget {
                 job: resume.job,
               ),
               const SizedBox(height: 20),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.black,
+              if (data.educations.isNotEmpty && data.languages.isNotEmpty)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.black,
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (data.educations.isNotEmpty) ...[
+                        _LeftTitle(l.education),
+                        const SizedBox(height: 20),
+                        ...List.generate(
+                          data.educations.length,
+                          (index) {
+                            return _Education(
+                              education: data.educations[index],
+                            );
+                          },
+                        ),
+                      ],
+                      if (data.languages.isNotEmpty) ...[
+                        _LeftTitle(l.languages),
+                        ...List.generate(
+                          data.languages.length,
+                          (index) {
+                            return _Language(
+                              language: data.languages[index],
+                            );
+                          },
+                        ),
+                      ],
+                    ],
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _LeftTitle(l.education),
-                    const SizedBox(height: 20),
-                    ...List.generate(
-                      data.educations.length,
-                      (index) {
-                        return _Education(
-                          education: data.educations[index],
-                        );
-                      },
-                    ),
-                    _LeftTitle(l.languages),
-                    ...List.generate(
-                      data.languages.length,
-                      (index) {
-                        return _Language(
-                          language: data.languages[index],
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
               const Spacer(),
               Row(
                 children: [
@@ -143,25 +148,33 @@ class Template6 extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  _RightTitle(l.aboutMe),
-                  _About(title: resume.about),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.jobExperience),
-                  ...List.generate(
-                    data.experiences.length,
-                    (index) {
-                      return _Experience(
-                        experience: data.experiences[index],
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  _RightTitle(l.skills),
-                  TemplateSkills(data: data),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.interests),
-                  TemplateInterests(data: data),
-                  const SizedBox(height: 20),
+                  if (resume.about.isNotEmpty) ...[
+                    _RightTitle(l.aboutMe),
+                    _About(title: resume.about),
+                    const SizedBox(height: 20),
+                  ],
+                  if (data.experiences.isNotEmpty) ...[
+                    _RightTitle(l.jobExperience),
+                    ...List.generate(
+                      data.experiences.length,
+                      (index) {
+                        return _Experience(
+                          experience: data.experiences[index],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                  if (data.skills.isNotEmpty) ...[
+                    _RightTitle(l.skills),
+                    TemplateSkills(data: data),
+                    const SizedBox(height: 20),
+                  ],
+                  if (data.interests.isNotEmpty) ...[
+                    _RightTitle(l.interests),
+                    TemplateInterests(data: data),
+                    const SizedBox(height: 20),
+                  ],
                 ],
               ),
             ],

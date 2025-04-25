@@ -46,25 +46,29 @@ class Template1 extends StatelessWidget {
                   const SizedBox(height: 8),
                   _Contact(title: resume.city),
                   const SizedBox(height: 20),
-                  _LeftTitle(l.education),
-                  ...List.generate(
-                    data.educations.length,
-                    (index) {
-                      return _Education(
-                        education: data.educations[index],
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  _LeftTitle(l.languages),
-                  ...List.generate(
-                    data.languages.length,
-                    (index) {
-                      return _Language(
-                        language: data.languages[index],
-                      );
-                    },
-                  ),
+                  if (data.educations.isNotEmpty) ...[
+                    _LeftTitle(l.education),
+                    ...List.generate(
+                      data.educations.length,
+                      (index) {
+                        return _Education(
+                          education: data.educations[index],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                  if (data.languages.isNotEmpty) ...[
+                    _LeftTitle(l.languages),
+                    ...List.generate(
+                      data.languages.length,
+                      (index) {
+                        return _Language(
+                          language: data.languages[index],
+                        );
+                      },
+                    ),
+                  ],
                 ],
               ),
             ],
@@ -94,32 +98,40 @@ class Template1 extends StatelessWidget {
                     job: resume.job,
                   ),
                   const SizedBox(height: 10),
-                  _RightTitle(l.aboutMe),
-                  _About(title: resume.about),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.jobExperience),
-                  const SizedBox(height: 10),
-                  ...List.generate(
-                    data.experiences.length,
-                    (index) {
-                      return _Experience(
-                        experience: data.experiences[index],
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 10),
-                  _RightTitle(l.skills),
-                  TemplateSkills(
-                    data: data,
-                    left: 37.5,
-                  ),
-                  const SizedBox(height: 20),
-                  _RightTitle(l.interests),
-                  TemplateInterests(
-                    data: data,
-                    left: 37.5,
-                  ),
-                  const SizedBox(height: 10),
+                  if (resume.about.isNotEmpty) ...[
+                    _RightTitle(l.aboutMe),
+                    _About(title: resume.about),
+                    const SizedBox(height: 20),
+                  ],
+                  if (data.experiences.isNotEmpty) ...[
+                    _RightTitle(l.jobExperience),
+                    const SizedBox(height: 10),
+                    ...List.generate(
+                      data.experiences.length,
+                      (index) {
+                        return _Experience(
+                          experience: data.experiences[index],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                  if (data.skills.isNotEmpty) ...[
+                    _RightTitle(l.skills),
+                    TemplateSkills(
+                      data: data,
+                      left: 37.5,
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                  if (data.interests.isNotEmpty) ...[
+                    _RightTitle(l.interests),
+                    TemplateInterests(
+                      data: data,
+                      left: 37.5,
+                    ),
+                    const SizedBox(height: 10),
+                  ],
                 ],
               ),
             ],

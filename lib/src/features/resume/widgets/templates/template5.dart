@@ -45,32 +45,34 @@ class Template5 extends StatelessWidget {
                     TemplateImage(data: data),
                     const SizedBox(height: 20),
                     _LeftTitle(l.contactMe),
-                    const SizedBox(height: 10),
                     _Contact(title: resume.phone),
                     const SizedBox(height: 8),
                     _Contact(title: resume.email),
                     const SizedBox(height: 8),
                     _Contact(title: resume.city),
                     const SizedBox(height: 20),
-                    _LeftTitle(l.education),
-                    const SizedBox(height: 10),
-                    ...List.generate(
-                      data.educations.length,
-                      (index) {
-                        return _Education(
-                          education: data.educations[index],
-                        );
-                      },
-                    ),
-                    _LeftTitle(l.languages),
-                    ...List.generate(
-                      data.languages.length,
-                      (index) {
-                        return _Language(
-                          language: data.languages[index],
-                        );
-                      },
-                    ),
+                    if (data.educations.isNotEmpty) ...[
+                      _LeftTitle(l.education),
+                      ...List.generate(
+                        data.educations.length,
+                        (index) {
+                          return _Education(
+                            education: data.educations[index],
+                          );
+                        },
+                      ),
+                    ],
+                    if (data.languages.isNotEmpty) ...[
+                      _LeftTitle(l.languages),
+                      ...List.generate(
+                        data.languages.length,
+                        (index) {
+                          return _Language(
+                            language: data.languages[index],
+                          );
+                        },
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -91,25 +93,32 @@ class Template5 extends StatelessWidget {
               ),
               const SizedBox(height: 6),
               const SizedBox(height: 20),
-              _RightTitle(l.aboutMe),
-              _About(title: resume.about),
-              const SizedBox(height: 20),
-              _RightTitle(l.jobExperience),
-              ...List.generate(
-                data.experiences.length,
-                (index) {
-                  return _Experience(
-                    experience: data.experiences[index],
-                  );
-                },
-              ),
-              const SizedBox(height: 10),
-              _RightTitle(l.skills),
-              TemplateSkills(data: data),
-              const SizedBox(height: 20),
-              _RightTitle(l.interests),
-              TemplateInterests(data: data),
-              const SizedBox(height: 20),
+              if (resume.about.isNotEmpty) ...[
+                _RightTitle(l.aboutMe),
+                _About(title: resume.about),
+                const SizedBox(height: 20),
+              ],
+              if (data.experiences.isNotEmpty) ...[
+                _RightTitle(l.jobExperience),
+                ...List.generate(
+                  data.experiences.length,
+                  (index) {
+                    return _Experience(
+                      experience: data.experiences[index],
+                    );
+                  },
+                ),
+                const SizedBox(height: 10),
+              ],
+              if (data.skills.isNotEmpty) ...[
+                _RightTitle(l.skills),
+                TemplateSkills(data: data),
+                const SizedBox(height: 20),
+              ],
+              if (data.interests.isNotEmpty) ...[
+                _RightTitle(l.interests),
+                TemplateInterests(data: data),
+              ],
             ],
           ),
         ),
@@ -126,6 +135,7 @@ class _LeftTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 10,
