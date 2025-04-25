@@ -76,7 +76,7 @@ double getHeight(int index) {
   if (index == 15) return 160;
 
   if (index == 17) return 130;
-  if (index == 18) return 260;
+  if (index == 18) return 230;
   if (index == 19) return 260;
   if (index == 20) return 300;
   return 160;
@@ -101,7 +101,7 @@ double getWidth(int index) {
   if (index == 15) return 160;
 
   if (index == 17) return 120;
-  if (index == 18) return 220;
+  if (index == 18) return 190;
   if (index == 19) return 220;
   if (index == 20) return 220;
   return 160;
