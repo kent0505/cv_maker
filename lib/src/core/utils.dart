@@ -1,5 +1,6 @@
 import 'dart:developer' as developer;
 
+import 'package:cv_maker/src/core/models/experience.dart';
 import 'package:intl/intl.dart';
 
 int getTimestamp() {
@@ -21,29 +22,13 @@ DateTime stringToDate(String date) {
 
 void logger(Object message) => developer.log(message.toString());
 
-double getTitleFontSize(int id) {
-  if (id == 1) return 16;
-  if (id == 2) return 24;
-  if (id == 3) return 24;
-  if (id == 4) return 20;
-  if (id == 5) return 14;
-
-  if (id == 6) return 16;
-  if (id == 7) return 16;
-  if (id == 8) return 16;
-  if (id == 9) return 16;
-  if (id == 10) return 16;
-
-  if (id == 11) return 16;
-  if (id == 12) return 16;
-  if (id == 13) return 16;
-  if (id == 14) return 16;
-  if (id == 15) return 16;
-
-  if (id == 16) return 16;
-  if (id == 17) return 16;
-  if (id == 18) return 16;
-  if (id == 19) return 16;
-  if (id == 20) return 16;
-  return 16;
+String getPeriod(Experience experience) {
+  final now = DateTime.now();
+  final date = stringToDate(experience.endDate);
+  final startYear = experience.startDate.split('/')[2];
+  final endYear =
+      now.day == date.day && now.month == date.month && now.year == date.year
+          ? 'Present'
+          : experience.endDate.split('/')[2];
+  return '$startYear - $endYear';
 }

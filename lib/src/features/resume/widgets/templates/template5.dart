@@ -253,15 +253,6 @@ class _Experience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final now = DateTime.now();
-    final date = stringToDate(experience.endDate);
-    final startYear = experience.startDate.split('/')[2];
-    final endYear =
-        now.day == date.day && now.month == date.month && now.year == date.year
-            ? 'Present'
-            : experience.endDate.split('/')[2];
-    final period = '$startYear - $endYear';
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -300,7 +291,7 @@ class _Experience extends StatelessWidget {
             ),
             const SizedBox(width: 6),
             Text(
-              period,
+              getPeriod(experience),
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 8,

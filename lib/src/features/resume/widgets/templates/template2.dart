@@ -286,15 +286,6 @@ class _Experience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final now = DateTime.now();
-    final date = stringToDate(experience.endDate);
-    final startYear = experience.startDate.split('/')[2];
-    final endYear =
-        now.day == date.day && now.month == date.month && now.year == date.year
-            ? 'Present'
-            : experience.endDate.split('/')[2];
-    final period = '$startYear - $endYear';
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -322,7 +313,7 @@ class _Experience extends StatelessWidget {
                           experience.introduction,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                             fontFamily: AppFonts.gotham900,
@@ -334,7 +325,7 @@ class _Experience extends StatelessWidget {
                           '${experience.introduction} / ${experience.location}',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 6,
                             fontFamily: AppFonts.gotham700,
@@ -347,8 +338,8 @@ class _Experience extends StatelessWidget {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    period,
-                    style: TextStyle(
+                    getPeriod(experience),
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 8,
                       fontFamily: AppFonts.gotham400,
@@ -361,7 +352,7 @@ class _Experience extends StatelessWidget {
                 experience.details,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 8,
                   fontFamily: AppFonts.gotham400,
@@ -390,7 +381,7 @@ class _Contact extends StatelessWidget {
         Container(
           height: 8,
           width: 8,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
           ),
@@ -401,7 +392,7 @@ class _Contact extends StatelessWidget {
             title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 10,
               fontFamily: AppFonts.gotham400,
@@ -430,7 +421,7 @@ class _Education extends StatelessWidget {
           Container(
             height: 8,
             width: 8,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,
             ),
