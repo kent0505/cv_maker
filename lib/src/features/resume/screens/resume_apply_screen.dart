@@ -83,6 +83,8 @@ class _TemplateCard extends StatelessWidget {
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               borderRadius: BorderRadius.circular(20),
+              cacheWidth: total.toInt(),
+              cacheHeight: (total * 1.4).toInt(),
             ),
             SizedBox(
               height: 44,

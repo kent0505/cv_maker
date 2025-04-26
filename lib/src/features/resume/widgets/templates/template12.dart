@@ -33,6 +33,7 @@ class Template12 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 20,
+                    right: 250,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +151,7 @@ class Template12 extends StatelessWidget {
                         data.skills.isNotEmpty &&
                         data.interests.isNotEmpty)
                       SizedBox(
-                        height: 376,
+                        height: 360,
                         width: 510,
                         child: Stack(
                           children: [
@@ -170,7 +171,7 @@ class Template12 extends StatelessWidget {
                               alignment: Alignment.topLeft,
                               child: SizedBox(
                                 width: 254,
-                                height: 376 / 2,
+                                height: 360 / 2,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -193,7 +194,7 @@ class Template12 extends StatelessWidget {
                               alignment: Alignment.bottomLeft,
                               child: SizedBox(
                                 width: 254,
-                                height: 376 / 2,
+                                height: 360 / 2,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -216,13 +217,16 @@ class Template12 extends StatelessWidget {
                               alignment: Alignment.topRight,
                               child: SizedBox(
                                 width: 254,
-                                height: 376 / 2,
+                                height: 360 / 2,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     if (data.skills.isNotEmpty) ...[
                                       _RightTitle(l.skills),
-                                      TemplateSkills(data: data),
+                                      TemplateSkills(
+                                        data: data,
+                                        right: 0,
+                                      ),
                                     ],
                                   ],
                                 ),
@@ -232,13 +236,16 @@ class Template12 extends StatelessWidget {
                               alignment: Alignment.bottomRight,
                               child: SizedBox(
                                 width: 254,
-                                height: 376 / 2,
+                                height: 360 / 2,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     if (data.interests.isNotEmpty) ...[
                                       _RightTitle(l.interests),
-                                      TemplateInterests(data: data),
+                                      TemplateInterests(
+                                        data: data,
+                                        right: 0,
+                                      ),
                                     ],
                                   ],
                                 ),
@@ -283,7 +290,7 @@ class _RightTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Text(
         title,
         style: const TextStyle(
@@ -416,7 +423,7 @@ class _Education extends StatelessWidget {
         children: [
           Text(
             education.name.toUpperCase(),
-            maxLines: 3,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
             style: const TextStyle(

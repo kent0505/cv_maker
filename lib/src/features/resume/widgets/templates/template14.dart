@@ -76,12 +76,12 @@ class Template14 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               _Name(
                 name: resume.name,
                 job: resume.job,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               if (resume.about.isNotEmpty) ...[
                 _RightTitle(l.aboutMe),
                 _About(title: resume.about),
@@ -92,7 +92,7 @@ class Template14 extends StatelessWidget {
                 width: double.infinity,
                 color: const Color(0xffF3AA03),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               if (data.experiences.isNotEmpty) ...[
                 _RightTitle(l.jobExperience),
                 ...List.generate(
@@ -334,7 +334,7 @@ class _Experience extends StatelessWidget {
                   fontFamily: AppFonts.gotham400,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
             ],
           ),
         ),

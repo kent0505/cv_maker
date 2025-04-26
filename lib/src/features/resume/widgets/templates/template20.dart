@@ -52,6 +52,15 @@ class Template20 extends StatelessWidget {
                 data: resume.city,
                 asset: Assets.location,
               ),
+              // if (data.interests.isNotEmpty) ...[
+              //   _RightTitle(l.interests),
+              //   TemplateInterests(
+              //     data: data,
+              //     left: 0,
+              //     right: 0,
+              //   ),
+              //   const SizedBox(height: 10),
+              // ],
             ],
           ),
         ),
@@ -86,14 +95,6 @@ class Template20 extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
               ],
-              // if (data.interests.isNotEmpty) ...[
-              //   _RightTitle(l.interests),
-              //   TemplateInterests(
-              //     data: data,
-              //     left: 20,
-              //   ),
-              //   const SizedBox(height: 10),
-              // ],
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -417,42 +418,45 @@ class _Education extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          education.name,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 10,
-            fontFamily: AppFonts.gotham700,
-            fontStyle: FontStyle.italic,
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            education.name,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+              fontFamily: AppFonts.gotham700,
+              fontStyle: FontStyle.italic,
+            ),
           ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          education.faculty,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 10,
-            fontFamily: AppFonts.gotham400,
+          const SizedBox(height: 6),
+          Text(
+            education.faculty,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+              fontFamily: AppFonts.gotham400,
+            ),
           ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          '${education.startYear} - ${education.endYear}',
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 10,
-            fontFamily: AppFonts.gotham400,
+          const SizedBox(height: 6),
+          Text(
+            '${education.startYear} - ${education.endYear}',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+              fontFamily: AppFonts.gotham400,
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
-      ],
+          const SizedBox(height: 20),
+        ],
+      ),
     );
   }
 }

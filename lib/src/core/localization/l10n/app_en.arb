@@ -165,5 +165,8 @@
     "jobExperience": "Job Experience",
     "@jobExperience": {},
     "present": "Present",
-    "@present": {}
+    "@present": {},
+
+    "importError": "Import error",
+    "@importError": {}
 }
