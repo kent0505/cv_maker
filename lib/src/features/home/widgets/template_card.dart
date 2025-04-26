@@ -22,7 +22,10 @@ class TemplateCard extends StatelessWidget {
       width: width,
       child: Button(
         onPressed: () {
-          context.push(CreateResumeScreen.routePath, extra: template);
+          context.push(
+            CreateResumeScreen.routePath,
+            extra: template,
+          );
         },
         child: Column(
           children: [
@@ -33,6 +36,8 @@ class TemplateCard extends StatelessWidget {
               fit: BoxFit.cover,
               alignment: Alignment.topCenter,
               borderRadius: BorderRadius.circular(20),
+              cacheWidth: total.toInt(),
+              cacheHeight: (total * 1.4).toInt(),
             ),
             SizedBox(
               height: 44,

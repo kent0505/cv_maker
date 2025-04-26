@@ -13,6 +13,8 @@ class ImageWidget extends StatelessWidget {
     this.fit,
     this.alignment = Alignment.center,
     this.borderRadius = BorderRadius.zero,
+    this.cacheWidth,
+    this.cacheHeight,
   });
 
   final String asset;
@@ -21,6 +23,8 @@ class ImageWidget extends StatelessWidget {
   final BoxFit? fit;
   final AlignmentGeometry alignment;
   final BorderRadiusGeometry borderRadius;
+  final int? cacheWidth;
+  final int? cacheHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +37,8 @@ class ImageWidget extends StatelessWidget {
         fit: fit,
         alignment: alignment,
         frameBuilder: frameBuilder,
+        cacheWidth: cacheWidth,
+        cacheHeight: cacheHeight,
         errorBuilder: (context, error, stackTrace) {
           return SizedBox(
             width: width,

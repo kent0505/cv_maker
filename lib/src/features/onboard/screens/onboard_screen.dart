@@ -46,6 +46,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
 
+    precacheImage(AssetImage(Assets.onb2), context);
+
     return Scaffold(
       body: Bg(
         child: Stack(
@@ -191,6 +193,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   height: 230,
                   width: 232,
                   decoration: BoxDecoration(
+                    color: Color(0xfffbeee1),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withValues(alpha: 0.25),

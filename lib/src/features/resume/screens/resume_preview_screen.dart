@@ -80,6 +80,7 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
 
   Future<void> createPdf() async {
     logger('CREATE PDF');
+    await Future.delayed(Duration(milliseconds: 1000));
     try {
       final imageBytes = await captureWidgetAsPng(previewContainer);
 
@@ -124,7 +125,7 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
 
     try {
       final dir = await getTemporaryDirectory();
-      final file = File('${dir.path}/resume.pdf');
+      final file = File('${dir.path}/${widget.resume.name} CV.pdf');
       await file.writeAsBytes(pdfData!);
 
       await Share.shareXFiles([XFile(file.path)]);
@@ -146,9 +147,7 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       skills: data2.skills.where((x) => x.id == resume.id).toList(),
       interests: data2.interests.where((x) => x.id == resume.id).toList(),
     );
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await createPdf();
-    });
+    createPdf();
   }
 
   @override
@@ -189,43 +188,49 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
             ],
           ),
         ],
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: FittedBox(
-            child: SizedBox(
-              width: 550,
-              height: 550 * 1.41,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: RepaintBoundary(
-                  key: previewContainer,
-                  child: switch (data.resume!.template) {
-                    1 => Template1(data: data),
-                    2 => Template2(data: data),
-                    3 => Template3(data: data),
-                    4 => Template4(data: data),
-                    5 => Template5(data: data),
-                    6 => Template6(data: data),
-                    7 => Template7(data: data),
-                    8 => Template8(data: data),
-                    9 => Template9(data: data),
-                    10 => Template10(data: data),
-                    11 => Template11(data: data),
-                    12 => Template12(data: data),
-                    13 => Template13(data: data),
-                    14 => Template14(data: data),
-                    15 => Template15(data: data),
-                    16 => Template16(data: data),
-                    17 => Template17(data: data),
-                    18 => Template18(data: data),
-                    19 => Template19(data: data),
-                    20 => Template20(data: data),
-                    _ => const SizedBox(),
-                  },
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: FittedBox(
+                  child: SizedBox(
+                    width: 550,
+                    height: 550 * 1.41,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: RepaintBoundary(
+                        key: previewContainer,
+                        child: switch (data.resume!.template) {
+                          1 => Template1(data: data),
+                          2 => Template2(data: data),
+                          3 => Template3(data: data),
+                          4 => Template4(data: data),
+                          5 => Template5(data: data),
+                          6 => Template6(data: data),
+                          7 => Template7(data: data),
+                          8 => Template8(data: data),
+                          9 => Template9(data: data),
+                          10 => Template10(data: data),
+                          11 => Template11(data: data),
+                          12 => Template12(data: data),
+                          13 => Template13(data: data),
+                          14 => Template14(data: data),
+                          15 => Template15(data: data),
+                          16 => Template16(data: data),
+                          17 => Template17(data: data),
+                          18 => Template18(data: data),
+                          19 => Template19(data: data),
+                          20 => Template20(data: data),
+                          _ => const SizedBox(),
+                        },
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
