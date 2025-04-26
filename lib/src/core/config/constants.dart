@@ -34,7 +34,10 @@ abstract final class Assets {
   static const phone = 'assets/phone.svg';
   static const figure1 = 'assets/figure1.svg';
   static const figure2 = 'assets/figure2.svg';
+  static const line1 = 'assets/line1.svg';
+  static const line2 = 'assets/line2.svg';
 
+  static const hand = 'assets/images/hand.png';
   static const onb1 = 'assets/images/onb1.png';
   static const onb2 = 'assets/images/onb2.png';
   static const onb3 = 'assets/images/onb3.png';
