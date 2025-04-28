@@ -21,14 +21,12 @@ abstract final class Assets {
   static const arrow = 'assets/arrow.svg';
   static const bottom = 'assets/bottom.svg';
   static const close = 'assets/close.svg';
-  static const edit = 'assets/edit.svg';
   static const left = 'assets/left.svg';
   static const menu = 'assets/menu.svg';
   static const resume = 'assets/resume.svg';
   static const right = 'assets/right.svg';
   static const settings = 'assets/settings.svg';
   static const templates = 'assets/templates.svg';
-  static const tip = 'assets/tip.svg';
   static const email = 'assets/email.svg';
   static const location = 'assets/location.svg';
   static const phone = 'assets/phone.svg';
@@ -37,14 +35,13 @@ abstract final class Assets {
   static const line1 = 'assets/line1.svg';
   static const line2 = 'assets/line2.svg';
 
-  static const hand = 'assets/images/hand.png';
   static const onb1 = 'assets/images/onb1.png';
   static const onb2 = 'assets/images/onb2.png';
   static const onb3 = 'assets/images/onb3.png';
   static const onb4 = 'assets/images/onb4.png';
   static const onb5 = 'assets/images/onb5.png';
   static const star = 'assets/images/star.png';
-  static const user = 'assets/images/user.png';
+  static const placeholder = 'assets/images/placeholder.png';
 
   static const template1 = 'assets/templates/1.png';
   static const template2 = 'assets/templates/2.png';

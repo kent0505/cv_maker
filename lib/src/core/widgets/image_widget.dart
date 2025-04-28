@@ -80,7 +80,7 @@ class FileImageWidget extends StatelessWidget {
         frameBuilder: frameBuilder,
         errorBuilder: (context, error, stackTrace) {
           return ImageWidget(
-            Assets.user,
+            Assets.placeholder,
             height: width,
             width: height,
             fit: fit,

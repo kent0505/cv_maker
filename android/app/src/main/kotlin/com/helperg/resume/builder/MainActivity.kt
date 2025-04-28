@@ -1,4 +1,4 @@
-package com.example.cv_maker
+package com.helperg.resume.builder
 
 import io.flutter.embedding.android.FlutterActivity
 

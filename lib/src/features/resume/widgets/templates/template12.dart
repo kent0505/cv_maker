@@ -64,40 +64,12 @@ class Template12 extends StatelessWidget {
                 Positioned(
                   right: 20,
                   bottom: 10,
-                  child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffEDC6B5),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 70,
-                  bottom: 90,
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffDC9F84),
-                    ),
-                    child: const Center(
-                      child: ImageWidget(Assets.hand),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 20,
-                  bottom: 10,
                   child: FileImageWidget(
                     resume.photo,
-                    height: 100,
-                    width: 100,
+                    height: 200,
+                    width: 200,
                     fit: BoxFit.cover,
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                 ),
               ],

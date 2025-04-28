@@ -59,7 +59,6 @@ class EditResumeScreen extends StatelessWidget {
         final provider = context.watch<ResumeProvider>();
 
         return Scaffold(
-          resizeToAvoidBottomInset: false,
           appBar: Appbar(
             title: provider.getTitle(l),
             left: AppbarButton(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils.dart';
 import '../../../../core/config/constants.dart';
 import '../../../../core/widgets/ios_date_picker.dart';
+import '../../../../core/widgets/switch_button.dart';
 import '../../../../core/widgets/txt_field.dart';
 import '../../provider/resume_provider.dart';
 import '../../widgets/field_title.dart';
@@ -121,6 +122,16 @@ class ResumeExperience extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        const SizedBox(height: 16),
+        FieldTitle(
+          'Present work',
+          center: true,
+        ),
+        const SizedBox(height: 4),
+        SwitchButton(
+          isActive: true,
+          onPressed: () {},
         ),
         const SizedBox(height: 16),
         if (remove)

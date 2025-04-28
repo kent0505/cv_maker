@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
-import '../../../core/widgets/svg_widget.dart';
 import '../provider/resume_provider.dart';
 
 class UserImage extends StatelessWidget {
@@ -41,7 +40,16 @@ class UserImage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(35),
                 ),
                 child: const Center(
-                  child: SvgWidget(Assets.edit),
+                  child: Text(
+                    '+',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                      fontFamily: AppFonts.inter900,
+                      fontWeight: FontWeight.w900,
+                      height: 1,
+                    ),
+                  ),
                 ),
               ),
             ),

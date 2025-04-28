@@ -36,13 +36,12 @@ class ResumeProvider extends ChangeNotifier {
   List<Interest> get interests => _interests;
 
   // КОНТРОЛЛЕРЫ
-  final nameController = TextEditingController(text: 'Otabek Yusupov');
-  final phoneController = TextEditingController(text: '+998 99 847 25 80');
-  final emailController =
-      TextEditingController(text: 'otabekyusupov0550@gmail.com');
-  final cityController = TextEditingController(text: 'Tashkent');
-  final birthController = TextEditingController(text: '22/06/2000');
-  final jobController = TextEditingController(text: 'Flutter developer');
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final emailController = TextEditingController();
+  final cityController = TextEditingController();
+  final birthController = TextEditingController();
+  final jobController = TextEditingController();
   final languageController = TextEditingController();
   final skillController = TextEditingController();
   final interestController = TextEditingController();
@@ -126,6 +125,7 @@ class ResumeProvider extends ChangeNotifier {
         details: controllers[3].text,
         startDate: controllers[4].text,
         endDate: controllers[5].text,
+        // present: false,
       );
     }).toList();
   }
@@ -217,7 +217,6 @@ class ResumeProvider extends ChangeNotifier {
           ),
         );
         languageController.clear();
-        logger('LANGUAGES ${_languages.length}');
         break;
       case 3:
         educationControllers.add(

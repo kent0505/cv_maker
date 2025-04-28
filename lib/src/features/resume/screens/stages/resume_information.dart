@@ -94,6 +94,7 @@ class ResumeInformation extends StatelessWidget {
             provider.checkActive();
           },
         ),
+        // const SizedBox(height: 84),
       ],
     );
   }

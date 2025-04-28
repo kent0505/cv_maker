@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
@@ -33,60 +34,70 @@ class ResumeButtons extends StatelessWidget {
         i == 4 && provider.experienceControllers.length != 3;
     final add = i == 2 && provider.languages.length != 5 || i == 5 || i == 6;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        if (skip) ...[
-          MainButton(
-            title: l.skip,
-            transparent: true,
-            onPressed: () {
-              provider.index == 7
-                  ? onSave(
-                      context,
-                      provider,
-                      id,
-                      template,
-                      edit,
-                    )
-                  : provider.onSkip();
-            },
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        return AnimatedOpacity(
+          opacity: isKeyboardVisible ? 0 : 1,
+          duration: Duration(seconds: isKeyboardVisible ? 0 : 1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: isKeyboardVisible
+                ? []
+                : [
+                    if (skip) ...[
+                      MainButton(
+                        title: l.skip,
+                        transparent: true,
+                        onPressed: () {
+                          provider.index == 7
+                              ? onSave(
+                                  context,
+                                  provider,
+                                  id,
+                                  template,
+                                  edit,
+                                )
+                              : provider.onSkip();
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                    if (addOneMore) ...[
+                      MainButton(
+                        title: l.addOneMore,
+                        active: provider.canAdd,
+                        onPressed: provider.onAdd,
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                    if (add) ...[
+                      MainButton(
+                        title: l.add,
+                        active: provider.canAdd,
+                        onPressed: provider.onAdd,
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                    MainButton(
+                      title: i == 7 ? l.saveResume : l.continuee,
+                      active: provider.canContinue,
+                      onPressed: () {
+                        i == 7
+                            ? onSave(
+                                context,
+                                provider,
+                                id,
+                                template,
+                                edit,
+                              )
+                            : provider.goRight();
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                  ],
           ),
-          const SizedBox(height: 8),
-        ],
-        if (addOneMore) ...[
-          MainButton(
-            title: l.addOneMore,
-            active: provider.canAdd,
-            onPressed: provider.onAdd,
-          ),
-          const SizedBox(height: 8),
-        ],
-        if (add) ...[
-          MainButton(
-            title: l.add,
-            active: provider.canAdd,
-            onPressed: provider.onAdd,
-          ),
-          const SizedBox(height: 8),
-        ],
-        MainButton(
-          title: i == 7 ? l.saveResume : l.continuee,
-          active: provider.canContinue,
-          onPressed: () {
-            i == 7
-                ? onSave(
-                    context,
-                    provider,
-                    id,
-                    template,
-                    edit,
-                  )
-                : provider.goRight();
-          },
-        ),
-        const SizedBox(height: 30),
-      ],
+        );
+      },
     );
   }
 }
