@@ -11,17 +11,20 @@ class DialogWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.description,
+    this.info = false,
     required this.onYes,
   });
 
   final String title;
   final String description;
+  final bool info;
   final VoidCallback onYes;
 
   static void show(
     BuildContext context, {
     required String title,
     required String description,
+    bool info = false,
     required void Function() onYes,
   }) {
     showDialog(
@@ -32,6 +35,7 @@ class DialogWidget extends StatelessWidget {
         return DialogWidget(
           title: title,
           description: description,
+          info: info,
           onYes: onYes,
         );
       },
@@ -89,32 +93,47 @@ class DialogWidget extends StatelessWidget {
                   height: 0.5,
                   color: const Color(0xff808080).withValues(alpha: 0.55),
                 ),
-                Row(
-                  children: [
-                    _Button(
-                      title: l.cancel,
-                      color: const Color(0xff007AFF),
-                      fontFamily: AppFonts.funnel400,
-                      onPressed: () {
-                        context.pop();
-                      },
-                    ),
-                    Container(
-                      width: 0.5,
-                      height: 44,
-                      color: const Color(0xff808080).withValues(alpha: 0.55),
-                    ),
-                    _Button(
-                      title: l.yes,
-                      color: const Color(0xffFF5656),
-                      fontFamily: AppFonts.funnel600,
-                      onPressed: () {
-                        context.pop();
-                        onYes();
-                      },
-                    ),
-                  ],
-                ),
+                info
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _Button(
+                            title: 'OK',
+                            color: const Color(0xff007AFF),
+                            fontFamily: AppFonts.funnel400,
+                            onPressed: () {
+                              context.pop();
+                            },
+                          ),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          _Button(
+                            title: l.cancel,
+                            color: const Color(0xff007AFF),
+                            fontFamily: AppFonts.funnel400,
+                            onPressed: () {
+                              context.pop();
+                            },
+                          ),
+                          Container(
+                            width: 0.5,
+                            height: 44,
+                            color:
+                                const Color(0xff808080).withValues(alpha: 0.55),
+                          ),
+                          _Button(
+                            title: l.yes,
+                            color: const Color(0xffFF5656),
+                            fontFamily: AppFonts.funnel600,
+                            onPressed: () {
+                              context.pop();
+                              onYes();
+                            },
+                          ),
+                        ],
+                      ),
               ],
             ),
           ),

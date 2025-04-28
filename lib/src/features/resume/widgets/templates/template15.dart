@@ -34,13 +34,13 @@ class Template15 extends StatelessWidget {
                 name: resume.name,
                 job: resume.job,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 14),
               if (resume.about.isNotEmpty) ...[
                 _About(
                   title: l.aboutMe,
                   data: resume.about,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
               ],
               if (data.experiences.isNotEmpty) ...[
                 _LeftTitle(l.jobExperience),

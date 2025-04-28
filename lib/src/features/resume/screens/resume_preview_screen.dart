@@ -128,9 +128,23 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
       final file = File('${dir.path}/${widget.resume.name} CV.pdf');
       await file.writeAsBytes(pdfData!);
 
-      await Share.shareXFiles([XFile(file.path)]);
+      await Share.shareXFiles(
+        [XFile(file.path)],
+        sharePositionOrigin: Rect.fromLTWH(100, 100, 200, 200),
+      );
     } catch (e) {
       logger(e);
+      if (mounted) {
+        final l = AppLocalizations.of(context)!;
+
+        DialogWidget.show(
+          context,
+          title: l.importError,
+          description: '',
+          info: true,
+          onYes: () {},
+        );
+      }
     }
   }
 

@@ -87,5 +87,7 @@
     "contacts": "Контакты",
     "aboutMe": "Обо мне",
     "jobExperience": "Опыт работы",
-    "present": "..."
+    "present": "...",
+
+    "importError": "Ошибка импорта"
 }

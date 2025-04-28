@@ -76,9 +76,9 @@ class Template13 extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 300,
+                    width: 280,
                     color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -86,7 +86,7 @@ class Template13 extends StatelessWidget {
                         if (resume.about.isNotEmpty) ...[
                           _Title(l.aboutMe),
                           _About(title: resume.about),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 16),
                         ],
                         if (data.experiences.isNotEmpty) ...[
                           _Title(l.jobExperience),
@@ -115,9 +115,9 @@ class Template13 extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 250,
+                    width: 270,
                     color: Colors.white,
-                    padding: EdgeInsets.only(right: 30),
+                    padding: EdgeInsets.only(right: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -135,12 +135,18 @@ class Template13 extends StatelessWidget {
                         ],
                         if (data.skills.isNotEmpty) ...[
                           _Title(l.skills),
-                          TemplateSkills(data: data),
-                          const SizedBox(height: 20),
+                          TemplateSkills(
+                            data: data,
+                            right: 0,
+                          ),
+                          const SizedBox(height: 10),
                         ],
                         if (data.interests.isNotEmpty) ...[
                           _Title(l.interests),
-                          TemplateInterests(data: data),
+                          TemplateInterests(
+                            data: data,
+                            right: 0,
+                          ),
                         ],
                       ],
                     ),
@@ -149,7 +155,7 @@ class Template13 extends StatelessWidget {
               ),
             ),
             Container(
-              height: 100,
+              height: 96,
               width: double.infinity,
               color: const Color(0xff606060),
               padding: const EdgeInsets.symmetric(
@@ -306,7 +312,7 @@ class _Experience extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
       ],
     );
   }
@@ -353,7 +359,7 @@ class _Education extends StatelessWidget {
             fontFamily: AppFonts.gotham400,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -367,7 +373,7 @@ class _Language extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         '${language.language} - ${language.level}',
         maxLines: 2,

@@ -8,10 +8,12 @@ class TemplateSkills extends StatelessWidget {
     super.key,
     required this.data,
     this.left = 0,
+    this.right = 10,
   });
 
   final Data data;
   final double left;
+  final double right;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class TemplateSkills extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         left: left,
-        right: 10,
+        right: right,
       ),
       child: Wrap(
         runSpacing: 6,
