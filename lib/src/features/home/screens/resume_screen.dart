@@ -37,6 +37,19 @@ class ResumeScreen extends StatelessWidget {
         child: BlocBuilder<ResumeBloc, ResumeState>(
           builder: (context, state) {
             if (state is ResumesLoaded) {
+              if (state.data.resumes.isEmpty) {
+                return Center(
+                  child: Text(
+                    l.noData,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontFamily: AppFonts.funnel800,
+                    ),
+                  ),
+                );
+              }
+
               return ListView.builder(
                 padding: const EdgeInsets.all(16).copyWith(bottom: 100),
                 itemCount: state.data.resumes.length,

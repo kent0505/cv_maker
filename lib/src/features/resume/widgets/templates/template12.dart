@@ -62,17 +62,19 @@ class Template12 extends StatelessWidget {
                     ],
                   ),
                 ),
-                Positioned(
-                  right: 20,
-                  bottom: 10,
-                  child: FileImageWidget(
-                    resume.photo,
-                    height: 200,
-                    width: 200,
-                    fit: BoxFit.cover,
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                ),
+                resume.photo.isEmpty
+                    ? const SizedBox()
+                    : Positioned(
+                        right: 20,
+                        bottom: 10,
+                        child: FileImageWidget(
+                          resume.photo,
+                          height: 200,
+                          width: 200,
+                          fit: BoxFit.cover,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                      ),
               ],
             ),
           ),

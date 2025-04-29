@@ -89,5 +89,7 @@
     "jobExperience": "Опыт работы",
     "present": "...",
 
-    "importError": "Ошибка импорта"
+    "importError": "Ошибка импорта",
+    "noData": "Нет данных",
+    "@noData": {}
 }

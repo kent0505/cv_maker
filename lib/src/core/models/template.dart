@@ -13,6 +13,7 @@ class Template {
 }
 
 List<Template> templates = [
+  Template(id: 16, asset: Assets.template16, title: 'Refined Professionalism'),
   Template(id: 1, asset: Assets.template1, title: 'Classic Professional'),
   Template(id: 2, asset: Assets.template2, title: 'Modern Elegance'),
   Template(id: 3, asset: Assets.template3, title: 'Minimalist Chic'),
@@ -28,7 +29,6 @@ List<Template> templates = [
   Template(id: 13, asset: Assets.template13, title: 'Structured Impact'),
   Template(id: 14, asset: Assets.template14, title: 'Dynamic Layout'),
   Template(id: 15, asset: Assets.template15, title: 'Smart & Stylish'),
-  Template(id: 16, asset: Assets.template16, title: 'Refined Professionalism'),
   Template(id: 17, asset: Assets.template17, title: 'Tech-Savvy Design'),
   Template(id: 18, asset: Assets.template18, title: 'Standout Resume'),
   Template(id: 19, asset: Assets.template19, title: 'Artistic Touch'),

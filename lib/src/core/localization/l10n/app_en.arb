@@ -123,6 +123,7 @@
     "@language": {},
     "chooseLevel": "Choose level",
     "@chooseLevel": {},
+
     "universityName": "Name of the University you studied at",
     "@universityName": {},
     "universityFaculty": "Name of faculty",
@@ -133,6 +134,7 @@
     "@universityStartYear": {},
     "universityEndYear": "Year of ending",
     "@universityEndYear": {},
+
     "workCompanyName": "Name of the company",
     "@workCompanyName": {},
     "workCompanyLocation": "Company location",
@@ -145,6 +147,7 @@
     "@startDate": {},
     "endDate": "End Date",
     "@endDate": {},
+
     "enterSkill": "Enter skill",
     "@enterSkill": {},
     "only30Skill": "You can choose only 8 skils",
@@ -168,5 +171,7 @@
     "@present": {},
 
     "importError": "Import error",
-    "@importError": {}
+    "@importError": {},
+    "noData": "No data",
+    "@noData": {}
 }

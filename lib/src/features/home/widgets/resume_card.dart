@@ -13,6 +13,26 @@ import '../../resume/provider/resume_provider.dart';
 import '../../resume/screens/edit_resume_screen.dart';
 import '../../resume/screens/resume_apply_screen.dart';
 import '../../resume/screens/resume_preview_screen.dart';
+import '../../resume/widgets/templates/template1.dart';
+import '../../resume/widgets/templates/template10.dart';
+import '../../resume/widgets/templates/template11.dart';
+import '../../resume/widgets/templates/template12.dart';
+import '../../resume/widgets/templates/template13.dart';
+import '../../resume/widgets/templates/template14.dart';
+import '../../resume/widgets/templates/template15.dart';
+import '../../resume/widgets/templates/template16.dart';
+import '../../resume/widgets/templates/template17.dart';
+import '../../resume/widgets/templates/template18.dart';
+import '../../resume/widgets/templates/template19.dart';
+import '../../resume/widgets/templates/template2.dart';
+import '../../resume/widgets/templates/template20.dart';
+import '../../resume/widgets/templates/template3.dart';
+import '../../resume/widgets/templates/template4.dart';
+import '../../resume/widgets/templates/template5.dart';
+import '../../resume/widgets/templates/template6.dart';
+import '../../resume/widgets/templates/template7.dart';
+import '../../resume/widgets/templates/template8.dart';
+import '../../resume/widgets/templates/template9.dart';
 
 class ResumeCard extends StatefulWidget {
   const ResumeCard({super.key, required this.resume});
@@ -120,18 +140,45 @@ class _ResumeCardState extends State<ResumeCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(width: 16),
-                  Expanded(
-                    child: Button(
-                      padding: EdgeInsets.only(top: 16),
-                      onPressed: onImage,
-                      child: ImageWidget(
-                        Assets.getTemplate(widget.resume.template),
-                        height: 140,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                  Button(
+                    padding: EdgeInsets.only(top: 16),
+                    onPressed: onImage,
+                    child: ImageWidget(
+                      Assets.getTemplate(widget.resume.template),
+                      height: 140,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    // child: SizedBox(
+                    //   height: 140,
+                    //   width: 100,
+                    //   child: Flexible(
+                    //     child: switch (data.resume!.template) {
+                    //       1 => Template1(data: data),
+                    //       2 => Template2(data: data),
+                    //       3 => Template3(data: data),
+                    //       4 => Template4(data: data),
+                    //       5 => Template5(data: data),
+                    //       6 => Template6(data: data),
+                    //       7 => Template7(data: data),
+                    //       8 => Template8(data: data),
+                    //       9 => Template9(data: data),
+                    //       10 => Template10(data: data),
+                    //       11 => Template11(data: data),
+                    //       12 => Template12(data: data),
+                    //       13 => Template13(data: data),
+                    //       14 => Template14(data: data),
+                    //       15 => Template15(data: data),
+                    //       16 => Template16(data: data),
+                    //       17 => Template17(data: data),
+                    //       18 => Template18(data: data),
+                    //       19 => Template19(data: data),
+                    //       20 => Template20(data: data),
+                    //       _ => const SizedBox(),
+                    //     },
+                    //   ),
+                    // ),
                   ),
                   const SizedBox(width: 20),
                   Container(
