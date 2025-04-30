@@ -63,20 +63,25 @@
     "cityOfResidence": "Город проживания",
     "dateOfBirth": "Дата рождения",
     "jobTitle": "Должность",
+
     "enterLanguage": "Введите язык",
     "language": "Язык",
     "chooseLevel": "Веберите уровень",
+
     "universityName": "Название университета",
     "universityFaculty": "Название факультета",
     "universitySpecialization": "Специализация",
     "universityStartYear": "Год начала",
     "universityEndYear": "Год окончания",
+
     "workCompanyName": "Название компании",
     "workCompanyLocation": "Местонахождение компании",
     "introduction": "Введение",
     "details": "Подробности",
     "startDate": "Дата начала",
     "endDate": "Дата окончания",
+    "currentWork": "Текущая работа",
+
     "enterSkill": "Введите навык",
     "only30Skill": "Вы можете выбрать только 8 навыков",
     "enterInterest": "Введите ваши интересы",
@@ -91,5 +96,7 @@
 
     "importError": "Ошибка импорта",
     "noData": "Нет данных",
-    "@noData": {}
+
+    "fileName": "Название файла",
+    "format": "Формат"
 }

@@ -27,10 +27,12 @@ String getPeriod(Experience experience) {
     final now = DateTime.now();
     final date = stringToDate(experience.endDate);
     final startYear = experience.startDate.split('/')[2];
-    final endYear =
-        now.day == date.day && now.month == date.month && now.year == date.year
-            ? 'Present'
-            : experience.endDate.split('/')[2];
+    final endYear = now.day == date.day &&
+                now.month == date.month &&
+                now.year == date.year ||
+            experience.present
+        ? 'Present'
+        : experience.endDate.split('/')[2];
     return '$startYear - $endYear';
   } catch (e) {
     logger(e);

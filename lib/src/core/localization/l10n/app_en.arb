@@ -147,6 +147,8 @@
     "@startDate": {},
     "endDate": "End Date",
     "@endDate": {},
+    "currentWork": "Current work",
+    "@currentWork": {},
 
     "enterSkill": "Enter skill",
     "@enterSkill": {},
@@ -173,5 +175,10 @@
     "importError": "Import error",
     "@importError": {},
     "noData": "No data",
-    "@noData": {}
+    "@noData": {},
+
+    "fileName": "File name",
+    "@fileName": {},
+    "format": "Format",
+    "@format": {}
 }

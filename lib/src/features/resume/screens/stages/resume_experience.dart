@@ -95,37 +95,41 @@ class ResumeExperience extends StatelessWidget {
             const SizedBox(width: 20),
             Expanded(
               child: Column(
-                children: [
-                  FieldTitle(l.endDate),
-                  TxtField(
-                    controller: controllers[5],
-                    hintText: '12/09/2020',
-                    readOnly: true,
-                    maxLength: 10,
-                    onTap: () {
-                      IosDatePicker.show(
-                        context,
-                        stringToDate(controllers[5].text),
-                        (value) {
-                          provider.setDate(controllers[5], value);
-                        },
-                      );
-                    },
-                  ),
-                ],
+                children: provider.presentList[index]
+                    ? []
+                    : [
+                        FieldTitle(l.endDate),
+                        TxtField(
+                          controller: controllers[5],
+                          hintText: '12/09/2020',
+                          readOnly: true,
+                          maxLength: 10,
+                          onTap: () {
+                            IosDatePicker.show(
+                              context,
+                              stringToDate(controllers[5].text),
+                              (value) {
+                                provider.setDate(controllers[5], value);
+                              },
+                            );
+                          },
+                        ),
+                      ],
               ),
             ),
           ],
         ),
         const SizedBox(height: 16),
         FieldTitle(
-          'Present work',
+          l.currentWork,
           center: true,
         ),
         const SizedBox(height: 4),
         SwitchButton(
-          isActive: true,
-          onPressed: () {},
+          isActive: provider.presentList[index],
+          onPressed: () {
+            provider.toggleExperienceCurrent(index);
+          },
         ),
         const SizedBox(height: 16),
         if (remove)

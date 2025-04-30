@@ -139,7 +139,7 @@ class _ExportSheetState extends State<ExportSheet> {
 
   @override
   Widget build(BuildContext context) {
-    // final l = AppLocalizations.of(context)!;
+    final l = AppLocalizations.of(context)!;
 
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(
@@ -152,14 +152,14 @@ class _ExportSheetState extends State<ExportSheet> {
               ? const LoadingWidget()
               : Column(
                   children: [
-                    FieldTitle('File name'),
+                    FieldTitle(l.fileName),
                     TxtField(
                       controller: filenameController,
-                      hintText: 'File name',
+                      hintText: 'resume',
                       maxLength: 20,
                     ),
                     const SizedBox(height: 16),
-                    FieldTitle('Format'),
+                    FieldTitle(l.format),
                     const SizedBox(height: 16),
 
                     Row(
@@ -191,7 +191,7 @@ class _ExportSheetState extends State<ExportSheet> {
                     // ),
                     // const SizedBox(height: 8),
                     MainButton(
-                      title: 'Share',
+                      title: l.share,
                       horizontal: 0,
                       onPressed: onShare,
                     ),

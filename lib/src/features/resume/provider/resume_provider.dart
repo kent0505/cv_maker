@@ -22,6 +22,7 @@ class ResumeProvider extends ChangeNotifier {
   List<Language> _languages = [];
   List<Skill> _skills = [];
   List<Interest> _interests = [];
+  List<bool> _presentList = [false];
 
   // GETTERS
   int get id => _id;
@@ -34,6 +35,7 @@ class ResumeProvider extends ChangeNotifier {
   List<Language> get languages => _languages;
   List<Skill> get skills => _skills;
   List<Interest> get interests => _interests;
+  List<bool> get presentList => _presentList;
 
   // КОНТРОЛЛЕРЫ
   final nameController = TextEditingController();
@@ -81,7 +83,9 @@ class ResumeProvider extends ChangeNotifier {
         }).toList();
       }
       if (data.experiences.isNotEmpty) {
+        _presentList = [];
         experienceControllers = data.experiences.map((work) {
+          _presentList.add(work.present);
           return [
             TextEditingController(text: work.company),
             TextEditingController(text: work.location),
@@ -113,10 +117,11 @@ class ResumeProvider extends ChangeNotifier {
   }
 
   List<Experience> getExperiences() {
-    return experienceControllers
-        .where(
-            (controllers) => controllers.every((c) => c.text.trim().isNotEmpty))
-        .map((controllers) {
+    return experienceControllers.asMap().entries.where((entry) {
+      return entry.value.every((c) => c.text.trim().isNotEmpty);
+    }).map((entry) {
+      int i = entry.key;
+      var controllers = entry.value;
       return Experience(
         id: _id,
         company: controllers[0].text,
@@ -125,7 +130,7 @@ class ResumeProvider extends ChangeNotifier {
         details: controllers[3].text,
         startDate: controllers[4].text,
         endDate: controllers[5].text,
-        present: false,
+        present: _presentList[i],
       );
     }).toList();
   }
@@ -227,6 +232,7 @@ class ResumeProvider extends ChangeNotifier {
         experienceControllers.add(
           List.generate(6, (_) => TextEditingController()),
         );
+        _presentList.add(false);
         break;
       case 5:
         _skills.add(
@@ -281,7 +287,15 @@ class ResumeProvider extends ChangeNotifier {
 
   void removeExperience(int i) {
     experienceControllers.removeAt(i);
+    _presentList.removeAt(i);
     checkActive();
+  }
+
+  void toggleExperienceCurrent(int index) {
+    if (index >= 0 && index < _presentList.length) {
+      _presentList[index] = !_presentList[index];
+      notifyListeners();
+    }
   }
 
   // ПОЛУЧИТЬ ЛОКАЛИЗОВННЫЙ ТЕКСТ АППБАРА
