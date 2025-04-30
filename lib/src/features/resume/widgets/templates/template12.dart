@@ -101,7 +101,7 @@ class Template12 extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (resume.about.isNotEmpty) ...[
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 18),
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 16,
@@ -116,7 +116,7 @@ class Template12 extends StatelessWidget {
                         ),
                         child: _LeftTitle(l.aboutMe),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       _About(title: resume.about),
                       const SizedBox(height: 20.5),
                     ],

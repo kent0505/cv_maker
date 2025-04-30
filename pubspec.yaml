@@ -27,6 +27,7 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   purchases_flutter: ^8.7.4
   purchases_ui_flutter: ^8.7.4
+  screenshot: ^3.0.0
   ###
 dev_dependencies:
   flutter_test:

@@ -160,7 +160,7 @@ class Template13 extends StatelessWidget {
               color: const Color(0xff606060),
               padding: const EdgeInsets.symmetric(
                 horizontal: 30,
-                vertical: 20,
+                vertical: 18,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

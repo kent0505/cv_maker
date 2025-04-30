@@ -21,7 +21,6 @@ class ResumeInterests extends StatelessWidget {
       children: [
         if (provider.interests.length != 8) ...[
           FieldTitle(l.enterInterest),
-          const SizedBox(height: 4),
           TxtField(
             controller: provider.interestController,
             hintText: l.football,

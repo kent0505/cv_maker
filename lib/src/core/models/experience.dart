@@ -7,7 +7,7 @@ class Experience {
     required this.details,
     required this.startDate,
     required this.endDate,
-    // required this.present,
+    required this.present,
   });
 
   final int id;
@@ -17,7 +17,7 @@ class Experience {
   String details;
   String startDate;
   String endDate;
-  // bool present;
+  bool present;
 
   Map<String, dynamic> toMap() {
     return {
@@ -28,7 +28,7 @@ class Experience {
       'details': details,
       'startDate': startDate,
       'endDate': endDate,
-      // 'present': present ? 1 : 0,
+      'present': present ? 1 : 0,
     };
   }
 
@@ -41,7 +41,7 @@ class Experience {
       details: map['details'],
       startDate: map['startDate'],
       endDate: map['endDate'],
-      // present: map['present'] == 1 ? true : false,
+      present: map['present'] == 1 ? true : false,
     );
   }
 }

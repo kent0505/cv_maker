@@ -24,14 +24,14 @@ void main() async {
 
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
-  await prefs.remove(Keys.onboard);
+  // await prefs.remove(Keys.onboard);
 
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'data.db');
   // await deleteDatabase(path);
   final db = await openDatabase(
     path,
-    version: 1,
+    version: 2,
     onCreate: (db, version) async {
       await db.execute(SQL.resumes);
       await db.execute(SQL.languages);
@@ -39,6 +39,22 @@ void main() async {
       await db.execute(SQL.experiences);
       await db.execute(SQL.skills);
       await db.execute(SQL.interests);
+    },
+    onUpgrade: (Database db, int oldVersion, int newVersion) async {
+      if (oldVersion < 2) {
+        await db.execute('DROP TABLE IF EXISTS ${Tables.resumes}');
+        await db.execute('DROP TABLE IF EXISTS ${Tables.languages}');
+        await db.execute('DROP TABLE IF EXISTS ${Tables.educations}');
+        await db.execute('DROP TABLE IF EXISTS ${Tables.experiences}');
+        await db.execute('DROP TABLE IF EXISTS ${Tables.skills}');
+        await db.execute('DROP TABLE IF EXISTS ${Tables.interests}');
+        await db.execute(SQL.resumes);
+        await db.execute(SQL.languages);
+        await db.execute(SQL.educations);
+        await db.execute(SQL.experiences);
+        await db.execute(SQL.skills);
+        await db.execute(SQL.interests);
+      }
     },
   );
 

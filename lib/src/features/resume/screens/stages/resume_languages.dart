@@ -22,7 +22,6 @@ class ResumeLanguages extends StatelessWidget {
       children: [
         if (provider.languages.length < 5) ...[
           FieldTitle(l.enterLanguage),
-          const SizedBox(height: 4),
           TxtField(
             controller: provider.languageController,
             hintText: l.english,

@@ -17,10 +17,18 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           BlocBuilder<HomeBloc, HomeState>(
+            buildWhen: (previous, current) =>
+                previous.runtimeType != current.runtimeType,
             builder: (context, state) {
-              return state is HomeTemplates
-                  ? const TemplatesScreen()
-                  : const ResumeScreen();
+              int index = state is HomeTemplates ? 0 : 1;
+
+              return IndexedStack(
+                index: index,
+                children: const [
+                  TemplatesScreen(),
+                  ResumeScreen(),
+                ],
+              );
             },
           ),
           const NavBar(),

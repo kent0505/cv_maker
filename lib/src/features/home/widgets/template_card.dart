@@ -6,26 +6,7 @@ import '../../../core/models/data.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/button.dart';
 import '../../resume/screens/create_resume_screen.dart';
-import '../../resume/widgets/templates/template1.dart';
-import '../../resume/widgets/templates/template10.dart';
-import '../../resume/widgets/templates/template11.dart';
-import '../../resume/widgets/templates/template12.dart';
-import '../../resume/widgets/templates/template13.dart';
-import '../../resume/widgets/templates/template14.dart';
-import '../../resume/widgets/templates/template15.dart';
-import '../../resume/widgets/templates/template16.dart';
-import '../../resume/widgets/templates/template17.dart';
-import '../../resume/widgets/templates/template18.dart';
-import '../../resume/widgets/templates/template19.dart';
-import '../../resume/widgets/templates/template2.dart';
-import '../../resume/widgets/templates/template20.dart';
-import '../../resume/widgets/templates/template3.dart';
-import '../../resume/widgets/templates/template4.dart';
-import '../../resume/widgets/templates/template5.dart';
-import '../../resume/widgets/templates/template6.dart';
-import '../../resume/widgets/templates/template7.dart';
-import '../../resume/widgets/templates/template8.dart';
-import '../../resume/widgets/templates/template9.dart';
+import '../../resume/widgets/template_widget.dart';
 
 class TemplateCard extends StatelessWidget {
   const TemplateCard({super.key, required this.template});
@@ -55,29 +36,7 @@ class TemplateCard extends StatelessWidget {
                 height: 550 * 1.41,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(60),
-                  child: switch (template.id) {
-                    1 => Template1(data: data),
-                    2 => Template2(data: data),
-                    3 => Template3(data: data),
-                    4 => Template4(data: data),
-                    5 => Template5(data: data),
-                    6 => Template6(data: data),
-                    7 => Template7(data: data),
-                    8 => Template8(data: data),
-                    9 => Template9(data: data),
-                    10 => Template10(data: data),
-                    11 => Template11(data: data),
-                    12 => Template12(data: data),
-                    13 => Template13(data: data),
-                    14 => Template14(data: data),
-                    15 => Template15(data: data),
-                    16 => Template16(data: data),
-                    17 => Template17(data: data),
-                    18 => Template18(data: data),
-                    19 => Template19(data: data),
-                    20 => Template20(data: data),
-                    _ => const SizedBox(),
-                  },
+                  child: TemplateWidget(data: data),
                 ),
               ),
             ),

@@ -21,7 +21,6 @@ class ResumeSkills extends StatelessWidget {
       children: [
         if (provider.skills.length != 8) ...[
           FieldTitle(l.enterSkill),
-          const SizedBox(height: 4),
           TxtField(
             controller: provider.skillController,
             hintText: l.patience,

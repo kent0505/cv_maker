@@ -29,7 +29,6 @@ class ResumeExperience extends StatelessWidget {
     return Column(
       children: [
         FieldTitle(l.workCompanyName),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[0],
           hintText: 'Gilette',
@@ -40,7 +39,6 @@ class ResumeExperience extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.workCompanyLocation),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[1],
           hintText: l.city,
@@ -51,7 +49,6 @@ class ResumeExperience extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.introduction),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[2],
           hintText: l.headOfMarketing,
@@ -62,7 +59,6 @@ class ResumeExperience extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.details),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[3],
           hintText: l.marketing,
@@ -78,7 +74,6 @@ class ResumeExperience extends StatelessWidget {
               child: Column(
                 children: [
                   FieldTitle(l.startDate),
-                  const SizedBox(height: 4),
                   TxtField(
                     controller: controllers[4],
                     hintText: '12/09/2020',
@@ -102,7 +97,6 @@ class ResumeExperience extends StatelessWidget {
               child: Column(
                 children: [
                   FieldTitle(l.endDate),
-                  const SizedBox(height: 4),
                   TxtField(
                     controller: controllers[5],
                     hintText: '12/09/2020',

@@ -80,6 +80,7 @@ Data getMockData(int template) {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
         startDate: '22/06/2022',
         endDate: '22/06/2050',
+        present: true,
       ),
       Experience(
         id: 0,
@@ -90,6 +91,7 @@ Data getMockData(int template) {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
         startDate: '22/06/2015',
         endDate: '22/06/2020',
+        present: false,
       ),
       Experience(
         id: 0,
@@ -100,6 +102,7 @@ Data getMockData(int template) {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
         startDate: '22/06/2020',
         endDate: '22/06/2024',
+        present: false,
       ),
     ],
     skills: [

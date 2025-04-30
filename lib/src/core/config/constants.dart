@@ -66,6 +66,12 @@ abstract final class Levels {
   static const c2 = 'Native';
 }
 
+abstract final class FileFormats {
+  static const jpg = 'JPG';
+  static const png = 'PNG';
+  static const pdf = 'PDF';
+}
+
 abstract final class Tables {
   static const resumes = 'resumes';
   static const languages = 'languages';
@@ -115,7 +121,8 @@ abstract final class SQL {
       introduction TEXT,
       details TEXT,
       startDate TEXT,
-      endDate TEXT
+      endDate TEXT,
+      present INTEGER
     )
     ''';
   static const skills = '''

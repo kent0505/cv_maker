@@ -9,6 +9,7 @@ class Template {
 }
 
 List<Template> templates = [
+  Template(id: 16, title: 'Smart & Stylish'),
   Template(id: 1, title: 'Refined Professionalism'),
   Template(id: 2, title: 'Classic Professional'),
   Template(id: 3, title: 'Modern Elegance'),
@@ -24,7 +25,6 @@ List<Template> templates = [
   Template(id: 13, title: 'Elegant Contrast'),
   Template(id: 14, title: 'Structured Impact'),
   Template(id: 15, title: 'Dynamic Layout'),
-  Template(id: 16, title: 'Smart & Stylish'),
   Template(id: 17, title: 'Tech-Savvy Design'),
   Template(id: 18, title: 'Standout Resume'),
   Template(id: 19, title: 'Artistic Touch'),

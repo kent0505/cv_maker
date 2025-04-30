@@ -125,7 +125,7 @@ class ResumeProvider extends ChangeNotifier {
         details: controllers[3].text,
         startDate: controllers[4].text,
         endDate: controllers[5].text,
-        // present: false,
+        present: false,
       );
     }).toList();
   }

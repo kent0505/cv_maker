@@ -21,7 +21,6 @@ class ResumeInformation extends StatelessWidget {
         const UserImage(),
         const SizedBox(height: 8),
         FieldTitle(l.name),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.nameController,
           hintText: l.alex,
@@ -32,7 +31,6 @@ class ResumeInformation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.mobilePhone),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.phoneController,
           hintText: '(239) 555 - 0108',
@@ -43,7 +41,6 @@ class ResumeInformation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const FieldTitle('Email'),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.emailController,
           hintText: 'yourmail@example.com',
@@ -55,7 +52,6 @@ class ResumeInformation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.cityOfResidence),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.cityController,
           hintText: l.city,
@@ -66,7 +62,6 @@ class ResumeInformation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.dateOfBirth),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.birthController,
           hintText: '16/03/25',
@@ -85,7 +80,6 @@ class ResumeInformation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.jobTitle),
-        const SizedBox(height: 4),
         TxtField(
           controller: provider.jobController,
           hintText: l.manager,

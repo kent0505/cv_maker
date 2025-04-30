@@ -26,7 +26,6 @@ class ResumeEducation extends StatelessWidget {
     return Column(
       children: [
         FieldTitle(l.universityName),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[0],
           hintText: 'The University of Manchester',
@@ -37,7 +36,6 @@ class ResumeEducation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.universityFaculty),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[1],
           hintText: l.marketingAndManagement,
@@ -48,7 +46,6 @@ class ResumeEducation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.universityStartYear),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[2],
           hintText: '2025',
@@ -60,7 +57,6 @@ class ResumeEducation extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         FieldTitle(l.universityEndYear),
-        const SizedBox(height: 4),
         TxtField(
           controller: controllers[3],
           hintText: '2025',
