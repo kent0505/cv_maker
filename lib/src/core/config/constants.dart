@@ -42,27 +42,7 @@ abstract final class Assets {
   static const onb5 = 'assets/images/onb5.png';
   static const star = 'assets/images/star.png';
   static const placeholder = 'assets/images/placeholder.png';
-
-  static const template1 = 'assets/templates/1.png';
-  static const template2 = 'assets/templates/2.png';
-  static const template3 = 'assets/templates/3.png';
-  static const template4 = 'assets/templates/4.png';
-  static const template5 = 'assets/templates/5.png';
-  static const template6 = 'assets/templates/6.png';
-  static const template7 = 'assets/templates/7.png';
-  static const template8 = 'assets/templates/8.png';
-  static const template9 = 'assets/templates/9.png';
-  static const template10 = 'assets/templates/10.png';
-  static const template11 = 'assets/templates/11.png';
-  static const template12 = 'assets/templates/12.png';
-  static const template13 = 'assets/templates/13.png';
-  static const template14 = 'assets/templates/14.png';
-  static const template15 = 'assets/templates/15.png';
-  static const template16 = 'assets/templates/16.png';
-  static const template17 = 'assets/templates/17.png';
-  static const template18 = 'assets/templates/18.png';
-  static const template19 = 'assets/templates/19.png';
-  static const template20 = 'assets/templates/20.png';
+  static const user = 'assets/images/user.png';
 
   static String getTemplate(int id) => 'assets/templates/$id.png';
 }

@@ -18,6 +18,7 @@ import '../../../core/utils.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/dialog_widget.dart';
+import '../../../core/widgets/loading_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../bloc/resume_bloc.dart';
 import '../widgets/templates/template1.dart';
@@ -197,6 +198,11 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
                 MainButton(
                   title: l.export,
                   onPressed: onExport,
+                )
+              else
+                const SizedBox(
+                  height: 54,
+                  child: LoadingWidget(),
                 ),
               const SizedBox(height: 30),
             ],

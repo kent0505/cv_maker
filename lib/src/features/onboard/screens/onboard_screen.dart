@@ -3,11 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
+import '../../../core/models/data.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../home/screens/home_screen.dart';
+import '../../resume/widgets/templates/template1.dart';
+import '../../resume/widgets/templates/template2.dart';
+import '../../resume/widgets/templates/template3.dart';
+import '../../resume/widgets/templates/template4.dart';
+import '../../resume/widgets/templates/template5.dart';
+import '../../resume/widgets/templates/template6.dart';
+import '../../resume/widgets/templates/template7.dart';
+import '../../resume/widgets/templates/template8.dart';
+import '../../resume/widgets/templates/template10.dart';
+import '../../resume/widgets/templates/template11.dart';
+import '../../resume/widgets/templates/template12.dart';
+import '../../resume/widgets/templates/template13.dart';
+import '../../resume/widgets/templates/template17.dart';
+import '../../resume/widgets/templates/template19.dart';
+import '../../resume/widgets/templates/template20.dart';
 import '../data/onboard_repository.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -54,96 +70,96 @@ class _OnboardScreenState extends State<OnboardScreen> {
           alignment: Alignment.bottomCenter,
           children: [
             if (index == 1) ...[
-              const _Template(
-                asset: Assets.template1,
+              _Template(
                 top: -70,
                 right: 240,
+                child: Template1(data: getMockData(1)),
               ),
-              const _Template(
-                asset: Assets.template2,
+              _Template(
                 top: 290,
                 right: 176,
+                child: Template2(data: getMockData(2)),
               ),
-              const _Template(
-                asset: Assets.template17,
+              _Template(
                 top: -70,
                 right: -30,
+                child: Template17(data: getMockData(17)),
               ),
-              const _Template(
-                asset: Assets.template7,
+              _Template(
                 top: 290,
                 right: -94,
+                child: Template7(data: getMockData(7)),
               ),
-              const _Template(
-                asset: Assets.template20,
+              _Template(
                 top: 650,
                 right: 114,
+                child: Template20(data: getMockData(20)),
               ),
-              const _Template(
-                asset: Assets.template11,
+              _Template(
                 top: 642,
                 right: -155,
+                child: Template11(data: getMockData(11)),
               ),
-              const _Template(
-                asset: Assets.template4,
+              _Template(
                 top: -70,
                 right: 510,
+                child: Template4(data: getMockData(4)),
               ),
-              const _Template(
-                asset: Assets.template5,
+              _Template(
                 top: 290,
                 right: 446,
+                child: Template5(data: getMockData(5)),
               ),
-              const _Template(
-                asset: Assets.template6,
+              _Template(
                 top: 650,
                 right: 384,
+                child: Template6(data: getMockData(6)),
               ),
             ] else if (index == 2) ...[
-              const _Template2(
-                asset: Assets.template8,
+              _Template2(
                 top: -50,
                 right: -50,
+                child: Template8(data: getMockData(8)),
               ),
-              const _Template2(
-                asset: Assets.template3,
+              _Template2(
                 top: -100,
                 right: 218,
+                child: Template3(data: getMockData(3)),
               ),
-              const _Template2(
-                asset: Assets.template19,
+              _Template2(
                 top: 270,
                 right: 218,
+                child: Template19(data: getMockData(19)),
               ),
-              const _Template2(
-                asset: Assets.template10,
+              _Template2(
                 top: 316,
                 right: -50,
+                child: Template10(data: getMockData(10)),
               ),
-              const _Template2(
-                asset: Assets.template11,
+              _Template2(
                 top: -140,
                 right: 486,
+                child: Template11(data: getMockData(11)),
               ),
-              const _Template2(
-                asset: Assets.template12,
+              _Template2(
                 top: 230,
                 right: 486,
+                child: Template12(data: getMockData(12)),
               ),
-              const _Template2(
-                asset: Assets.template13,
+              _Template2(
                 top: 600,
                 right: 486,
+                child: Template13(data: getMockData(13)),
               ),
-              const _Template2(
-                asset: Assets.template20,
+              _Template2(
                 top: 640,
                 right: 218,
+                child: Template20(data: getMockData(20)),
               ),
-              const _Template2(
-                asset: Assets.template7,
+              _Template2(
                 top: 684,
                 right: -50,
+                child: Template7(data: getMockData(7)),
               ),
             ] else if (index == 3) ...[
               Positioned(
@@ -353,14 +369,14 @@ class _Indicator extends StatelessWidget {
 
 class _Template extends StatelessWidget {
   const _Template({
-    required this.asset,
+    required this.child,
     required this.top,
     required this.right,
   });
 
-  final String asset;
   final double top;
   final double right;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -369,12 +385,26 @@ class _Template extends StatelessWidget {
       right: right,
       child: RotationTransition(
         turns: AlwaysStoppedAnimation(-10 / 360),
-        child: ImageWidget(
-          asset,
+        // child: ImageWidget(
+        //   asset,
+        //   height: 352,
+        //   width: 250,
+        //   fit: BoxFit.cover,
+        //   borderRadius: BorderRadius.circular(14),
+        // ),
+        child: SizedBox(
           height: 352,
           width: 250,
-          fit: BoxFit.cover,
-          borderRadius: BorderRadius.circular(14),
+          child: FittedBox(
+            child: SizedBox(
+              width: 550,
+              height: 550 * 1.41,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: child,
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -383,26 +413,33 @@ class _Template extends StatelessWidget {
 
 class _Template2 extends StatelessWidget {
   const _Template2({
-    required this.asset,
     required this.top,
     required this.right,
+    required this.child,
   });
 
-  final String asset;
   final double top;
   final double right;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       top: top,
       right: right,
-      child: ImageWidget(
-        asset,
+      child: SizedBox(
         height: 352,
         width: 250,
-        fit: BoxFit.cover,
-        borderRadius: BorderRadius.circular(14),
+        child: FittedBox(
+          child: SizedBox(
+            width: 550,
+            height: 550 * 1.41,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(60),
+              child: child,
+            ),
+          ),
+        ),
       ),
     );
   }

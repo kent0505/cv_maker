@@ -54,6 +54,7 @@ class FileImageWidget extends StatelessWidget {
   const FileImageWidget(
     this.asset, {
     super.key,
+    this.placeholder = Assets.placeholder,
     this.width,
     this.height,
     this.fit,
@@ -62,6 +63,7 @@ class FileImageWidget extends StatelessWidget {
   });
 
   final String asset;
+  final String placeholder;
   final double? width;
   final double? height;
   final BoxFit? fit;
@@ -80,7 +82,7 @@ class FileImageWidget extends StatelessWidget {
         frameBuilder: frameBuilder,
         errorBuilder: (context, error, stackTrace) {
           return ImageWidget(
-            Assets.placeholder,
+            placeholder,
             height: width,
             width: height,
             fit: fit,

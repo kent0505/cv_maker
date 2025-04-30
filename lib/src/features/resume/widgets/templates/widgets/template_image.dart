@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/config/constants.dart';
 import '../../../../../core/models/data.dart';
 import '../../../../../core/widgets/image_widget.dart';
 
@@ -47,6 +48,7 @@ class TemplateImage extends StatelessWidget {
               ),
               child: FileImageWidget(
                 resume.photo,
+                placeholder: Assets.user,
                 height: height,
                 width: width,
                 fit: BoxFit.cover,
