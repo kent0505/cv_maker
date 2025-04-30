@@ -32,7 +32,9 @@ class Template16 extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: resume.about.isEmpty
-                ? []
+                ? [
+                    const SizedBox(height: 10),
+                  ]
                 : [
                     const SizedBox(height: 10),
                     Row(
