@@ -82,7 +82,7 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               MainButton(
-                title: l.export,
+                title: l.download,
                 onPressed: onExport,
               ),
               const SizedBox(height: 30),

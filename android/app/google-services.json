@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "630169668100",
+    "project_id": "cvmaker-80bc1",
+    "storage_bucket": "cvmaker-80bc1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630169668100:android:cfa49c92f80072daab0351",
+        "android_client_info": {
+          "package_name": "com.helperg.resume.builder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl8ElbGqhtGaq59pAg8b7Lkwgqm9BPmkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

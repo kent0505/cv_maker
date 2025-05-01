@@ -35,8 +35,8 @@
     "@add": {},
     "saveResume": "Save Resume",
     "@saveResume": {},
-    "export": "Export",
-    "@export": {},
+    "download": "Download",
+    "@download": {},
     "upgradePro": "Upgrade Pro",
     "@upgradePro": {},
 
@@ -172,8 +172,8 @@
     "present": "Present",
     "@present": {},
 
-    "importError": "Import error",
-    "@importError": {},
+    "error": "Error",
+    "@error": {},
     "noData": "No data",
     "@noData": {},
 
