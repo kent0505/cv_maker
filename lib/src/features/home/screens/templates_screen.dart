@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/template.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../settings/screens/settings_screen.dart';
+import '../../vip/screens/vip_sheet.dart';
 import '../widgets/template_card.dart';
 
 class TemplatesScreen extends StatelessWidget {
@@ -37,6 +40,39 @@ class TemplatesScreen extends StatelessWidget {
                         height: 1,
                       ),
                     ),
+                  ),
+                  Button(
+                    onPressed: () async {
+                      try {
+                        Offerings offerings = await Purchases.getOfferings();
+                        final offering = offerings.getOffering(
+                          'monthly_subsctiption_cv',
+                        );
+                        // if (offerings.current != null &&
+                        //     offerings.current!.availablePackages.isNotEmpty) {
+                        //   final packages = offerings.current!.availablePackages;
+                        //   // Use this to show purchase options
+                        //   for (var package in packages) {
+                        //     logger(package.storeProduct.priceString);
+                        //   }
+                        // }
+                        // CustomerInfo customerInfo =
+                        //     await Purchases.getCustomerInfo();
+                        // logger(customerInfo.entitlements);
+                        if (context.mounted) {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return VipSheet(offering: offering);
+                            },
+                          );
+                        }
+                      } catch (e) {
+                        logger(e);
+                      }
+                    },
+                    child: const SvgWidget(Assets.settings),
                   ),
                   Button(
                     onPressed: () {
