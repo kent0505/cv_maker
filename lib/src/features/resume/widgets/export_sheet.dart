@@ -122,7 +122,7 @@ class _ExportSheetState extends State<ExportSheet> {
 
         DialogWidget.show(
           context,
-          title: l.error,
+          title: l.importError,
           description: '',
           info: true,
           onYes: () {},

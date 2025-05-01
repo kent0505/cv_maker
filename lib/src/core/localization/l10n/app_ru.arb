@@ -19,7 +19,7 @@
     "addOneMore": "Добавить еще",
     "add": "Добавить",
     "saveResume": "Сохранить Резюме",
-    "download": "Скачать",
+    "export": "Экспорт",
     "upgradePro": "Улучшить Pro",
 
     "onboardTitle1": "Добро пожаловать в приложение",
@@ -94,7 +94,7 @@
     "jobExperience": "Опыт работы",
     "present": "...",
 
-    "error": "Ошибка",
+    "importError": "Ошибка импорта",
     "noData": "Нет данных",
 
     "fileName": "Название файла",

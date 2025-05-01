@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_maker/src/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -58,25 +56,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
     setState(() {
       index = value;
     });
-  }
-
-  Future<void> getOnboardText() async {
-    try {
-      final querySnapshot =
-          await FirebaseFirestore.instance.collection('onboarding').get();
-      for (var doc in querySnapshot.docs) {
-        logger(doc.id); // Document ID
-        logger(doc.data()); // Document data as Map<String, dynamic>
-      }
-    } catch (e) {
-      logger(e);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getOnboardText();
   }
 
   @override

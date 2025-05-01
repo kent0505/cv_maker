@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cv_maker/src/core/utils.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,21 +21,6 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
-  await Firebase.initializeApp();
-
-  logger(Firebase.apps.isNotEmpty);
-
-  try {
-    final querySnapshot =
-        await FirebaseFirestore.instance.collection('onboarding').get();
-    for (var doc in querySnapshot.docs) {
-      logger(doc.id); // Document ID
-      logger(doc.data()); // Document data as Map<String, dynamic>
-    }
-  } catch (e) {
-    logger(e);
-  }
 
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
