@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
+import '../../../core/models/onboard.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
@@ -37,14 +39,19 @@ class OnboardScreen extends StatefulWidget {
 
 class _OnboardScreenState extends State<OnboardScreen> {
   int index = 1;
+  Onboard onboard = Onboard(
+    title1: '',
+    desc1: '',
+    title2: '',
+    desc2: '',
+    title3: '',
+    desc3: '',
+  );
 
   void onContinue() {
     if (index == 3) {
       context.read<OnboardRepository>().removeOnboard();
       context.go(HomeScreen.routePath);
-      // setState(() {
-      //   index = 1;
-      // });
     } else {
       setState(() {
         index++;
@@ -58,11 +65,36 @@ class _OnboardScreenState extends State<OnboardScreen> {
     });
   }
 
+  void getOnboard() async {
+    try {
+      onboard = await context.read<OnboardRepository>().getOnboard();
+    } catch (e) {
+      logger(e);
+      if (mounted) {
+        final l = AppLocalizations.of(context)!;
+        onboard = Onboard(
+          title1: l.onboardTitle1,
+          title2: l.onboardTitle2,
+          title3: l.onboardTitle3,
+          desc1: l.onboardDescription1,
+          desc2: l.onboardDescription2,
+          desc3: l.onboardDescription3,
+        );
+      }
+    } finally {
+      if (mounted) setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getOnboard();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-
-    precacheImage(AssetImage(Assets.onb2), context);
 
     return Scaffold(
       body: Bg(
@@ -285,10 +317,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: Text(
                       index == 1
-                          ? l.onboardTitle1
+                          ? onboard.title1
                           : index == 2
-                              ? l.onboardTitle2
-                              : l.onboardTitle3,
+                              ? onboard.title2
+                              : onboard.title3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -303,10 +335,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: Text(
                       index == 1
-                          ? l.onboardDescription1
+                          ? onboard.desc1
                           : index == 2
-                              ? l.onboardDescription2
-                              : l.onboardDescription3,
+                              ? onboard.desc2
+                              : onboard.desc3,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(

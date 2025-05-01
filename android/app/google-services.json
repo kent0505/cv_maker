@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "75952618266",
+    "project_id": "cv-maker-c5a3d",
+    "storage_bucket": "cv-maker-c5a3d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75952618266:android:2bc589415f6dbff043caa3",
+        "android_client_info": {
+          "package_name": "com.helperg.resume.builder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcN4z8SHFs-rwoYIOrm72LnRzlv_fa3Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
