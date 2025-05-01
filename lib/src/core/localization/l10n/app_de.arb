@@ -1,0 +1,102 @@
+{
+    "@@locale": "de",
+  
+    "chooseTemplate": "Vorlage\nauswählen",
+    "templates": "Vorlagen",
+    "resume": "Lebenslauf",
+    "myResume": "Meine Lebensläufe",
+  
+    "settings": "Einstellungen",
+    "share": "Teilen",
+    "contactUs": "Kontaktieren Sie uns",
+    "termsOfUse": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "languages": "Sprachen",
+  
+    "save": "Speichern",
+    "continuee": "Weiter",
+    "skip": "Überspringen",
+    "addOneMore": "Noch eine hinzufügen",
+    "add": "Hinzufügen",
+    "saveResume": "Lebenslauf speichern",
+    "export": "Exportieren",
+    "upgradePro": "Auf Pro upgraden",
+  
+    "onboardTitle1": "Willkommen in der App",
+    "onboardTitle2": "Heben Sie das Wichtigste hervor",
+    "onboardTitle3": "Erstellen Sie Ihren perfekten Lebenslauf",
+    "onboardDescription1": "Ein umfangreicher Lebenslaufbereich, der Ihnen hilft, Ihren Traumjob zu finden",
+    "onboardDescription2": "Erstellen Sie einen gut lesbaren Lebenslauf, heben Sie das Wichtigste für den Arbeitgeber hervor",
+    "onboardDescription3": "Nutzen Sie die 3-tägige kostenlose Testversion von Resume Builder: Eine uneingeschränkte Jobvorlagen-App für 6,99 $ pro Woche",
+  
+    "information": "Informationen",
+    "education": "Ausbildung",
+    "workExperience": "Berufserfahrung",
+    "skills": "Fähigkeiten",
+    "interests": "Interessen",
+    "aboutYou": "Über Sie",
+  
+    "alex": "Alex",
+    "city": "London",
+    "manager": "Manager",
+    "english": "Englisch",
+    "marketingAndManagement": "Marketing und Management",
+    "marketing": "Marketing",
+    "headOfMarketing": "Leiter Marketingabteilung",
+    "patience": "Geduld",
+    "football": "Fußball",
+  
+    "next": "Weiter",
+    "cancel": "Abbrechen",
+    "yes": "Ja",
+    "exitDescription": "Sind Sie sicher? Alle Daten gehen für immer verloren",
+    "deleteDescription": "Sind Sie sicher? Der Lebenslauf wird dauerhaft gelöscht",
+  
+    "applyTemplates": "Vorlage anwenden",
+    "filled": "ausgefüllt",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "exit": "Beenden",
+  
+    "name": "Name",
+    "mobilePhone": "Telefonnummer",
+    "cityOfResidence": "Wohnort",
+    "dateOfBirth": "Geburtsdatum",
+    "jobTitle": "Berufsbezeichnung",
+  
+    "enterLanguage": "Sprache eingeben",
+    "language": "Sprache",
+    "chooseLevel": "Niveau auswählen",
+
+    "universityName": "Name der Universität",
+    "universityFaculty": "Name der Fakultät",
+    "universitySpecialization": "Spezialisierung",
+    "universityStartYear": "Startjahr",
+    "universityEndYear": "Abschlussjahr",
+  
+    "workCompanyName": "Name des Unternehmens",
+    "workCompanyLocation": "Standort des Unternehmens",
+    "introduction": "Einleitung",
+    "details": "Einzelheiten",
+    "startDate": "Anfangsdatum",
+    "endDate": "Enddatum",
+    "currentWork": "Derzeitige Tätigkeit",
+  
+    "enterSkill": "Fähigkeit eingeben",
+    "only30Skill": "Sie können nur 8 Fähigkeiten auswählen",
+    "enterInterest": "Geben Sie Ihre Interessen ein",
+    "only30Interest": "Sie können nur 8 Interessen auswählen",
+    "aboutTitle": "Schreiben Sie Informationen über sich selbst. Dies hilft dem Arbeitgeber, mehr über Sie zu erfahren.",
+  
+    "contactMe": "Kontaktieren Sie mich",
+    "contacts": "Kontakte",
+    "aboutMe": "Über mich",
+    "jobExperience": "Berufserfahrung",
+    "present": "...",
+  
+    "importError": "Importfehler",
+    "noData": "Keine Daten",
+  
+    "fileName": "Dateiname",
+    "format": "Format"
+}

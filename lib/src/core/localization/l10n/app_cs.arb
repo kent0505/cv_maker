@@ -1,0 +1,102 @@
+{
+    "@@locale": "cs",
+  
+    "chooseTemplate": "Vyberte\nšablonu",
+    "templates": "Šablony",
+    "resume": "Životopis",
+    "myResume": "Moje životopisy",
+  
+    "settings": "Nastavení",
+    "share": "Sdílet",
+    "contactUs": "Kontaktujte nás",
+    "termsOfUse": "Podmínky použití",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "languages": "Jazyky",
+  
+    "save": "Uložit",
+    "continuee": "Pokračovat",
+    "skip": "Přeskočit",
+    "addOneMore": "Přidat další",
+    "add": "Přidat",
+    "saveResume": "Uložit životopis",
+    "export": "Exportovat",
+    "upgradePro": "Upgradovat na Pro",
+  
+    "onboardTitle1": "Vítejte v aplikaci",
+    "onboardTitle2": "Zvýrazněte to důležité",
+    "onboardTitle3": "Vytvořte si dokonalý životopis",
+    "onboardDescription1": "Velká sekce životopisu, která vám pomůže najít vysněnou práci",
+    "onboardDescription2": "Vytvořte čitelný životopis a zdůrazněte to, co je pro zaměstnavatele důležité",
+    "onboardDescription3": "Využijte 3denní bezplatnou zkušební verzi Resume Builder: neomezené šablony jen za 6,99 $ týdně",
+  
+    "information": "Informace",
+    "education": "Vzdělání",
+    "workExperience": "Pracovní zkušenosti",
+    "skills": "Dovednosti",
+    "interests": "Zájmy",
+    "aboutYou": "O vás",
+  
+    "alex": "Alex",
+    "city": "Londýn",
+    "manager": "Manažer",
+    "english": "Angličtina",
+    "marketingAndManagement": "Marketing a management",
+    "marketing": "Marketing",
+    "headOfMarketing": "Vedoucí marketingového oddělení",
+    "patience": "Trpělivost",
+    "football": "Fotbal",
+  
+    "next": "Další",
+    "cancel": "Zrušit",
+    "yes": "Ano",
+    "exitDescription": "Opravdu chcete odejít? Všechna data budou nenávratně ztracena",
+    "deleteDescription": "Opravdu chcete smazat? Životopis bude trvale odstraněn",
+  
+    "applyTemplates": "Použít šablonu",
+    "filled": "vyplněno",
+    "edit": "Upravit",
+    "delete": "Smazat",
+    "exit": "Odejít",
+  
+    "name": "Jméno",
+    "mobilePhone": "Telefon",
+    "cityOfResidence": "Město bydliště",
+    "dateOfBirth": "Datum narození",
+    "jobTitle": "Pracovní pozice",
+  
+    "enterLanguage": "Zadejte jazyk",
+    "language": "Jazyk",
+    "chooseLevel": "Vyberte úroveň",
+  
+    "universityName": "Název univerzity",
+    "universityFaculty": "Fakulta",
+    "universitySpecialization": "Specializace",
+    "universityStartYear": "Rok začátku",
+    "universityEndYear": "Rok ukončení",
+  
+    "workCompanyName": "Název společnosti",
+    "workCompanyLocation": "Místo společnosti",
+    "introduction": "Úvod",
+    "details": "Podrobnosti",
+    "startDate": "Datum začátku",
+    "endDate": "Datum ukončení",
+    "currentWork": "Současná práce",
+  
+    "enterSkill": "Zadejte dovednost",
+    "only30Skill": "Můžete vybrat pouze 8 dovedností",
+    "enterInterest": "Zadejte své zájmy",
+    "only30Interest": "Můžete vybrat pouze 8 zájmů",
+    "aboutTitle": "Napište něco o sobě, pomůže to zaměstnavateli lépe vás poznat.",
+  
+    "contactMe": "Kontaktujte mě",
+    "contacts": "Kontakty",
+    "aboutMe": "O mně",
+    "jobExperience": "Pracovní zkušenosti",
+    "present": "...",
+  
+    "importError": "Chyba importu",
+    "noData": "Žádná data",
+  
+    "fileName": "Název souboru",
+    "format": "Formát"
+}  

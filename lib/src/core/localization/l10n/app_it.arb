@@ -1,0 +1,102 @@
+{
+    "@@locale": "it",
+  
+    "chooseTemplate": "Scegli\nun modello",
+    "templates": "Modelli",
+    "resume": "Curriculum",
+    "myResume": "I miei curriculum",
+  
+    "settings": "Impostazioni",
+    "share": "Condividi",
+    "contactUs": "Contattaci",
+    "termsOfUse": "Termini di utilizzo",
+    "privacyPolicy": "Informativa sulla privacy",
+    "languages": "Lingue",
+  
+    "save": "Salva",
+    "continuee": "Continua",
+    "skip": "Salta",
+    "addOneMore": "Aggiungine un altro",
+    "add": "Aggiungi",
+    "saveResume": "Salva il curriculum",
+    "export": "Esporta",
+    "upgradePro": "Passa a Pro",
+  
+    "onboardTitle1": "Benvenuto nell'app",
+    "onboardTitle2": "Evidenzia ciò che conta",
+    "onboardTitle3": "Crea il tuo curriculum perfetto",
+    "onboardDescription1": "Una sezione curriculum completa per aiutarti a trovare il lavoro dei tuoi sogni",
+    "onboardDescription2": "Crea un curriculum facile da leggere, evidenziando ciò che è importante per il datore di lavoro",
+    "onboardDescription3": "Prova gratuita di 3 giorni di Resume Builder: app con modelli di lavoro illimitati a soli 6,99 $ a settimana",
+  
+    "information": "Informazioni",
+    "education": "Istruzione",
+    "workExperience": "Esperienza lavorativa",
+    "skills": "Competenze",
+    "interests": "Interessi",
+    "aboutYou": "Su di te",
+  
+    "alex": "Alex",
+    "city": "Londra",
+    "manager": "Manager",
+    "english": "Inglese",
+    "marketingAndManagement": "Marketing e gestione",
+    "marketing": "Marketing",
+    "headOfMarketing": "Responsabile marketing",
+    "patience": "Pazienza",
+    "football": "Calcio",
+  
+    "next": "Avanti",
+    "cancel": "Annulla",
+    "yes": "Sì",
+    "exitDescription": "Sei sicuro? Tutti i dati verranno persi definitivamente",
+    "deleteDescription": "Sei sicuro? Il curriculum verrà eliminato definitivamente",
+  
+    "applyTemplates": "Applica modello",
+    "filled": "completato",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "exit": "Esci",
+  
+    "name": "Nome",
+    "mobilePhone": "Telefono",
+    "cityOfResidence": "Città di residenza",
+    "dateOfBirth": "Data di nascita",
+    "jobTitle": "Posizione lavorativa",
+  
+    "enterLanguage": "Inserisci una lingua",
+    "language": "Lingua",
+    "chooseLevel": "Scegli il livello",
+  
+    "universityName": "Nome dell'università",
+    "universityFaculty": "Nome della facoltà",
+    "universitySpecialization": "Specializzazione",
+    "universityStartYear": "Anno di inizio",
+    "universityEndYear": "Anno di fine",
+  
+    "workCompanyName": "Nome dell'azienda",
+    "workCompanyLocation": "Posizione dell'azienda",
+    "introduction": "Introduzione",
+    "details": "Dettagli",
+    "startDate": "Data di inizio",
+    "endDate": "Data di fine",
+    "currentWork": "Lavoro attuale",
+  
+    "enterSkill": "Inserisci una competenza",
+    "only30Skill": "Puoi selezionare solo 8 competenze",
+    "enterInterest": "Inserisci i tuoi interessi",
+    "only30Interest": "Puoi selezionare solo 8 interessi",
+    "aboutTitle": "Scrivi qualcosa su di te, aiuterà il datore di lavoro a conoscerti meglio.",
+  
+    "contactMe": "Contattami",
+    "contacts": "Contatti",
+    "aboutMe": "Su di me",
+    "jobExperience": "Esperienza lavorativa",
+    "present": "...",
+  
+    "importError": "Errore di importazione",
+    "noData": "Nessun dato",
+  
+    "fileName": "Nome del file",
+    "format": "Formato"
+}  

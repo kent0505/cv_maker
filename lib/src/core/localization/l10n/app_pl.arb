@@ -1,0 +1,102 @@
+{
+    "@@locale": "pl",
+  
+    "chooseTemplate": "Wybierz\nszablon",
+    "templates": "Szablony",
+    "resume": "CV",
+    "myResume": "Moje CV",
+  
+    "settings": "Ustawienia",
+    "share": "Udostępnij",
+    "contactUs": "Skontaktuj się z nami",
+    "termsOfUse": "Warunki korzystania",
+    "privacyPolicy": "Polityka prywatności",
+    "languages": "Języki",
+  
+    "save": "Zapisz",
+    "continuee": "Kontynuuj",
+    "skip": "Pomiń",
+    "addOneMore": "Dodaj kolejny",
+    "add": "Dodaj",
+    "saveResume": "Zapisz CV",
+    "export": "Eksportuj",
+    "upgradePro": "Uaktualnij do Pro",
+  
+    "onboardTitle1": "Witamy w aplikacji",
+    "onboardTitle2": "Podkreśl to, co najważniejsze",
+    "onboardTitle3": "Stwórz idealne CV",
+    "onboardDescription1": "Rozbudowana sekcja CV, która pomoże Ci zdobyć wymarzoną pracę",
+    "onboardDescription2": "Stwórz łatwe do przeczytania CV i podkreśl to, co ważne dla pracodawcy",
+    "onboardDescription3": "Skorzystaj z 3-dniowego darmowego okresu próbnego Resume Buildera: nieograniczone szablony za jedyne 6,99 $ tygodniowo",
+  
+    "information": "Informacje",
+    "education": "Wykształcenie",
+    "workExperience": "Doświadczenie zawodowe",
+    "skills": "Umiejętności",
+    "interests": "Zainteresowania",
+    "aboutYou": "O Tobie",
+  
+    "alex": "Aleks",
+    "city": "Londyn",
+    "manager": "Menedżer",
+    "english": "Angielski",
+    "marketingAndManagement": "Marketing i zarządzanie",
+    "marketing": "Marketing",
+    "headOfMarketing": "Kierownik działu marketingu",
+    "patience": "Cierpliwość",
+    "football": "Piłka nożna",
+  
+    "next": "Dalej",
+    "cancel": "Anuluj",
+    "yes": "Tak",
+    "exitDescription": "Czy na pewno? Wszystkie dane zostaną trwale utracone",
+    "deleteDescription": "Czy na pewno? CV zostanie trwale usunięte",
+  
+    "applyTemplates": "Zastosuj szablon",
+    "filled": "wypełnione",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "exit": "Wyjście",
+  
+    "name": "Imię",
+    "mobilePhone": "Telefon",
+    "cityOfResidence": "Miasto zamieszkania",
+    "dateOfBirth": "Data urodzenia",
+    "jobTitle": "Stanowisko",
+  
+    "enterLanguage": "Wprowadź język",
+    "language": "Język",
+    "chooseLevel": "Wybierz poziom",
+  
+    "universityName": "Nazwa uczelni",
+    "universityFaculty": "Wydział",
+    "universitySpecialization": "Specjalizacja",
+    "universityStartYear": "Rok rozpoczęcia",
+    "universityEndYear": "Rok ukończenia",
+  
+    "workCompanyName": "Nazwa firmy",
+    "workCompanyLocation": "Lokalizacja firmy",
+    "introduction": "Wprowadzenie",
+    "details": "Szczegóły",
+    "startDate": "Data rozpoczęcia",
+    "endDate": "Data zakończenia",
+    "currentWork": "Obecna praca",
+  
+    "enterSkill": "Wprowadź umiejętność",
+    "only30Skill": "Możesz wybrać tylko 8 umiejętności",
+    "enterInterest": "Wprowadź swoje zainteresowania",
+    "only30Interest": "Możesz wybrać tylko 8 zainteresowań",
+    "aboutTitle": "Napisz coś o sobie – pomoże to pracodawcy lepiej Cię poznać.",
+  
+    "contactMe": "Skontaktuj się ze mną",
+    "contacts": "Kontakty",
+    "aboutMe": "O mnie",
+    "jobExperience": "Doświadczenie zawodowe",
+    "present": "...",
+  
+    "importError": "Błąd importu",
+    "noData": "Brak danych",
+  
+    "fileName": "Nazwa pliku",
+    "format": "Format"
+}  

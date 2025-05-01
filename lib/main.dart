@@ -30,7 +30,7 @@ void main() async {
 
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
-  await prefs.remove(Keys.onboard);
+  // await prefs.remove(Keys.onboard);
 
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'data.db');

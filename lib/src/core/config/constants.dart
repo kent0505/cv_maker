@@ -55,6 +55,12 @@ abstract final class Keys {
 abstract final class Locales {
   static const en = 'en';
   static const ru = 'ru';
+  static const cs = 'cs';
+  static const de = 'de';
+  static const es = 'es';
+  static const fr = 'fr';
+  static const it = 'it';
+  static const pl = 'pl';
 }
 
 abstract final class Levels {

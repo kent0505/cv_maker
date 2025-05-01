@@ -22,6 +22,12 @@ final class SettingsRepositoryImpl implements SettingsRepository {
     List<String> codes = [
       Locales.en,
       Locales.ru,
+      Locales.cs,
+      Locales.de,
+      Locales.es,
+      Locales.fr,
+      Locales.it,
+      Locales.pl,
     ];
     return _prefs.getString(Keys.locale) ??
         (codes.contains(code) ? code : Locales.en);
