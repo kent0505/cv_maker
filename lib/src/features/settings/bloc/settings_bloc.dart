@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/utils.dart';
 import '../data/settings_repository.dart';
 
 part 'settings_event.dart';
@@ -11,6 +10,7 @@ part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, Locale> {
   final SettingsRepository _repository;
+
   SettingsBloc({required SettingsRepository repository})
       : _repository = repository,
         super(Locale(PlatformDispatcher.instance.locale.languageCode)) {
@@ -35,7 +35,6 @@ class SettingsBloc extends Bloc<SettingsEvent, Locale> {
     Emitter<Locale> emit,
   ) async {
     await _repository.setLocale(event.locale);
-    logger(event.locale);
     add(GetLanguage());
   }
 }

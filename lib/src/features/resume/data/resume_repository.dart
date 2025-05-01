@@ -34,13 +34,6 @@ final class ResumeRepositoryImpl implements ResumeRepository {
     final skills = await _db.query(Tables.skills);
     final interests = await _db.query(Tables.interests);
 
-    logger('RESUMES ${resumes.length}');
-    logger('LANGUAGES ${languages.length}');
-    logger('EDUCATIONS ${educations.length}');
-    logger('EXPERIENCES ${experiences.length}');
-    logger('SKILLS ${skills.length}');
-    logger('INTERESTS ${interests.length}');
-
     return Data(
       resumes: resumes.map((map) => Resume.fromMap(map)).toList(),
       languages: languages.map((map) => Language.fromMap(map)).toList(),

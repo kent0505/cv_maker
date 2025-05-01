@@ -3,13 +3,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/models/onboard.dart';
+import '../../../core/utils.dart';
 
 abstract interface class OnboardRepository {
   const OnboardRepository();
 
   bool isOnBoard();
   Future<void> removeOnboard();
-  Future<Onboard> getOnboard();
+  Future<Onboard?> getOnboard();
 }
 
 final class OnboardRepositoryImpl implements OnboardRepository {
@@ -28,9 +29,14 @@ final class OnboardRepositoryImpl implements OnboardRepository {
   }
 
   @override
-  Future<Onboard> getOnboard() async {
-    final firebaseDB = FirebaseFirestore.instance;
-    final querySnapshot = await firebaseDB.collection('onboard').get();
-    return Onboard.fromJson(querySnapshot.docs[0].data());
+  Future<Onboard?> getOnboard() async {
+    try {
+      final firebaseDB = FirebaseFirestore.instance;
+      final querySnapshot = await firebaseDB.collection('onboard').get();
+      return Onboard.fromJson(querySnapshot.docs[0].data());
+    } catch (e) {
+      logger(e);
+      return null;
+    }
   }
 }

@@ -205,13 +205,17 @@ class _RightTitle extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-              fontFamily: AppFonts.gotham900,
-              fontWeight: FontWeight.w900,
+          Expanded(
+            child: Text(
+              title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                fontFamily: AppFonts.gotham900,
+                fontWeight: FontWeight.w900,
+              ),
             ),
           ),
         ],

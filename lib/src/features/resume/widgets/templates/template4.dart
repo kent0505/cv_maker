@@ -170,6 +170,8 @@ class _RightTitle extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10),
       child: Text(
         title,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: const TextStyle(
           color: Colors.black,
           fontSize: 24,

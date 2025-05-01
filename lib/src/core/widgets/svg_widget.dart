@@ -10,14 +10,12 @@ class SvgWidget extends StatelessWidget {
     this.height,
     this.width,
     this.color,
-    // this.fit = BoxFit.contain,
   });
 
   final String assetName;
   final double? height;
   final double? width;
   final Color? color;
-  // final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,6 @@ class SvgWidget extends StatelessWidget {
       assetName,
       height: height,
       width: width,
-      // fit: fit,
       colorFilter: color != null
           ? ColorFilter.mode(
               color!,

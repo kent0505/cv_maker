@@ -137,7 +137,6 @@ class ResumeProvider extends ChangeNotifier {
 
   // РЕГУЛИРОВКА АКТИВНОСТИ КНОПКИ
   void checkActive({bool init = false}) {
-    logger(_index);
     if (!init) _canPop = false;
     switch (_index) {
       case 1:

@@ -11,6 +11,7 @@ import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
 import 'src/features/home/bloc/home_bloc.dart';
+import 'src/features/onboard/bloc/onboard_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
 import 'src/features/settings/bloc/settings_bloc.dart';
@@ -30,7 +31,7 @@ void main() async {
 
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
-  // await prefs.remove(Keys.onboard);
+  await prefs.remove(Keys.onboard);
 
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'data.db');
@@ -80,6 +81,11 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
+          BlocProvider(
+            create: (context) => OnboardBloc(
+              repository: context.read<OnboardRepository>(),
+            ),
+          ),
           BlocProvider(
             create: (context) => SettingsBloc(
               repository: context.read<SettingsRepository>(),

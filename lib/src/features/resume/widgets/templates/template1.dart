@@ -200,6 +200,8 @@ class _RightTitle extends StatelessWidget {
         Expanded(
           child: Text(
             title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 20,
