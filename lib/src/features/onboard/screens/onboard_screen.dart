@@ -341,7 +341,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ),
                     const Spacer(flex: 2),
                     MainButton(
-                      title: l.continuee,
+                      // title: l.continuee,
+                      title: 'Continue',
                       onPressed: onContinue,
                     ),
                     const SizedBox(height: 20),
