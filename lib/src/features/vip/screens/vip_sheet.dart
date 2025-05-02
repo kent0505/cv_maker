@@ -4,6 +4,7 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:purchases_ui_flutter/purchases_ui_flutter.dart';
 
 import '../../../core/utils.dart';
+import '../../../core/widgets/dialog_widget.dart';
 
 class VipSheet extends StatelessWidget {
   const VipSheet({super.key, this.offering});
@@ -12,33 +13,53 @@ class VipSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void showInfo(String title, String description) {
+      DialogWidget.show(
+        context,
+        title: title,
+        description: description,
+        info: true,
+        onYes: () {},
+      );
+    }
+
     return PaywallView(
       // displayCloseButton: true,
       offering: offering,
       onDismiss: () {
         context.pop();
-        logger('DISMISS');
+        showInfo('DISMISS', '');
       },
       onPurchaseCompleted: (customerInfo, storeTransaction) {
-        logger('COMPLETED');
+        showInfo(
+          'COMPLETED',
+          customerInfo.entitlements.active.toString(),
+        );
       },
       onPurchaseCancelled: () {
-        logger('CANCEL');
+        showInfo('CANCEL', '');
       },
       onPurchaseError: (e) {
-        logger('PURCHASE ERROR');
-        logger(e.message);
+        showInfo(
+          'PURCHASE ERROR',
+          e.message,
+        );
       },
       onPurchaseStarted: (rcPackage) {
         logger('PURCHASE STARTED');
         logger(rcPackage.storeProduct.subscriptionPeriod.toString());
       },
       onRestoreCompleted: (customerInfo) {
-        logger('RESTORE COMPLETED');
+        showInfo(
+          'RESTORE COMPLETED',
+          customerInfo.entitlements.active.toString(),
+        );
       },
       onRestoreError: (e) {
-        logger('RESTORE ERROR');
-        logger(e.message);
+        showInfo(
+          'RESTORE ERROR',
+          e.message,
+        );
       },
     );
   }

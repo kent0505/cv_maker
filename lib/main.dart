@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
-import 'src/core/firebase/firebase_options.dart';
+// import 'src/core/firebase/firebase_options.dart';
 import 'src/features/home/bloc/home_bloc.dart';
 import 'src/features/onboard/bloc/onboard_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
@@ -18,6 +18,7 @@ import 'src/features/resume/data/resume_repository.dart';
 import 'src/features/settings/bloc/settings_bloc.dart';
 import 'src/features/settings/data/settings_repository.dart';
 import 'src/features/onboard/data/onboard_repository.dart';
+import 'src/features/vip/bloc/vip_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,9 +27,9 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 
   await Purchases.configure(
     PurchasesConfiguration('appl_pKPtksEFtQJHHSGcArvdfXMxJyM'),
@@ -86,6 +87,7 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
+          BlocProvider(create: (context) => VipBloc()),
           BlocProvider(
             create: (context) => OnboardBloc(
               repository: context.read<OnboardRepository>(),

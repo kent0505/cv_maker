@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/settings_repository.dart';
 
 part 'settings_event.dart';
-part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, Locale> {
   final SettingsRepository _repository;
