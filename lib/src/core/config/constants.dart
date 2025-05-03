@@ -146,3 +146,20 @@ abstract final class SQL {
     )
     ''';
 }
+
+// onUpgrade: (Database db, int oldVersion, int newVersion) async {
+    //   if (oldVersion < 2) {
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.resumes}');
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.languages}');
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.educations}');
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.experiences}');
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.skills}');
+    //     await db.execute('DROP TABLE IF EXISTS ${Tables.interests}');
+    //     await db.execute(SQL.resumes);
+    //     await db.execute(SQL.languages);
+    //     await db.execute(SQL.educations);
+    //     await db.execute(SQL.experiences);
+    //     await db.execute(SQL.skills);
+    //     await db.execute(SQL.interests);
+    //   }
+    // },
