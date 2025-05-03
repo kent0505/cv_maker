@@ -47,7 +47,7 @@ class VipBloc extends Bloc<VipEvent, Vip> {
         Offerings offerings = await Purchases.getOfferings();
 
         emit(Vip(
-          isVip: !isVip,
+          isVip: isVip,
           hasInternet: event.connected,
           offering: offerings.getOffering('monthly_subsctiption_cv'),
         ));
