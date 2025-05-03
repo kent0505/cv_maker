@@ -16,6 +16,28 @@ class TemplateImage extends StatelessWidget {
     final height = getHeight(index);
     final width = getWidth(index);
     final borderRadius = getBorderRadius(height, index);
+    String photo = switch (resume.template) {
+      1 => Assets.user8,
+      2 => Assets.user15,
+      3 => Assets.user11,
+      4 => Assets.user2,
+      5 => Assets.user14,
+      6 => Assets.user1,
+      7 => Assets.user4,
+      8 => Assets.user16,
+      9 => Assets.user9,
+      10 => Assets.user20,
+      11 => Assets.user7,
+      13 => Assets.user13,
+      14 => Assets.user18,
+      15 => Assets.user5,
+      16 => Assets.user7,
+      17 => Assets.user6,
+      18 => Assets.user17,
+      19 => Assets.user19,
+      20 => Assets.user12,
+      _ => Assets.placeholder,
+    };
 
     return resume.photo.isEmpty
         ? SizedBox(
@@ -48,7 +70,7 @@ class TemplateImage extends StatelessWidget {
               ),
               child: FileImageWidget(
                 resume.photo,
-                placeholder: Assets.user,
+                placeholder: photo,
                 height: height,
                 width: width,
                 fit: BoxFit.cover,

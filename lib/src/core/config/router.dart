@@ -28,9 +28,7 @@ final routerConfig = GoRouter(
     ),
     GoRoute(
       path: HomeScreen.routePath,
-      builder: (context, state) => HomeScreen(
-        onboard: state.extra as bool,
-      ),
+      builder: (context, state) => const HomeScreen(),
     ),
 
     // SETTINGS

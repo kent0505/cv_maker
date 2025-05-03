@@ -17,14 +17,14 @@ class NavBar extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         height: 60,
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           bottom: 44,
           left: 16,
           right: 16,
         ),
-        padding: EdgeInsets.symmetric(horizontal: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
-          color: Color(0xff007AFF),
+          color: const Color(0xff007AFF),
           borderRadius: BorderRadius.circular(30),
         ),
         child: BlocBuilder<HomeBloc, HomeState>(
@@ -88,15 +88,15 @@ class _NavBarButton extends StatelessWidget {
               width: 20,
               child: SvgWidget(
                 asset,
-                color: active ? Color(0xff007AFF) : Colors.white,
+                color: active ? const Color(0xff007AFF) : Colors.white,
               ),
             ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             Text(
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: active ? Color(0xff007AFF) : Colors.white,
+                color: active ? const Color(0xff007AFF) : Colors.white,
                 fontSize: 14,
                 fontFamily: AppFonts.funnel500,
               ),

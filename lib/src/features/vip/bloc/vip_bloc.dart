@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -25,14 +27,23 @@ class VipBloc extends Bloc<VipEvent, Vip> {
     CheckVip event,
     Emitter<Vip> emit,
   ) async {
-    _connectivity.onConnectivityChanged.listen((result) {
-      if (result.contains(ConnectivityResult.mobile) ||
-          result.contains(ConnectivityResult.wifi)) {
-        add(ChangeVip(connected: true));
-      } else {
-        add(ChangeVip(connected: false));
-      }
-    });
+    if (Platform.isIOS) {
+      _connectivity.onConnectivityChanged.listen((result) {
+        if (result.contains(ConnectivityResult.mobile) ||
+            result.contains(ConnectivityResult.wifi)) {
+          logger('HAS INTERNET');
+          add(ChangeVip(connected: true));
+        } else {
+          logger('NO INTERNET');
+          add(ChangeVip(connected: false));
+        }
+      });
+    } else {
+      emit(Vip(
+        isVip: true,
+        hasInternet: true,
+      ));
+    }
   }
 
   void _changeVip(
@@ -53,7 +64,7 @@ class VipBloc extends Bloc<VipEvent, Vip> {
         ));
       } catch (e) {
         logger(e);
-        emit(Vip());
+        emit(Vip(hasInternet: event.connected));
       }
     } else {
       emit(Vip());

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../vip/bloc/vip_bloc.dart';
-import '../../vip/screens/vip_screen.dart';
 import '../../vip/screens/vip_sheet.dart';
 import '../bloc/home_bloc.dart';
 import '../widgets/nav_bar.dart';
@@ -11,9 +9,7 @@ import 'templates_screen.dart';
 import 'resume_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, required this.onboard});
-
-  final bool onboard;
+  const HomeScreen({super.key});
 
   static const routePath = '/HomeScreen';
 
@@ -24,17 +20,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: BlocListener<VipBloc, Vip>(
         listener: (context, state) {
-          if (!state.isVip && state.hasInternet && initial) {
+          // ПОКАЗ ПЕРВОГО ПЕЙВОЛА
+          if (!state.isVip &&
+              state.hasInternet &&
+              context.mounted &&
+              state.offering != null &&
+              initial) {
             initial = false;
-            if (onboard) {
-              context.push(VipScreen.routePath);
-            } else {
-              Future.delayed(Duration(seconds: 1), () {
-                if (context.mounted && state.offering != null) {
-                  VipSheet.show(context);
-                }
-              });
-            }
+            VipSheet.show(context);
           }
         },
         child: Stack(

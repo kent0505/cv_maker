@@ -42,9 +42,27 @@ abstract final class Assets {
   static const onb5 = 'assets/images/onb5.png';
   static const star = 'assets/images/star.png';
   static const placeholder = 'assets/images/placeholder.png';
-  static const noInternet = 'assets/images/no-internet.png';
   static const noWifi = 'assets/images/no-wifi.png';
-  static const user = 'assets/images/user.png';
+  static const user1 = 'assets/images/user1.jpg';
+  static const user2 = 'assets/images/user2.jpg';
+  static const user3 = 'assets/images/user3.jpg';
+  static const user4 = 'assets/images/user4.jpg';
+  static const user5 = 'assets/images/user5.jpg';
+  static const user6 = 'assets/images/user6.jpg';
+  static const user7 = 'assets/images/user7.jpg';
+  static const user8 = 'assets/images/user8.jpg';
+  static const user9 = 'assets/images/user9.jpg';
+  static const user10 = 'assets/images/user10.jpg';
+  static const user11 = 'assets/images/user11.jpg';
+  static const user12 = 'assets/images/user12.jpg';
+  static const user13 = 'assets/images/user13.jpg';
+  static const user14 = 'assets/images/user14.jpg';
+  static const user15 = 'assets/images/user15.jpg';
+  static const user16 = 'assets/images/user16.jpg';
+  static const user17 = 'assets/images/user17.jpg';
+  static const user18 = 'assets/images/user18.jpg';
+  static const user19 = 'assets/images/user19.jpg';
+  static const user20 = 'assets/images/user20.jpg';
 
   static String getTemplate(int id) => 'assets/templates/$id.png';
 }

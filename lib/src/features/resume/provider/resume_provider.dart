@@ -194,19 +194,17 @@ class ResumeProvider extends ChangeNotifier {
   // ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ
   void goLeft() {
     _index--;
-    checkActive();
+    notifyListeners();
   }
 
   void goRight() {
-    if (canContinue) {
-      _index++;
-      checkActive();
-    }
+    _index++;
+    notifyListeners();
   }
 
   void onSkip() {
     _index++;
-    checkActive();
+    notifyListeners();
   }
 
   // ДОБАВЛЕНИЕ ДОПОЛНИТЕЛЬНЫХ ПОЛЕЙ
@@ -290,10 +288,14 @@ class ResumeProvider extends ChangeNotifier {
     checkActive();
   }
 
+  // РАБОТАЮ СЕЙЧАС СВИТЧ
   void toggleExperienceCurrent(int index) {
     if (index >= 0 && index < _presentList.length) {
       _presentList[index] = !_presentList[index];
-      notifyListeners();
+      _presentList[index]
+          ? experienceControllers[index].last.text = 'xyz'
+          : experienceControllers[index].last.text = '';
+      checkActive();
     }
   }
 

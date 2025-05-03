@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
@@ -6,6 +7,7 @@ import '../../../core/models/template.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/svg_widget.dart';
 import '../../settings/screens/settings_screen.dart';
+import '../../vip/bloc/vip_bloc.dart';
 import '../widgets/template_card.dart';
 
 class TemplatesScreen extends StatelessWidget {
@@ -14,6 +16,7 @@ class TemplatesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+    final vip = context.watch<VipBloc>().state;
 
     return Stack(
       children: [
@@ -72,6 +75,7 @@ class TemplatesScreen extends StatelessWidget {
                     (index) {
                       return TemplateCard(
                         template: templates[index],
+                        vip: vip,
                       );
                     },
                   ),

@@ -25,7 +25,6 @@ class ResumeCard extends StatefulWidget {
 
 class _ResumeCardState extends State<ResumeCard> {
   bool menuOpened = false;
-
   double filled = 0;
 
   void onImage() {

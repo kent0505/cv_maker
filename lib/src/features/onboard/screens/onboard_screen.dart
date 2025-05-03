@@ -60,10 +60,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
     return BlocListener<OnboardBloc, OnboardState>(
       listener: (context, state) {
         if (state is OnboardDone) {
-          context.go(
-            HomeScreen.routePath,
-            extra: true,
-          );
+          context.go(HomeScreen.routePath);
         }
       },
       child: Scaffold(

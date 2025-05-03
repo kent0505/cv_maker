@@ -35,12 +35,35 @@ final emptyData = Data(
 );
 
 Data getMockData(int template) {
+  String name = switch (template) {
+    1 => 'Julia Petrova',
+    2 => 'Nikola Tesla',
+    3 => 'Ivan Kotliarevsky',
+    4 => 'Emilia Müller',
+    5 => 'Henry Weber',
+    6 => 'Nguyen Thi Tra My',
+    7 => 'Sophia Silva',
+    8 => 'Gabriel Costa',
+    9 => 'Fatima Ahmad',
+    10 => 'Elias Meyer',
+    11 => 'Klara Hoffmann',
+    12 => 'Mila Fischer',
+    13 => 'Vasyl Ivanovich',
+    14 => 'Felix Schmidt',
+    15 => 'Lena Kovac',
+    16 => 'Rafael Santos',
+    17 => 'Anastasia Volkova',
+    18 => 'Carlos Mendoza',
+    19 => 'Yuki Tanaka',
+    _ => 'Daniel Bergman',
+  };
+
   return Data(
     resume: Resume(
       id: 0,
       template: template,
-      photo: Assets.user,
-      name: 'Yulia Kartavenko',
+      photo: Assets.user1,
+      name: name,
       phone: '1-718-310-5588',
       email: 'yourmail@example.com',
       city: 'your address psum suspendisse ultrices gravida. Risus commodo',

@@ -51,10 +51,15 @@ class DialogWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-            child: Container(
-              color: const Color(0xff808080).withValues(alpha: 0.55),
+          GestureDetector(
+            onTap: () {
+              context.pop();
+            },
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+              child: Container(
+                color: const Color(0xff808080).withValues(alpha: 0.55),
+              ),
             ),
           ),
           Container(

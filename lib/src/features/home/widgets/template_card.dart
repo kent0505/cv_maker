@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
@@ -13,29 +12,33 @@ import '../../vip/bloc/vip_bloc.dart';
 import '../../vip/screens/vip_screen.dart';
 
 class TemplateCard extends StatelessWidget {
-  const TemplateCard({super.key, required this.template});
+  const TemplateCard({
+    super.key,
+    required this.template,
+    required this.vip,
+  });
 
   final Template template;
+  final Vip vip;
 
   @override
   Widget build(BuildContext context) {
     final total = MediaQuery.sizeOf(context).width;
     final width = (total / (total > 450 ? 3 : 2)) - 31;
     final data = getMockData(template.id);
-    final state = context.watch<VipBloc>().state;
     final first = template.id == 16;
 
     return SizedBox(
       width: width,
       child: Button(
         onPressed: () {
-          if (state.isVip || first) {
+          if (vip.isVip || first) {
             context.push(
               CreateResumeScreen.routePath,
               extra: template,
             );
           } else {
-            state.hasInternet
+            vip.hasInternet
                 ? context.push(VipScreen.routePath)
                 : NoInternetDialog.show(context);
           }
@@ -78,7 +81,7 @@ class TemplateCard extends StatelessWidget {
                 ),
               ],
             ),
-            if (!state.isVip && !first)
+            if (!vip.isVip && !first)
               Positioned(
                 top: 20,
                 right: 20,

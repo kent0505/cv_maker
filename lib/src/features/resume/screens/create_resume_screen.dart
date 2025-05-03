@@ -75,7 +75,7 @@ class CreateResumeScreen extends StatelessWidget {
               ),
             ],
             child: ListView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16).copyWith(bottom: 200),
               children: [
                 const SizedBox(height: 4),
                 const ResumeIndicator(),

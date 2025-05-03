@@ -73,6 +73,7 @@ class Template12 extends StatelessWidget {
                           width: 200,
                           fit: BoxFit.cover,
                           borderRadius: BorderRadius.circular(100),
+                          placeholder: Assets.user3,
                         ),
                       ),
               ],
