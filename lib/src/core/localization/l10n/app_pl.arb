@@ -98,5 +98,7 @@
     "noData": "Brak danych",
   
     "fileName": "Nazwa pliku",
-    "format": "Format"
+    "format": "Format",
+
+    "noInternet": "Brak internetu"
 }  

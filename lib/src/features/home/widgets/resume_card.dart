@@ -135,7 +135,10 @@ class _ResumeCardState extends State<ResumeCard> {
                             child: SizedBox(
                               width: 550,
                               height: 550 * 1.41,
-                              child: TemplateWidget(data: data),
+                              child: TemplateWidget(
+                                data: data,
+                                id: resume.template,
+                              ),
                             ),
                           ),
                         ),

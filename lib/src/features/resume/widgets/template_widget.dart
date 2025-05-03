@@ -23,13 +23,18 @@ import 'templates/template19.dart';
 import 'templates/template20.dart';
 
 class TemplateWidget extends StatelessWidget {
-  const TemplateWidget({super.key, required this.data});
+  const TemplateWidget({
+    super.key,
+    required this.data,
+    required this.id,
+  });
 
   final Data data;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
-    return switch (data.resume!.template) {
+    return switch (id) {
       1 => Template1(data: data),
       2 => Template2(data: data),
       3 => Template3(data: data),

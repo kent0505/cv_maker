@@ -8,27 +8,12 @@ import '../../../core/models/resume.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/button.dart';
+import '../../internet/bloc/internet_bloc.dart';
+import '../../internet/widgets/no_internet_dialog.dart';
+import '../../vip/bloc/vip_bloc.dart';
+import '../../vip/screens/vip_screen.dart';
 import '../bloc/resume_bloc.dart';
-import '../widgets/templates/template1.dart';
-import '../widgets/templates/template2.dart';
-import '../widgets/templates/template3.dart';
-import '../widgets/templates/template4.dart';
-import '../widgets/templates/template5.dart';
-import '../widgets/templates/template6.dart';
-import '../widgets/templates/template7.dart';
-import '../widgets/templates/template8.dart';
-import '../widgets/templates/template9.dart';
-import '../widgets/templates/template10.dart';
-import '../widgets/templates/template11.dart';
-import '../widgets/templates/template12.dart';
-import '../widgets/templates/template13.dart';
-import '../widgets/templates/template14.dart';
-import '../widgets/templates/template15.dart';
-import '../widgets/templates/template16.dart';
-import '../widgets/templates/template17.dart';
-import '../widgets/templates/template18.dart';
-import '../widgets/templates/template19.dart';
-import '../widgets/templates/template20.dart';
+import '../widgets/template_widget.dart';
 
 class ResumeApplyScreen extends StatelessWidget {
   const ResumeApplyScreen({super.key, required this.resume});
@@ -40,10 +25,6 @@ class ResumeApplyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-
-    // final t = templates.where((element) {
-    //   return element.id >= 11;
-    // }).toList(); // временно
 
     return Scaffold(
       appBar: Appbar(title: l.applyTemplates),
@@ -83,70 +64,73 @@ class _TemplateCard extends StatelessWidget {
     final total = MediaQuery.sizeOf(context).width;
     final width = (total / (total > 450 ? 3 : 2)) - 31;
     final data = getMockData(template.id);
+    final hasInternet = context.watch<InternetBloc>().state;
+    final state = context.watch<VipBloc>().state;
+    final first = template.id == 16;
 
     return SizedBox(
       width: width,
       child: Button(
         onPressed: () {
-          context.read<ResumeBloc>().add(ApplyResumeTemplate(
-                template: template,
-                resume: resume,
-              ));
-          context.pop();
+          if (state.isVip || first) {
+            context.read<ResumeBloc>().add(ApplyResumeTemplate(
+                  template: template,
+                  resume: resume,
+                ));
+            context.pop();
+          } else {
+            hasInternet
+                ? context.push(VipScreen.routePath)
+                : NoInternetDialog.show(context);
+          }
         },
-        child: Column(
+        child: Stack(
           children: [
-            FittedBox(
-              child: SizedBox(
-                width: 550,
-                height: 550 * 1.41,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: switch (template.id) {
-                    1 => Template1(data: data),
-                    2 => Template2(data: data),
-                    3 => Template3(data: data),
-                    4 => Template4(data: data),
-                    5 => Template5(data: data),
-                    6 => Template6(data: data),
-                    7 => Template7(data: data),
-                    8 => Template8(data: data),
-                    9 => Template9(data: data),
-                    10 => Template10(data: data),
-                    11 => Template11(data: data),
-                    12 => Template12(data: data),
-                    13 => Template13(data: data),
-                    14 => Template14(data: data),
-                    15 => Template15(data: data),
-                    16 => Template16(data: data),
-                    17 => Template17(data: data),
-                    18 => Template18(data: data),
-                    19 => Template19(data: data),
-                    20 => Template20(data: data),
-                    _ => const SizedBox(),
-                  },
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 44,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      template.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: AppFonts.funnel800,
+            Column(
+              children: [
+                FittedBox(
+                  child: SizedBox(
+                    width: 550,
+                    height: 550 * 1.41,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(60),
+                      child: TemplateWidget(
+                        data: data,
+                        id: template.id,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 44,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          template.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: AppFonts.funnel800,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
+            if (!state.isVip && !first)
+              Positioned(
+                top: 20,
+                right: 20,
+                child: const Icon(
+                  Icons.lock,
+                  color: Color(0xff606060),
+                ),
+              ),
           ],
         ),
       ),

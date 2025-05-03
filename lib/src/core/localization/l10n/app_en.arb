@@ -180,5 +180,8 @@
     "fileName": "File name",
     "@fileName": {},
     "format": "Format",
-    "@format": {}
+    "@format": {},
+
+    "noInternet": "No Internet",
+    "@noInternet": {}
 }

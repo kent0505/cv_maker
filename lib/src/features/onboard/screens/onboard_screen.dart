@@ -55,13 +55,15 @@ class _OnboardScreenState extends State<OnboardScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-
     final index = context.watch<OnboardBloc>().index;
 
     return BlocListener<OnboardBloc, OnboardState>(
       listener: (context, state) {
         if (state is OnboardDone) {
-          context.go(HomeScreen.routePath);
+          context.go(
+            HomeScreen.routePath,
+            extra: true,
+          );
         }
       },
       child: Scaffold(

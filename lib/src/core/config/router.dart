@@ -11,6 +11,7 @@ import '../../features/settings/screens/settings_screen.dart';
 import '../../features/settings/screens/privacy_screen.dart';
 import '../../features/settings/screens/terms_screen.dart';
 import '../../features/settings/screens/languages_screen.dart';
+import '../../features/vip/screens/vip_screen.dart';
 import '../models/resume.dart';
 import '../models/template.dart';
 
@@ -27,7 +28,9 @@ final routerConfig = GoRouter(
     ),
     GoRoute(
       path: HomeScreen.routePath,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => HomeScreen(
+        onboard: state.extra as bool,
+      ),
     ),
 
     // SETTINGS
@@ -72,6 +75,12 @@ final routerConfig = GoRouter(
       builder: (context, state) => ResumePreviewScreen(
         resume: state.extra as Resume,
       ),
+    ),
+
+    // VIP
+    GoRoute(
+      path: VipScreen.routePath,
+      builder: (context, state) => const VipScreen(),
     ),
   ],
 );

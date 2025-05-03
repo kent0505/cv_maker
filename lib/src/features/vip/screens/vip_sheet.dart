@@ -1,65 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:purchases_ui_flutter/purchases_ui_flutter.dart';
 
-import '../../../core/utils.dart';
 import '../../../core/widgets/dialog_widget.dart';
+import '../bloc/vip_bloc.dart';
 
 class VipSheet extends StatelessWidget {
-  const VipSheet({super.key, this.offering});
+  const VipSheet({super.key});
 
-  final Offering? offering;
+  static void show(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        return VipSheet();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    void showInfo(String title, String description) {
+    final state = context.read<VipBloc>().state;
+    bool isClosed = false;
+
+    void showInfo(String title) {
+      if (!isClosed) {
+        isClosed = true;
+        context.pop();
+      }
       DialogWidget.show(
         context,
         title: title,
-        description: description,
+        description: '',
         info: true,
         onYes: () {},
       );
+      context.read<VipBloc>().add(CheckVip());
+    }
+
+    if (state.offering == null) {
+      return const SizedBox();
     }
 
     return PaywallView(
-      // displayCloseButton: true,
-      offering: offering,
+      offering: state.offering,
       onDismiss: () {
         context.pop();
-        showInfo('DISMISS', '');
       },
       onPurchaseCompleted: (customerInfo, storeTransaction) {
-        showInfo(
-          'COMPLETED',
-          customerInfo.entitlements.active.toString(),
-        );
+        showInfo('Purchase Completed');
       },
       onPurchaseCancelled: () {
-        showInfo('CANCEL', '');
+        showInfo('Purchase Cancelled');
       },
       onPurchaseError: (e) {
-        showInfo(
-          'PURCHASE ERROR',
-          e.message,
-        );
-      },
-      onPurchaseStarted: (rcPackage) {
-        logger('PURCHASE STARTED');
-        logger(rcPackage.storeProduct.subscriptionPeriod.toString());
+        showInfo('Purchase Error');
       },
       onRestoreCompleted: (customerInfo) {
-        showInfo(
-          'RESTORE COMPLETED',
-          customerInfo.entitlements.active.toString(),
-        );
+        showInfo('Restore Completed');
       },
       onRestoreError: (e) {
-        showInfo(
-          'RESTORE ERROR',
-          e.message,
-        );
+        showInfo('Restore Error');
       },
     );
   }

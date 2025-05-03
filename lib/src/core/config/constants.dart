@@ -42,6 +42,8 @@ abstract final class Assets {
   static const onb5 = 'assets/images/onb5.png';
   static const star = 'assets/images/star.png';
   static const placeholder = 'assets/images/placeholder.png';
+  static const noInternet = 'assets/images/no-internet.png';
+  static const noWifi = 'assets/images/no-wifi.png';
   static const user = 'assets/images/user.png';
 
   static String getTemplate(int id) => 'assets/templates/$id.png';

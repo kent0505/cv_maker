@@ -22,9 +22,11 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 2),
       () {
         if (mounted) {
-          context.go(context.read<OnboardRepository>().isOnBoard()
-              ? OnboardScreen.routePath
-              : HomeScreen.routePath);
+          if (context.read<OnboardRepository>().isOnBoard()) {
+            context.go(OnboardScreen.routePath);
+          } else {
+            context.go(HomeScreen.routePath, extra: false);
+          }
         }
       },
     );

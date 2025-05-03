@@ -98,5 +98,7 @@
     "noData": "Žádná data",
   
     "fileName": "Název souboru",
-    "format": "Formát"
+    "format": "Formát",
+
+    "noInternet": "Žádné připojení k internetu"
 }  

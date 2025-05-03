@@ -102,7 +102,10 @@ class _ResumePreviewScreenState extends State<ResumePreviewScreen> {
                       borderRadius: BorderRadius.circular(10),
                       child: Screenshot(
                         controller: screenshotController,
-                        child: TemplateWidget(data: data),
+                        child: TemplateWidget(
+                          data: data,
+                          id: data.resume!.template,
+                        ),
                       ),
                     ),
                   ),

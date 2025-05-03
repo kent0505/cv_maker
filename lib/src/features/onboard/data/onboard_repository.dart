@@ -1,4 +1,4 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/config/constants.dart';
@@ -31,10 +31,10 @@ final class OnboardRepositoryImpl implements OnboardRepository {
   @override
   Future<Onboard?> getOnboard() async {
     try {
-      // final firebaseDB = FirebaseFirestore.instance;
-      // final querySnapshot = await firebaseDB.collection('onboard').get();
-      // return Onboard.fromJson(querySnapshot.docs[0].data());
-      throw Exception();
+      final firebaseDB = FirebaseFirestore.instance;
+      final querySnapshot = await firebaseDB.collection('onboard').get();
+      return Onboard.fromJson(querySnapshot.docs[0].data());
+      // throw Exception();
     } catch (e) {
       logger(e);
       return null;
