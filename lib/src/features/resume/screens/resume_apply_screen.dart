@@ -8,8 +8,7 @@ import '../../../core/models/resume.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/appbar.dart';
 import '../../../core/widgets/button.dart';
-import '../../internet/bloc/internet_bloc.dart';
-import '../../internet/widgets/no_internet_dialog.dart';
+import '../../vip/widgets/no_internet_dialog.dart';
 import '../../vip/bloc/vip_bloc.dart';
 import '../../vip/screens/vip_screen.dart';
 import '../bloc/resume_bloc.dart';
@@ -64,7 +63,6 @@ class _TemplateCard extends StatelessWidget {
     final total = MediaQuery.sizeOf(context).width;
     final width = (total / (total > 450 ? 3 : 2)) - 31;
     final data = getMockData(template.id);
-    final hasInternet = context.watch<InternetBloc>().state;
     final state = context.watch<VipBloc>().state;
     final first = template.id == 16;
 
@@ -79,7 +77,7 @@ class _TemplateCard extends StatelessWidget {
                 ));
             context.pop();
           } else {
-            hasInternet
+            state.hasInternet
                 ? context.push(VipScreen.routePath)
                 : NoInternetDialog.show(context);
           }

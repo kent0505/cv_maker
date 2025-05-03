@@ -12,7 +12,6 @@ import 'src/core/config/themes.dart';
 import 'src/core/config/constants.dart';
 import 'src/core/firebase/firebase_options.dart';
 import 'src/features/home/bloc/home_bloc.dart';
-import 'src/features/internet/bloc/internet_bloc.dart';
 import 'src/features/onboard/bloc/onboard_bloc.dart';
 import 'src/features/resume/bloc/resume_bloc.dart';
 import 'src/features/resume/data/resume_repository.dart';
@@ -38,7 +37,7 @@ void main() async {
 
   final prefs = await SharedPreferences.getInstance();
   // await prefs.clear();
-  await prefs.remove(Keys.onboard);
+  // await prefs.remove(Keys.onboard);
 
   final dbPath = await getDatabasesPath();
   final path = join(dbPath, 'data.db');
@@ -88,9 +87,6 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
-          BlocProvider(
-            create: (context) => InternetBloc()..add(CheckInternet()),
-          ),
           BlocProvider(
             create: (context) => VipBloc()..add(CheckVip()),
           ),

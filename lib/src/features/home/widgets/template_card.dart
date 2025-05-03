@@ -6,8 +6,7 @@ import '../../../core/config/constants.dart';
 import '../../../core/models/data.dart';
 import '../../../core/models/template.dart';
 import '../../../core/widgets/button.dart';
-import '../../internet/bloc/internet_bloc.dart';
-import '../../internet/widgets/no_internet_dialog.dart';
+import '../../vip/widgets/no_internet_dialog.dart';
 import '../../resume/screens/create_resume_screen.dart';
 import '../../resume/widgets/template_widget.dart';
 import '../../vip/bloc/vip_bloc.dart';
@@ -23,7 +22,6 @@ class TemplateCard extends StatelessWidget {
     final total = MediaQuery.sizeOf(context).width;
     final width = (total / (total > 450 ? 3 : 2)) - 31;
     final data = getMockData(template.id);
-    final hasInternet = context.watch<InternetBloc>().state;
     final state = context.watch<VipBloc>().state;
     final first = template.id == 16;
 
@@ -31,14 +29,16 @@ class TemplateCard extends StatelessWidget {
       width: width,
       child: Button(
         onPressed: () {
-          state.isVip || first
-              ? context.push(
-                  CreateResumeScreen.routePath,
-                  extra: template,
-                )
-              : hasInternet
-                  ? context.push(VipScreen.routePath)
-                  : NoInternetDialog.show(context);
+          if (state.isVip || first) {
+            context.push(
+              CreateResumeScreen.routePath,
+              extra: template,
+            );
+          } else {
+            state.hasInternet
+                ? context.push(VipScreen.routePath)
+                : NoInternetDialog.show(context);
+          }
         },
         child: Stack(
           children: [

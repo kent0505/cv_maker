@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/widgets/image_widget.dart';
-import '../bloc/internet_bloc.dart';
+import '../bloc/vip_bloc.dart';
 
 class NoInternetDialog extends StatelessWidget {
   const NoInternetDialog({super.key});
@@ -26,9 +26,9 @@ class NoInternetDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
 
-    return BlocListener<InternetBloc, bool>(
-      listener: (context, hasInternet) {
-        if (hasInternet) {
+    return BlocListener<VipBloc, Vip>(
+      listener: (context, state) {
+        if (state.hasInternet) {
           context.pop();
         }
       },
