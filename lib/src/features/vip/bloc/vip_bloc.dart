@@ -28,16 +28,34 @@ class VipBloc extends Bloc<VipEvent, Vip> {
     Emitter<Vip> emit,
   ) async {
     if (Platform.isIOS) {
-      _connectivity.onConnectivityChanged.listen((result) {
-        if (result.contains(ConnectivityResult.mobile) ||
-            result.contains(ConnectivityResult.wifi)) {
-          logger('HAS INTERNET');
-          add(ChangeVip(connected: true));
-        } else {
-          logger('NO INTERNET');
-          add(ChangeVip(connected: false));
-        }
-      });
+      try {
+        // INITIAL STATE
+        CustomerInfo customerInfo =
+            await Purchases.getCustomerInfo().timeout(Duration(seconds: 2));
+        bool isVip = customerInfo.entitlements.active.isNotEmpty;
+
+        Offerings offerings = await Purchases.getOfferings();
+        final offering = offerings.getOffering('monthly_subsctiption_cv');
+
+        emit(Vip(
+          isVip: isVip,
+          hasInternet: offering != null,
+          offering: offering,
+        ));
+      } catch (e) {
+        logger(e);
+      } finally {
+        _connectivity.onConnectivityChanged.listen((result) {
+          if (result.contains(ConnectivityResult.mobile) ||
+              result.contains(ConnectivityResult.wifi)) {
+            logger('HAS INTERNET');
+            add(ChangeVip(connected: true));
+          } else {
+            logger('NO INTERNET');
+            add(ChangeVip(connected: false));
+          }
+        });
+      }
     } else {
       emit(Vip(
         isVip: true,
@@ -56,11 +74,12 @@ class VipBloc extends Bloc<VipEvent, Vip> {
         bool isVip = customerInfo.entitlements.active.isNotEmpty;
 
         Offerings offerings = await Purchases.getOfferings();
+        final offering = offerings.getOffering('monthly_subsctiption_cv');
 
         emit(Vip(
           isVip: isVip,
           hasInternet: event.connected,
-          offering: offerings.getOffering('monthly_subsctiption_cv'),
+          offering: offering,
         ));
       } catch (e) {
         logger(e);
