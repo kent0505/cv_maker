@@ -77,9 +77,11 @@ class _TemplateCard extends StatelessWidget {
                 ));
             context.pop();
           } else {
-            state.hasInternet
-                ? context.push(VipScreen.routePath)
-                : NoInternetDialog.show(context);
+            if (state.offering != null) {
+              state.hasInternet
+                  ? context.push(VipScreen.routePath)
+                  : NoInternetDialog.show(context);
+            }
           }
         },
         child: Stack(

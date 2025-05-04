@@ -38,9 +38,11 @@ class TemplateCard extends StatelessWidget {
               extra: template,
             );
           } else {
-            vip.hasInternet
-                ? context.push(VipScreen.routePath)
-                : NoInternetDialog.show(context);
+            if (vip.offering != null) {
+              vip.hasInternet
+                  ? context.push(VipScreen.routePath)
+                  : NoInternetDialog.show(context);
+            }
           }
         },
         child: Stack(
