@@ -32,9 +32,11 @@ final class OnboardRepositoryImpl implements OnboardRepository {
   Future<Onboard?> getOnboard() async {
     try {
       final firebaseDB = FirebaseFirestore.instance;
-      final querySnapshot = await firebaseDB.collection('onboard').get();
+      final querySnapshot = await firebaseDB
+          .collection('onboard')
+          .get()
+          .timeout(const Duration(seconds: 2));
       return Onboard.fromJson(querySnapshot.docs[0].data());
-      // throw Exception();
     } catch (e) {
       logger(e);
       return null;

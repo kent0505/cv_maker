@@ -28,11 +28,13 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
     GetOnboard event,
     Emitter<OnboardState> emit,
   ) async {
-    onboard = await _repository.getOnboard();
-    emit(OnboardLoaded(
-      onboard: onboard,
-      index: index,
-    ));
+    if (_repository.isOnBoard()) {
+      onboard = await _repository.getOnboard();
+      emit(OnboardLoaded(
+        onboard: onboard,
+        index: index,
+      ));
+    }
   }
 
   void _changeOnboard(
@@ -42,7 +44,6 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
     if (event.index == 0) {
       if (index == 3) {
         await _repository.removeOnboard();
-        emit(OnboardDone());
       } else {
         index++;
         emit(OnboardLoaded(

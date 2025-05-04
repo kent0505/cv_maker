@@ -14,5 +14,3 @@ final class OnboardLoaded extends OnboardState {
   final Onboard? onboard;
   final int index;
 }
-
-final class OnboardDone extends OnboardState {}

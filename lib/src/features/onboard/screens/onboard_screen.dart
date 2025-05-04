@@ -8,7 +8,6 @@ import '../../../core/models/onboard.dart';
 import '../../../core/widgets/bg.dart';
 import '../../../core/widgets/button.dart';
 import '../../../core/widgets/image_widget.dart';
-import '../../../core/widgets/loading_widget.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../home/screens/home_screen.dart';
 import '../../resume/widgets/templates/template1.dart';
@@ -28,328 +27,302 @@ import '../../resume/widgets/templates/template19.dart';
 import '../../resume/widgets/templates/template20.dart';
 import '../bloc/onboard_bloc.dart';
 
-class OnboardScreen extends StatefulWidget {
+class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
 
   static const routePath = '/OnboardScreen';
 
   @override
-  State<OnboardScreen> createState() => _OnboardScreenState();
-}
-
-class _OnboardScreenState extends State<OnboardScreen> {
-  void onContinue() {
-    context.read<OnboardBloc>().add(ChangeOnboard());
-  }
-
-  void onIndicator(int value) {
-    context.read<OnboardBloc>().add(ChangeOnboard(index: value));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    context.read<OnboardBloc>().add(GetOnboard());
-  }
-
-  @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final index = context.watch<OnboardBloc>().index;
+    String title = l.continuee;
+    Onboard onboard = Onboard(
+      title1: l.onboardTitle1,
+      title2: l.onboardTitle2,
+      title3: l.onboardTitle3,
+      desc1: l.onboardDescription1,
+      desc2: l.onboardDescription2,
+      desc3: l.onboardDescription3,
+    );
 
-    return BlocListener<OnboardBloc, OnboardState>(
-      listener: (context, state) {
-        if (state is OnboardDone) {
-          context.go(HomeScreen.routePath);
-        }
-      },
-      child: Scaffold(
-        body: Bg(
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              if (index == 1) ...[
-                _Template(
-                  top: -70,
-                  right: 240,
-                  child: Template1(data: getMockData(1)),
-                ),
-                _Template(
-                  top: 290,
-                  right: 176,
-                  child: Template2(data: getMockData(2)),
-                ),
-                _Template(
-                  top: -70,
-                  right: -30,
-                  child: Template17(data: getMockData(17)),
-                ),
-                _Template(
-                  top: 290,
-                  right: -94,
-                  child: Template7(data: getMockData(7)),
-                ),
-                _Template(
-                  top: 650,
-                  right: 114,
-                  child: Template20(data: getMockData(20)),
-                ),
-                _Template(
-                  top: 642,
-                  right: -155,
-                  child: Template11(data: getMockData(11)),
-                ),
-                _Template(
-                  top: -70,
-                  right: 510,
-                  child: Template4(data: getMockData(4)),
-                ),
-                _Template(
-                  top: 290,
-                  right: 446,
-                  child: Template5(data: getMockData(5)),
-                ),
-                _Template(
-                  top: 650,
-                  right: 384,
-                  child: Template6(data: getMockData(6)),
-                ),
-              ] else if (index == 2) ...[
-                _Template2(
-                  top: -50,
-                  right: -50,
-                  child: Template8(data: getMockData(8)),
-                ),
-                _Template2(
-                  top: -100,
-                  right: 218,
-                  child: Template3(data: getMockData(3)),
-                ),
-                _Template2(
-                  top: 270,
-                  right: 218,
-                  child: Template19(data: getMockData(19)),
-                ),
-                _Template2(
-                  top: 316,
-                  right: -50,
-                  child: Template10(data: getMockData(10)),
-                ),
-                _Template2(
-                  top: -140,
-                  right: 486,
-                  child: Template11(data: getMockData(11)),
-                ),
-                _Template2(
-                  top: 230,
-                  right: 486,
-                  child: Template12(data: getMockData(12)),
-                ),
-                _Template2(
-                  top: 600,
-                  right: 486,
-                  child: Template13(data: getMockData(13)),
-                ),
-                _Template2(
-                  top: 640,
-                  right: 218,
-                  child: Template20(data: getMockData(20)),
-                ),
-                _Template2(
-                  top: 684,
-                  right: -50,
-                  child: Template7(data: getMockData(7)),
-                ),
-              ] else if (index == 3) ...[
-                Positioned(
-                  top: 60,
-                  right: 108,
-                  child: ImageWidget(
-                    Assets.onb4,
-                    width: 244,
-                    borderRadius: BorderRadius.circular(28),
+    return Scaffold(
+      body: Bg(
+        child: BlocBuilder<OnboardBloc, OnboardState>(
+          builder: (context, state) {
+            final bloc = context.read<OnboardBloc>();
+            final index = bloc.index;
+            final state = bloc.state;
+            if (state is OnboardLoaded) {
+              if (state.onboard != null) {
+                title = 'Continue';
+                onboard = state.onboard ?? onboard;
+              }
+            }
+
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                if (index == 1) ...[
+                  _Template(
+                    top: -70,
+                    right: 240,
+                    child: Template1(data: getMockData(1)),
+                  ),
+                  _Template(
+                    top: 290,
+                    right: 176,
+                    child: Template2(data: getMockData(2)),
+                  ),
+                  _Template(
+                    top: -70,
+                    right: -30,
+                    child: Template17(data: getMockData(17)),
+                  ),
+                  _Template(
+                    top: 290,
+                    right: -94,
+                    child: Template7(data: getMockData(7)),
+                  ),
+                  _Template(
+                    top: 650,
+                    right: 114,
+                    child: Template20(data: getMockData(20)),
+                  ),
+                  _Template(
+                    top: 642,
+                    right: -155,
+                    child: Template11(data: getMockData(11)),
+                  ),
+                  _Template(
+                    top: -70,
+                    right: 510,
+                    child: Template4(data: getMockData(4)),
+                  ),
+                  _Template(
+                    top: 290,
+                    right: 446,
+                    child: Template5(data: getMockData(5)),
+                  ),
+                  _Template(
+                    top: 650,
+                    right: 384,
+                    child: Template6(data: getMockData(6)),
+                  ),
+                ] else if (index == 2) ...[
+                  _Template2(
+                    top: -50,
+                    right: -50,
+                    child: Template8(data: getMockData(8)),
+                  ),
+                  _Template2(
+                    top: -100,
+                    right: 218,
+                    child: Template3(data: getMockData(3)),
+                  ),
+                  _Template2(
+                    top: 270,
+                    right: 218,
+                    child: Template19(data: getMockData(19)),
+                  ),
+                  _Template2(
+                    top: 316,
+                    right: -50,
+                    child: Template10(data: getMockData(10)),
+                  ),
+                  _Template2(
+                    top: -140,
+                    right: 486,
+                    child: Template11(data: getMockData(11)),
+                  ),
+                  _Template2(
+                    top: 230,
+                    right: 486,
+                    child: Template12(data: getMockData(12)),
+                  ),
+                  _Template2(
+                    top: 600,
+                    right: 486,
+                    child: Template13(data: getMockData(13)),
+                  ),
+                  _Template2(
+                    top: 640,
+                    right: 218,
+                    child: Template20(data: getMockData(20)),
+                  ),
+                  _Template2(
+                    top: 684,
+                    right: -50,
+                    child: Template7(data: getMockData(7)),
+                  ),
+                ] else if (index == 3) ...[
+                  Positioned(
+                    top: 60,
+                    right: 108,
+                    child: ImageWidget(
+                      Assets.onb4,
+                      width: 244,
+                      borderRadius: BorderRadius.circular(28),
+                    ),
+                  ),
+                ],
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        const Color(0xff007AFF).withValues(alpha: 0),
+                        const Color(0xff007AFF),
+                      ],
+                    ),
                   ),
                 ),
-              ],
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      const Color(0xff007AFF).withValues(alpha: 0),
-                      const Color(0xff007AFF),
+                if (index == 2) ...[
+                  const Positioned(
+                    top: 62,
+                    right: 80,
+                    child: ImageWidget(
+                      Assets.onb1,
+                      height: 230,
+                    ),
+                  ),
+                  const Positioned(
+                    top: 370,
+                    right: 118,
+                    child: ImageWidget(
+                      Assets.onb3,
+                      height: 230,
+                    ),
+                  ),
+                  Positioned(
+                    top: 226,
+                    right: 18,
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      height: 230,
+                      width: 232,
+                      decoration: BoxDecoration(
+                        color: const Color(0xfffbeee1),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.25),
+                            blurRadius: 50,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 226,
+                    right: 18,
+                    child: ImageWidget(
+                      Assets.onb2,
+                      height: 230,
+                      width: 232,
+                    ),
+                  ),
+                ] else if (index == 3) ...[
+                  Positioned(
+                    top: 120,
+                    right: 20,
+                    child: ImageWidget(
+                      Assets.onb5,
+                      width: 176,
+                      borderRadius: BorderRadius.circular(28),
+                    ),
+                  ),
+                ],
+                Container(
+                  height: 276,
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ).copyWith(bottom: 25),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const SizedBox(width: 30),
+                          _Indicator(
+                            index: 1,
+                            current: index,
+                          ),
+                          const SizedBox(width: 6),
+                          _Indicator(
+                            index: 2,
+                            current: index,
+                          ),
+                          const SizedBox(width: 6),
+                          _Indicator(
+                            index: 3,
+                            current: index,
+                          ),
+                          const SizedBox(width: 30),
+                        ],
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              index == 1
+                                  ? onboard.title1
+                                  : index == 2
+                                      ? onboard.title2
+                                      : onboard.title3,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 28,
+                                fontFamily: AppFonts.inter900,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              index == 1
+                                  ? onboard.desc1
+                                  : index == 2
+                                      ? onboard.desc2
+                                      : onboard.desc3,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Color(0xff9C9C9C),
+                                fontSize: 14,
+                                fontFamily: AppFonts.funnel400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(flex: 2),
+                      MainButton(
+                        title: title,
+                        onPressed: () {
+                          context.read<OnboardBloc>().add(ChangeOnboard());
+                          if (index == 3) context.go(HomeScreen.routePath);
+                        },
+                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
-              ),
-              if (index == 2) ...[
-                const Positioned(
-                  top: 62,
-                  right: 80,
-                  child: ImageWidget(
-                    Assets.onb1,
-                    height: 230,
-                  ),
-                ),
-                const Positioned(
-                  top: 370,
-                  right: 118,
-                  child: ImageWidget(
-                    Assets.onb3,
-                    height: 230,
-                  ),
-                ),
-                Positioned(
-                  top: 226,
-                  right: 18,
-                  child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
-                    height: 230,
-                    width: 232,
-                    decoration: BoxDecoration(
-                      color: const Color(0xfffbeee1),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.25),
-                          blurRadius: 50,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const Positioned(
-                  top: 226,
-                  right: 18,
-                  child: ImageWidget(
-                    Assets.onb2,
-                    height: 230,
-                    width: 232,
-                  ),
-                ),
-              ] else if (index == 3) ...[
-                Positioned(
-                  top: 120,
-                  right: 20,
-                  child: ImageWidget(
-                    Assets.onb5,
-                    width: 176,
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                ),
               ],
-              Container(
-                height: 276,
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ).copyWith(bottom: 25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const SizedBox(width: 30),
-                        _Indicator(
-                          index: 1,
-                          current: index,
-                          onPressed: onIndicator,
-                        ),
-                        const SizedBox(width: 6),
-                        _Indicator(
-                          index: 2,
-                          current: index,
-                          onPressed: onIndicator,
-                        ),
-                        const SizedBox(width: 6),
-                        _Indicator(
-                          index: 3,
-                          current: index,
-                          onPressed: onIndicator,
-                        ),
-                        const SizedBox(width: 30),
-                      ],
-                    ),
-                    const Spacer(),
-                    BlocBuilder<OnboardBloc, OnboardState>(
-                      builder: (context, state) {
-                        if (state is OnboardLoaded) {
-                          final onboard = state.onboard ??
-                              Onboard(
-                                title1: l.onboardTitle1,
-                                title2: l.onboardTitle2,
-                                title3: l.onboardTitle3,
-                                desc1: l.onboardDescription1,
-                                desc2: l.onboardDescription2,
-                                desc3: l.onboardDescription3,
-                              );
-
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 35),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  index == 1
-                                      ? onboard.title1
-                                      : index == 2
-                                          ? onboard.title2
-                                          : onboard.title3,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 28,
-                                    fontFamily: AppFonts.inter900,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  index == 1
-                                      ? onboard.desc1
-                                      : index == 2
-                                          ? onboard.desc2
-                                          : onboard.desc3,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    color: Color(0xff9C9C9C),
-                                    fontSize: 14,
-                                    fontFamily: AppFonts.funnel400,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-
-                        return const Padding(
-                          padding: EdgeInsets.only(top: 40),
-                          child: LoadingWidget(),
-                        );
-                      },
-                    ),
-                    const Spacer(flex: 2),
-                    MainButton(
-                      // title: l.continuee,
-                      title: 'Continue',
-                      onPressed: onContinue,
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
@@ -360,12 +333,10 @@ class _Indicator extends StatelessWidget {
   const _Indicator({
     required this.index,
     required this.current,
-    required this.onPressed,
   });
 
   final int index;
   final int current;
-  final void Function(int) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -376,7 +347,7 @@ class _Indicator extends StatelessWidget {
         onPressed: active
             ? null
             : () {
-                onPressed(index);
+                context.read<OnboardBloc>().add(ChangeOnboard(index: index));
               },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 500),

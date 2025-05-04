@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/widgets/loading_widget.dart';
 import '../../home/screens/home_screen.dart';
+import '../bloc/onboard_bloc.dart';
 import '../data/onboard_repository.dart';
 import 'onboard_screen.dart';
 
@@ -18,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    context.read<OnboardBloc>().add(GetOnboard());
     Future.delayed(
       const Duration(seconds: 2),
       () {
