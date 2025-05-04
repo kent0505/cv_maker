@@ -71,9 +71,7 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => HomeBloc()),
-          BlocProvider(
-            create: (context) => VipBloc()..add(CheckVip()),
-          ),
+          BlocProvider(create: (context) => VipBloc()),
           BlocProvider(
             create: (context) => OnboardBloc(
               repository: context.read<OnboardRepository>(),

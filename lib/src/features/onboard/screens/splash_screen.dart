@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/widgets/loading_widget.dart';
 import '../../home/screens/home_screen.dart';
+import '../../vip/bloc/vip_bloc.dart';
 import '../bloc/onboard_bloc.dart';
 import '../data/onboard_repository.dart';
 import 'onboard_screen.dart';
@@ -20,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     context.read<OnboardBloc>().add(GetOnboard());
+    context.read<VipBloc>().add(CheckVip());
     Future.delayed(
       const Duration(seconds: 2),
       () {
